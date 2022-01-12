@@ -1,0 +1,106 @@
+body{
+    font-family: Helvetica;
+    color: grey;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    margin:0;
+    padding:0;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Fugaz+One&display=swap');
+
+
+
+a{
+    color:thistle;
+    text-decoration:none;
+}
+
+a:hover, li:hover{
+    max-width:500px;
+    color:white;
+    background-color: mistyrose;
+}
+
+li:hover{
+    color:pink;
+}
+
+li{
+    margin:10px 0 10px 0;
+}
+
+h1{
+    /* color: rgb(132, 212, 132); */
+    color:black;
+    background-color: honeydew;
+    margin:0 0 20px 0;
+    /* padding:20px 0 20px 20px; */
+    font-family: 'Fugaz One', cursive;
+}
+
+.main-container{
+    width:100%;
+    /* background-color:black; */
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.container{
+    width:80%;
+    box-sizing: border-box;
+}
+
+section{
+    width:80%;
+    /* padding: 0px 20px 0 20px; */
+    padding:20px;
+}
+
+nav{
+    width:100%;
+    /* padding:20px; */
+    background-color: rgb(253, 241, 239);
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    padding:20px;
+}
+
+nav a{
+    margin-right:10px;
+}
+
+form>div{
+    margin-bottom:20px;
+}
+
+ol>li>b{
+    background-color: azure;
+}
+
+#previewPicBtn:hover{
+    cursor: pointer;
+    color:white;
+    background-color:mistyrose;
+}
+
+#previewPic{
+    margin-top:20px;
+    max-width:350px;
+    box-sizing: border-box;
+    border:1px solid pink;
+    padding:0;
+}
+
+#previewPic img{
+    width:100%;
+}
+
+textarea{
+    width:350px;
+    height:100px;
+}

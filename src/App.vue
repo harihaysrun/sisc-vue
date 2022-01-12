@@ -1,28 +1,52 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+
+  <div class="main-container">
+
+    
+
+      <nav>
+        <div class="container">
+          <a v-on:click="home">Home</a>
+          <a v-on:click="skincareProducts">Skincare Products</a>
+        </div>
+      </nav>
+
+      <section>
+        <Home v-if="page === 'home'" />
+        <SkincareProducts v-if="page === 'skincareProducts'" />
+      </section>
+    
   </div>
 </template>
 
 <script>
-import HelloWorld from '@/components/HelloWorld'
+
+import "@/assets/css/style.css";
+// import HelloWorld from '@/components/HelloWorld'
+import Home from '@/components/home';
+import SkincareProducts from '@/components/skincare-products'
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    Home, SkincareProducts
+  },
+  data: function(){
+    return{
+      'page': 'home'
+    }
+  },
+  methods:{
+    home: function(){
+      this.page = "home"
+    },
+    skincareProducts: function(){
+      this.page = "skincareProducts"
+    }
   }
 }
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+
 </style>
