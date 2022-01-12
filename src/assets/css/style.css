@@ -71,7 +71,8 @@ nav{
 }
 
 nav a{
-    margin-right:10px;
+    margin-right:20px;
+    cursor:pointer;
 }
 
 form>div{
