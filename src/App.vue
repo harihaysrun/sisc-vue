@@ -6,6 +6,7 @@
           <a v-on:click="home">Home</a>
           <a v-on:click="skincareProducts">Skincare Products</a>
           <a v-on:click="requestProduct">Request</a>
+          <a v-on:click="addProduct">Add</a>
         </div>
       </nav>
 
@@ -13,6 +14,7 @@
         <Home v-if="page === 'home'" />
         <SkincareProducts v-if="page === 'skincareProducts'"/>
         <requestProduct v-if="page === 'requestProduct'" />
+        <addProduct v-if="page === 'addProduct'" />
       </section>
     
   </div>
@@ -25,11 +27,12 @@ import "@/assets/css/style.css";
 import Home from '@/components/home';
 import SkincareProducts from '@/components/skincare-products'
 import requestProduct from '@/components/request-skincare-product'
+import addProduct from '@/components/add-skincare-product'
 
 export default {
   name: 'App',
   components: {
-    Home, SkincareProducts, requestProduct
+    Home, SkincareProducts, requestProduct, addProduct
   },
   data: function(){
     return{
@@ -48,6 +51,9 @@ export default {
     requestProduct: function(){
       this.page = "requestProduct";
       location.hash = "request-product"
+    },
+    addProduct: function(){
+      this.page = "addProduct"
     }
   }
 }

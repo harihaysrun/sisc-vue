@@ -83,6 +83,11 @@ ol>li>b{
     background-color: azure;
 }
 
+label{
+    display:block;
+    margin: 15px 0 5px 0;
+}
+
 #previewPicBtn:hover{
     cursor: pointer;
     color:white;
