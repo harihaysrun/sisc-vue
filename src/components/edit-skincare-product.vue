@@ -6,7 +6,7 @@
 
       <div id="success-message">Successfully edited product information!</div>
 
-      <!-- <div>
+      <div>
         <label>I'm looking to...</label>
         <input type="radio" value="sell" v-model="listing_type" /> Sell this product
         <input type="radio" value="request" v-model="listing_type" /> Request a product
@@ -103,7 +103,7 @@
         <input type="radio" value="N/A" v-model="product_cf" /> N/A
       </div>
 
-      <button v-on:click="editProduct">Edit Product listing</button> -->
+      <button v-on:click="editProduct">Edit Product listing</button>
       
       <div>
         <ul>

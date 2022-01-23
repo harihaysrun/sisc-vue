@@ -2,7 +2,8 @@
 
     <div>
       
-      <ProductsList v-if="tab === 'viewAllProducts'" v-on:edit-product="editProduct"/>
+      <ProductsList v-if="tab === 'viewAllProducts'" v-on:view-all-products="viewAll" v-on:view-product="viewProduct"/>
+      <ProductInfo v-if="tab === 'productInfo'" v-on:edit-product="editProduct" v-bind:productId="productViewing"/>
       <EditProduct v-if="tab === 'editThisProduct'" v-bind:productId="productEditing"/>
 
     </div>
@@ -12,6 +13,7 @@
 <script>
 
 import ProductsList from '@/components/products-list';
+import ProductInfo from '@/components/product-info';
 import EditProduct from '@/components/edit-skincare-product';
 
 
@@ -20,7 +22,7 @@ const BASE_API_URL = "https://3000-harihaysrun-skincareapi-99ht1jrsabq.ws-us27.g
 
 export default {
   components: {
-    ProductsList, EditProduct
+    ProductsList, ProductInfo, EditProduct
   },
   created: async function(){
     let response = await axios.get(BASE_API_URL + 'skincare-products');
@@ -35,16 +37,29 @@ export default {
     }
   },
   methods:{
-    viewAllProducts: function(){
+    viewAll: function(){
+      console.log("viewing all products now")
       this.tab = "viewAllProducts"
+      console.log(this.tab)
     },
-    editThisProduct:function(){
-      this.tab = "editThisProduct"
+    // productInfo:function(){
+    //   this.tab = "productInfo"
+    // },
+    // editThisProduct:function(){
+    //   this.tab = "editThisProduct"
+    // },
+    viewProduct:function(productId){
+      this.tab = "productInfo";
+      // console.log(this.tab)
+      this.productViewing = productId;
+      console.log(this.productViewing)
     },
     editProduct: function(productId){
       this.tab = "editThisProduct";
+      // console.log(this.tab)
       this.productEditing = productId;
       console.log(this.productEditing)
+      // console.log("EditThisProduct")
     }
   }
 }

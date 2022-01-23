@@ -7,10 +7,12 @@
 
       <ol>
         <li v-for="p in products" v-bind:key="p._id">
-          <b>{{p.productBrand}}</b> {{p.productName}}
-          <!-- <button v-on:click="edit(p._id)">Edit</button> -->
-          {{p._id}}
-          <a v-on:click="edit(p._id)">Edit</a>
+          <a v-on:click="viewThisProduct(p._id)">
+            <b>{{p.productBrand}}</b> {{p.productName}}
+            {{p._id}}
+            <!-- <button v-on:click="edit(p._id)">Edit</button> -->
+            <!-- <a v-on:click="edit(p._id)">Edit</a> -->
+          </a>
         </li>
       </ol>
 
@@ -34,10 +36,16 @@ export default {
       'products': []
     }
   },
+  // props: ['page'],
   methods:{
-    'edit': function(productId){
-      this.$emit('edit-product', productId)
+    viewThisProduct: function(productId){
+      this.tab = "productInfo";
+      console.log(productId)
+      this.$emit('view-product', productId);
     }
+    // 'edit': function(productId){
+    //   this.$emit('edit-product', productId)
+    // }
   }
 }
 </script>
