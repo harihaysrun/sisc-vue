@@ -7,7 +7,7 @@
       
       <ProductsList v-if="tab === 'viewAllProducts'" v-on:view-product="viewProduct"/>
       <ProductInfo v-if="tab === 'productInfo'" v-on:edit-product="editProduct" v-bind:productId="productViewing"/>
-      <EditProduct v-if="tab === 'editThisProduct'" v-bind:productId="productEditing"/>
+      <EditProduct v-if="tab === 'editThisProduct'" v-on:remove-product="removeProduct" v-bind:productId="productEditing"/>
 
     </div>
     
@@ -66,6 +66,12 @@ export default {
       this.productEditing = productId;
       console.log(this.productEditing)
       // console.log("EditThisProduct")
+    },
+    removeProduct: function(productId){
+      this.tab = "viewAllProducts";
+      // console.log(this.tab)
+      this.productToRemove = productId;
+      console.log(this.productToRemove)
     }
   }
 }

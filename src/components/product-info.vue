@@ -28,7 +28,6 @@
         </ul>
       </div>
 
-
       <button v-on:click="edit(productId)">Edit Product</button>
 
     </div>
@@ -90,11 +89,7 @@ export default {
     'edit': function(productId){
       this.$emit('edit-product', productId)
       console.log(productId)
-    },
-    // 'backToProducts':function(){
-    //   this.$emit('view-all-products');
-    //   console.log("see all listings")
-    // }
+    }
   }
 }
 </script>
