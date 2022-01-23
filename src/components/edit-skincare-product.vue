@@ -2,11 +2,11 @@
 
     <div>
         
-      <h1>Add or Request skincare product</h1>
+      <h1>Edit {{product_brand}} {{id}}</h1>
 
-      <div id="success-message">Successfully added product!</div>
+      <div id="success-message">Successfully edited product information!</div>
 
-      <div>
+      <!-- <div>
         <label>I'm looking to...</label>
         <input type="radio" value="sell" v-model="listing_type" /> Sell this product
         <input type="radio" value="request" v-model="listing_type" /> Request a product
@@ -103,7 +103,7 @@
         <input type="radio" value="N/A" v-model="product_cf" /> N/A
       </div>
 
-      <button v-on:click="addProduct">Add</button>
+      <button v-on:click="editProduct">Edit Product listing</button> -->
       
       <div>
         <ul>
@@ -135,6 +135,31 @@ import axios from 'axios';
 const BASE_API_URL = "https://3000-harihaysrun-skincareapi-99ht1jrsabq.ws-us27.gitpod.io/";
 
 export default {
+  created: async function(){
+    console.log(this.productId)
+    let response = await axios.get(BASE_API_URL + 'skincare-products/' + this.productId);
+    this.listing_type = response.data.listingType;
+    this.product_condition = response.data.productCondition;
+    this.product_brand = response.data.productBrand;
+    this.product_name = response.data.productName;
+    this.product_image = response.data.productImage;
+    this.product_quantity = response.data.productQuantity;
+    this.product_quantity_box = response.data.productQuantityBox;
+    this.product_size = response.data.productType;
+    this.product_size_ml = response.data.productSize;
+    this.product_price = response.data.productPrice;
+    this.product_price_box = response.data.productPriceDollars;
+    this.product_description = response.data.productDescription;
+    this.skin_type = response.data.skinType;
+    this.skin_concerns = response.data.skinConcerns;
+    this.product_vegan = response.data.productVegan;
+    this.product_cf = response.data.productCrueltyFree;
+    // this.id = response.data_id;
+
+    console.log(response.data)
+
+  },
+  props: ['productId'],
   data: function(){
     return{
       'listing_type': '',
@@ -152,50 +177,34 @@ export default {
       'skin_type': [],
       'skin_concerns': [],
       'product_vegan': '',
-      'product_cf': ''
+      'product_cf': '',
+      'id': ''
     }
   },
   methods:{
-    'addProduct': async function(){
+    'editProduct': async function(){
 
       const successMsg = document.getElementById("success-message");
       successMsg.style.display = "block";
 
-      await axios.post(BASE_API_URL + 'skincare-products',{
-        'listingType': this.listing_type,
-        'productCondition': this.product_condition,
-        'productBrand': this.product_brand,
-        'productName': this.product_name,
-        'productImage': this.product_image,
-        'productQuantity': this.product_quantity,
-        'productQuantityBox': this.product_quantity_box,
-        'productType': this.product_size,
-        'productSize': this.product_size_ml,
-        'productPrice': this.product_price,
-        'productPriceDollars': this.product_price_box,
-        'productDescription': this.product_description,
-        'skinType': this.skin_type,
-        'skinConcerns': this.skin_concerns,
-        'productVegan': this.product_vegan,
-        'productCrueltyFree': this.product_cf
-      });
-
-      // this.listing_type = "",
-      // this.product_condition = "",
-      // this.product_brand = "",
-      // this.product_name = "",
-      // this.product_image = "",
-      // this.product_size = [],
-      // this.product_size_ml = "",
-      // this.product_price = "",
-      // this.product_price_box = "",
-      // this.product_description = "",
-      // this.skin_type = [],
-      // this.skin_concerns = [],
-      // this.product_vegan = "",
-      // this.product_cf = ""
-
-      this.$emit("product-added");
+      // await axios.patch(BASE_API_URL + 'skincare-products/' + this.productId, {
+      //   'listingType': this.listing_type,
+      //   'productCondition': this.product_condition,
+      //   'productBrand': this.product_brand,
+      //   'productName': this.product_name,
+      //   'productImage': this.product_image,
+      //   'productQuantity': this.product_quantity,
+      //   'productQuantityBox': this.product_quantity_box,
+      //   'productType': this.product_size,
+      //   'productSize': this.product_size_ml,
+      //   'productPrice': this.product_price,
+      //   'productPriceDollars': this.product_price_box,
+      //   'productDescription': this.product_description,
+      //   'skinType': this.skin_type,
+      //   'skinConcerns': this.skin_concerns,
+      //   'productVegan': this.product_vegan,
+      //   'productCrueltyFree': this.product_cf
+      // });
 
     }
   }

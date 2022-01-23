@@ -3,18 +3,25 @@
   <div class="main-container">
       <nav>
         <div class="container">
-          <a v-on:click="home">Home</a>
-          <a v-on:click="skincareProducts">Skincare Products</a>
-          <a v-on:click="requestProduct">Request</a>
-          <a v-on:click="addProduct">Add</a>
+          <a v-on:click="home" v-if="page === 'home'" style="background-color:black" id="home">Home</a>
+          <a v-on:click="home" v-else>Home</a>
+
+          <a v-on:click="skincareProducts" v-if="page === 'skincareProducts'" style="background-color:black" >Skincare Products</a>
+          <a v-on:click="skincareProducts" v-else>Skincare Products</a>
+
+          <a v-on:click="requestProduct" v-if="page === 'requestProduct'" style="background-color:black" >Request</a>
+          <a v-on:click="requestProduct" v-else>Request</a>
+
+          <a v-on:click="addProduct" v-if="page === 'addProduct'" style="background-color:black" >Add New</a>
+          <a v-on:click="addProduct" v-else>Add New</a>
         </div>
       </nav>
 
       <section>
         <Home v-if="page === 'home'" />
         <SkincareProducts v-if="page === 'skincareProducts'"/>
-        <requestProduct v-if="page === 'requestProduct'" />
-        <addProduct v-if="page === 'addProduct'" />
+        <RequestProduct v-if="page === 'requestProduct'" />
+        <AddProduct v-if="page === 'addProduct'" v-on:product-added="refreshAddPage"/>
       </section>
     
   </div>
@@ -23,16 +30,15 @@
 <script>
 
 import "@/assets/css/style.css";
-// import HelloWorld from '@/components/HelloWorld'
 import Home from '@/components/home';
 import SkincareProducts from '@/components/skincare-products'
-import requestProduct from '@/components/request-skincare-product'
-import addProduct from '@/components/add-skincare-product'
+import RequestProduct from '@/components/request-skincare-product'
+import AddProduct from '@/components/add-skincare-product'
 
 export default {
   name: 'App',
   components: {
-    Home, SkincareProducts, requestProduct, addProduct
+    Home, SkincareProducts, RequestProduct, AddProduct
   },
   data: function(){
     return{
@@ -42,18 +48,21 @@ export default {
   methods:{
     home: function(){
       this.page = "home"
-      location.hash = ""
+      // location.hash = ""
     },
     skincareProducts: function(){
       this.page = "skincareProducts";
-      location.hash = "skincare-products"
+      // location.hash = "skincare-products"
     },
     requestProduct: function(){
       this.page = "requestProduct";
-      location.hash = "request-product"
+      // location.hash = "request-product"
     },
     addProduct: function(){
       this.page = "addProduct"
+    },
+    refreshAddPage: function(){
+      this.page = "home"
     }
   }
 }

@@ -110,3 +110,21 @@ textarea{
     width:350px;
     height:100px;
 }
+
+#success-message{
+    background-color:rgb(0, 128, 0, 0.1);
+    color:green;
+    border:1px solid green;
+    padding:25px;
+    border-radius:15px;
+    display:none;
+}
+
+.reminder-message{
+    background-color:rgb(255, 228, 225, 0.2);
+    color:grey;
+    border:1px solid mistyrose;
+    padding:25px;
+    border-radius:15px;
+    /* display:none; */
+}

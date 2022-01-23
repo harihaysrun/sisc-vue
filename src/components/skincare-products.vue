@@ -1,25 +1,27 @@
 <template>
 
     <div>
-        
-      <h1>View All Skincare Products</h1>
-      <button><a href="/skincare-products/add">Add new product</a></button>
-
-      <ol>
-        <li v-for="p in products" v-bind:key="p._id">
-          <b>{{p.productBrand}}</b> {{p.productName}}
-        </li>
-      </ol>
+      
+      <ProductsList v-if="tab === 'viewAllProducts'" v-on:edit-product="editProduct"/>
+      <EditProduct v-if="tab === 'editThisProduct'" v-bind:productId="productEditing"/>
 
     </div>
     
 </template>
 
 <script>
+
+import ProductsList from '@/components/products-list';
+import EditProduct from '@/components/edit-skincare-product';
+
+
 import axios from 'axios';
-const BASE_API_URL = "https://3000-harihaysrun-skincareapi-fj1wbad540x.ws-us27.gitpod.io/";
+const BASE_API_URL = "https://3000-harihaysrun-skincareapi-99ht1jrsabq.ws-us27.gitpod.io/";
 
 export default {
+  components: {
+    ProductsList, EditProduct
+  },
   created: async function(){
     let response = await axios.get(BASE_API_URL + 'skincare-products');
     this.products = response.data;
@@ -27,7 +29,22 @@ export default {
   },
   data: function(){
     return{
-      'products': []
+      'products': [],
+      'tab': 'viewAllProducts',
+      // 'productEditing': productEditing
+    }
+  },
+  methods:{
+    viewAllProducts: function(){
+      this.tab = "viewAllProducts"
+    },
+    editThisProduct:function(){
+      this.tab = "editThisProduct"
+    },
+    editProduct: function(productId){
+      this.tab = "editThisProduct";
+      this.productEditing = productId;
+      console.log(this.productEditing)
     }
   }
 }
