@@ -18,9 +18,10 @@ a{
 }
 
 a:hover, li:hover{
-    max-width:500px;
+    /* max-width:500px; */
     color:white;
     background-color: mistyrose;
+    cursor:pointer;
 }
 
 li:hover{
