@@ -1,8 +1,11 @@
 <template>
 
     <div>
+
+      <button v-if="tab === 'productInfo'" v-on:click="backToProducts">Back</button>
+      <button v-if="tab === 'editThisProduct'" v-on:click="backToProduct">Back</button>
       
-      <ProductsList v-if="tab === 'viewAllProducts'" v-on:view-all-products="viewAll" v-on:view-product="viewProduct"/>
+      <ProductsList v-if="tab === 'viewAllProducts'" v-on:view-product="viewProduct"/>
       <ProductInfo v-if="tab === 'productInfo'" v-on:edit-product="editProduct" v-bind:productId="productViewing"/>
       <EditProduct v-if="tab === 'editThisProduct'" v-bind:productId="productEditing"/>
 
@@ -37,10 +40,13 @@ export default {
     }
   },
   methods:{
-    viewAll: function(){
+    backToProducts: function(){
       console.log("viewing all products now")
       this.tab = "viewAllProducts"
       console.log(this.tab)
+    },
+    backToProduct: function(){
+      this.tab = "productInfo"
     },
     // productInfo:function(){
     //   this.tab = "productInfo"

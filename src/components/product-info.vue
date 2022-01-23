@@ -2,7 +2,7 @@
 
     <div>
 
-      <button v-on:click="backToProducts">Back</button>
+      <!-- <button v-on:click="backToProducts">Back</button> -->
         
       <h1>{{product_brand}} {{product_name}}</h1>
       <small>{{productId}}</small>
@@ -91,10 +91,10 @@ export default {
       this.$emit('edit-product', productId)
       console.log(productId)
     },
-    'backToProducts':function(){
-      this.$emit('view-all-products');
-      console.log("see all listings")
-    }
+    // 'backToProducts':function(){
+    //   this.$emit('view-all-products');
+    //   console.log("see all listings")
+    // }
   }
 }
 </script>

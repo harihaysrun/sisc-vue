@@ -174,7 +174,7 @@ export default {
         'productPrice': this.product_price,
         'productPriceDollars': this.product_price_box,
         'productDescription': this.product_description,
-        'skinType': this.skin_type,
+        'skinType': this.skin_type.split(','),
         'skinConcerns': this.skin_concerns,
         'productVegan': this.product_vegan,
         'productCrueltyFree': this.product_cf

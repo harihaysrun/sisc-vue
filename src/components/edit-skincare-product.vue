@@ -2,7 +2,7 @@
 
     <div>
         
-      <h1>Edit {{product_brand}} {{id}}</h1>
+      <h1>Edit {{product_brand}} {{product_name}}</h1>
 
       <div id="success-message">Successfully edited product information!</div>
 
@@ -174,7 +174,7 @@ export default {
       'product_price': '',
       'product_price_box': '',
       'product_description': '',
-      'skin_type': [],
+      'skin_type': 'Combination',
       'skin_concerns': [],
       'product_vegan': '',
       'product_cf': '',
@@ -187,24 +187,33 @@ export default {
       const successMsg = document.getElementById("success-message");
       successMsg.style.display = "block";
 
-      // await axios.patch(BASE_API_URL + 'skincare-products/' + this.productId, {
-      //   'listingType': this.listing_type,
-      //   'productCondition': this.product_condition,
-      //   'productBrand': this.product_brand,
-      //   'productName': this.product_name,
-      //   'productImage': this.product_image,
-      //   'productQuantity': this.product_quantity,
-      //   'productQuantityBox': this.product_quantity_box,
-      //   'productType': this.product_size,
-      //   'productSize': this.product_size_ml,
-      //   'productPrice': this.product_price,
-      //   'productPriceDollars': this.product_price_box,
-      //   'productDescription': this.product_description,
-      //   'skinType': this.skin_type,
-      //   'skinConcerns': this.skin_concerns,
-      //   'productVegan': this.product_vegan,
-      //   'productCrueltyFree': this.product_cf
-      // });
+      // function skinConcernList(){
+      //   if(this.skin_concerns.length <= 1){
+      //     return this.skin_concerns
+      //   }
+      //   if (this.skin_concerns.length > 1){
+      //     this.skin_concerns.split(",")
+      //   }
+      // }
+
+      await axios.patch(BASE_API_URL + 'skincare-products/' + this.productId, {
+        'listingType': this.listing_type,
+        'productCondition': this.product_condition,
+        'productBrand': this.product_brand,
+        'productName': this.product_name,
+        'productImage': this.product_image,
+        'productQuantity': this.product_quantity,
+        'productQuantityBox': this.product_quantity_box,
+        'productType': this.product_size,
+        'productSize': this.product_size_ml,
+        'productPrice': this.product_price,
+        'productPriceDollars': this.product_price_box,
+        'productDescription': this.product_description,
+        'skinType': this.skin_type,
+        'skinConcerns': this.skin_concerns.split(','),
+        'productVegan': this.product_vegan,
+        'productCrueltyFree': this.product_cf
+      });
 
     }
   }

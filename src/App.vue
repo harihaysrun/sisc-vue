@@ -9,9 +9,6 @@
           <a v-on:click="skincareProducts" v-if="page === 'skincareProducts'" style="background-color:black" >Skincare Products</a>
           <a v-on:click="skincareProducts" v-else>Skincare Products</a>
 
-          <a v-on:click="requestProduct" v-if="page === 'requestProduct'" style="background-color:black" >Request</a>
-          <a v-on:click="requestProduct" v-else>Request</a>
-
           <a v-on:click="addProduct" v-if="page === 'addProduct'" style="background-color:black" >Add New</a>
           <a v-on:click="addProduct" v-else>Add New</a>
         </div>
@@ -20,7 +17,6 @@
       <section>
         <Home v-if="page === 'home'" />
         <SkincareProducts v-if="page === 'skincareProducts'"/>
-        <RequestProduct v-if="page === 'requestProduct'" />
         <AddProduct v-if="page === 'addProduct'" v-on:product-added="refreshAddPage"/>
       </section>
     
@@ -32,13 +28,12 @@
 import "@/assets/css/style.css";
 import Home from '@/components/home';
 import SkincareProducts from '@/components/skincare-products'
-import RequestProduct from '@/components/request-skincare-product'
 import AddProduct from '@/components/add-skincare-product'
 
 export default {
   name: 'App',
   components: {
-    Home, SkincareProducts, RequestProduct, AddProduct
+    Home, SkincareProducts, AddProduct
   },
   data: function(){
     return{
@@ -53,10 +48,6 @@ export default {
     skincareProducts: function(){
       this.page = "skincareProducts";
       // location.hash = "skincare-products"
-    },
-    requestProduct: function(){
-      this.page = "requestProduct";
-      // location.hash = "request-product"
     },
     addProduct: function(){
       this.page = "addProduct"

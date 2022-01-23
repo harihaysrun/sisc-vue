@@ -3,7 +3,7 @@
     <div>
         
       <h1>View All Skincare Products</h1>
-      <button><a href="/skincare-products/add">Add new product</a></button>
+      <!-- <button><a href="/skincare-products/add">Add new product</a></button> -->
 
       <ol>
         <li v-for="p in products" v-bind:key="p._id">
