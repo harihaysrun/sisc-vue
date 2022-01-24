@@ -157,7 +157,7 @@ export default {
     this.product_price_box = response.data.productPriceDollars;
     this.product_description = response.data.productDescription;
     this.skin_type = response.data.skinType;
-    this.skin_concerns = response.data.skinConcerns;
+    this.skin_concerns = response.data.skinConcerns.join();
     this.product_vegan = response.data.productVegan;
     this.product_cf = response.data.productCrueltyFree;
     // this.id = response.data_id;

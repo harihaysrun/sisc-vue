@@ -12,15 +12,24 @@
           <li>Brand: {{product_brand}}</li>
           <li>Name of product: {{product_name}}</li>
           <li>Product image link: {{product_image}}</li>
-          <li>Product quantity: {{product_quantity}}</li>
-          <li>Product quantity (others): {{product_quantity_box}}</li>
+          <li v-if="product_quantity != 'Others'">Product quantity: {{product_quantity}}</li>
+          <li v-if="product_quantity === 'Others'">Product quantity (others): {{product_quantity_box}}</li>
           <li>Size: {{product_size}}</li>
           <li>Size in ml: {{product_size_ml}}</li>
-          <li>Product price: {{product_price}}</li>
-          <li>Product price in dollars: {{product_price_box}}</li>
+          <li v-if="product_price != 'Specify'">Product price: {{product_price}}</li>
+          <li v-if="product_price === 'Specify'">Product price in dollars: {{product_price_box}}</li>
           <li>Description: {{product_description}}</li>
-          <li>Skin type: {{skin_type}}</li>
-          <li>Skin concerns: {{skin_concerns}}</li>
+          <li>Skin type:
+              <span style="padding:5px 10px; background-color:thistle;border-radius:25px;margin-right:10px" v-for="type in skin_type" v-bind:key="type._id">
+                {{type}}
+              </span>
+          </li>
+          <li>Skin concerns:
+              <span style="padding:5px 10px; background-color:lavender;border-radius:25px;margin-right:10px" v-for="concern in skin_concerns" v-bind:key="concern._id">
+                {{concern}}
+              </span>
+              <!-- {{skin_concerns}} -->
+          </li>
           <li>Vegan?: {{product_vegan}}</li>
           <li>Cruelty free?: {{product_cf}}</li>
         </ul>
