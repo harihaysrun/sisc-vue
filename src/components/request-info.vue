@@ -16,22 +16,6 @@
           <li v-if="product_quantity === 'Others'">Product quantity (others): {{product_quantity_box}}</li>
           <li>Size: {{product_size}}</li>
           <li>Size in ml: {{product_size_ml}}</li>
-          <li v-if="product_price != 'Specify'">Product price: {{product_price}}</li>
-          <li v-if="product_price === 'Specify'">Product price in dollars: {{product_price_box}}</li>
-          <li>Description: {{product_description}}</li>
-          <li>Skin type:
-              <span style="padding:5px 10px; background-color:pink;border-radius:25px;margin-right:10px" v-for="type in skin_type" v-bind:key="type._id">
-                {{type}}
-              </span>
-          </li>
-          <li>Skin concerns:
-              <span style="padding:5px 10px; background-color:lavender;border-radius:25px;margin-right:10px" v-for="concern in skin_concerns" v-bind:key="concern._id">
-                {{concern}}
-              </span>
-              <!-- {{skin_concerns}} -->
-          </li>
-          <li>Vegan?: {{product_vegan}}</li>
-          <li>Cruelty free?: {{product_cf}}</li>
         </ul>
       </div>
 
@@ -92,7 +76,7 @@ const BASE_API_URL = "https://3000-harihaysrun-skincareapi-99ltz4b52lr.ws-us27.g
 
 export default {
   created: async function(){
-    let response = await axios.get(BASE_API_URL + 'skincare-products/' + this.productId);
+    let response = await axios.get(BASE_API_URL + 'requested-products/' + this.productId);
     this.listing_type = response.data.listingType;
     this.product_condition = response.data.productCondition;
     this.product_brand = response.data.productBrand;
@@ -102,17 +86,7 @@ export default {
     this.product_quantity_box = response.data.productQuantityBox;
     this.product_size = response.data.productType;
     this.product_size_ml = response.data.productSize;
-    this.product_price = response.data.productPrice;
-    this.product_price_box = response.data.productPriceDollars;
-    this.product_description = response.data.productDescription;
-    this.skin_type = response.data.skinType;
-    this.skin_concerns = response.data.skinConcerns;
-    this.product_vegan = response.data.productVegan;
-    this.product_cf = response.data.productCrueltyFree;
-    this.id = response.data_id;
     this.comments = response.data.comments;
-
-    // console.log(response.data)
 
   },
   props: ['productId'],
@@ -127,13 +101,6 @@ export default {
       'product_quantity_box': '',
       'product_size': '',
       'product_size_ml': '',
-      'product_price': '',
-      'product_price_box': '',
-      'product_description': '',
-      'skin_type': [],
-      'skin_concerns': [],
-      'product_vegan': '',
-      'product_cf': '',
       'id': '',
       'comment_name':'',
       'comment_text': '',
@@ -143,11 +110,11 @@ export default {
   methods:{
     'edit': function(productId){
       this.$emit('edit-product', productId)
-      // console.log(listing_type)
+      console.log(productId)
     },
     'comment': async function(productId){
       console.log(productId);
-      await axios.post(BASE_API_URL + 'skincare-products/' + this.productId + '/comment/add', {
+      await axios.post(BASE_API_URL + 'requested-products/' + this.productId + '/comment/add', {
         'commentName': this.comment_name,
         'commentText': this.comment_text,
       })
@@ -159,7 +126,7 @@ export default {
     'deleteComment': async function(commentId){
       console.log(commentId);
 
-      await axios.post(BASE_API_URL + 'skincare-products/' + this.productId + '/comment/delete', {
+      await axios.post(BASE_API_URL + 'requested-products/' + this.productId + '/comment/delete', {
         'commentId': commentId
       })
     }

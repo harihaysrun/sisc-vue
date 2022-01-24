@@ -2,12 +2,16 @@
 
     <div>
 
-      <button v-if="tab === 'productInfo'" v-on:click="backToProducts">Back</button>
-      <button v-if="tab === 'editThisProduct'" v-on:click="backToProduct">Back</button>
+      <p>
+        <a v-on:click="viewProducts" v-if="pageType === 'sellGive'" style="background-color:pink">Products</a>
+        <a v-on:click="viewProducts" v-else>Products</a>
+
+        <a v-on:click="viewRequests" v-if="pageType === 'requests'" style="background-color:pink">Requests</a>
+        <a v-on:click="viewRequests" v-else>Requests</a>
+      </p>
       
-      <ProductsList v-if="tab === 'viewAllProducts'" v-on:view-product="viewProduct"/>
-      <ProductInfo v-if="tab === 'productInfo'" v-on:edit-product="editProduct" v-bind:productId="productViewing"/>
-      <EditProduct v-if="tab === 'editThisProduct'" v-on:remove-product="removeProduct" v-bind:productId="productEditing"/>
+      <ProductsTab v-if="pageType === 'sellGive'"/>
+      <RequestTab v-if="pageType === 'requests'"/>
 
     </div>
     
@@ -15,54 +19,25 @@
 
 <script>
 
-import ProductsList from '@/components/products-list';
-import ProductInfo from '@/components/product-info';
-import EditProduct from '@/components/edit-skincare-product';
+import ProductsTab from '@/components/products-tab';
+import RequestTab from '@/components/request-tab';
 
 export default {
   components: {
-    ProductsList, ProductInfo, EditProduct
+    ProductsTab,
+    RequestTab
   },
   data: function(){
     return{
-      'products': [],
-      'tab': 'viewAllProducts',
-      // 'productEditing': productEditing
+      'pageType': 'sellGive'
     }
   },
   methods:{
-    backToProducts: function(){
-      console.log("viewing all products now")
-      this.tab = "viewAllProducts"
-      console.log(this.tab)
+    viewProducts: function(){
+      this.pageType = "sellGive"
     },
-    backToProduct: function(){
-      this.tab = "productInfo"
-    },
-    // productInfo:function(){
-    //   this.tab = "productInfo"
-    // },
-    // editThisProduct:function(){
-    //   this.tab = "editThisProduct"
-    // },
-    viewProduct:function(productId){
-      this.tab = "productInfo";
-      // console.log(this.tab)
-      this.productViewing = productId;
-      console.log(this.productViewing)
-    },
-    editProduct: function(productId){
-      this.tab = "editThisProduct";
-      // console.log(this.tab)
-      this.productEditing = productId;
-      console.log(this.productEditing)
-      // console.log("EditThisProduct")
-    },
-    removeProduct: function(productId){
-      this.tab = "viewAllProducts";
-      // console.log(this.tab)
-      this.productToRemove = productId;
-      console.log(this.productToRemove)
+    viewRequests: function(){
+      this.pageType = "requests"
     }
   }
 }

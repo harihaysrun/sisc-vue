@@ -9,6 +9,7 @@
       <div>
         <label>I'm looking to...</label>
         <input type="radio" value="sell" v-model="listing_type" /> Sell this product
+        <input type="radio" value="give" v-model="listing_type" /> Give this away
         <input type="radio" value="request" v-model="listing_type" /> Request a product
       </div>
 
@@ -61,7 +62,7 @@
         <input type="text" v-model="product_size_ml" />
       </div>
 
-      <div>
+      <div v-if="listing_type != 'request'">
         <label>Price</label>
         <select name="" id="" v-model="product_price">
           <option value="" disabled>select one</option>
@@ -72,38 +73,39 @@
         <input type="text" v-model="product_price_box" placeholder="Put any value" v-if="product_price === 'Specify'"/>
       </div>
 
-      <div>
+      <div v-if="listing_type != 'request'">
         <label>Product Description</label>
         <textarea name="" id="" cols="30" rows="10" v-model="product_description"></textarea>
       </div>
 
-      <div>
+      <div v-if="listing_type != 'request'">
         <label>Suitable for skin type</label>
         <input type="checkbox" value="Dry" v-model="skin_type" /> Dry
         <input type="checkbox" value="Combination" v-model="skin_type" /> Combination
         <input type="checkbox" value="Oily" v-model="skin_type" /> Oily
       </div>
 
-      <div>
+      <div v-if="listing_type != 'request'">
         <label>Skin concerns:</label>
         <input type="text" v-model="skin_concerns" placeholder="Separate words with commas. E.g redness, irritation, sensitive" />
       </div>
 
-      <div>
+      <div v-if="listing_type != 'request'">
         <label>Is this product vegan?</label>
         <input type="radio" value="Yes" v-model="product_vegan" /> Yes
         <input type="radio" value="No" v-model="product_vegan" /> No
         <input type="radio" value="N/A" v-model="product_vegan" /> N/A
       </div>
 
-      <div>
+      <div v-if="listing_type != 'request'">
         <label>Is this product/brand cruelty free?</label>
         <input type="radio" value="Yes" v-model="product_cf" /> Yes
         <input type="radio" value="No" v-model="product_cf" /> No
         <input type="radio" value="N/A" v-model="product_cf" /> N/A
       </div>
 
-      <button v-on:click="addProduct">Add</button>
+      <button v-on:click="addProduct" v-if="listing_type != 'request'">Add Product</button>
+      <button v-on:click="addRequest" v-if="listing_type === 'request'">Add Request</button>
       
       <div>
         <ul>
@@ -137,7 +139,7 @@ const BASE_API_URL = "https://3000-harihaysrun-skincareapi-99ltz4b52lr.ws-us27.g
 export default {
   data: function(){
     return{
-      'listing_type': '',
+      'listing_type': 'sell',
       'product_condition': '',
       'product_brand': '',
       'product_name': '',
@@ -161,7 +163,7 @@ export default {
       const successMsg = document.getElementById("success-message");
       successMsg.style.display = "block";
 
-      await axios.post(BASE_API_URL + 'skincare-products',{
+      await axios.post(BASE_API_URL + 'skincare-products/add',{
         'listingType': this.listing_type,
         'productCondition': this.product_condition,
         'productBrand': this.product_brand,
@@ -174,29 +176,27 @@ export default {
         'productPrice': this.product_price,
         'productPriceDollars': this.product_price_box,
         'productDescription': this.product_description,
-        'skinType': this.skin_type.split(','),
-        'skinConcerns': this.skin_concerns,
+        'skinType': this.skin_type,
+        'skinConcerns': this.skin_concerns.split(','),
         'productVegan': this.product_vegan,
         'productCrueltyFree': this.product_cf
       });
 
-      // this.listing_type = "",
-      // this.product_condition = "",
-      // this.product_brand = "",
-      // this.product_name = "",
-      // this.product_image = "",
-      // this.product_size = [],
-      // this.product_size_ml = "",
-      // this.product_price = "",
-      // this.product_price_box = "",
-      // this.product_description = "",
-      // this.skin_type = [],
-      // this.skin_concerns = [],
-      // this.product_vegan = "",
-      // this.product_cf = ""
-
       this.$emit("product-added");
 
+    },
+    addRequest: async function(){
+      await axios.post(BASE_API_URL + 'skincare-products/request/add',{
+        'listingType': this.listing_type,
+        'productCondition': this.product_condition,
+        'productBrand': this.product_brand,
+        'productName': this.product_name,
+        'productImage': this.product_image,
+        'productQuantity': this.product_quantity,
+        'productQuantityBox': this.product_quantity_box,
+        'productType': this.product_size,
+        'productSize': this.product_size_ml
+      });
     }
   }
 }
