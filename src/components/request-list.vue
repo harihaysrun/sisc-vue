@@ -2,11 +2,13 @@
 
     <div>
         
-      <h1>Requests</h1>
+      <!-- <h1>Requests</h1> -->
+      <h1>{{pageTitle}}</h1>
 
       <ol>
-        <li v-for="p in products" v-bind:key="p._id">
-          <a v-on:click="viewThisProduct(p._id)">
+        <li v-for="p in products.slice(0,max)" v-bind:key="p._id">
+          <a v-on:click="viewThisProduct(p._id)" style="display:flex; flex-direction:row; align-items:center">
+            <img style="width:150px" v-bind:src="p.productImage" />
             <b>{{p.productBrand}}</b> {{p.productName}}
             {{p._id}}
           </a>
@@ -20,12 +22,12 @@
 <script>
 
 import axios from 'axios';
-const BASE_API_URL = "https://3000-harihaysrun-skincareapi-99ltz4b52lr.ws-us27.gitpod.io/";
+const BASE_API_URL = "https://3000-harihaysrun-skincareapi-99ltz4b52lr.ws-us28.gitpod.io/";
 
 export default {
   created: async function(){
     let response = await axios.get(BASE_API_URL + 'requested-products');
-    this.products = response.data;
+    this.products = response.data.reverse();
     console.log(this.products)
   },
   data: function(){
@@ -33,7 +35,7 @@ export default {
       'products': [],
     }
   },
-  // props: ['page'],
+  props: ['pageTitle', 'max'],
   methods:{
     viewThisProduct: function(productId){
       this.tab = "productInfo";

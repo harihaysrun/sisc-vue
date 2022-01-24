@@ -15,8 +15,8 @@
       </nav>
 
       <section>
-        <Home v-if="page === 'home'" />
-        <SkincareProducts v-if="page === 'skincareProducts'"/>
+        <Home v-if="page === 'home'" v-on:view-all="skincareProducts" v-on:view-requests="requestedProducts"/>
+        <SkincareProducts v-if="page === 'skincareProducts'" request-tab="requests"/>
         <AddProduct v-if="page === 'addProduct'" v-on:product-added="refreshAddPage"/>
       </section>
     
@@ -28,7 +28,7 @@
 import "@/assets/css/style.css";
 import Home from '@/components/home';
 import SkincareProducts from '@/components/skincare-products'
-import AddProduct from '@/components/add-skincare-product'
+import AddProduct from '@/components/add-or-request-product'
 
 export default {
   name: 'App',
@@ -37,7 +37,8 @@ export default {
   },
   data: function(){
     return{
-      'page': 'home'
+      'page': 'home',
+      // 'pageType': ''
     }
   },
   methods:{
@@ -46,6 +47,7 @@ export default {
       // location.hash = ""
     },
     skincareProducts: function(){
+      console.log("viewing all skincare products now")
       this.page = "skincareProducts";
       // location.hash = "skincare-products"
     },
@@ -54,6 +56,15 @@ export default {
     },
     refreshAddPage: function(){
       this.page = "home"
+    },
+    requestedProducts: function(){
+      console.log("viewing all requested products")
+      this.page = "skincareProducts";
+      // this.pageType = "requests"
+      // location.hash = "skincare-products"
+    },
+    requests: function(){
+      return "requests"
     }
   }
 }

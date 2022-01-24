@@ -6,8 +6,8 @@
         <a v-on:click="viewProducts" v-if="pageType === 'sellGive'" style="background-color:pink">Products</a>
         <a v-on:click="viewProducts" v-else>Products</a>
 
-        <a v-on:click="viewRequests" v-if="pageType === 'requests'" style="background-color:pink">Requests</a>
-        <a v-on:click="viewRequests" v-else>Requests</a>
+        <a v-on:click="viewRequests(requestTab)" v-if="pageType === 'requests'" style="background-color:pink">Requests</a>
+        <a v-on:click="viewRequests(requestTab)" v-else>Requests</a>
       </p>
       
       <ProductsTab v-if="pageType === 'sellGive'"/>
@@ -32,12 +32,14 @@ export default {
       'pageType': 'sellGive'
     }
   },
+  props: ['requestTab'],
   methods:{
     viewProducts: function(){
       this.pageType = "sellGive"
     },
-    viewRequests: function(){
-      this.pageType = "requests"
+    viewRequests: function(requestTab){
+      this.pageType = requestTab
+      console.log(this.clicked)
     }
   }
 }

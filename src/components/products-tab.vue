@@ -5,7 +5,7 @@
       <button v-if="tab === 'productInfo'" v-on:click="backToProducts">Back</button>
       <button v-if="tab === 'editThisProduct'" v-on:click="backToProduct">Back</button>
       
-      <ProductsList v-if="tab === 'viewAllProducts'" v-on:view-product="viewProduct"/>
+      <ProductsList page-title="View All Skincare Products" v-if="tab === 'viewAllProducts'" v-on:view-product="viewProduct"/>
       <ProductInfo v-if="tab === 'productInfo'" v-on:edit-product="editProduct" v-bind:productId="productViewing"/>
       <EditProduct v-if="tab === 'editThisProduct'" v-on:remove-product="removeProduct" v-bind:productId="productEditing"/>
 
@@ -17,7 +17,7 @@
 
 import ProductsList from '@/components/products-list';
 import ProductInfo from '@/components/product-info';
-import EditProduct from '@/components/edit-skincare-product';
+import EditProduct from '@/components/product-edit';
 
 export default {
   components: {

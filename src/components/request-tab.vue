@@ -5,7 +5,7 @@
       <button v-if="tab === 'productInfo'" v-on:click="backToProducts">Back</button>
       <button v-if="tab === 'editThisProduct'" v-on:click="backToProduct">Back</button>
       
-      <RequestsList v-if="tab === 'viewAllProducts'" v-on:view-product="viewProduct"/>
+      <RequestsList page-title="Requests" v-if="tab === 'viewAllProducts'" v-on:view-product="viewProduct"/>
       <RequestInfo v-if="tab === 'productInfo'" v-on:edit-product="editProduct" v-bind:productId="productViewing"/>
       <EditProduct v-if="tab === 'editThisProduct'" v-on:remove-product="removeProduct" v-bind:productId="productEditing"/>
 
