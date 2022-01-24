@@ -19,19 +19,10 @@ import ProductsList from '@/components/products-list';
 import ProductInfo from '@/components/product-info';
 import EditProduct from '@/components/edit-skincare-product';
 
-
-// import axios from 'axios';
-// const BASE_API_URL = "https://3000-harihaysrun-skincareapi-99ht1jrsabq.ws-us27.gitpod.io/";
-
 export default {
   components: {
     ProductsList, ProductInfo, EditProduct
   },
-  // created: async function(){
-  //   let response = await axios.get(BASE_API_URL + 'skincare-products');
-  //   this.products = response.data;
-  //   console.log(this.products)
-  // },
   data: function(){
     return{
       'products': [],

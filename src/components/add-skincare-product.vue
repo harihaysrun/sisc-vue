@@ -41,12 +41,12 @@
         <label>Quantity</label>
         <select name="" id="" v-model="product_quantity">
           <option value="" disabled>select one</option>
-          <option value="Sample">1</option>
-          <option value="Mini">2</option>
-          <option value="Full">Others</option>
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="Others">Others</option>
         </select>
 
-        <input type="text" v-model="product_quantity_box" v-if="product_quantity === 'Full'" />
+        <input type="text" v-model="product_quantity_box" v-if="product_quantity === 'Others'" />
       </div>
 
       <div>
@@ -132,7 +132,7 @@
 
 <script>
 import axios from 'axios';
-const BASE_API_URL = "https://3000-harihaysrun-skincareapi-99ht1jrsabq.ws-us27.gitpod.io/";
+const BASE_API_URL = "https://3000-harihaysrun-skincareapi-99ltz4b52lr.ws-us27.gitpod.io/";
 
 export default {
   data: function(){

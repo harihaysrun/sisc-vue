@@ -1,8 +1,6 @@
 <template>
 
     <div>
-
-      <!-- <button v-on:click="backToProducts">Back</button> -->
         
       <h1>{{product_brand}} {{product_name}}</h1>
       <small>{{productId}}</small>
@@ -30,13 +28,58 @@
 
       <button v-on:click="edit(productId)">Edit Product</button>
 
+      <div>
+        <h1>Comments section</h1>
+
+      <div>
+
+        <div>
+          <label for="">Name</label>
+          <input type="text" v-model="comment_name"/>
+        </div>
+        <div>
+          <textarea v-model="comment_text" id="" cols="30" rows="10" placeholder="type comment here"></textarea>
+        </div>
+
+        <button v-on:click="comment(productId)">Post Comment</button>
+
+      </div>
+
+      <p>
+        Name: {{comment_name}}
+        <br>
+        Comment: {{comment_text}}
+      </p>
+
+      <div>
+        <!-- There are no comments -->
+
+        <ol reversed>
+          <li v-for="c in comments" v-bind:key="c._id">
+            <!-- <input value="commentName" v-model="c_name" disabled/> -->
+            <b class="c-name">{{c.commentName}}</b>
+            <br>
+            <span class="existingComment">
+              {{c.commentText}}
+            </span>
+            <button v-on:click="replyComment(c.commentName)">Reply</button>
+            <button v-on:click="deleteComment(c._id)">Delete</button>
+            <!-- <button v-on:click="edit(p._id)">Edit</button> -->
+            <!-- <a v-on:click="edit(p._id)">Edit</a> -->
+          </li>
+        </ol>
+
+      </div>
+
+      </div>
+
     </div>
     
 </template>
 
 <script>
 import axios from 'axios';
-const BASE_API_URL = "https://3000-harihaysrun-skincareapi-99ht1jrsabq.ws-us27.gitpod.io/";
+const BASE_API_URL = "https://3000-harihaysrun-skincareapi-99ltz4b52lr.ws-us27.gitpod.io/";
 
 export default {
   created: async function(){
@@ -57,10 +100,10 @@ export default {
     this.skin_concerns = response.data.skinConcerns;
     this.product_vegan = response.data.productVegan;
     this.product_cf = response.data.productCrueltyFree;
-    // this.id = response.data_id;
-    // console.log(this.productId)
+    this.id = response.data_id;
+    this.comments = response.data.comments;
 
-    console.log(response.data)
+    // console.log(response.data)
 
   },
   props: ['productId'],
@@ -82,13 +125,34 @@ export default {
       'skin_concerns': [],
       'product_vegan': '',
       'product_cf': '',
-      'id': ''
+      'id': '',
+      'comment_name':'',
+      'comment_text': '',
+      'comments': []
     }
   },
   methods:{
     'edit': function(productId){
       this.$emit('edit-product', productId)
       console.log(productId)
+    },
+    'comment': async function(productId){
+      console.log(productId);
+      await axios.post(BASE_API_URL + 'skincare-products/' + this.productId + '/comment/add', {
+        'commentName': this.comment_name,
+        'commentText': this.comment_text,
+      })
+    },
+    'replyComment': function(commentName){
+      console.log(commentName)
+      this.comment_text = "@" + commentName;
+    },
+    'deleteComment': async function(commentId){
+      console.log(commentId);
+
+      await axios.post(BASE_API_URL + 'skincare-products/' + this.productId + '/comment/delete', {
+        'commentId': commentId
+      })
     }
   }
 }

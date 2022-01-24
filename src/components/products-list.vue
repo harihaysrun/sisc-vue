@@ -23,7 +23,7 @@
 <script>
 
 import axios from 'axios';
-const BASE_API_URL = "https://3000-harihaysrun-skincareapi-99ht1jrsabq.ws-us27.gitpod.io/";
+const BASE_API_URL = "https://3000-harihaysrun-skincareapi-99ltz4b52lr.ws-us27.gitpod.io/";
 
 export default {
   created: async function(){
