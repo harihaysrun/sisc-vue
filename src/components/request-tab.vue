@@ -17,7 +17,7 @@
 
 import RequestsList from '@/components/request-list';
 import RequestInfo from '@/components/request-info';
-import EditProduct from '@/components/edit-skincare-product';
+import EditProduct from '@/components/request-edit';
 
 export default {
   components: {

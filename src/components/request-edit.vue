@@ -88,14 +88,15 @@ export default {
   created: async function(){
     console.log(this.productId)
     let response = await axios.get(BASE_API_URL + 'requested-products/' + this.productId);
-    // this.product_condition = response.data.productCondition;
-    // this.product_brand = response.data.productBrand;
-    // this.product_name = response.data.productName;
-    // this.product_image = response.data.productImage;
-    // this.product_quantity = response.data.productQuantity;
-    // this.product_quantity_box = response.data.productQuantityBox;
-    // this.product_size = response.data.productType;
-    // this.product_size_ml = response.data.productSize;
+    this.product_condition = response.data.productCondition;
+    this.product_brand = response.data.productBrand;
+    this.product_name = response.data.productName;
+    this.product_image = response.data.productImage;
+    this.product_quantity = response.data.productQuantity;
+    this.product_quantity_box = response.data.productQuantityBox;
+    this.product_size = response.data.productType;
+    this.product_size_ml = response.data.productSize;
+    this.comments = response.data.comments;
   
     console.log(response.data)
 
