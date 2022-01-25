@@ -7,7 +7,7 @@
           <li>Samples must be free</li>
       </ol>
 
-        <ProductsList page-title="Recently Added" max="4"/>
+        <ProductsList page-title="Recently Added" max="4" display="none"/>
         <a v-on:click="changetoSkincareProductsPage">View all</a>
         
         <RequestsList page-title="Recent Requests" max="4"/>

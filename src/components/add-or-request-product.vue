@@ -148,7 +148,7 @@
 
 <script>
 import axios from 'axios';
-const BASE_API_URL = "https://3000-harihaysrun-skincareapi-99ltz4b52lr.ws-us28.gitpod.io/";
+const BASE_API_URL = "https://nsy-skincare-api.herokuapp.com/";
 
 export default {
   data: function(){

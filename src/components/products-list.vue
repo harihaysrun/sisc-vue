@@ -5,8 +5,14 @@
       <!-- <h1>View All Skincare Products</h1> -->
       <h1>{{pageTitle}}</h1>
 
+      <div v-bind:style="{'display': display}" style="background-color:rgba(0,0,0,0.1); padding: 20px;">
+        <h2 style="margin:0;">Search:</h2>
+        <input type="text" v-model="search" placeholder="Search by brand or product name">
+        <p>{{search}}</p>
+      </div>
+
       <ol>
-        <li v-for="p in products.slice(0,max)" v-bind:key="p._id">
+        <li v-for="p in filteredProducts.slice(0,max)" v-bind:key="p._id">
           <a v-on:click="viewThisProduct(p._id)" style="display:flex; flex-direction:row; align-items:center">
             <img style="width:150px; display:block" v-bind:src="p.productImage" />
             <b>{{p.productBrand}}</b> {{p.productName}}
@@ -22,7 +28,7 @@
 <script>
 
 import axios from 'axios';
-const BASE_API_URL = "https://3000-harihaysrun-skincareapi-99ltz4b52lr.ws-us28.gitpod.io/";
+const BASE_API_URL = "https://nsy-skincare-api.herokuapp.com/";
 
 export default {
   created: async function(){
@@ -32,15 +38,25 @@ export default {
   },
   data: function(){
     return{
-      'products': []
+      'products': [],
+      'search': ''
     }
   },
-  props: ['pageTitle', 'max'],
+  props: ['pageTitle', 'max', 'display'],
   methods:{
     viewThisProduct: function(productId){
       this.tab = "productInfo";
       console.log(productId)
       this.$emit('view-product', productId);
+    }
+  },
+  computed:{
+    filteredProducts: function(){
+      let filtered = this.products.filter((p) =>
+        p.productBrand.toLowerCase().includes(this.search.toLowerCase()) ||
+        p.productName.toLowerCase().includes(this.search.toLowerCase())
+        );
+        return filtered;
     }
   }
 }
