@@ -6,11 +6,11 @@
 
       <div id="success-message">Successfully edited product information!</div>
 
-      <div>
+      <!-- <div>
         <label>I'm looking to...</label>
         <input type="radio" value="sellOrGive" v-model="listing_type" /> Sell or Give this product away
         <input type="radio" value="request" v-model="listing_type" /> Request a product
-      </div>
+      </div> -->
 
       <div>
         <label>Product condition</label>
@@ -138,7 +138,7 @@
       
       <div>
         <ul>
-          <li>Listing type: {{listing_type}}</li>
+          <!-- <li>Listing type: {{listing_type}}</li> -->
           <li>Product condition: {{product_condition}}</li>
           <li>Brand: {{product_brand}}</li>
           <li>Name of product: {{product_name}}</li>
@@ -169,7 +169,7 @@ export default {
   created: async function(){
     console.log(this.productId)
     let response = await axios.get(BASE_API_URL + 'skincare-products/' + this.productId);
-    this.listing_type = response.data.listingType;
+    // this.listing_type = response.data.listingType;
     this.product_condition = response.data.productCondition;
     this.product_brand = response.data.productBrand;
     this.product_name = response.data.productName;
@@ -193,7 +193,7 @@ export default {
   props: ['productId'],
   data: function(){
     return{
-      'listing_type': '',
+      // 'listing_type': '',
       'product_condition': '',
       'product_brand': '',
       'product_name': '',
@@ -220,21 +220,14 @@ export default {
       const successMsg = document.getElementById("success-message");
       successMsg.style.display = "block";
 
-      // function skinConcernList(){
-      //   if(this.skin_concerns.length <= 1){
-      //     return this.skin_concerns
-      //   }
-      //   if (this.skin_concerns.length > 1){
-      //     this.skin_concerns.split(",")
-      //   }
-      // }
-
       await axios.patch(BASE_API_URL + 'skincare-products/' + this.productId, {
-        'listingType': this.listing_type,
+        // 'listingType': this.listing_type,
         'productCondition': this.product_condition,
         'productBrand': this.product_brand,
         'productName': this.product_name,
         'productImage': this.product_image,
+        'productCategory': this.product_category,
+        'productCategoryOthers': this.product_category_others,
         'productQuantity': this.product_quantity,
         'productQuantityBox': this.product_quantity_box,
         'productType': this.product_size,
