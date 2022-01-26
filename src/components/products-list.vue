@@ -41,11 +41,13 @@
         </div>
 
         <p>
-          {{search}}
+          <!-- {{search}} -->
           {{product_condition}}
           {{product_category}}
           <br>
         </p>
+
+        <a v-on:click="clearSearch">Reset Search Filters</a>
       </div>
 
       <ol>
@@ -94,13 +96,18 @@ export default {
       this.tab = "productInfo";
       console.log(productId)
       this.$emit('view-product', productId);
+    },
+    clearSearch:function(){
+      this.search = "";
+      this.product_condition = "";
+      this.product_category = ""
     }
   },
   computed:{
     filteredProducts: function(){
       let filtered = this.products.filter((p) =>
-        // p.productBrand.toLowerCase().includes(this.search.toLowerCase()) ||
-        // p.productName.toLowerCase().includes(this.search.toLowerCase()) ||
+        p.productBrand.toLowerCase().includes(this.search.toLowerCase()) ||
+        p.productName.toLowerCase().includes(this.search.toLowerCase()) ||
         p.productCondition === this.product_condition ||
         p.productCategory === this.product_category
       );
