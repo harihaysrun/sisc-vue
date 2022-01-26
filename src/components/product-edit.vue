@@ -8,8 +8,7 @@
 
       <div>
         <label>I'm looking to...</label>
-        <input type="radio" value="sell" v-model="listing_type" /> Sell this product
-        <input type="radio" value="give" v-model="listing_type" /> Give this away
+        <input type="radio" value="sellOrGive" v-model="listing_type" /> Sell or Give this product away
         <input type="radio" value="request" v-model="listing_type" /> Request a product
       </div>
 
