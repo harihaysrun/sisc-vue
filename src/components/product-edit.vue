@@ -38,6 +38,31 @@
       </div>
 
       <div>
+        <label>Product Category</label>
+        <select name="" id="" v-model="product_category">
+          <option value="" disabled>select one</option>
+          <option value="First Cleanser">First Cleanser</option>
+          <option value="Second Cleanser">Second Cleanser</option>
+          <option value="Toner">Toner</option>
+          <option value="Serum">Serum</option>
+          <option value="Essence">Essence</option>
+          <option value="Ampoule">Ampoule</option>
+          <option value="Treatment">Treatment</option>
+          <option value="Moisturiser">Moisturiser</option>
+          <option value="Treatment">Treatment</option>
+          <option value="Sheet Mask">Sheet Mask</option>
+          <option value="Clay Mask">Clay Mask</option>
+          <option value="Chemical Exfoliant">Chemical Exfoliant</option>
+          <option value="Physical Exfoliant">Physical Exfoliant</option>
+          <option value="Eye Cream">Eye Cream</option>
+          <option value="Body">Body</option>
+          <option value="Others">Others</option>
+        </select>
+
+        <input type="text" v-model="product_category_others"  placeholder="Please specify product category" v-if="product_category === 'Others'"/>
+      </div>
+
+      <div>
         <label>Quantity</label>
         <select name="" id="" v-model="product_quantity">
           <option value="" disabled>select one</option>
@@ -173,6 +198,8 @@ export default {
       'product_brand': '',
       'product_name': '',
       'product_image': '',
+      'product_category': '',
+      'product_category_others': '',
       'product_quantity': '',
       'product_quantity_box': '',
       'product_size': '',

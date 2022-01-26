@@ -12,6 +12,8 @@
           <li>Brand: {{product_brand}}</li>
           <li>Name of product: {{product_name}}</li>
           <li>Product image link: {{product_image}}</li>
+          <li v-if="product_category != 'Others'">Product category: {{product_category}}</li>
+          <li v-if="product_category === 'Others'">Please specify category: {{product_category_others}}</li>
           <li v-if="product_quantity != 'Others'">Product quantity: {{product_quantity}}</li>
           <li v-if="product_quantity === 'Others'">Product quantity (others): {{product_quantity_box}}</li>
           <li>Size: {{product_size}}</li>
@@ -123,6 +125,8 @@ export default {
       'product_brand': '',
       'product_name': '',
       'product_image': '',
+      'product_category': '',
+      'product_category_others': '',
       'product_quantity': '',
       'product_quantity_box': '',
       'product_size': '',
