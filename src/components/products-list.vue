@@ -47,11 +47,14 @@
           <br>
         </p>
 
+        <a v-on:click="searchFilter">Search</a>
+        <br>
+
         <a v-on:click="clearSearch">Reset Search Filters</a>
       </div>
 
       <ol>
-        <li v-for="p in filteredProducts.slice(0,max)" v-bind:key="p._id">
+        <li v-for="p in products.slice(0,max)" v-bind:key="p._id">
           <a v-on:click="viewThisProduct(p._id)" style="display:flex; flex-direction:row; align-items:center">
             <img style="width:150px; display:block" v-bind:src="p.productImage" />
             {{p.productBrand}}
@@ -97,23 +100,61 @@ export default {
       console.log(productId)
       this.$emit('view-product', productId);
     },
-    clearSearch:function(){
+    searchFilter: async function(){
+      
+      let response = await axios.get(BASE_API_URL + 'skincare-products/');
+      let products = response.data;
+      this.products = [];
+      // console.log(this.product_condition)
+      // console.log(response.data.length)
+      for(let i=0; i<products.length; i++){
+        // if ( (this.product_condition === products[i].productCondition &&
+        //     this.product_category === products[i].productCategory ) ||
+        //     products[i].productBrand.toLowerCase().includes(this.search.toLowerCase()) ){
+        //     // ||
+        //     // ( products[i].productBrand.toLowerCase().includes(this.search.toLowerCase()) ||
+        //     // products[i].productName.toLowerCase().includes(this.search.toLowerCase()) ) ){
+        //   console.log (products[i])
+        //   this.products.push(products[i]);
+        // }
+
+        if (this.product_condition === products[i].productCondition){
+          console.log (products[i])
+          this.products.push(products[i]);
+        }
+
+        else if (this.product_category === products[i].productCategory){
+          console.log (products[i])
+          this.products.push(products[i]);
+        }
+
+        else if (products[i].productBrand.toLowerCase().includes(this.search.toLowerCase())){
+          console.log (products[i])
+          this.products.push(products[i]);
+        }
+
+      }
+
+    },
+    clearSearch: async function(){
+      let response = await axios.get(BASE_API_URL + 'skincare-products');
       this.search = "";
       this.product_condition = "";
-      this.product_category = ""
+      this.product_category = "";
+      this.products = response.data.reverse();
     }
   },
-  computed:{
-    filteredProducts: function(){
-      let filtered = this.products.filter((p) =>
-        p.productBrand.toLowerCase().includes(this.search.toLowerCase()) ||
-        p.productName.toLowerCase().includes(this.search.toLowerCase()) ||
-        p.productCondition === this.product_condition ||
-        p.productCategory === this.product_category
-      );
-      return filtered;
-    }
-  }
+  // computed:{
+  //   filteredProducts: function(){
+  //     let filtered = this.products.filter((p) =>
+  //       p.productBrand.toLowerCase().includes(this.search.toLowerCase()) ||
+  //       p.productName.toLowerCase().includes(this.search.toLowerCase()) ||
+  //       p.productCondition === this.product_condition ||
+  //       p.productCategory === this.product_category
+  //     );
+  //     return filtered;
+  //   }
+  // }
 }
 </script>
 
