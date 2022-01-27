@@ -40,10 +40,48 @@
 
         </div>
 
+        <div>
+          <label>Product Size</label>
+          <select name="" id="" v-model="product_size">
+            <option value="" disabled>select one</option>
+            <option value="Sample">Sample</option>
+            <option value="Mini">Mini</option>
+            <option value="Full">Full</option>
+          </select>
+        </div>
+
+        <div>
+          <label>Price</label>
+          <select name="" id="" v-model="product_price">
+            <option value="" disabled>select one</option>
+            <option value="Free">Free</option>
+            <option value="Specify">Others</option>
+          </select>
+        </div>
+
+        <div>
+          <label>Skin type</label>
+          <input type="radio" value="Dry" v-model="skin_type" /> Dry
+          <input type="radio" value="Combination" v-model="skin_type" /> Combination
+          <input type="radio" value="Oily" v-model="skin_type" /> Oily
+        </div>
+
+        <div>
+          <!-- <label for="">Vegan?</label> -->
+          <input type="checkbox" value="Yes" v-model="product_vegan" /> Vegan
+        </div>
+
+        <div>
+          <input type="checkbox" value="Yes" v-model="product_cf" /> Cruelty free
+        </div>
+          
+
         <p>
           <!-- {{search}} -->
           {{product_condition}}
           {{product_category}}
+          {{product_vegan}}
+          {{product_cf}}
           <br>
         </p>
 
@@ -64,6 +102,16 @@
             {{p.productCondition}}
             <br>
             {{p.productCategory}} {{p.productCategoryOthers}}
+            <br>
+            {{p.productType}}
+            <br>
+            {{p.productPrice}}
+            <br>
+            {{p.skinType}}
+            <br>
+            vegan: {{p.productVegan}}
+            <br>
+            CF: {{p.productCrueltyFree}}
             <!-- <br>
             {{p._id}} -->
           </a>
@@ -91,6 +139,11 @@ export default {
       'search': '',
       'product_condition': '',
       'product_category': '',
+      'product_size': '',
+      'product_price': '',
+      'skin_type': [],
+      'product_vegan': '',
+      'product_cf': '',
     }
   },
   props: ['pageTitle', 'max', 'display'],
@@ -118,20 +171,64 @@ export default {
         //   this.products.push(products[i]);
         // }
 
-        if (this.product_condition === products[i].productCondition){
-          console.log (products[i])
+        // let skin_types = products[i].skinType.toString();
+        
+        // console.log(skin_types);
+
+        if (this.search && products[i].productBrand.toLowerCase().includes(this.search.toLowerCase())){
+          // console.log (products[i])
           this.products.push(products[i]);
         }
 
-        else if (this.product_category === products[i].productCategory){
-          console.log (products[i])
+        else if (this.product_condition && this.product_condition === products[i].productCondition){
           this.products.push(products[i]);
         }
 
-        else if (products[i].productBrand.toLowerCase().includes(this.search.toLowerCase())){
-          console.log (products[i])
+        else if (this.product_category && this.product_category === products[i].productCategory){
           this.products.push(products[i]);
         }
+
+        else if (this.product_size && this.product_size === products[i].productType){
+          this.products.push(products[i]);
+        }
+
+        else if (this.product_price && this.product_price === products[i].productPrice){
+          this.products.push(products[i]);
+        }
+
+        else if (this.skin_type && products[i].skinType.toString().includes(this.skin_type)){
+          // console.log(products[i].skinType.toString())
+          this.products.push(products[i])
+        }
+
+        // else if (this.product_vegan && this.product_vegan.toString() === products[i].productVegan){
+        //   this.products.push(products[i])
+        // }
+          // console.log(this.product_vegan + products[i].productVegan)
+
+        else if (this.product_vegan && products[i].productVegan === "Yes"){
+          console.log("clicked on vegan");
+          this.products.push(products[i])
+        }
+
+        else if (this.product_cf && products[i].productCrueltyFree === "Yes"){
+          this.products.push(products[i])
+        }
+
+
+        // else if (this.skin_type){
+        //   if (Array.isArray(products[i].skinType) && products[i].skinType.includes(this.skin_type)){
+        //     this.products.push(products[i])
+        //   }
+        //   // if (!Array.isArray(products[i].skinType) && products[i].skinType.includes(this.skin_type)){
+        //   //   this.products.push(products[i])
+        //   // }
+        // }
+
+        // console.log(!Array.isArray(products[i].skinType))
+        // console.log(Array.isArray(products[i].skinType))
+
+        this.products.reverse()
 
       }
 
@@ -141,6 +238,10 @@ export default {
       this.search = "";
       this.product_condition = "";
       this.product_category = "";
+      this.product_size = "";
+      this.skin_type = [];
+      this.product_vegan = [];
+      this.product_cf = [];
       this.products = response.data.reverse();
     }
   },
