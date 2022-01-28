@@ -153,85 +153,78 @@ export default {
       console.log(productId)
       this.$emit('view-product', productId);
     },
+    // searchFilter: async function(){
+      
+    //   let response = await axios.get(BASE_API_URL + 'skincare-products/');
+    //   let products = response.data;
+    //   this.products = [];
+
+    //   for(let i=0; i<products.length; i++){
+
+    //     if (this.search && products[i].productBrand.toLowerCase().includes(this.search.toLowerCase())){
+    //       // console.log (products[i])
+    //       this.products.push(products[i]);
+    //     }
+
+    //     else if (this.product_condition && this.product_condition === products[i].productCondition){
+    //       this.products.push(products[i]);
+    //     }
+
+    //     else if (this.product_category && this.product_category === products[i].productCategory){
+    //       this.products.push(products[i]);
+    //     }
+
+    //     else if (this.product_size && this.product_size === products[i].productType){
+    //       this.products.push(products[i]);
+    //     }
+
+    //     else if (this.product_price && this.product_price === products[i].productPrice){
+    //       this.products.push(products[i]);
+    //     }
+
+    //     else if (this.skin_type && products[i].skinType.toString().includes(this.skin_type)){
+    //       // console.log(products[i].skinType.toString())
+    //       this.products.push(products[i])
+    //     }
+
+    //     // else if (this.product_vegan && this.product_vegan.toString() === products[i].productVegan){
+    //     //   this.products.push(products[i])
+    //     // }
+    //       // console.log(this.product_vegan + products[i].productVegan)
+
+    //     else if (this.product_vegan && products[i].productVegan === "Yes"){
+    //       console.log("clicked on vegan");
+    //       this.products.push(products[i])
+    //     }
+
+    //     else if (this.product_cf && products[i].productCrueltyFree === "Yes"){
+    //       this.products.push(products[i])
+    //     }
+
+
+    //     // else if (this.skin_type){
+    //     //   if (Array.isArray(products[i].skinType) && products[i].skinType.includes(this.skin_type)){
+    //     //     this.products.push(products[i])
+    //     //   }
+    //     //   // if (!Array.isArray(products[i].skinType) && products[i].skinType.includes(this.skin_type)){
+    //     //   //   this.products.push(products[i])
+    //     //   // }
+    //     // }
+
+    //     // console.log(!Array.isArray(products[i].skinType))
+    //     // console.log(Array.isArray(products[i].skinType))
+
+    //     this.products.reverse()
+
+    //   }
+
+    // },
     searchFilter: async function(){
       
-      let response = await axios.get(BASE_API_URL + 'skincare-products/');
-      let products = response.data;
-      this.products = [];
-      // console.log(this.product_condition)
-      // console.log(response.data.length)
-      for(let i=0; i<products.length; i++){
-        // if ( (this.product_condition === products[i].productCondition &&
-        //     this.product_category === products[i].productCategory ) ||
-        //     products[i].productBrand.toLowerCase().includes(this.search.toLowerCase()) ){
-        //     // ||
-        //     // ( products[i].productBrand.toLowerCase().includes(this.search.toLowerCase()) ||
-        //     // products[i].productName.toLowerCase().includes(this.search.toLowerCase()) ) ){
-        //   console.log (products[i])
-        //   this.products.push(products[i]);
-        // }
-
-        // let skin_types = products[i].skinType.toString();
-        
-        // console.log(skin_types);
-
-        if (this.search && products[i].productBrand.toLowerCase().includes(this.search.toLowerCase())){
-          // console.log (products[i])
-          this.products.push(products[i]);
-        }
-
-        else if (this.product_condition && this.product_condition === products[i].productCondition){
-          this.products.push(products[i]);
-        }
-
-        else if (this.product_category && this.product_category === products[i].productCategory){
-          this.products.push(products[i]);
-        }
-
-        else if (this.product_size && this.product_size === products[i].productType){
-          this.products.push(products[i]);
-        }
-
-        else if (this.product_price && this.product_price === products[i].productPrice){
-          this.products.push(products[i]);
-        }
-
-        else if (this.skin_type && products[i].skinType.toString().includes(this.skin_type)){
-          // console.log(products[i].skinType.toString())
-          this.products.push(products[i])
-        }
-
-        // else if (this.product_vegan && this.product_vegan.toString() === products[i].productVegan){
-        //   this.products.push(products[i])
-        // }
-          // console.log(this.product_vegan + products[i].productVegan)
-
-        else if (this.product_vegan && products[i].productVegan === "Yes"){
-          console.log("clicked on vegan");
-          this.products.push(products[i])
-        }
-
-        else if (this.product_cf && products[i].productCrueltyFree === "Yes"){
-          this.products.push(products[i])
-        }
-
-
-        // else if (this.skin_type){
-        //   if (Array.isArray(products[i].skinType) && products[i].skinType.includes(this.skin_type)){
-        //     this.products.push(products[i])
-        //   }
-        //   // if (!Array.isArray(products[i].skinType) && products[i].skinType.includes(this.skin_type)){
-        //   //   this.products.push(products[i])
-        //   // }
-        // }
-
-        // console.log(!Array.isArray(products[i].skinType))
-        // console.log(Array.isArray(products[i].skinType))
-
-        this.products.reverse()
-
-      }
-
+      let response = await axios.get(BASE_API_URL + 'search');
+      let search = response.data;
+      this.products = response.data.reverse();
+      console.log(search);
     },
     clearSearch: async function(){
       let response = await axios.get(BASE_API_URL + 'skincare-products');
