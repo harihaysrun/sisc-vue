@@ -157,7 +157,15 @@ export default {
         'commentName': this.comment_name,
         'commentText': this.comment_text,
       })
-     this.comments.push({
+
+      console.log(Array.isArray(this.comments))
+
+      // if product doesn't have any comments yet, make this.comments ana array
+      if(!Array.isArray(this.comments)){
+        this.comments = [];
+      }
+
+      this.comments.push({
        'commentName': this.comment_name,
        'commentText': this.comment_text,
      })
@@ -169,9 +177,20 @@ export default {
     'deleteComment': async function(commentId){
       console.log(commentId);
 
-      await axios.post(BASE_API_URL + 'skincare-products/' + this.productId + '/comment/delete', {
-        'commentId': commentId
-      });
+      for (let i=0; i< this.comments.length; i++){
+        
+        if(this.comments[i]._id === commentId){
+          // console.log(this.comments[i]._id)
+          // console.log(this.comments.indexOf(this.comments[i]));
+          let indexOfCommentToDelete = this.comments.indexOf(this.comments[i]);
+          this.comments.splice(indexOfCommentToDelete, 1);
+        
+          await axios.post(BASE_API_URL + 'skincare-products/' + this.productId + '/comment/delete', {
+            'commentId': commentId
+          });
+        }
+      }
+
     }
   }
 }
