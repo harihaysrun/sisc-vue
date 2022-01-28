@@ -54,8 +54,11 @@
           <label>Price</label>
           <select name="" id="" v-model="product_price">
             <option value="" disabled>select one</option>
-            <option value="Free">Free</option>
-            <option value="Specify">Others</option>
+            <option value="0">Free</option>
+            <option value="5">$5 or lesser</option>
+            <option value="10">$10 or lesser</option>
+            <option value="15">$15 or lesser</option>
+            <option value="20">$20 or lesser</option>
           </select>
         </div>
 
@@ -68,11 +71,11 @@
 
         <div>
           <!-- <label for="">Vegan?</label> -->
-          <input type="checkbox" value="Yes" v-model="product_vegan" /> Vegan
+          <input type="radio" value="Yes" v-model="product_vegan" /> Vegan
         </div>
 
         <div>
-          <input type="checkbox" value="Yes" v-model="product_cf" /> Cruelty free
+          <input type="radio" value="Yes" v-model="product_cf" /> Cruelty free
         </div>
           
 
@@ -80,6 +83,9 @@
           <!-- {{search}} -->
           {{product_condition}}
           {{product_category}}
+          {{product_size}}
+          {{product_price}}
+          {{skin_type}}
           {{product_vegan}}
           {{product_cf}}
           <br>
@@ -99,19 +105,21 @@
             <br>
             {{p.productName}}
             <br>
-            {{p.productCondition}}
+            Condition: {{p.productCondition}}
             <br>
-            {{p.productCategory}} {{p.productCategoryOthers}}
+            Category: {{p.productCategory}} {{p.productCategoryOthers}}
             <br>
-            {{p.productType}}
+            Type: {{p.productType}}
             <br>
-            {{p.productPrice}}
+            Price: {{p.productPrice}} {{p.productPriceDollars}}
             <br>
-            {{p.skinType}}
+            Skin Type: {{p.skinType}}
             <br>
-            vegan: {{p.productVegan}}
+            Vegan: {{p.productVegan}}
             <br>
             CF: {{p.productCrueltyFree}}
+            <br>
+            {{p.productPrice}} {{p.productPriceDollars}}
             <!-- <br>
             {{p._id}} -->
           </a>
@@ -136,12 +144,12 @@ export default {
   data: function(){
     return{
       'products': [],
-      'search': '',
+      'search': '  ',
       'product_condition': '',
       'product_category': '',
       'product_size': '',
       'product_price': '',
-      'skin_type': [],
+      'skin_type': '',
       'product_vegan': '',
       'product_cf': '',
     }
@@ -220,21 +228,43 @@ export default {
 
     // },
     searchFilter: async function(){
+      // if (!this.search){
+      //   console.log("there's nothing in search box:" + this.search + "!")
+      // } else if (this.search){
+      //   console.log("there's something in search box")
+      // }
+      // console.log(this.search, this.product_condition)
+
+      // if (!this.search || !this.product_condition || !this.product_category || !this.product_size || !this.product_price || !this.skin_type || !this.product_vegan || !this.product_cf){
+
+        console.log(this.product_price)
       
-      let response = await axios.get(BASE_API_URL + 'search');
-      let search = response.data;
-      this.products = response.data.reverse();
-      console.log(search);
+        let response = await axios.post(BASE_API_URL + 'search', {
+          'search': this.search,
+          'productCondition': this.product_condition,
+          'productCategory': this.product_category,
+          'productType': this.product_size,
+          'productPriceDollars': parseInt(this.product_price),
+          'skinType': this.skin_type,
+          'productVegan': this.product_vegan,
+          'productCrueltyFree': this.product_cf
+        });
+        let search = response.data;
+        this.products = response.data.reverse();
+        console.log(search);
+
+      // }
     },
     clearSearch: async function(){
       let response = await axios.get(BASE_API_URL + 'skincare-products');
-      this.search = "";
+      this.search = "  ";
       this.product_condition = "";
       this.product_category = "";
       this.product_size = "";
-      this.skin_type = [];
-      this.product_vegan = [];
-      this.product_cf = [];
+      this.product_price = "";
+      this.skin_type = "";
+      this.product_vegan = "";
+      this.product_cf = "";
       this.products = response.data.reverse();
     }
   },

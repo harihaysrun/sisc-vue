@@ -95,6 +95,7 @@
         </select>
 
         <input type="text" v-model="product_price_box" placeholder="Put any value" v-if="product_price === 'Specify'"/>
+        <!-- <input type="text" v-model="product_price_box" placeholder="Put any value"/> -->
       </div>
 
       <div>
@@ -205,9 +206,9 @@ export default {
       'product_size': '',
       'product_size_ml': '',
       'product_price': '',
-      'product_price_box': '',
+      'product_price_box': '0',
       'product_description': '',
-      'skin_type': 'Combination',
+      'skin_type': [],
       'skin_concerns': [],
       'product_vegan': '',
       'product_cf': '',
@@ -258,7 +259,7 @@ export default {
 
 
     }
-  }
+  },
 }
 </script>
 

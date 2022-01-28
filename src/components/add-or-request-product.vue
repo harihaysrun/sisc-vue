@@ -90,7 +90,7 @@
         <label>Price</label>
         <select name="" id="" v-model="product_price">
           <option value="" disabled>select one</option>
-          <option value="Free">Free</option>
+          <option value="0">Free</option>
           <option value="Specify">Specify</option>
         </select>
 
@@ -191,7 +191,7 @@ export default {
       'product_size': '',
       'product_size_ml': '',
       'product_price': '',
-      'product_price_box': '',
+      'product_price_box': '0',
       'product_description': '',
       'skin_type': [],
       'skin_concerns': [],
