@@ -233,7 +233,7 @@ export default {
         'productType': this.product_size,
         'productSize': this.product_size_ml,
         'productPrice': this.product_price,
-        'productPriceDollars': this.product_price_box,
+        'productPriceDollars': parseInt(this.product_price_box),
         'productDescription': this.product_description,
         'skinType': this.skin_type,
         'skinConcerns': this.skin_concerns.split(','),
