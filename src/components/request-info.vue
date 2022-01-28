@@ -118,6 +118,16 @@ export default {
         'commentName': this.comment_name,
         'commentText': this.comment_text,
       })
+
+      if(!Array.isArray(this.comments)){
+        this.comments = [];
+      }
+
+      this.comments.push({
+        'commentName': this.comment_name,
+        'commentText': this.comment_text,
+      })
+      
     },
     'replyComment': function(commentName){
       console.log(commentName)
@@ -126,9 +136,23 @@ export default {
     'deleteComment': async function(commentId){
       console.log(commentId);
 
-      await axios.post(BASE_API_URL + 'requested-products/' + this.productId + '/comment/delete', {
-        'commentId': commentId
-      })
+      for (let i=0; i< this.comments.length; i++){
+        
+        if(this.comments[i]._id === commentId){
+          // console.log(this.comments[i]._id)
+          // console.log(this.comments.indexOf(this.comments[i]));
+          let indexOfCommentToDelete = this.comments.indexOf(this.comments[i]);
+          this.comments.splice(indexOfCommentToDelete, 1);
+        
+          await axios.post(BASE_API_URL + 'requested-products/' + this.productId + '/comment/delete', {
+            'commentId': commentId
+          })
+        }
+      }
+
+      // await axios.post(BASE_API_URL + 'requested-products/' + this.productId + '/comment/delete', {
+      //   'commentId': commentId
+      // })
     }
   }
 }

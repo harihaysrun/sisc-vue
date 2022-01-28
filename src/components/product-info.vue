@@ -166,9 +166,9 @@ export default {
       }
 
       this.comments.push({
-       'commentName': this.comment_name,
-       'commentText': this.comment_text,
-     })
+        'commentName': this.comment_name,
+        'commentText': this.comment_text,
+      })
     },
     'replyComment': function(commentName){
       console.log(commentName)
