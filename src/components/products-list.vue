@@ -71,11 +71,11 @@
 
         <div>
           <!-- <label for="">Vegan?</label> -->
-          <input type="radio" value="Yes" v-model="product_vegan" /> Vegan
+          <input type="checkbox" value="Yes" v-model="product_vegan" /> Vegan
         </div>
 
         <div>
-          <input type="radio" value="Yes" v-model="product_cf" /> Cruelty free
+          <input type="checkbox" value="Yes" v-model="product_cf" /> Cruelty free
         </div>
           
 
@@ -150,8 +150,8 @@ export default {
       'product_size': '',
       'product_price': '',
       'skin_type': '',
-      'product_vegan': '',
-      'product_cf': '',
+      'product_vegan': [],
+      'product_cf': [],
     }
   },
   props: ['pageTitle', 'max', 'display'],
@@ -237,7 +237,8 @@ export default {
 
       // if (!this.search || !this.product_condition || !this.product_category || !this.product_size || !this.product_price || !this.skin_type || !this.product_vegan || !this.product_cf){
 
-        console.log(this.product_price)
+        console.log(this.product_vegan.toString())
+        console.log(this.product_cf.toString())
       
         let response = await axios.post(BASE_API_URL + 'search', {
           'search': this.search,
@@ -246,8 +247,8 @@ export default {
           'productType': this.product_size,
           'productPriceDollars': parseInt(this.product_price),
           'skinType': this.skin_type,
-          'productVegan': this.product_vegan,
-          'productCrueltyFree': this.product_cf
+          'productVegan': this.product_vegan.toString(),
+          'productCrueltyFree': this.product_cf.toString()
         });
         let search = response.data;
         this.products = response.data.reverse();
@@ -263,8 +264,8 @@ export default {
       this.product_size = "";
       this.product_price = "";
       this.skin_type = "";
-      this.product_vegan = "";
-      this.product_cf = "";
+      this.product_vegan = [];
+      this.product_cf = [];
       this.products = response.data.reverse();
     }
   },

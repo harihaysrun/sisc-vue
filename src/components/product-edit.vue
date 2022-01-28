@@ -175,6 +175,8 @@ export default {
     this.product_brand = response.data.productBrand;
     this.product_name = response.data.productName;
     this.product_image = response.data.productImage;
+    this.product_category = response.data.productCategory;
+    this.product_category_others = response.data.productCategoryOthers;
     this.product_quantity = response.data.productQuantity;
     this.product_quantity_box = response.data.productQuantityBox;
     this.product_size = response.data.productType;
