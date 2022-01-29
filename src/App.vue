@@ -60,7 +60,7 @@ export default {
     requestedProducts: function(){
       console.log("viewing all requested products")
       this.page = "skincareProducts";
-      // this.pageType = "requests"
+      this.pageType = "requests"
       // location.hash = "skincare-products"
     },
     requests: function(){
