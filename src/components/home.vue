@@ -8,10 +8,10 @@
       </ol>
 
         <ProductsList page-title="Recently Added" max="4" display="none"/>
-        <a v-on:click="changetoSkincareProductsPage">View all</a>
+        <a v-on:click="changetoSkincareProductsPage('sellGive')">View all</a>
         
         <RequestsList page-title="Recent Requests" max="4" display="none"/>
-        <a v-on:click="changetoRequestsPage">View all</a>
+        <a v-on:click="changetoRequestsPage('requests')">View all</a>
 
     </div>
     
@@ -28,14 +28,18 @@ export default {
     ProductsList, RequestsList
   },
   methods:{
-    changetoSkincareProductsPage: function(){
+    changetoSkincareProductsPage: function(typeOfPage){
       // this.pageType = "sellGive"
       console.log("click to view all")
-      this.$emit("view-all");
+      // productsTab = "sellGive"
+      console.log('typeOfPage: ' + typeOfPage)
+      this.$emit("view-all", typeOfPage);
     },
-    changetoRequestsPage: function(){
+    changetoRequestsPage: function(typeOfPage){
       // let pageType = "requests";
-      this.$emit("view-requests");
+      console.log("click to view requests")
+      console.log('typeOfPage: ' + typeOfPage)
+      this.$emit("view-requests", typeOfPage);
       // console.log("click to view requests " + pageType)
     },
     // viewProduct:function(productId){

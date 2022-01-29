@@ -25,8 +25,8 @@ export default {
   },
   data: function(){
     return{
-      'pageType': 'sellGive',
-      'products': [],
+      // 'pageType': 'sellGive',
+      // 'products': [],
       'tab': 'viewAllProducts',
       // 'productEditing': productEditing
     }

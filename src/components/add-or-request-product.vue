@@ -238,16 +238,18 @@ export default {
     },
     addRequest: async function(){
       await axios.post(BASE_API_URL + 'requested-products/add',{
-        'listingType': this.listing_type,
-        'productCondition': this.product_condition,
-        'productBrand': this.product_brand,
-        'productName': this.product_name,
-        'productImage': this.product_image,
-        'productQuantity': this.product_quantity,
-        'productQuantityBox': this.product_quantity_box,
-        'productType': this.product_size,
-        'productSize': this.product_size_ml
+        'listingType': this.formData.listing_type,
+        'productCondition': this.formData.product_condition,
+        'productBrand': this.formData.product_brand,
+        'productName': this.formData.product_name,
+        'productImage': this.formData.product_image,
+        'productQuantity': this.formData.product_quantity,
+        'productQuantityBox': this.formData.product_quantity_box,
+        'productType': this.formData.product_size,
+        'productSize': this.formData.product_size_ml
       });
+
+      this.formData = JSON.parse(JSON.stringify(original));
     }
   }
 }

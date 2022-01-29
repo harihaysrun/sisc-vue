@@ -158,17 +158,21 @@ export default {
         'commentText': this.comment_text,
       })
 
-      console.log(Array.isArray(this.comments))
+      let response = await axios.get(BASE_API_URL + 'skincare-products/' + this.productId);
+      this.comments = response.data.comments;
 
-      // if product doesn't have any comments yet, make this.comments ana array
-      if(!Array.isArray(this.comments)){
-        this.comments = [];
-      }
+      // console.log(Array.isArray(this.comments))
 
-      this.comments.push({
-        'commentName': this.comment_name,
-        'commentText': this.comment_text,
-      })
+      // // if product doesn't have any comments yet, make this.comments ana array
+      // if(!Array.isArray(this.comments)){
+      //   this.comments = [];
+      // }
+
+      // this.comments.push({
+      //   'commentName': this.comment_name,
+      //   'commentText': this.comment_text,
+      // })
+
     },
     'replyComment': function(commentName){
       console.log(commentName)
@@ -182,12 +186,16 @@ export default {
         if(this.comments[i]._id === commentId){
           // console.log(this.comments[i]._id)
           // console.log(this.comments.indexOf(this.comments[i]));
-          let indexOfCommentToDelete = this.comments.indexOf(this.comments[i]);
-          this.comments.splice(indexOfCommentToDelete, 1);
+          // let indexOfCommentToDelete = this.comments.indexOf(this.comments[i]);
+          // this.comments.splice(indexOfCommentToDelete, 1);
         
           await axios.post(BASE_API_URL + 'skincare-products/' + this.productId + '/comment/delete', {
             'commentId': commentId
           });
+
+          let response = await axios.get(BASE_API_URL + 'skincare-products/' + this.productId);
+          this.comments = response.data.comments;
+
         }
       }
 

@@ -55,7 +55,7 @@
             <span class="existingComment">
               {{c.commentText}}
             </span>
-            <button v-on:click="replyComment(c.commentName)">Reply</button>
+            <button v-on:click="replyComment(c.commentName, c._id)">Reply</button>
             <button v-on:click="deleteComment(c._id)">Delete</button>
             <!-- <button v-on:click="edit(p._id)">Edit</button> -->
             <!-- <a v-on:click="edit(p._id)">Edit</a> -->
@@ -73,6 +73,11 @@
 <script>
 import axios from 'axios';
 const BASE_API_URL = "https://nsy-skincare-api.herokuapp.com/";
+
+// async function reloadComments(){
+//   let response = await axios.get(BASE_API_URL + 'requested-products/' + this.productId);
+//   this.comments = response.data.comments;
+// }
 
 export default {
   created: async function(){
@@ -118,19 +123,24 @@ export default {
         'commentName': this.comment_name,
         'commentText': this.comment_text,
       })
+      
+      // reloadComments();
+      let response = await axios.get(BASE_API_URL + 'requested-products/' + this.productId);
+      this.comments = response.data.comments;
 
-      if(!Array.isArray(this.comments)){
-        this.comments = [];
-      }
+      // if(!Array.isArray(this.comments)){
+      //   this.comments = [];
+      // }
 
-      this.comments.push({
-        'commentName': this.comment_name,
-        'commentText': this.comment_text,
-      })
+      // this.comments.push({
+      //   'commentName': this.comment_name,
+      //   'commentText': this.comment_text,
+      // })
       
     },
-    'replyComment': function(commentName){
+    'replyComment': function(commentName, commentId){
       console.log(commentName)
+      console.log(commentId);
       this.comment_text = "@" + commentName;
     },
     'deleteComment': async function(commentId){
@@ -141,12 +151,17 @@ export default {
         if(this.comments[i]._id === commentId){
           // console.log(this.comments[i]._id)
           // console.log(this.comments.indexOf(this.comments[i]));
-          let indexOfCommentToDelete = this.comments.indexOf(this.comments[i]);
-          this.comments.splice(indexOfCommentToDelete, 1);
+          // let indexOfCommentToDelete = this.comments.indexOf(this.comments[i]);
+          // this.comments.splice(indexOfCommentToDelete, 1);
         
           await axios.post(BASE_API_URL + 'requested-products/' + this.productId + '/comment/delete', {
             'commentId': commentId
           })
+          
+          // reloadComments()
+          let response = await axios.get(BASE_API_URL + 'requested-products/' + this.productId);
+          this.comments = response.data.comments;
+
         }
       }
 

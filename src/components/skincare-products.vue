@@ -3,8 +3,8 @@
     <div>
 
       <p>
-        <a v-on:click="viewProducts" v-if="pageType === 'sellGive'" style="background-color:pink">Products</a>
-        <a v-on:click="viewProducts" v-else>Products</a>
+        <a v-on:click="viewProducts(productsTab)" v-if="pageType === 'sellGive'" style="background-color:pink">Products</a>
+        <a v-on:click="viewProducts(productsTab)" v-else>Products</a>
 
         <a v-on:click="viewRequests(requestTab)" v-if="pageType === 'requests'" style="background-color:pink">Requests</a>
         <a v-on:click="viewRequests(requestTab)" v-else>Requests</a>
@@ -12,6 +12,9 @@
       
       <ProductsTab v-if="pageType === 'sellGive'"/>
       <RequestTab v-if="pageType === 'requests'"/>
+
+      <!-- <ProductsTab v-if="pageType === tabName"/>
+      <RequestTab v-if="pageType === tabName"/> -->
 
     </div>
     
@@ -29,17 +32,19 @@ export default {
   },
   data: function(){
     return{
-      'pageType': 'sellGive'
+      'pageType': ''
     }
   },
-  props: ['requestTab'],
+  props: ['requestTab', 'tabName', 'productsTab'],
   methods:{
-    viewProducts: function(){
-      this.pageType = "sellGive"
+    viewProducts: function(productsTab){
+      // this.pageType = "sellGive"
+      this.pageType = productsTab
+      // this.$emit('products-tab', productsTab)
     },
     viewRequests: function(requestTab){
       this.pageType = requestTab
-      console.log(this.clicked)
+      // console.log(this.clicked)
     }
   }
 }

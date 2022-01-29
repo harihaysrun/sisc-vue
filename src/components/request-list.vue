@@ -10,7 +10,7 @@
       </div>
 
       <ol>
-        <li v-for="p in filteredProducts.slice(0,max)" v-bind:key="p._id">
+        <li v-for="p in filteredRequests.slice(0,max)" v-bind:key="p._id">
           <a v-on:click="viewThisProduct(p._id)" style="display:flex; flex-direction:row; align-items:center">
             <img style="width:150px" v-bind:src="p.productImage" />
             <b>{{p.productBrand}}</b> {{p.productName}}
@@ -37,7 +37,7 @@ export default {
   data: function(){
     return{
       'products': [],
-      'search': ''
+      'search': '',
     }
   },
   props: ['pageTitle', 'max', 'display'],
@@ -49,9 +49,10 @@ export default {
     }
   },
   computed:{
-    filteredProducts: function(){
+    filteredRequests: function(){
+      console.log('filteredproducts')
       let filtered = this.products.filter((p) =>
-        p.productBrand.toLowerCase().includes(this.search.toLowerCase()) ||
+        p.productBrand.toLowerCase().includes(this.search.toLowerCase())||
         p.productName.toLowerCase().includes(this.search.toLowerCase())
       );
       return filtered;
