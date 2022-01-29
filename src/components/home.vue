@@ -10,7 +10,7 @@
         <ProductsList page-title="Recently Added" max="4" display="none"/>
         <a v-on:click="changetoSkincareProductsPage">View all</a>
         
-        <RequestsList page-title="Recent Requests" max="4"/>
+        <RequestsList page-title="Recent Requests" max="4" display="none"/>
         <a v-on:click="changetoRequestsPage">View all</a>
 
     </div>
