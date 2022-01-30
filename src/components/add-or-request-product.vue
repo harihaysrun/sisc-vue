@@ -326,12 +326,7 @@ export default {
     hideMsg: function(){
       this.inReviewBoard = "";
     }
-  },
-  // computed:{
-  //   crosscheckWithReviews: function(){
-  //     console.log("check if product exists in review board")
-  //   }
-  // }
+  }
 }
 </script>
 
