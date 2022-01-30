@@ -10,6 +10,7 @@
           <li>Brand: {{product_brand}}</li>
           <li>Name of product: {{product_name}}</li>
           <li>Product image link: {{product_image}}</li>
+          <li>Category: {{product_category}}</li>
           <li>Vegan?: {{product_vegan}}</li>
           <li>Cruelty free?: {{product_cf}}</li>
         </ul>
@@ -65,7 +66,11 @@
         <br>
         Stars: {{my_rating}}
         <br>
+        Skin Type: {{my_skin_type}}
+        <br>
         Comment: {{comment_text}}
+        <br>
+        Stars: {{repurchase}}
       </p>
 
       <div>
@@ -85,10 +90,12 @@
             <br>
             {{c.skinType}}
             <br>
+            {{c.repurchase}}
+            <br>
             <span class="existingComment">
               {{c.commentText}}
             </span>
-            <button v-on:click="deleteComment(c._id)">Delete</button>
+            <!-- <button v-on:click="deleteComment(c._id)">Delete</button> -->
           </li>
         </ol>
 
@@ -110,6 +117,7 @@ export default {
     this.product_brand = response.data.productBrand;
     this.product_name = response.data.productName;
     this.product_image = response.data.productImage;
+    this.product_category = response.data.productCategory;
     this.product_vegan = response.data.productVegan;
     this.product_cf = response.data.productCrueltyFree;
     this.comments = response.data.reviews;
@@ -121,6 +129,7 @@ export default {
       'product_brand': '',
       'product_name': '',
       'product_image': '',
+      'product_category': '',
       'product_vegan': '',
       'product_cf': '',
       'id': '',
@@ -159,27 +168,24 @@ export default {
       // }
       
     },
-    'deleteComment': async function(commentId){
-      console.log(commentId);
+    // 'deleteComment': async function(commentId){
+    //   console.log(commentId);
 
-      for (let i=0; i< this.comments.length; i++){
+    //   for (let i=0; i< this.comments.length; i++){
         
-        if(this.comments[i]._id === commentId){
+    //     if(this.comments[i]._id === commentId){
         
-          await axios.post(BASE_API_URL + 'requested-products/' + this.productId + '/comment/delete', {
-            'commentId': commentId
-          })
+    //       await axios.post(BASE_API_URL + 'requested-products/' + this.productId + '/comment/delete', {
+    //         'commentId': commentId
+    //       })
           
-          let response = await axios.get(BASE_API_URL + 'requested-products/' + this.productId);
-          this.comments = response.data.comments;
+    //       let response = await axios.get(BASE_API_URL + 'requested-products/' + this.productId);
+    //       this.comments = response.data.comments;
 
-        }
-      }
+    //     }
+    //   }
 
-      // await axios.post(BASE_API_URL + 'requested-products/' + this.productId + '/comment/delete', {
-      //   'commentId': commentId
-      // })
-    }
+    // }
   }
 }
 </script>
