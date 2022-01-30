@@ -15,7 +15,7 @@
         </ul>
       </div>
 
-      <button v-on:click="edit(productId)">Edit Product</button>
+      <!-- <button v-on:click="edit(productId)">Edit Product</button> -->
 
       <div>
         <h1>Comments section</h1>
@@ -25,6 +25,24 @@
         <div>
           <label for="">Name</label>
           <input type="text" v-model="comment_name"/>
+        </div>
+        <div>
+          <label for="">My rating</label>
+          <select name="" id="" v-model="my_rating">
+            <option value="" disabled>select one</option>
+            <option value="☆☆☆☆☆">0 Stars</option>
+            <option value="★☆☆☆☆">1 Stars</option>
+            <option value="★★☆☆">2 Stars</option>
+            <option value="★★★☆☆">3 Stars</option>
+            <option value="★★★★☆">4 Stars</option>
+            <option value="★★★★★">5 Stars</option>
+          </select>
+        </div>
+        <div>
+          <label>My skin type:</label>
+          <input type="radio" value="Dry" v-model="my_skin_type" /> Dry
+          <input type="radio" value="Combination" v-model="my_skin_type" /> Combination
+          <input type="radio" value="Oily" v-model="my_skin_type" /> Oily
         </div>
         <div>
           <textarea v-model="comment_text" id="" cols="30" rows="10" placeholder="type comment here"></textarea>
@@ -37,20 +55,29 @@
       <p>
         Name: {{comment_name}}
         <br>
+        Stars: {{my_rating}}
+        <br>
         Comment: {{comment_text}}
       </p>
 
       <div>
         <!-- There are no comments -->
 
-        <ol reversed>
+        <ol>
           <li v-for="c in comments" v-bind:key="c._id">
             <b class="c-name">{{c.commentName}}</b>
+            <div class="review-rating">
+              {{c.rating}}
+              <!-- <ol>
+                <li v-for="star in rating" v-bind:key="star._id">
+                    A
+                </li>
+              </ol> -->
+            </div>
             <br>
             <span class="existingComment">
               {{c.commentText}}
             </span>
-            <button v-on:click="replyComment(c.commentName, c._id)">Reply</button>
             <button v-on:click="deleteComment(c._id)">Delete</button>
           </li>
         </ol>
@@ -67,11 +94,6 @@
 import axios from 'axios';
 const BASE_API_URL = "https://nsy-skincare-api.herokuapp.com/";
 
-// async function reloadComments(){
-//   let response = await axios.get(BASE_API_URL + 'requested-products/' + this.productId);
-//   this.comments = response.data.comments;
-// }
-
 export default {
   created: async function(){
     let response = await axios.get(BASE_API_URL + 'reviews/' + this.productId);
@@ -80,7 +102,7 @@ export default {
     this.product_image = response.data.productImage;
     this.product_vegan = response.data.productVegan;
     this.product_cf = response.data.productCrueltyFree;
-    this.comments = response.data.comments;
+    this.comments = response.data.reviews;
 
   },
   props: ['productId'],
@@ -94,7 +116,10 @@ export default {
       'id': '',
       'comment_name':'',
       'comment_text': '',
-      'comments': []
+      'comments': [],
+      'my_rating': '',
+      'my_skin_type':'',
+      'rating': ''
     }
   },
   methods:{
@@ -104,29 +129,23 @@ export default {
     },
     'comment': async function(productId){
       console.log(productId);
-      await axios.post(BASE_API_URL + 'requested-products/' + this.productId + '/comment/add', {
+      await axios.post(BASE_API_URL + 'reviews/' + this.productId + '/comment/add', {
         'commentName': this.comment_name,
         'commentText': this.comment_text,
+        'rating': this.my_rating,
+        'skinType': this.my_skin_type,
       })
       
       // reloadComments();
-      let response = await axios.get(BASE_API_URL + 'requested-products/' + this.productId);
-      this.comments = response.data.comments;
+      let response = await axios.get(BASE_API_URL + 'reviews/' + this.productId);
+      this.comments = response.data.reviews;
 
-      // if(!Array.isArray(this.comments)){
-      //   this.comments = [];
+      // let starRatings = document.querySelectorAll(".review-rating");
+      // console.log(starRatings.length)
+      // for (let i=0; i<starRatings.length; i++){
+      //   starRatings.innerHTML = "HELLO"
       // }
-
-      // this.comments.push({
-      //   'commentName': this.comment_name,
-      //   'commentText': this.comment_text,
-      // })
       
-    },
-    'replyComment': function(commentName, commentId){
-      console.log(commentName)
-      console.log(commentId);
-      this.comment_text = "@" + commentName;
     },
     'deleteComment': async function(commentId){
       console.log(commentId);
@@ -134,16 +153,11 @@ export default {
       for (let i=0; i< this.comments.length; i++){
         
         if(this.comments[i]._id === commentId){
-          // console.log(this.comments[i]._id)
-          // console.log(this.comments.indexOf(this.comments[i]));
-          // let indexOfCommentToDelete = this.comments.indexOf(this.comments[i]);
-          // this.comments.splice(indexOfCommentToDelete, 1);
         
           await axios.post(BASE_API_URL + 'requested-products/' + this.productId + '/comment/delete', {
             'commentId': commentId
           })
           
-          // reloadComments()
           let response = await axios.get(BASE_API_URL + 'requested-products/' + this.productId);
           this.comments = response.data.comments;
 
