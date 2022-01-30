@@ -47,6 +47,14 @@
         <div>
           <textarea v-model="comment_text" id="" cols="30" rows="10" placeholder="type comment here"></textarea>
         </div>
+        <div>
+          <label for="">Will I repurchase this?</label>
+          <select name="" id="" v-model="repurchase">
+            <option value="" disabled>select one</option>
+            <option value="Will repurchase">Yes</option>
+            <option value="Won't repurchase">No</option>
+          </select>
+        </div>
 
         <button v-on:click="comment(productId)">Post Comment</button>
 
@@ -74,6 +82,8 @@
                 </li>
               </ol> -->
             </div>
+            <br>
+            {{c.skinType}}
             <br>
             <span class="existingComment">
               {{c.commentText}}
@@ -119,7 +129,8 @@ export default {
       'comments': [],
       'my_rating': '',
       'my_skin_type':'',
-      'rating': ''
+      'rating': '',
+      'repurchase': ''
     }
   },
   methods:{
@@ -134,6 +145,7 @@ export default {
         'commentText': this.comment_text,
         'rating': this.my_rating,
         'skinType': this.my_skin_type,
+        'repurchase': this.repurchase,
       })
       
       // reloadComments();
