@@ -10,9 +10,10 @@
         <label>I'm looking to...</label>
         <input type="radio" value="sellOrGive" v-model="formData.listing_type" /> Sell or Give this product away
         <input type="radio" value="request" v-model="formData.listing_type" /> Request a product
+        <input type="radio" value="review" v-model="formData.listing_type" /> Add new product to review board
       </div>
 
-      <div>
+      <div v-if="formData.listing_type === 'sellOrGive'">
         <label>Product condition</label>
         <input type="radio" value="New" v-model="formData.product_condition" /> Brand New
         <input type="radio" value="Used" v-model="formData.product_condition" /> Used
@@ -26,7 +27,10 @@
       
       <div>
         <label>Product Name</label>
-        <input type="text" v-model="formData.product_name" />
+        <input type="text" v-model="formData.product_name"/>
+        <button v-if="formData.listing_type === 'review'" v-on:click="crosscheckWithReviews">Check if product exists</button>
+        <div class="reminder-message" v-if="notInReviewBoard === false">This product doesn't exist in the reviews board</div>
+        <div class="reminder-message" v-if="notInReviewBoard === true">This product exists in the reviews board. Head on to the reviews page to contribute your opinion!</div>
       </div>
       
       <div>
@@ -37,7 +41,7 @@
         </div>
       </div>
 
-      <div v-if="formData.listing_type === 'sellOrGive'">
+      <div v-if="formData.listing_type != 'request'">
         <label>Product Category</label>
         <select name="" id="" v-model="formData.product_category">
           <option value="" disabled>select one</option>
@@ -55,14 +59,15 @@
           <option value="Chemical Exfoliant">Chemical Exfoliant</option>
           <option value="Physical Exfoliant">Physical Exfoliant</option>
           <option value="Eye Cream">Eye Cream</option>
-          <option value="Body">Body</option>
+          <option value="Body Cream">Body Cream</option>
+          <option value="Sunscreen">Sunscreen</option>
           <option value="Others">Others</option>
         </select>
 
         <input type="text" v-model="formData.product_category_others"  placeholder="Please specify product category" v-if="formData.product_category === 'Others'"/>
       </div>
 
-      <div>
+      <div v-if="formData.listing_type != 'review'">
         <label>Quantity</label>
         <select name="" id="" v-model="formData.product_quantity">
           <option value="" disabled>select one</option>
@@ -74,7 +79,7 @@
         <input type="text" v-model="formData.product_quantity_box"  placeholder="Put a value" v-if="formData.product_quantity === 'Others'" />
       </div>
 
-      <div>
+      <div v-if="formData.listing_type != 'review'">
         <label>Product Size</label>
         <select name="" id="" v-model="formData.product_size">
           <option value="" disabled>select one</option>
@@ -114,24 +119,25 @@
         <input type="text" v-model="formData.skin_concerns" placeholder="Separate words with commas. E.g redness, irritation, sensitive" />
       </div>
 
-      <div v-if="formData.listing_type === 'sellOrGive'">
+      <div v-if="formData.listing_type != 'request'">
         <label>Is this product vegan?</label>
         <input type="radio" value="Yes" v-model="formData.product_vegan" /> Yes
         <input type="radio" value="No" v-model="formData.product_vegan" /> No
         <input type="radio" value="N/A" v-model="formData.product_vegan" /> N/A
       </div>
 
-      <div v-if="formData.listing_type === 'sellOrGive'">
+      <div v-if="formData.listing_type != 'request'">
         <label>Is this product/brand cruelty free?</label>
         <input type="radio" value="Yes" v-model="formData.product_cf" /> Yes
         <input type="radio" value="No" v-model="formData.product_cf" /> No
         <input type="radio" value="N/A" v-model="formData.product_cf" /> N/A
       </div>
 
-      <button v-on:click="addProduct" v-if="formData.listing_type === 'sellOrGive'">Add Product</button>
+      <button v-on:click="addListing" v-if="formData.listing_type === 'sellOrGive'">Add Product</button>
       <button v-on:click="addRequest" v-if="formData.listing_type === 'request'">Add Request</button>
+      <button v-on:click="addProduct" v-if="formData.listing_type === 'review'">Add New Product</button>
       
-      <div v-else>
+      <div v-if="formData.listing_type === 'sellGive'">
         <ul>
           <li>Listing type: {{formData.listing_type}}</li>
           <li>Product condition: {{formData.product_condition}}</li>
@@ -168,6 +174,18 @@
         </ul>
       </div>
 
+      <div v-if="formData.listing_type === 'review'">
+        <ul>
+          <li>Brand: {{formData.product_brand}}</li>
+          <li>Name of product: {{formData.product_name}}</li>
+          <li>Product image link: {{formData.product_image}}</li>
+          <li>Product category: {{formData.product_category}}</li>
+          <li>Please specify category: {{formData.product_category_others}}</li>
+          <li>Vegan?: {{formData.product_vegan}}</li>
+          <li>Cruelty free?: {{formData.product_cf}}</li>
+        </ul>
+      </div>
+
     </div>
     
 </template>
@@ -196,16 +214,16 @@ const original = {  'listing_type': 'sellOrGive',
                     'product_cf': ''
       }
 
-
 export default {
   data: function(){
     return {
-      'formData': JSON.parse(JSON.stringify(original))
+      'formData': JSON.parse(JSON.stringify(original)),
+      'notInReviewBoard': ''
     }
     
   },
   methods:{
-    'addProduct': async function(){
+    'addListing': async function(){
 
       const successMsg = document.getElementById("success-message");
       successMsg.style.display = "block";
@@ -250,8 +268,49 @@ export default {
       });
 
       this.formData = JSON.parse(JSON.stringify(original));
+    },
+    addProduct: async function(){
+      await axios.post(BASE_API_URL + 'reviews/add',{
+        'productBrand': this.formData.product_brand,
+        'productName': this.formData.product_name,
+        'productImage': this.formData.product_image,
+        'productCategory': this.formData.product_category,
+        'productCategoryOthers': this.formData.product_category_others,
+        'productVegan': this.formData.product_vegan,
+        'productCrueltyFree': this.formData.product_cf
+      });
+
+      this.formData = JSON.parse(JSON.stringify(original));
+    },
+    crosscheckWithReviews: async function(){
+
+
+      // if (this.formData.productName){
+        console.log("you are typing something in here")
+      // }
+
+      let response = await axios.get(BASE_API_URL + 'reviews');
+      let reviewBoard = response.data;
+      console.log(reviewBoard.length)
+      for (let i=0; i<reviewBoard.length; i++){
+        // console.log(reviewBoard[i].productName)
+
+        if (reviewBoard[i].productName.toLowerCase().includes(this.formData.product_name.toLowerCase())){
+          console.log("this product exists")
+          this.notInReviewBoard = true
+          break
+        } else{
+          console.log("this product doesn't exist")
+          this.notInReviewBoard = false
+        }
+      }
     }
-  }
+  },
+  // computed:{
+  //   crosscheckWithReviews: function(){
+  //     console.log("check if product exists in review board")
+  //   }
+  // }
 }
 </script>
 
