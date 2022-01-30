@@ -29,8 +29,18 @@
         <label>Product Name</label>
         <input type="text" v-model="formData.product_name"/>
         <button v-if="formData.listing_type === 'review'" v-on:click="crosscheckWithReviews">Check if product exists</button>
-        <div class="reminder-message" v-if="notInReviewBoard === false">This product doesn't exist in the reviews board</div>
-        <div class="reminder-message" v-if="notInReviewBoard === true">This product exists in the reviews board. Head on to the reviews page to contribute your opinion!</div>
+        <div class="reminder-message" v-if="inReviewBoard === false">
+          This product doesn't exist in the reviews board
+          <button v-on:click="hideMsg">OK</button>
+        </div>
+        <div class="reminder-message" v-if="inReviewBoard === true">
+          <b>{{reviewProductName}}</b> exists in the reviews board. Head on to the reviews page to contribute your opinion!
+          <button v-on:click="hideMsg">OK</button>
+        </div>
+        <div class="reminder-message" v-if="inReviewBoard === 'noInput'">
+          Please add a product before checking
+          <button v-on:click="hideMsg">OK</button>
+        </div>
       </div>
       
       <div>
@@ -215,12 +225,17 @@ const original = {  'listing_type': 'sellOrGive',
       }
 
 export default {
+  created:  async function(){
+    let response = await axios.get(BASE_API_URL + 'reviews');
+    let reviewBoard = response.data;
+    this.reviewProductName = reviewBoard.productName;
+  },
   data: function(){
     return {
       'formData': JSON.parse(JSON.stringify(original)),
-      'notInReviewBoard': ''
+      'inReviewBoard': '',
+      'reviewProductName': ''
     }
-    
   },
   methods:{
     'addListing': async function(){
@@ -284,26 +299,32 @@ export default {
     },
     crosscheckWithReviews: async function(){
 
-
-      // if (this.formData.productName){
-        console.log("you are typing something in here")
-      // }
-
       let response = await axios.get(BASE_API_URL + 'reviews');
       let reviewBoard = response.data;
-      console.log(reviewBoard.length)
+      // console.log(reviewBoard.length)
+
+      // console.log(this.formData.product_name.length)
+
+      if (this.formData.product_name.length === 0){
+        this.inReviewBoard = "noInput";
+        return
+      }
+
       for (let i=0; i<reviewBoard.length; i++){
         // console.log(reviewBoard[i].productName)
-
         if (reviewBoard[i].productName.toLowerCase().includes(this.formData.product_name.toLowerCase())){
-          console.log("this product exists")
-          this.notInReviewBoard = true
+          console.log(reviewBoard[i].productName + "exists in the reviews board")
+          this.inReviewBoard = true
+          this.reviewProductName = reviewBoard[i].productName;
           break
-        } else{
+        } else {
           console.log("this product doesn't exist")
-          this.notInReviewBoard = false
+          this.inReviewBoard = false
         }
       }
+    },
+    hideMsg: function(){
+      this.inReviewBoard = "";
     }
   },
   // computed:{
