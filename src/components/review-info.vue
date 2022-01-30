@@ -71,6 +71,8 @@
         Comment: {{comment_text}}
         <br>
         Stars: {{repurchase}}
+        <br>
+        Number of reviews: {{ratings}}
       </p>
 
       <div>
@@ -139,7 +141,8 @@ export default {
       'my_rating': '',
       'my_skin_type':'',
       'rating': '',
-      'repurchase': ''
+      'repurchase': '',
+      'ratings': ''
     }
   },
   methods:{
@@ -149,17 +152,45 @@ export default {
     },
     'comment': async function(productId){
       console.log(productId);
+
+      // let response = await axios.get(BASE_API_URL + 'reviews/' + this.productId);
+      // this.comments = response.data.reviews;
+
+
+      // if(Array.isArray(this.comments)){
+      //   this.ratings = this.comments.length + 1;
+      //   console.log("number of reviews: " + this.ratings)
+      // }
+      
+      if(!Array.isArray(this.comments)){
+        this.comments = []
+      }
+      console.log(this.comments.length)
+
+      this.ratings = this.comments.length + 1;
+
       await axios.post(BASE_API_URL + 'reviews/' + this.productId + '/comment/add', {
         'commentName': this.comment_name,
         'commentText': this.comment_text,
         'rating': this.my_rating,
         'skinType': this.my_skin_type,
         'repurchase': this.repurchase,
+        'noOfReviews': this.ratings,
       })
       
       // reloadComments();
       let response = await axios.get(BASE_API_URL + 'reviews/' + this.productId);
       this.comments = response.data.reviews;
+
+      // console.log("number of reviews: " + this.comments.length);
+      // let noOfReviews = this.comments.length;
+      // console.log(noOfReviews)
+
+      // await axios.post(BASE_API_URL + 'reviews/' + this.productId + '/comment/add', {
+      //   'noOfReviews': noOfReviews,
+      // })
+
+      // this.$emit('review-count', noOfReviews);
 
       // let starRatings = document.querySelectorAll(".review-rating");
       // console.log(starRatings.length)

@@ -14,7 +14,7 @@
           <a v-on:click="viewThisProduct(p._id)" style="display:flex; flex-direction:row; align-items:center">
             <img style="width:150px" v-bind:src="p.productImage" />
             <b>{{p.productBrand}}</b> {{p.productName}}
-            {{p._id}}
+            {{p._id}} || {{p.noOfReviews}} Reviews
           </a>
         </li>
       </ol>
@@ -32,7 +32,7 @@ export default {
   created: async function(){
     let response = await axios.get(BASE_API_URL + 'reviews');
     this.products = response.data.reverse();
-    console.log(this.products)
+    console.log(this.products.length)
   },
   data: function(){
     return{
