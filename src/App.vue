@@ -20,14 +20,14 @@
         </div>
       </nav>
 
-      <section>
+      <!-- <section> -->
         <Home v-if="page === 'home'" v-on:view-all="skincareProducts" v-on:view-requests="requestedProducts"/>
         <!-- <SkincareProducts v-if="page === 'skincareProducts'" products-tab="sellGive" request-tab="requests" v-bind:typeOfPage="pageViewing"/> -->
         <SkincareProducts v-if="page === 'skincareProducts'"/>
         <ReviewBoard v-if="page === 'reviewProducts'"/>
         <RequestProducts v-if="page === 'requestProducts'" />
         <AddProduct v-if="page === 'addProduct'" v-on:product-added="refreshAddPage"/>
-      </section>
+      <!-- </section> -->
     
   </div>
 </template>
@@ -90,14 +90,33 @@ export default {
       // console.log(this.page, this.pageType)
       console.log('pageViewing: ' + this.pageViewing)
       // location.hash = "skincare-products"
-    },
-    // requests: function(){
-    //   return "requests"
-    // }
+    }
   }
 }
 </script>
 
 <style>
+
+a{
+  color:black;
+}
+
+a:hover, li:hover{
+  background-color:transparent;
+  color:black;
+  cursor:default;
+}
+
+nav a{
+    color:thistle;
+    text-decoration:none;
+}
+
+nav a:hover{
+    /* max-width:500px; */
+    color:white;
+    background-color: mistyrose;
+    cursor:pointer;
+}
 
 </style>

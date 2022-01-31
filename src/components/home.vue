@@ -1,17 +1,32 @@
 <template>
 
-    <div>
-      <h1>Rules</h1>
-          
-      <ol>
-          <li>Samples must be free</li>
-      </ol>
+    <div class="main-container">
+
+      <div class="hero-banner">
+        <div class="hero-text">
+          Looking to...
+          <!-- <h1>{{heroText}}</h1> -->
+          <h1 v-if="heroText === '1'">give away samples you received?</h1>
+          <h1 v-if="heroText === '2'">sell off products you no longer use?</h1>
+          <h1 v-if="heroText === '3'">request for samples of products you're interested in?</h1>
+          <h1 v-if="heroText === '4'">contribute product reviews?</h1>
+        </div>
+      </div>
+
+      <div class="container">
+        <h1>Rules</h1>
+
+        <!-- <div class="container">hi</div> -->
+            
+        <span>Samples must be free</span>
 
         <ProductsList page-title="Recently Added" max="4" display="none"/>
         <a v-on:click="changetoSkincareProductsPage('sellGive')">View all</a>
         
         <RequestsList page-title="Recent Requests" max="4" display="none"/>
         <a v-on:click="changetoRequestsPage('requests')">View all</a>
+      
+      </div>
 
     </div>
     
@@ -26,6 +41,30 @@ export default {
   name: 'HelloWorld',
   components: {
     ProductsList, RequestsList
+  },
+  data: function(){
+    return{
+      'heroText': ''
+    }
+  },
+  created: function(){
+
+    setInterval(() => {
+      this.heroText = "1"
+    }, 2000)
+
+    setInterval(() => {
+      this.heroText = "2"
+    }, 4000)
+
+    setInterval(() => {
+      this.heroText = "3"
+    }, 6000)
+
+    setInterval(() => {
+      this.heroText = "4"
+    }, 8000)
+
   },
   methods:{
     changetoSkincareProductsPage: function(typeOfPage){
@@ -48,10 +87,56 @@ export default {
     //   this.productViewing = productId;
     //   console.log(this.productViewing)
     // }
-  }
+  },
+    heroText: function(){
+      // setTimeout(function(){
+        this.heroText = "sell off products you no longer use?"
+      // }, 1000)
+    }
+  // computed: {
+  //   heroText: function(){
+  //     // setTimeout(function(){
+  //       let hero_text = "sell off products you no longer use?"
+  //     // }, 1000)
+  //     return hero_text
+  //   }
+  // }
 }
 </script>
 
 <style scoped>
+
+.hero-banner{
+  width:100%;
+  height:calc(100vh - 62px);
+  background-color:pink;
+  background-image: url('https://images.pexels.com/photos/4202326/pexels-photo-4202326.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260');
+  background-size: cover;
+  background-position:bottom;
+  display:flex;
+  /* align-items:center; */
+  justify-content:center;
+}
+
+.hero-text{
+  /* padding-top:10vw; */
+  /* background-color:pink; */
+  text-align:center;
+  box-sizing:border-box;
+  padding: 10vw 5% 0 5%;
+}
+
+@media screen  and (min-width:1200px){
+
+  .hero-banner{
+    background-size: cover;
+    background-position: 0 -70vw;
+  }
+
+  .hero-text{
+    max-width:550px;
+    padding: 10vw 0 0 0;
+  }
+}
 
 </style>
