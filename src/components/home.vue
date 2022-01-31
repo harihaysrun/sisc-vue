@@ -3,7 +3,7 @@
     <div class="main-container">
 
       <div class="hero-banner">
-        <div class="hero-text">
+        <div class="hero-text" id="test">
           Looking to...
           <h1 v-if="heroText === '1'">give away samples you received?</h1>
           <h1 v-if="heroText === '2'">sell off products you no longer use?</h1>

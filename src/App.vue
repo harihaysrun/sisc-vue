@@ -1,8 +1,12 @@
 <template>
 
   <div class="main-container">
+    
       <nav>
-        <div class="container">
+        <button id="hamburger-menu" v-on:click="openMenu" v-if="openHM === false">🍔</button>
+        <button id="hamburger-menu" v-on:click="closeMenu" v-if="openHM === true">🍔</button>
+
+        <div class="container" v-if="openHM === true">
           <a v-on:click="home" v-if="page === 'home'" style="background-color:black" id="home">Home</a>
           <a v-on:click="home" v-else>Home</a>
 
@@ -18,6 +22,7 @@
           <a v-on:click="addProduct" v-if="page === 'addProduct'" style="background-color:black" class="add-new-btn">Add New</a>
           <a v-on:click="addProduct" v-else class="add-new-btn">Add New</a>
         </div>
+
       </nav>
 
       <!-- <section> -->
@@ -54,13 +59,29 @@ export default {
   data: function(){
     return{
       'page': 'home',
-      'pageType': ''
+      'pageType': '',
+      'openHM': false
     }
+  },
+  created: function(){
+
+    if (window.innerWidth > 768){
+      this.openHM = true;
+    } else{
+      this.openHM = false;
+    }
+    
+    window.addEventListener('resize', () => {
+      if (window.innerWidth > 768){
+        this.openHM = true
+      } else{
+      this.openHM = false;
+    }
+    })
   },
   methods:{
     home: function(){
       this.page = "home"
-      // location.hash = ""
     },
     skincareProducts: function(typeOfPage){
       // console.log("viewing all skincare products now")
@@ -90,6 +111,12 @@ export default {
       // console.log(this.page, this.pageType)
       console.log('pageViewing: ' + this.pageViewing)
       // location.hash = "skincare-products"
+    },
+    openMenu: function(){
+      this.openHM = true;
+    },
+    closeMenu:function(){
+      this.openHM = false;
     }
   }
 }
@@ -107,6 +134,27 @@ a:hover, li:hover{
   cursor:default;
 }
 
+nav .container{
+  width:100%;
+  height:100vh !important;
+  /* display:none; */
+  /* display:flex; */
+  /* align-items:center; */
+  background-color: lightcoral;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content: center;
+}
+
+#hamburger-menu{
+  display:block;
+}
+
+nav{
+  flex-direction: column;
+}
+
 nav a{
     color:thistle;
     text-decoration:none;
@@ -120,17 +168,46 @@ nav a:hover{
 }
 
 .add-new-btn{
-  margin:0 0 0 auto;
+  /* margin:0 0 0 auto; */
   /* margin-left:auto; */
   background-color: rgb(0, 0, 175);
   padding:10px 20px;
   border-radius:10px;
 }
 
-nav .container{
-    /* background-color:black; */
+/* nav .container{
+    background-color:black;
     display:flex;
     align-items:center;
+} */
+
+@media screen  and (min-width:768px){
+
+  nav .container{
+    height:auto !important;
+    width:80%;
+    display:flex;
+    align-items:center;
+    flex-direction:row;
+  }
+
+  .add-new-btn{
+    margin:0 0 0 auto;
+  }
+
+  #hamburger-menu{
+    display:none;
+  }
+
+  .hero-banner{
+    background-size: cover;
+    background-position: 0 -70vw;
+  }
+
+  .hero-text{
+    max-width:550px;
+    padding: 10vw 0 0 0;
+  }
 }
 
 </style>
