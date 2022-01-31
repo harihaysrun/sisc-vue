@@ -15,8 +15,8 @@
           <a v-on:click="requestProducts" v-if="page === 'requestProducts'" style="background-color:black">Requests</a>
           <a v-on:click="requestProducts" v-else>Requests</a>
 
-          <a v-on:click="addProduct" v-if="page === 'addProduct'" style="background-color:black" >Add New</a>
-          <a v-on:click="addProduct" v-else>Add New</a>
+          <a v-on:click="addProduct" v-if="page === 'addProduct'" style="background-color:black" class="add-new-btn">Add New</a>
+          <a v-on:click="addProduct" v-else class="add-new-btn">Add New</a>
         </div>
       </nav>
 
@@ -117,6 +117,20 @@ nav a:hover{
     color:white;
     background-color: mistyrose;
     cursor:pointer;
+}
+
+.add-new-btn{
+  margin:0 0 0 auto;
+  /* margin-left:auto; */
+  background-color: rgb(0, 0, 175);
+  padding:10px 20px;
+  border-radius:10px;
+}
+
+nav .container{
+    /* background-color:black; */
+    display:flex;
+    align-items:center;
 }
 
 </style>

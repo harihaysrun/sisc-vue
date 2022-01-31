@@ -5,7 +5,6 @@
       <div class="hero-banner">
         <div class="hero-text">
           Looking to...
-          <!-- <h1>{{heroText}}</h1> -->
           <h1 v-if="heroText === '1'">give away samples you received?</h1>
           <h1 v-if="heroText === '2'">sell off products you no longer use?</h1>
           <h1 v-if="heroText === '3'">request for samples of products you're interested in?</h1>
@@ -14,11 +13,6 @@
       </div>
 
       <div class="container">
-        <h1>Rules</h1>
-
-        <!-- <div class="container">hi</div> -->
-            
-        <span>Samples must be free</span>
 
         <ProductsList page-title="Recently Added" max="4" display="none"/>
         <a v-on:click="changetoSkincareProductsPage('sellGive')">View all</a>
@@ -87,20 +81,7 @@ export default {
     //   this.productViewing = productId;
     //   console.log(this.productViewing)
     // }
-  },
-    heroText: function(){
-      // setTimeout(function(){
-        this.heroText = "sell off products you no longer use?"
-      // }, 1000)
-    }
-  // computed: {
-  //   heroText: function(){
-  //     // setTimeout(function(){
-  //       let hero_text = "sell off products you no longer use?"
-  //     // }, 1000)
-  //     return hero_text
-  //   }
-  // }
+  }
 }
 </script>
 
@@ -124,6 +105,10 @@ export default {
   text-align:center;
   box-sizing:border-box;
   padding: 10vw 5% 0 5%;
+}
+
+.container{
+  background-color:pink;
 }
 
 @media screen  and (min-width:1200px){
