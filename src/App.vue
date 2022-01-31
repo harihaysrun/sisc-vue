@@ -141,6 +141,10 @@ export default {
 
 <style>
 
+img{
+  pointer-events: none;
+}
+
 .container{
   width:90%;
 }

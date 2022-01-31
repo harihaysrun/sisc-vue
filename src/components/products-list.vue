@@ -315,6 +315,7 @@ li{
 .indiv-product a{
   display:flex;
   flex-direction:row;
+  position:relative;
 }
 
 .indiv-product a img{
@@ -417,7 +418,6 @@ h2{
     flex-direction: column;
     align-items: center;
     padding-top:10%;
-    position:relative;
     border-radius:15px;
     overflow:hidden;
     z-index:2;

@@ -1,87 +1,131 @@
 <template>
 
     <div>
-        
-      <h1>{{product_brand}} {{product_name}}</h1>
-      <small>{{productId}}</small>
       
-      <div>
-        <ul>
-          <li>Listing type: {{listing_type}}</li>
-          <li>Product condition: {{product_condition}}</li>
-          <li>Brand: {{product_brand}}</li>
-          <li>Name of product: {{product_name}}</li>
-          <li>Product image link: {{product_image}}</li>
-          <li v-if="product_category != 'Others'">Product category: {{product_category}}</li>
-          <li v-if="product_category === 'Others'">Please specify category: {{product_category_others}}</li>
-          <li v-if="product_quantity != 'Others'">Product quantity: {{product_quantity}}</li>
-          <li v-if="product_quantity === 'Others'">Product quantity (others): {{product_quantity_box}}</li>
-          <li>Size: {{product_size}}</li>
-          <li>Size in ml: {{product_size_ml}}</li>
-          <li v-if="product_price != 'Specify'">Product price: {{product_price}}</li>
-          <li v-if="product_price === 'Specify'">Product price in dollars: {{product_price_box}}</li>
-          <li>Description: {{product_description}}</li>
-          <li>Skin type:
-              <span style="padding:5px 10px; background-color:pink;border-radius:25px;margin-right:10px" v-for="type in skin_type" v-bind:key="type._id">
-                {{type}}
-              </span>
-          </li>
-          <li>Skin concerns:
-              <span style="padding:5px 10px; background-color:lavender;border-radius:25px;margin-right:10px" v-for="concern in skin_concerns" v-bind:key="concern._id">
-                {{concern}}
-              </span>
-              <!-- {{skin_concerns}} -->
-          </li>
-          <li>Vegan?: {{product_vegan}}</li>
-          <li>Cruelty free?: {{product_cf}}</li>
-        </ul>
-      </div>
+      <div class="inner-container">
+      
+        <div class="details-container">
 
-      <button v-on:click="edit(productId)">Edit Product</button>
+          <div class="img-container">
+            <img v-bind:src="product_image" alt="">
+          </div>
 
-      <div>
-        <h1>Comments section</h1>
+          <div class="text-container">
+        
+            <h4>{{product_brand}}</h4>
+            <h1>{{product_name}}</h1>
 
-      <div>
+            <p>
+              <span class="details-tag">Product condition:</span>
+              {{product_condition}}
+            </p>
+
+            <p v-if="product_category != 'Others'">
+              <span class="details-tag">Product category: </span>
+              {{product_category}}
+            </p>
+            <p v-if="product_category === 'Others'">
+              <span class="details-tag">Please specify category: </span>
+              {{product_category_others}}
+            </p>
+
+            <p v-if="product_quantity != 'Others'">
+              <span class="details-tag">Product quantity: </span>
+              {{product_quantity}}
+            </p>
+            <p v-if="product_quantity === 'Others'">
+              <span class="details-tag">Product quantity (others): </span>
+              {{product_quantity_box}}
+            </p>
+
+            <p>
+              <span class="details-tag">Size:</span>
+              {{product_size}}, {{product_size_ml}}ml
+            </p>
+
+            <p v-if="product_price != 'Specify'">
+              <span class="details-tag">Price: </span>
+              {{product_price}}
+            </p>
+            <p v-if="product_price === 'Specify'">
+              <span class="details-tag">Price: </span>
+              ${{product_price_box}}
+            </p>
+            
+            <p>
+                <span class="details-tag">Recommended skin type:</span>
+                {{skin_type.join(', ')}}
+                <!-- <span style="padding:5px 10px; background-color:pink;border-radius:15px;margin-right:10px" v-for="type in skin_type" v-bind:key="type._id">
+                  {{type}}
+                </span> -->
+            </p>
+            <p>
+                <span class="details-tag">Skin concerns:</span>
+                {{skin_concerns.join(', ')}}
+                <!-- <span style="padding:5px 10px; background-color:lavender;border-radius:15px;margin-right:10px" v-for="concern in skin_concerns" v-bind:key="concern._id">
+                  {{concern}}
+                </span> -->
+            </p>
+
+            <p>
+              <span v-if="product_vegan === 'Yes'" class="vegan">Vegan Product</span>
+              <span v-if="product_cf === 'Yes'" class="cruelty-free">Cruelty Free brand</span>
+            </p>
+
+            <p>
+              <span class="details-tag">Description: </span>
+              {{product_description}}
+            </p>
+
+          </div>
+          
+        </div>
+
+        <button class="edit-btn" v-on:click="edit(productId)">Edit Product</button>
 
         <div>
-          <label for="">Name</label>
-          <input type="text" v-model="comment_name"/>
+
+          <div class="comments-container">
+            <h1>Comments section</h1>
+
+            <div>
+              <label for="">Name</label>
+              <input type="text" v-model="comment_name"/>
+            </div>
+            <div>
+              <label for="">Comment</label>
+              <textarea v-model="comment_text" id="" cols="30" rows="10" placeholder="type comment here"></textarea>
+            </div>
+
+            <button v-on:click="comment(productId)">Post Comment</button>
+
+          </div>
+
+          <div>
+            <!-- There are no comments -->
+
+            <div class="each-comment" v-for="c in comments" v-bind:key="c._id">
+
+              <div>
+                <b class="c-name">{{c.commentName}}</b>
+              </div>
+
+              <div>
+                <span class="existingComment">
+                  {{c.commentText}}
+                </span>
+              </div>
+
+              <div class="comment-buttons">
+                <button v-on:click="replyComment(c.commentName)">Reply</button>
+                <button v-on:click="deleteComment(c._id)">Delete</button>
+              </div>
+
+            </div>
+  
+          </div>
+
         </div>
-        <div>
-          <textarea v-model="comment_text" id="" cols="30" rows="10" placeholder="type comment here"></textarea>
-        </div>
-
-        <button v-on:click="comment(productId)">Post Comment</button>
-
-      </div>
-
-      <p>
-        Name: {{comment_name}}
-        <br>
-        Comment: {{comment_text}}
-      </p>
-
-      <div>
-        <!-- There are no comments -->
-
-        <ol reversed>
-          <li v-for="c in comments" v-bind:key="c._id">
-            <!-- <input value="commentName" v-model="c_name" disabled/> -->
-            <b class="c-name">{{c.commentName}}</b>
-            <br>
-            <span class="existingComment">
-              {{c.commentText}}
-            </span>
-            <button v-on:click="replyComment(c.commentName)">Reply</button>
-            <button v-on:click="deleteComment(c._id)">Delete</button>
-            <!-- <button v-on:click="edit(p._id)">Edit</button> -->
-            <!-- <a v-on:click="edit(p._id)">Edit</a> -->
-          </li>
-        </ol>
-
-      </div>
-
       </div>
 
     </div>
@@ -95,7 +139,6 @@ const BASE_API_URL = "https://nsy-skincare-api.herokuapp.com/";
 export default {
   created: async function(){
     let response = await axios.get(BASE_API_URL + 'skincare-products/' + this.productId);
-    this.listing_type = response.data.listingType;
     this.product_condition = response.data.productCondition;
     this.product_brand = response.data.productBrand;
     this.product_name = response.data.productName;
@@ -115,8 +158,6 @@ export default {
     this.product_cf = response.data.productCrueltyFree;
     this.id = response.data_id;
     this.comments = response.data.comments;
-
-    // console.log(response.data)
 
   },
   props: ['productId'],
@@ -161,18 +202,6 @@ export default {
       let response = await axios.get(BASE_API_URL + 'skincare-products/' + this.productId);
       this.comments = response.data.comments;
 
-      // console.log(Array.isArray(this.comments))
-
-      // // if product doesn't have any comments yet, make this.comments ana array
-      // if(!Array.isArray(this.comments)){
-      //   this.comments = [];
-      // }
-
-      // this.comments.push({
-      //   'commentName': this.comment_name,
-      //   'commentText': this.comment_text,
-      // })
-
     },
     'replyComment': function(commentName){
       console.log(commentName)
@@ -184,10 +213,6 @@ export default {
       for (let i=0; i< this.comments.length; i++){
         
         if(this.comments[i]._id === commentId){
-          // console.log(this.comments[i]._id)
-          // console.log(this.comments.indexOf(this.comments[i]));
-          // let indexOfCommentToDelete = this.comments.indexOf(this.comments[i]);
-          // this.comments.splice(indexOfCommentToDelete, 1);
         
           await axios.post(BASE_API_URL + 'skincare-products/' + this.productId + '/comment/delete', {
             'commentId': commentId
@@ -205,5 +230,150 @@ export default {
 </script>
 
 <style scoped>
+
+h1, h2, h3, h4{
+  margin:0;
+  padding:0;
+}
+
+.inner-container{
+  display:flex;
+  flex-direction: column;
+}
+
+.details-container{
+  display:flex;
+  flex-direction: column;
+}
+
+.text-container{
+  margin-top:50px;
+}
+
+.text-container p{
+  margin-bottom:25px;
+}
+
+/* .img-container{
+  background-color:pink;
+} */
+
+.img-container img{
+  width:100%;
+  border-radius:25px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.details-tag{
+  text-transform: uppercase;
+  display:block;
+  font-size:12px;
+  letter-spacing: 1px;
+  color:mediumslateblue;
+}
+
+.vegan, .cruelty-free{
+  padding:5px 15px;
+  background-color:rgb(218, 255, 218);
+  border-radius:15px;
+  margin-right:10px;
+  color:rgb(65, 153, 65);
+}
+
+.cruelty-free{
+  background-color:mistyrose;
+  color:palevioletred;
+}
+
+.comments-container{
+  margin-top:50px;
+  background-color: rgba(0,0,0,0.05);
+  padding:25px 35px;
+  border-radius: 15px;
+  margin-bottom:50px;
+}
+
+input[type="text"], textarea{
+  width:100%;
+  font-family: 'Manrope', sans-serif;
+  box-sizing: border-box;
+  padding:15px 20px;
+}
+
+.each-comment{
+  /* background-color:azure; */
+  display:flex;
+  flex-direction:column;
+  margin:20px 0;
+  padding-bottom:25px;
+  border-bottom: 1px solid rgb(236, 236, 236);
+}
+
+.each-comment div{
+  padding-top:10px;
+}
+
+.each-comment b{
+  color:mediumslateblue;
+}
+
+@media screen  and (min-width:768px){
+
+  .details-container{
+    flex-direction: row;
+  }
+
+  .img-container{
+    flex:1;
+    /* background-color:pink; */
+  }
+
+  .text-container{
+    /* background-color:palegoldenrod; */
+    margin-left:50px;
+    margin-top:0;
+    flex:2;
+  }
+
+  .edit-btn{
+    padding:15px 25px;
+    margin-left:auto;
+  }
+
+  input[type="text"]{
+    width:250px;
+  }
+
+  .each-comment{
+    flex-direction:row;
+    margin:35px 0;
+  }
+
+  .each-comment div{
+    padding-top:0px;
+  }
+
+  .each-comment div:first-child,.each-comment div:nth-child(3){
+    /* background-color:pink; */
+    flex:1;
+  }
+
+  .each-comment div:nth-child(2){
+    flex:6;
+  }
+
+  .each-comment div:nth-child(3){
+    display:flex;
+    justify-content: flex-end;
+    align-items: center;
+  }
+
+  .comment-buttons button{
+    height:50px;
+  }
+
+
+
+}
 
 </style>

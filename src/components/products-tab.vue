@@ -83,4 +83,8 @@ export default {
   padding:35px 0;
 }
 
+button{
+  margin-bottom:35px;
+}
+
 </style>
