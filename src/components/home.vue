@@ -5,7 +5,7 @@
       <div class="hero-banner">
         <div class="hero-text" id="test">
           Looking to...
-          <h1 v-if="heroText === '1'">give away samples you received?</h1>
+          <h1 v-if="heroText === '1'">give away unwanted samples?</h1>
           <h1 v-if="heroText === '2'">sell off products you no longer use?</h1>
           <h1 v-if="heroText === '3'">request for samples of products you're interested in?</h1>
           <h1 v-if="heroText === '4'">contribute product reviews?</h1>
