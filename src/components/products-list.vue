@@ -5,126 +5,141 @@
       <!-- <h1>View All Skincare Products</h1> -->
       <h1>{{pageTitle}}</h1>
 
-      <div v-bind:style="{'display': display}" style="background-color:rgba(0,0,0,0.1); padding: 20px;">
-        <h2 style="margin:0;">Search:</h2>
+      <div class="inner-container">
 
-        <input type="text" v-model="search" placeholder="Search by brand or product name">
+        <div class="search-bar" v-bind:style="{'display': display}">
+          <h2 style="margin:0;">Search:</h2>
 
-        <div>
-          <label>Product condition</label>
-          <input type="radio" value="New" v-model="product_condition" /> Brand New
-          <input type="radio" value="Used" v-model="product_condition" /> Used
-        </div>
+          <input type="text" v-model="search" placeholder="Search by brand or product name">
 
-        <div>
-          <label>Product Category</label>
-          <select name="" id="" v-model="product_category">
-            <option value="" disabled>select one</option>
-            <option value="First Cleanser">First Cleanser</option>
-            <option value="Second Cleanser">Second Cleanser</option>
-            <option value="Toner">Toner</option>
-            <option value="Serum">Serum</option>
-            <option value="Essence">Essence</option>
-            <option value="Ampoule">Ampoule</option>
-            <option value="Treatment">Treatment</option>
-            <option value="Moisturiser">Moisturiser</option>
-            <option value="Treatment">Treatment</option>
-            <option value="Sheet Mask">Sheet Mask</option>
-            <option value="Clay Mask">Clay Mask</option>
-            <option value="Chemical Exfoliant">Chemical Exfoliant</option>
-            <option value="Physical Exfoliant">Physical Exfoliant</option>
-            <option value="Eye Cream">Eye Cream</option>
-            <option value="Body">Body</option>
-            <option value="Others">Others</option>
-          </select>
+          <div>
+            <label>Product condition</label>
+            <input type="radio" value="New" v-model="product_condition" /> Brand New
+            <input type="radio" value="Used" v-model="product_condition" /> Used
+          </div>
 
-        </div>
+          <div>
+            <label>Product Category</label>
+            <select name="" id="" v-model="product_category">
+              <option value="" disabled>select one</option>
+              <option value="First Cleanser">First Cleanser</option>
+              <option value="Second Cleanser">Second Cleanser</option>
+              <option value="Toner">Toner</option>
+              <option value="Serum">Serum</option>
+              <option value="Essence">Essence</option>
+              <option value="Ampoule">Ampoule</option>
+              <option value="Treatment">Treatment</option>
+              <option value="Moisturiser">Moisturiser</option>
+              <option value="Treatment">Treatment</option>
+              <option value="Sheet Mask">Sheet Mask</option>
+              <option value="Clay Mask">Clay Mask</option>
+              <option value="Chemical Exfoliant">Chemical Exfoliant</option>
+              <option value="Physical Exfoliant">Physical Exfoliant</option>
+              <option value="Eye Cream">Eye Cream</option>
+              <option value="Body">Body</option>
+              <option value="Others">Others</option>
+            </select>
 
-        <div>
-          <label>Product Size</label>
-          <select name="" id="" v-model="product_size">
-            <option value="" disabled>select one</option>
-            <option value="Sample">Sample</option>
-            <option value="Mini">Mini</option>
-            <option value="Full">Full</option>
-          </select>
-        </div>
+          </div>
 
-        <div>
-          <label>Price</label>
-          <select name="" id="" v-model="product_price">
-            <option value="" disabled>select one</option>
-            <option value="0">Free</option>
-            <option value="5">$5 or lesser</option>
-            <option value="10">$10 or lesser</option>
-            <option value="15">$15 or lesser</option>
-            <option value="20">$20 or lesser</option>
-          </select>
-        </div>
+          <div>
+            <label>Product Size</label>
+            <select name="" id="" v-model="product_size">
+              <option value="" disabled>select one</option>
+              <option value="Sample">Sample</option>
+              <option value="Mini">Mini</option>
+              <option value="Full">Full</option>
+            </select>
+          </div>
 
-        <div>
-          <label>Skin type</label>
-          <input type="radio" value="Dry" v-model="skin_type" /> Dry
-          <input type="radio" value="Combination" v-model="skin_type" /> Combination
-          <input type="radio" value="Oily" v-model="skin_type" /> Oily
-        </div>
+          <div>
+            <label>Price</label>
+            <select name="" id="" v-model="product_price">
+              <option value="" disabled>select one</option>
+              <option value="0">Free</option>
+              <option value="5">$5 or lesser</option>
+              <option value="10">$10 or lesser</option>
+              <option value="15">$15 or lesser</option>
+              <option value="20">$20 or lesser</option>
+            </select>
+          </div>
 
-        <div>
-          <!-- <label for="">Vegan?</label> -->
-          <input type="checkbox" value="Yes" v-model="product_vegan" /> Vegan
-        </div>
+          <div>
+            <label>Skin type</label>
+            <input type="radio" value="Dry" v-model="skin_type" /> Dry
+            <input type="radio" value="Combination" v-model="skin_type" /> Combination
+            <input type="radio" value="Oily" v-model="skin_type" /> Oily
+          </div>
 
-        <div>
-          <input type="checkbox" value="Yes" v-model="product_cf" /> Cruelty free
-        </div>
-          
+          <div>
+            <!-- <label for="">Vegan?</label> -->
+            <input type="checkbox" value="Yes" v-model="product_vegan" /> Vegan
+          </div>
 
-        <p>
-          <!-- {{search}} -->
-          {{product_condition}}
-          {{product_category}}
-          {{product_size}}
-          {{product_price}}
-          {{skin_type}}
-          {{product_vegan}}
-          {{product_cf}}
+          <div>
+            <input type="checkbox" value="Yes" v-model="product_cf" /> Cruelty free
+          </div>
+            
+
+          <p>
+            <!-- {{search}} -->
+            {{product_condition}}
+            {{product_category}}
+            {{product_size}}
+            {{product_price}}
+            {{skin_type}}
+            {{product_vegan}}
+            {{product_cf}}
+            <br>
+          </p>
+
+          <a v-on:click="searchFilter">Search</a>
           <br>
-        </p>
 
-        <a v-on:click="searchFilter">Search</a>
-        <br>
+          <a v-on:click="clearSearch">Reset Search Filters</a>
+        </div>
 
-        <a v-on:click="clearSearch">Reset Search Filters</a>
+        <div class="search-results" v-bind:style="{'marginLeft': marginLeft}">
+          <div class="indiv-product" v-for="p in products.slice(0,max)" v-bind:key="p._id">
+            <a v-on:click="viewThisProduct(p._id)">
+              <img v-bind:src="p.productImage" />
+              <div class="product-info">
+                {{p.productBrand}}
+                <h2>{{p.productName}}</h2>
+                <span class="condition" v-if="p.productCondition === 'New'">{{p.productCondition}}</span>
+                <span class="condition used" v-if="p.productCondition === 'Used'">{{p.productCondition}}</span>
+
+                Category:
+                <span v-if="p.productCategory === 'Others'">{{p.productCategoryOthers}}</span>
+                <span v-else>{{p.productCategory}}</span>
+                
+                <br>
+                Suitable for: 
+                <span class="skin-type">{{p.skinType.join(',   ')}} SKIN</span>
+
+                <!-- <span class="skin-type" v-for="s in p.skinType.join(',')" v-bind:key="s._id">
+                  {{s}}
+                </span> -->
+
+                <span class="vegan" v-if="p.productVegan === 'Yes'"></span>
+                <span class="cf" v-if="p.productCrueltyFree === 'Yes'"></span>
+
+                <div>
+                  
+                  {{p.productType}} size
+                  <h3>
+                    <span v-if="p.productPrice === 'Specify'">${{p.productPriceDollars}}</span>
+                    <span v-else>{{p.productPrice}}</span>
+                  </h3>
+
+                </div>
+
+              </div>
+            </a>
+          </div>
+        </div>
+      
       </div>
-
-      <ol>
-        <li v-for="p in products.slice(0,max)" v-bind:key="p._id">
-          <a v-on:click="viewThisProduct(p._id)" style="display:flex; flex-direction:row; align-items:center">
-            <img style="width:150px; display:block" v-bind:src="p.productImage" />
-            {{p.productBrand}}
-            <br>
-            {{p.productName}}
-            <br>
-            Condition: {{p.productCondition}}
-            <br>
-            Category: {{p.productCategory}} {{p.productCategoryOthers}}
-            <br>
-            Type: {{p.productType}}
-            <br>
-            Price: {{p.productPrice}} {{p.productPriceDollars}}
-            <br>
-            Skin Type: {{p.skinType}}
-            <br>
-            Vegan: {{p.productVegan}}
-            <br>
-            CF: {{p.productCrueltyFree}}
-            <br>
-            {{p.productPrice}} {{p.productPriceDollars}}
-            <!-- <br>
-            {{p._id}} -->
-          </a>
-        </li>
-      </ol>
 
     </div>
     
@@ -144,7 +159,7 @@ export default {
   data: function(){
     return{
       'products': [],
-      'search': '  ',
+      'search': '',
       'product_condition': '',
       'product_category': '',
       'product_size': '',
@@ -154,7 +169,7 @@ export default {
       'product_cf': [],
     }
   },
-  props: ['pageTitle', 'max', 'display'],
+  props: ['pageTitle', 'max', 'display', 'marginLeft'],
   methods:{
     viewThisProduct: function(productId){
       this.tab = "productInfo";
@@ -228,14 +243,6 @@ export default {
 
     // },
     searchFilter: async function(){
-      // if (!this.search){
-      //   console.log("there's nothing in search box:" + this.search + "!")
-      // } else if (this.search){
-      //   console.log("there's something in search box")
-      // }
-      // console.log(this.search, this.product_condition)
-
-      // if (!this.search || !this.product_condition || !this.product_category || !this.product_size || !this.product_price || !this.skin_type || !this.product_vegan || !this.product_cf){
 
         console.log(this.product_vegan.toString())
         console.log(this.product_cf.toString())
@@ -268,21 +275,196 @@ export default {
       this.product_cf = [];
       this.products = response.data.reverse();
     }
-  },
-  // computed:{
-  //   filteredProducts: function(){
-  //     let filtered = this.products.filter((p) =>
-  //       p.productBrand.toLowerCase().includes(this.search.toLowerCase()) ||
-  //       p.productName.toLowerCase().includes(this.search.toLowerCase()) ||
-  //       p.productCondition === this.product_condition ||
-  //       p.productCategory === this.product_category
-  //     );
-  //     return filtered;
-  //   }
-  // }
+  }
 }
 </script>
 
 <style scoped>
+
+a:hover, li:hover{
+    background-color:rgb(247, 247, 247);
+    cursor:pointer;
+}
+
+li{
+    margin:10px 0 10px 0;
+}
+
+.search-bar{
+  background-color:rgba(0,0,0,0.1);
+  padding: 20px;
+}
+
+.inner-container{
+  display:flex;
+  flex-direction: column;
+}
+
+.search-results{
+  display:flex;
+  flex-direction: column;
+  /* background-color:mediumslateblue; */
+}
+
+.indiv-product{
+  box-sizing: border-box;
+  padding:0 0 20px 0;
+  width:100%;
+}
+
+.indiv-product a{
+  display:flex;
+  flex-direction:row;
+}
+
+.indiv-product a img{
+  width:150px;
+  height:150px;
+}
+
+h2, h3{
+  margin:0;
+  padding:0;
+}
+
+h2{
+  font-size:22px;
+}
+
+.condition, .vegan, .cf{
+  position:absolute;
+  top:10px;
+  right:10px;
+  background-color:honeydew;
+  padding:10px 25px;
+  border-radius:25px;
+  font-size:12px;
+  text-transform: uppercase;
+  color:green;
+  font-weight:700;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  /* z-index:5; */
+}
+
+.used{
+  background-color:mistyrose;
+  color:red;
+}
+
+.vegan{
+  background-color:white;
+  top:55px;
+  width:35px;
+  height:35px;
+  padding:0;
+  background-image:url('https://www.pngitem.com/pimgs/m/160-1609305_vegan-logo-png-vegan-or-vegetarian-symbol-transparent.png');
+  background-size:35px;
+  background-position:center;
+  background-repeat:no-repeat;
+}
+
+.cf{
+  top:100px;
+  width:35px;
+  height:35px;
+  padding:0;
+  background-image:url('https://www.kindpng.com/picc/m/424-4243754_cruelty-free-logo-png-animal-cruelty-free-transparent.png');
+  background-size:20px;
+  background-position:center;
+  background-repeat:no-repeat;
+}
+
+.skin-type{
+  list-style-type: none;
+  color:mediumslateblue;
+  /* background-color:lightgray; */
+  /* padding:10px 25px; */
+  /* border-radius:25px; */
+  font-size:13px;
+  font-weight:700;
+  text-transform: uppercase;
+  /* letter-spacing:-1px; */
+
+}
+
+@media screen  and (min-width:768px){
+
+  .inner-container{
+    flex-direction: row;
+  }
+
+  .search-bar{
+    width:300px;
+    background-color:rgba(0,0,0,0.1);
+    padding: 20px;
+  }
+
+  .search-results{
+    width:100%;
+    margin-left: 35px;
+    flex-flow: row wrap;
+  }
+
+  .indiv-product{
+    width:50%;
+    padding:10px;
+  }
+
+  .indiv-product a{
+    height:500px;
+    background-color: rgb(240, 240, 240, 0.2);
+    /* padding:0 20px 20px 20px; */
+    flex-direction: column;
+    align-items: center;
+    padding-top:10%;
+    position:relative;
+    border-radius:15px;
+    overflow:hidden;
+    z-index:2;
+  }
+  
+  .indiv-product a::before{
+    content: '';
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:12vw;
+    /* height:20%; */
+    background-color: mediumslateblue;
+    z-index:-1;
+  }
+  
+  .indiv-product a:hover{
+    background-color: brown;
+  }
+
+  .indiv-product a img{
+    width:80%;
+    height:auto;
+    border-radius:10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  }
+
+  .product-info{
+    margin-top:15px;
+    padding: 0 10%;
+  }
+
+}
+
+@media screen  and (min-width:1024px){
+
+  .indiv-product{
+    width:25%;
+  }
+  
+  .indiv-product a::before{
+    height:8vw;
+  }
+  
+
+}
+
 
 </style>

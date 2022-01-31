@@ -14,7 +14,7 @@
 
       <div class="container">
 
-        <ProductsList page-title="Recently Added" max="4" display="none"/>
+        <ProductsList page-title="Recently Added" max="4" display="none" margin-left="0"/>
         <a v-on:click="changetoSkincareProductsPage('sellGive')">View all</a>
         
         <RequestsList page-title="Recent Requests" max="4" display="none"/>
@@ -90,12 +90,11 @@ export default {
 .hero-banner{
   width:100%;
   height:calc(100vh - 62px);
-  background-color:pink;
+  /* background-color:pink; */
   background-image: url('https://images.pexels.com/photos/4202326/pexels-photo-4202326.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260');
   background-size: cover;
   background-position:bottom;
   display:flex;
-  /* align-items:center; */
   justify-content:center;
 }
 
@@ -108,7 +107,8 @@ export default {
 }
 
 .container{
-  background-color:pink;
+  padding-top:50px;
+  /* background-color:pink; */
 }
 
 @media screen  and (min-width:1200px){

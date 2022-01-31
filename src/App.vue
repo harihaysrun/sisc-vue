@@ -25,14 +25,12 @@
 
       </nav>
 
-      <!-- <section> -->
-        <Home v-if="page === 'home'" v-on:view-all="skincareProducts" v-on:view-requests="requestedProducts"/>
-        <!-- <SkincareProducts v-if="page === 'skincareProducts'" products-tab="sellGive" request-tab="requests" v-bind:typeOfPage="pageViewing"/> -->
-        <SkincareProducts v-if="page === 'skincareProducts'"/>
-        <ReviewBoard v-if="page === 'reviewProducts'"/>
-        <RequestProducts v-if="page === 'requestProducts'" />
-        <AddProduct v-if="page === 'addProduct'" v-on:product-added="refreshAddPage"/>
-      <!-- </section> -->
+      <Home v-if="page === 'home'" v-on:view-all="skincareProducts" v-on:view-requests="requestedProducts"/>
+      <!-- <SkincareProducts v-if="page === 'skincareProducts'" products-tab="sellGive" request-tab="requests" v-bind:typeOfPage="pageViewing"/> -->
+      <SkincareProducts v-if="page === 'skincareProducts'"/>
+      <ReviewBoard v-if="page === 'reviewProducts'"/>
+      <RequestProducts v-if="page === 'requestProducts'" />
+      <AddProduct v-if="page === 'addProduct'" v-on:product-added="refreshAddPage"/>
 
       <footer>
         Hi
@@ -140,9 +138,14 @@ export default {
 }
 </script>
 
+
 <style>
 
-a{
+.container{
+  width:90%;
+}
+
+/* a{
   color:black;
 }
 
@@ -150,7 +153,7 @@ a:hover, li:hover{
   background-color:transparent;
   color:black;
   cursor:default;
-}
+} */
 
 nav .container{
   width:100%;
@@ -168,6 +171,7 @@ nav .container{
 
 nav{
   flex-direction: column;
+  z-index:100;
 }
 
 nav a{
@@ -199,6 +203,10 @@ footer{
 }
 
 @media screen  and (min-width:768px){
+
+  .container{
+    width:80%;
+  }
 
   nav .container{
     height:auto !important;
