@@ -14,12 +14,16 @@
 
       <div class="container">
 
-        <ProductsList page-title="Recently Added" max="4" display="none" margin-left="0"/>
-        <a v-on:click="changetoSkincareProductsPage('sellGive')">View all</a>
-        
-        <RequestsList page-title="Recent Requests" max="4" display="none"/>
-        <a v-on:click="changetoRequestsPage('requests')">View all</a>
-      
+        <div class="second-container">
+          <ProductsList page-title="Recently Added" max="4" display="none" margin-left="0"/>
+          <a class="view-all-btn" v-on:click="changetoSkincareProductsPage('sellGive')">View all</a>
+        </div>
+
+        <div class="second-container">
+          <RequestsList page-title="Recent Requests" max="4" display="none"/>
+          <a class="view-all-btn" v-on:click="changetoRequestsPage('requests')">View all</a>
+        </div>
+
       </div>
 
     </div>
@@ -107,8 +111,31 @@ export default {
 }
 
 .container{
-  padding-top:50px;
+  padding-top:25px;
+  /* display:flex;
+  flex-direction:column; */
+  /* align-items:center; */
   /* background-color:pink; */
+}
+
+.second-container{
+  padding:25px 0;
+  display:flex;
+  flex-direction: column;
+ 
+}
+.view-all-btn{
+  /* margin: 50px 0; */
+  margin:50px auto;
+  color:white;
+  background-color: rgb(0, 0, 175);
+  padding:10px 20px;
+  border-radius:10px;
+}
+
+.view-all-btn:hover{
+  cursor:pointer;
+  background-color:mistyrose;
 }
 
 @media screen  and (min-width:1200px){

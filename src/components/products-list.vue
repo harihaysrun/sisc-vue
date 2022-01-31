@@ -159,7 +159,7 @@ export default {
   data: function(){
     return{
       'products': [],
-      'search': '',
+      'search': 'Search by brand or name',
       'product_condition': '',
       'product_category': '',
       'product_size': '',
@@ -265,7 +265,7 @@ export default {
     },
     clearSearch: async function(){
       let response = await axios.get(BASE_API_URL + 'skincare-products');
-      this.search = "  ";
+      this.search = "Search by brand or name";
       this.product_condition = "";
       this.product_category = "";
       this.product_size = "";
