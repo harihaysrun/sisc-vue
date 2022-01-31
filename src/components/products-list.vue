@@ -100,7 +100,9 @@
         </div>
 
         <div class="search-results" v-bind:style="{'marginLeft': marginLeft}">
+
           <div class="indiv-product" v-for="p in products.slice(0,max)" v-bind:key="p._id">
+
             <a v-on:click="viewThisProduct(p._id)">
               <img v-bind:src="p.productImage" />
               <div class="product-info">
@@ -176,72 +178,6 @@ export default {
       console.log(productId)
       this.$emit('view-product', productId);
     },
-    // searchFilter: async function(){
-      
-    //   let response = await axios.get(BASE_API_URL + 'skincare-products/');
-    //   let products = response.data;
-    //   this.products = [];
-
-    //   for(let i=0; i<products.length; i++){
-
-    //     if (this.search && products[i].productBrand.toLowerCase().includes(this.search.toLowerCase())){
-    //       // console.log (products[i])
-    //       this.products.push(products[i]);
-    //     }
-
-    //     else if (this.product_condition && this.product_condition === products[i].productCondition){
-    //       this.products.push(products[i]);
-    //     }
-
-    //     else if (this.product_category && this.product_category === products[i].productCategory){
-    //       this.products.push(products[i]);
-    //     }
-
-    //     else if (this.product_size && this.product_size === products[i].productType){
-    //       this.products.push(products[i]);
-    //     }
-
-    //     else if (this.product_price && this.product_price === products[i].productPrice){
-    //       this.products.push(products[i]);
-    //     }
-
-    //     else if (this.skin_type && products[i].skinType.toString().includes(this.skin_type)){
-    //       // console.log(products[i].skinType.toString())
-    //       this.products.push(products[i])
-    //     }
-
-    //     // else if (this.product_vegan && this.product_vegan.toString() === products[i].productVegan){
-    //     //   this.products.push(products[i])
-    //     // }
-    //       // console.log(this.product_vegan + products[i].productVegan)
-
-    //     else if (this.product_vegan && products[i].productVegan === "Yes"){
-    //       console.log("clicked on vegan");
-    //       this.products.push(products[i])
-    //     }
-
-    //     else if (this.product_cf && products[i].productCrueltyFree === "Yes"){
-    //       this.products.push(products[i])
-    //     }
-
-
-    //     // else if (this.skin_type){
-    //     //   if (Array.isArray(products[i].skinType) && products[i].skinType.includes(this.skin_type)){
-    //     //     this.products.push(products[i])
-    //     //   }
-    //     //   // if (!Array.isArray(products[i].skinType) && products[i].skinType.includes(this.skin_type)){
-    //     //   //   this.products.push(products[i])
-    //     //   // }
-    //     // }
-
-    //     // console.log(!Array.isArray(products[i].skinType))
-    //     // console.log(Array.isArray(products[i].skinType))
-
-    //     this.products.reverse()
-
-    //   }
-
-    // },
     searchFilter: async function(){
 
         console.log(this.product_vegan.toString())
@@ -261,7 +197,6 @@ export default {
         this.products = response.data.reverse();
         console.log(search);
 
-      // }
     },
     clearSearch: async function(){
       let response = await axios.get(BASE_API_URL + 'skincare-products');
@@ -315,12 +250,32 @@ li{
 .indiv-product a{
   display:flex;
   flex-direction:row;
+  align-items:center;
   position:relative;
+  background-color: rgb(240, 240, 240, 0.5);
+  border-radius:15px;
+  overflow:hidden;
+  padding:20px;
+  z-index:0;
+}
+
+.indiv-product a::before{
+  content: '';
+  position:absolute;
+  top:0;
+  left:0;
+  width:20%;
+  height:100%;
+  /* height:20%; */
+  background-color: mediumslateblue;
+  z-index:-1;
 }
 
 .indiv-product a img{
-  width:150px;
-  height:150px;
+  width:120px;
+  height:120px;
+  border-radius:10px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
 }
 
 h2, h3{
@@ -335,7 +290,7 @@ h2{
 .condition, .vegan, .cf{
   position:absolute;
   top:10px;
-  right:10px;
+  left:10px;
   background-color:honeydew;
   padding:10px 25px;
   border-radius:25px;
@@ -388,6 +343,12 @@ h2{
 
 }
 
+.product-info{
+  /* background-color:pink; */
+  margin-left:15px;
+  width:100%;
+}
+
 @media screen  and (min-width:768px){
 
   .inner-container{
@@ -413,16 +374,14 @@ h2{
 
   .indiv-product a{
     height:470px;
-    background-color: rgb(240, 240, 240, 0.2);
     /* padding:0 20px 20px 20px; */
     flex-direction: column;
     align-items: center;
+    padding:0;
     padding-top:10%;
-    border-radius:15px;
-    overflow:hidden;
     z-index:2;
   }
-  
+
   .indiv-product a::before{
     content: '';
     position:absolute;
@@ -442,13 +401,11 @@ h2{
   .indiv-product a img{
     width:80%;
     height:auto;
-    border-radius:10px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
   }
 
   .product-info{
+    margin-left:0;
     margin-top:15px;
-    /* padding: 0 10%; */
     width:80%;
   }
 

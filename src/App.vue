@@ -4,7 +4,7 @@
     
       <nav>
         <button id="hamburger-menu" v-on:click="openMenu" v-if="openHM === false">🍔</button>
-        <button id="hamburger-menu" v-on:click="closeMenu" v-if="openHM === true">🍔</button>
+        <button id="hamburger-menu" v-on:click="closeMenu" v-if="openHM === true">❎</button>
 
         <div class="container" v-if="openHM === true">
           <a v-on:click="home" v-if="page === 'home'" style="background-color:black" id="home">Home</a>

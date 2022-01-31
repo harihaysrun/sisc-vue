@@ -68,13 +68,13 @@
             </p>
 
             <p>
-              <span v-if="product_vegan === 'Yes'" class="vegan">Vegan Product</span>
-              <span v-if="product_cf === 'Yes'" class="cruelty-free">Cruelty Free brand</span>
+              <span class="details-tag">Description: </span>
+              {{product_description}}
             </p>
 
             <p>
-              <span class="details-tag">Description: </span>
-              {{product_description}}
+              <span v-if="product_vegan === 'Yes'" class="vegan">Vegan Product</span>
+              <span v-if="product_cf === 'Yes'" class="cruelty-free">Cruelty Free brand</span>
             </p>
 
           </div>
