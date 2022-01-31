@@ -1,145 +1,149 @@
 <template>
 
-    <div>
-        
-      <h1>Edit {{product_brand}} {{product_name}}</h1>
+    <div class="inner-container">
 
-      <div id="success-message">Successfully edited product information!</div>
+      <div class="details-container">
 
-      <!-- <div>
-        <label>I'm looking to...</label>
-        <input type="radio" value="sellOrGive" v-model="listing_type" /> Sell or Give this product away
-        <input type="radio" value="request" v-model="listing_type" /> Request a product
-      </div> -->
-
-      <div>
-        <label>Product condition</label>
-        <input type="radio" value="New" v-model="product_condition" /> Brand New
-        <input type="radio" value="Used" v-model="product_condition" /> Used
-        <div class="reminder-message" v-if="product_condition === 'Used'">Please remember to sanitize any used products before handing them off to someone else!</div>
-      </div>
-
-      <div>
-        <label>Brand</label>
-        <input type="text" v-model="product_brand" />
-      </div>
-      
-      <div>
-        <label>Product Name</label>
-        <input type="text" v-model="product_name" />
-      </div>
-      
-      <div>
-        <label>Product Image</label>
-        <input type="text" v-model="product_image" />
-        <div id="previewPic">
+        <div class="img-container">
           <img v-bind:src="product_image">
         </div>
+
+        <div class="text-container">
+
+          <h1>Edit {{product_brand}} {{product_name}}</h1>
+
+          <div id="success-message">Successfully edited product information!</div>
+
+          <div>
+            <label class="details-tag">Product condition</label>
+            <input type="radio" value="New" v-model="product_condition" /> Brand New
+            <input type="radio" value="Used" v-model="product_condition" /> Used
+            <div class="reminder-message" v-if="product_condition === 'Used'">Please remember to sanitize any used products before handing them off to someone else!</div>
+          </div>
+
+          <div>
+            <label class="details-tag">Brand</label>
+            <input type="text" v-model="product_brand" />
+          </div>
+          
+          <div>
+            <label class="details-tag">Product Name</label>
+            <input type="text" v-model="product_name" />
+          </div>
+          
+          <div>
+            <label class="details-tag">Product Image</label>
+            <input type="text" v-model="product_image" />
+          </div>
+
+          <div>
+            <label class="details-tag">Product Category</label>
+            <select name="" id="" v-model="product_category">
+              <option value="" disabled>select one</option>
+              <option value="First Cleanser">First Cleanser</option>
+              <option value="Second Cleanser">Second Cleanser</option>
+              <option value="Toner">Toner</option>
+              <option value="Serum">Serum</option>
+              <option value="Essence">Essence</option>
+              <option value="Ampoule">Ampoule</option>
+              <option value="Treatment">Treatment</option>
+              <option value="Moisturiser">Moisturiser</option>
+              <option value="Treatment">Treatment</option>
+              <option value="Sheet Mask">Sheet Mask</option>
+              <option value="Clay Mask">Clay Mask</option>
+              <option value="Chemical Exfoliant">Chemical Exfoliant</option>
+              <option value="Physical Exfoliant">Physical Exfoliant</option>
+              <option value="Eye Cream">Eye Cream</option>
+              <option value="Body">Body</option>
+              <option value="Others">Others</option>
+            </select>
+
+            <input class="specify" type="text" v-model="product_category_others"  placeholder="Please specify product category" v-if="product_category === 'Others'"/>
+          </div>
+
+          <div class="details-tag">
+            <label>Quantity</label>
+            <select name="" id="" v-model="product_quantity">
+              <option value="" disabled>select one</option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="Others">Others</option>
+            </select>
+
+            <input class="specify" type="text" v-model="product_quantity_box" v-if="product_quantity === 'Others'" />
+          </div>
+
+          <div>
+            <label class="details-tag">Product Size</label>
+            <select name="" id="" v-model="product_size">
+              <option value="" disabled>select one</option>
+              <option value="Sample">Sample</option>
+              <option value="Mini">Mini</option>
+              <option value="Full">Full</option>
+            </select>
+
+            <input class="specify" type="text" v-model="product_size_ml" />
+          </div>
+
+          <div>
+            <label class="details-tag">Price</label>
+            <select name="" id="" v-model="product_price">
+              <option value="" disabled>select one</option>
+              <option value="Free">Free</option>
+              <option value="Specify">Specify</option>
+            </select>
+
+            <input class="specify" type="text" v-model="product_price_box" placeholder="Put any value" v-if="product_price === 'Specify'"/>
+            <!-- <input type="text" v-model="product_price_box" placeholder="Put any value"/> -->
+          </div>
+
+          <div>
+            <label class="details-tag">Product Description</label>
+            <textarea name="" id="" cols="30" rows="10" v-model="product_description"></textarea>
+          </div>
+
+          <div>
+            <label class="details-tag">Suitable for skin type</label>
+            <input type="checkbox" value="Dry" v-model="skin_type" /> Dry
+            <input type="checkbox" value="Combination" v-model="skin_type" /> Combination
+            <input type="checkbox" value="Oily" v-model="skin_type" /> Oily
+          </div>
+
+          <div>
+            <label class="details-tag">Skin concerns:</label>
+            <input type="text" v-model="skin_concerns" placeholder="Separate words with commas. E.g redness, irritation, sensitive" />
+          </div>
+
+          <div>
+            <label class="details-tag">Is this product vegan?</label>
+            <input type="radio" value="Yes" v-model="product_vegan" /> Yes
+            <input type="radio" value="No" v-model="product_vegan" /> No
+            <input type="radio" value="N/A" v-model="product_vegan" /> N/A
+          </div>
+
+          <div>
+            <label class="details-tag">Is this product/brand cruelty free?</label>
+            <input type="radio" value="Yes" v-model="product_cf" /> Yes
+            <input type="radio" value="No" v-model="product_cf" /> No
+            <input type="radio" value="N/A" v-model="product_cf" /> N/A
+          </div>
+
+          <button v-on:click="editProduct">Edit Product listing</button>
+          <button v-on:click="removeProduct">Delete Product</button>
+
+          <div id="danger-message">
+            Are you sure you want to delete this product?
+            <button v-on:click="remove(productId)">Delete Product</button>
+          </div>
+
+        </div>
+
       </div>
-
-      <div>
-        <label>Product Category</label>
-        <select name="" id="" v-model="product_category">
-          <option value="" disabled>select one</option>
-          <option value="First Cleanser">First Cleanser</option>
-          <option value="Second Cleanser">Second Cleanser</option>
-          <option value="Toner">Toner</option>
-          <option value="Serum">Serum</option>
-          <option value="Essence">Essence</option>
-          <option value="Ampoule">Ampoule</option>
-          <option value="Treatment">Treatment</option>
-          <option value="Moisturiser">Moisturiser</option>
-          <option value="Treatment">Treatment</option>
-          <option value="Sheet Mask">Sheet Mask</option>
-          <option value="Clay Mask">Clay Mask</option>
-          <option value="Chemical Exfoliant">Chemical Exfoliant</option>
-          <option value="Physical Exfoliant">Physical Exfoliant</option>
-          <option value="Eye Cream">Eye Cream</option>
-          <option value="Body">Body</option>
-          <option value="Others">Others</option>
-        </select>
-
-        <input type="text" v-model="product_category_others"  placeholder="Please specify product category" v-if="product_category === 'Others'"/>
-      </div>
-
-      <div>
-        <label>Quantity</label>
-        <select name="" id="" v-model="product_quantity">
-          <option value="" disabled>select one</option>
-          <option value="1">1</option>
-          <option value="2">2</option>
-          <option value="Others">Others</option>
-        </select>
-
-        <input type="text" v-model="product_quantity_box" v-if="product_quantity === 'Others'" />
-      </div>
-
-      <div>
-        <label>Product Size</label>
-        <select name="" id="" v-model="product_size">
-          <option value="" disabled>select one</option>
-          <option value="Sample">Sample</option>
-          <option value="Mini">Mini</option>
-          <option value="Full">Full</option>
-        </select>
-
-        <input type="text" v-model="product_size_ml" />
-      </div>
-
-      <div>
-        <label>Price</label>
-        <select name="" id="" v-model="product_price">
-          <option value="" disabled>select one</option>
-          <option value="Free">Free</option>
-          <option value="Specify">Specify</option>
-        </select>
-
-        <input type="text" v-model="product_price_box" placeholder="Put any value" v-if="product_price === 'Specify'"/>
-        <!-- <input type="text" v-model="product_price_box" placeholder="Put any value"/> -->
-      </div>
-
-      <div>
-        <label>Product Description</label>
-        <textarea name="" id="" cols="30" rows="10" v-model="product_description"></textarea>
-      </div>
-
-      <div>
-        <label>Suitable for skin type</label>
-        <input type="checkbox" value="Dry" v-model="skin_type" /> Dry
-        <input type="checkbox" value="Combination" v-model="skin_type" /> Combination
-        <input type="checkbox" value="Oily" v-model="skin_type" /> Oily
-      </div>
-
-      <div>
-        <label>Skin concerns:</label>
-        <input type="text" v-model="skin_concerns" placeholder="Separate words with commas. E.g redness, irritation, sensitive" />
-      </div>
-
-      <div>
-        <label>Is this product vegan?</label>
-        <input type="radio" value="Yes" v-model="product_vegan" /> Yes
-        <input type="radio" value="No" v-model="product_vegan" /> No
-        <input type="radio" value="N/A" v-model="product_vegan" /> N/A
-      </div>
-
-      <div>
-        <label>Is this product/brand cruelty free?</label>
-        <input type="radio" value="Yes" v-model="product_cf" /> Yes
-        <input type="radio" value="No" v-model="product_cf" /> No
-        <input type="radio" value="N/A" v-model="product_cf" /> N/A
-      </div>
-
-      <button v-on:click="editProduct">Edit Product listing</button>
-      <button v-on:click="removeProduct">Delete Product</button>
-
-      <div id="danger-message">
-        Are you sure you want to delete this product?
-        <button v-on:click="remove(productId)">Delete Product</button>
-      </div>
+        
       
-      <div>
+      
+      <!-- <div>
         <ul>
-          <!-- <li>Listing type: {{listing_type}}</li> -->
           <li>Product condition: {{product_condition}}</li>
           <li>Brand: {{product_brand}}</li>
           <li>Name of product: {{product_name}}</li>
@@ -156,7 +160,7 @@
           <li>Vegan?: {{product_vegan}}</li>
           <li>Cruelty free?: {{product_cf}}</li>
         </ul>
-      </div>
+      </div> -->
 
     </div>
     
@@ -266,5 +270,98 @@ export default {
 </script>
 
 <style scoped>
+
+h1, h2, h3, h4{
+  margin:0;
+  padding:0;
+}
+
+.inner-container{
+  display:flex;
+  flex-direction: column;
+}
+
+.details-container{
+  display:flex;
+  flex-direction: column;
+}
+
+.text-container{
+  margin-top:50px;
+}
+
+.text-container p{
+  margin-bottom:25px;
+}
+
+.text-container div{
+  margin-bottom:25px;
+}
+
+.img-container img{
+  width:100%;
+  border-radius:25px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.details-tag{
+  text-transform: uppercase;
+  display:block;
+  font-size:12px;
+  letter-spacing: 1px;
+  color:mediumslateblue;
+}
+
+
+input[type="text"], textarea, select{
+  -moz-appearance:none;
+  -webkit-appearance:none;
+  appearance:none;
+  width:100% !important;
+  font-family: 'Manrope', sans-serif;
+  box-sizing: border-box;
+  padding:15px 20px;
+  border:0;
+  background-color:rgb(240, 240, 240, 0.3);
+  border-bottom:1px solid lightgray;
+}
+
+input[type="text"].specify{
+  background-color:rgb(249, 248, 255);
+}
+
+select, input[type="text"].specify{
+  width:22% !important;
+  margin-right:15px;
+}
+
+@media screen  and (min-width:768px){
+
+  .details-container{
+    flex-direction: row;
+  }
+
+  .img-container{
+    flex:1;
+    /* background-color:pink; */
+  }
+
+  .text-container{
+    /* background-color:palegoldenrod; */
+    margin-left:50px;
+    margin-top:0;
+    flex:2;
+  }
+
+  .edit-btn{
+    padding:15px 25px;
+    margin-left:auto;
+  }
+
+  input[type="text"]{
+    width:250px;
+  }
+
+}
 
 </style>

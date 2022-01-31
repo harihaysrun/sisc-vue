@@ -1,6 +1,4 @@
 <template>
-
-    <div>
       
       <div class="inner-container">
       
@@ -127,8 +125,6 @@
 
         </div>
       </div>
-
-    </div>
     
 </template>
 
@@ -371,7 +367,6 @@ input[type="text"], textarea{
   .comment-buttons button{
     height:50px;
   }
-
 
 
 }
