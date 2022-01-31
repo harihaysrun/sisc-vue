@@ -411,7 +411,7 @@ h2{
   }
 
   .indiv-product a{
-    height:500px;
+    height:470px;
     background-color: rgb(240, 240, 240, 0.2);
     /* padding:0 20px 20px 20px; */
     flex-direction: column;
@@ -448,7 +448,8 @@ h2{
 
   .product-info{
     margin-top:15px;
-    padding: 0 10%;
+    /* padding: 0 10%; */
+    width:80%;
   }
 
 }
