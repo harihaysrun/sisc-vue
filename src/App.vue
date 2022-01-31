@@ -33,6 +33,24 @@
         <RequestProducts v-if="page === 'requestProducts'" />
         <AddProduct v-if="page === 'addProduct'" v-on:product-added="refreshAddPage"/>
       <!-- </section> -->
+
+      <footer>
+        Hi
+        <br>
+        ok
+        <br>
+        ok
+        <br>
+        ok
+        <br>
+        ok
+        <br>
+        ok
+        <br>
+        ok
+        <br>
+        ok
+      </footer>
     
   </div>
 </template>
@@ -137,10 +155,7 @@ a:hover, li:hover{
 nav .container{
   width:100%;
   height:100vh !important;
-  /* display:none; */
-  /* display:flex; */
-  /* align-items:center; */
-  background-color: lightcoral;
+  /* background-color: lightcoral; */
   display:flex;
   flex-direction:column;
   align-items:center;
@@ -175,11 +190,13 @@ nav a:hover{
   border-radius:10px;
 }
 
-/* nav .container{
-    background-color:black;
-    display:flex;
-    align-items:center;
-} */
+footer{
+  width:100%;
+  background-color: black;
+  color:white;
+  box-sizing: border-box;
+  padding: 50px 10% 50px 10%;
+}
 
 @media screen  and (min-width:768px){
 
