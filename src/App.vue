@@ -13,11 +13,11 @@
           <a v-on:click="skincareProducts" v-if="page === 'skincareProducts'" style="background-color:black">Skincare Products</a>
           <a v-on:click="skincareProducts" v-else>Skincare Products</a>
 
-          <a v-on:click="reviewProducts" v-if="page === 'reviewProducts'" style="background-color:black">Review Board</a>
-          <a v-on:click="reviewProducts" v-else>Review Board</a>
-
           <a v-on:click="requestProducts" v-if="page === 'requestProducts'" style="background-color:black">Requests</a>
           <a v-on:click="requestProducts" v-else>Requests</a>
+
+          <a v-on:click="reviewProducts" v-if="page === 'reviewProducts'" style="background-color:black">Review Board</a>
+          <a v-on:click="reviewProducts" v-else>Review Board</a>
 
           <a v-on:click="addProduct" v-if="page === 'addProduct'" style="background-color:black" class="add-new-btn">Add New</a>
           <a v-on:click="addProduct" v-else class="add-new-btn">Add New</a>
@@ -28,8 +28,8 @@
       <Home v-if="page === 'home'" v-on:view-all="skincareProducts" v-on:view-requests="requestedProducts"/>
       <!-- <SkincareProducts v-if="page === 'skincareProducts'" products-tab="sellGive" request-tab="requests" v-bind:typeOfPage="pageViewing"/> -->
       <SkincareProducts v-if="page === 'skincareProducts'"/>
-      <ReviewBoard v-if="page === 'reviewProducts'"/>
       <RequestProducts v-if="page === 'requestProducts'" />
+      <ReviewBoard v-if="page === 'reviewProducts'"/>
       <AddProduct v-if="page === 'addProduct'" v-on:product-added="refreshAddPage"/>
 
       <footer>

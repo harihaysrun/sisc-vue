@@ -271,8 +271,6 @@ export default {
     },
     addRequest: async function(){
       await axios.post(BASE_API_URL + 'requested-products/add',{
-        'listingType': this.formData.listing_type,
-        'productCondition': this.formData.product_condition,
         'productBrand': this.formData.product_brand,
         'productName': this.formData.product_name,
         'productImage': this.formData.product_image,

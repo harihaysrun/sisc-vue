@@ -7,8 +7,6 @@
       
       <div>
         <ul>
-          <li>Listing type: {{listing_type}}</li>
-          <li>Product condition: {{product_condition}}</li>
           <li>Brand: {{product_brand}}</li>
           <li>Name of product: {{product_name}}</li>
           <li>Product image link: {{product_image}}</li>
@@ -82,8 +80,6 @@ const BASE_API_URL = "https://nsy-skincare-api.herokuapp.com/";
 export default {
   created: async function(){
     let response = await axios.get(BASE_API_URL + 'requested-products/' + this.productId);
-    this.listing_type = response.data.listingType;
-    this.product_condition = response.data.productCondition;
     this.product_brand = response.data.productBrand;
     this.product_name = response.data.productName;
     this.product_image = response.data.productImage;
@@ -97,8 +93,6 @@ export default {
   props: ['productId'],
   data: function(){
     return{
-      'listing_type': '',
-      'product_condition': '',
       'product_brand': '',
       'product_name': '',
       'product_image': '',
@@ -124,18 +118,8 @@ export default {
         'commentText': this.comment_text,
       })
       
-      // reloadComments();
       let response = await axios.get(BASE_API_URL + 'requested-products/' + this.productId);
       this.comments = response.data.comments;
-
-      // if(!Array.isArray(this.comments)){
-      //   this.comments = [];
-      // }
-
-      // this.comments.push({
-      //   'commentName': this.comment_name,
-      //   'commentText': this.comment_text,
-      // })
       
     },
     'replyComment': function(commentName, commentId){
@@ -158,16 +142,12 @@ export default {
             'commentId': commentId
           })
           
-          // reloadComments()
           let response = await axios.get(BASE_API_URL + 'requested-products/' + this.productId);
           this.comments = response.data.comments;
 
         }
       }
 
-      // await axios.post(BASE_API_URL + 'requested-products/' + this.productId + '/comment/delete', {
-      //   'commentId': commentId
-      // })
     }
   }
 }
