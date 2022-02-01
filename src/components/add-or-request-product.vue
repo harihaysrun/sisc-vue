@@ -110,7 +110,7 @@
         <label>Price</label>
         <select name="" id="" v-model="formData.product_price">
           <option value="" disabled>select one</option>
-          <option value="0">Free</option>
+          <option value="Free">Free</option>
           <option value="Specify">Specify</option>
         </select>
 

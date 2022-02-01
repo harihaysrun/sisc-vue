@@ -7,6 +7,7 @@
           <div class="img-container">
             <img v-bind:src="product_image" alt="">
             {{poster_name}}
+            <p v-if="is_product_sold === 'Yes'">Product is SOLD. Post a request for a new one!</p>
           </div>
 
           <div class="text-container">
@@ -156,6 +157,7 @@ export default {
     this.product_cf = response.data.productCrueltyFree;
     this.id = response.data_id;
     this.comments = response.data.comments;
+    this.is_product_sold = response.data.markAsSold;
 
   },
   props: ['productId'],
@@ -183,7 +185,8 @@ export default {
       'id': '',
       'comment_name':'',
       'comment_text': '',
-      'comments': []
+      'comments': [],
+      'is_product_sold': ''
     }
   },
   methods:{

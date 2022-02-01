@@ -28,6 +28,21 @@
           <input type="text" v-model="comment_name"/>
         </div>
         <div>
+          <label for="">Age range</label>
+          <select name="" id="" v-model="my_age">
+            <option value="" disabled>select one</option>
+            <option value="15-20">15-20 Years Old</option>
+            <option value="21-25">21-25 Years Old</option>
+            <option value="26-30">26-30</option>
+            <option value="31-35">31-35</option>
+            <option value="36-40">36-40</option>
+            <option value="41-45">41-45</option>
+            <option value="Others">Others</option>
+          </select>
+
+          <input type="text" v-model="my_age_others" placeholder="Age" v-if="my_rating === 'Others'"/>
+        </div>
+        <div>
           <label for="">My rating</label>
           <select name="" id="" v-model="my_rating">
             <option value="" disabled>select one</option>
@@ -63,6 +78,8 @@
 
       <p>
         Name: {{comment_name}}
+        <br>
+        Age: {{my_age}} {{my_age_others}}
         <br>
         Stars: {{my_rating}}
         <br>
@@ -138,6 +155,8 @@ export default {
       'comment_name':'',
       'comment_text': '',
       'comments': [],
+      'my_age': '',
+      'my_age_others': '',
       'my_rating': '',
       'my_skin_type':'',
       'rating': '',
@@ -171,9 +190,11 @@ export default {
 
       await axios.post(BASE_API_URL + 'reviews/' + this.productId + '/comment/add', {
         'commentName': this.comment_name,
-        'commentText': this.comment_text,
+        'my_age': this.my_age,
+        'my_age_others': this.my_age_others,
         'rating': this.my_rating,
         'skinType': this.my_skin_type,
+        'commentText': this.comment_text,
         'repurchase': this.repurchase,
         'noOfReviews': this.ratings,
       })

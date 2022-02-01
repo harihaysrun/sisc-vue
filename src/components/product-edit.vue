@@ -138,6 +138,8 @@
 
           <button v-on:click="editProduct">Edit Product listing</button>
           <button v-on:click="removeProduct">Delete Product</button>
+          <button v-on:click="markAsSold">Mark As Sold</button>
+
 
           <div id="danger-message">
             Are you sure you want to delete this product?
@@ -226,7 +228,8 @@ export default {
       'skin_concerns': [],
       'product_vegan': '',
       'product_cf': '',
-      'id': ''
+      'id': '',
+      'sold': ''
     }
   },
   methods:{
@@ -262,16 +265,18 @@ export default {
       dangerMsg.style.display = "block";
     },
     'remove': async function(productId){
-      // this.$emit('remove-product', productId);
       console.log("remove this product");
 
       await axios.post(BASE_API_URL + 'skincare-products/' + this.productId + '/delete',{
         '_id': productId
       });
-
-      // this.$emit('delete-product', productId)
-
-
+    },
+    markAsSold: async function(){
+      this.sold = "Yes"
+      console.log(this.sold)
+      await axios.post(BASE_API_URL + 'skincare-products/' + this.productId + '/sold', {
+        'markAsSold': this.sold,
+      });
     }
   },
 }
