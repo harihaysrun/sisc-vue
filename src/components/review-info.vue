@@ -57,6 +57,7 @@
         <div>
           <label>My skin type:</label>
           <input type="radio" value="Dry" v-model="my_skin_type" /> Dry
+          <input type="radio" value="Normal" v-model="my_skin_type" /> Normal
           <input type="radio" value="Combination" v-model="my_skin_type" /> Combination
           <input type="radio" value="Oily" v-model="my_skin_type" /> Oily
         </div>
@@ -69,6 +70,7 @@
             <option value="" disabled>select one</option>
             <option value="Will repurchase">Yes</option>
             <option value="Won't repurchase">No</option>
+            <option value="Maybe">Maybe</option>
           </select>
         </div>
 
@@ -97,7 +99,7 @@
 
         <ol>
           <li v-for="c in comments" v-bind:key="c._id">
-            <b class="c-name">{{c.commentName}}</b>
+            <b class="c-name">{{c.commentName}}</b> || {{c.age}} {{c.ageOthers}} years old
             <div class="review-rating">
               {{c.rating}}
               <!-- <ol>
@@ -139,7 +141,9 @@ export default {
     this.product_category = response.data.productCategory;
     this.product_vegan = response.data.productVegan;
     this.product_cf = response.data.productCrueltyFree;
-    this.comments = response.data.reviews;
+    if (Array.isArray(response.data.reviews)){
+      this.comments = response.data.reviews.reverse();
+    }
 
   },
   props: ['productId'],
@@ -190,8 +194,8 @@ export default {
 
       await axios.post(BASE_API_URL + 'reviews/' + this.productId + '/comment/add', {
         'commentName': this.comment_name,
-        'my_age': this.my_age,
-        'my_age_others': this.my_age_others,
+        'age': this.my_age,
+        'ageOthers': this.my_age_others,
         'rating': this.my_rating,
         'skinType': this.my_skin_type,
         'commentText': this.comment_text,
@@ -201,7 +205,7 @@ export default {
       
       // reloadComments();
       let response = await axios.get(BASE_API_URL + 'reviews/' + this.productId);
-      this.comments = response.data.reviews;
+      this.comments = response.data.reviews.reverse();
 
       // console.log("number of reviews: " + this.comments.length);
       // let noOfReviews = this.comments.length;
