@@ -7,6 +7,11 @@
       <div id="success-message">Successfully added product!</div>
 
       <div>
+        <label>Name</label>
+        <input type="text" v-model="formData.poster_name" />
+      </div>
+
+      <div>
         <label>I'm looking to...</label>
         <input type="radio" value="sellOrGive" v-model="formData.listing_type" /> Sell or Give this product away
         <input type="radio" value="request" v-model="formData.listing_type" /> Request a product
@@ -147,8 +152,9 @@
       <button v-on:click="addRequest" v-if="formData.listing_type === 'request'">Add Request</button>
       <button v-on:click="addProduct" v-if="formData.listing_type === 'review'">Add New Product</button>
       
-      <div v-if="formData.listing_type === 'sellGive'">
+      <div v-if="formData.listing_type === 'sellOrGive'">
         <ul>
+          <li>Name: {{formData.poster_name}}</li>
           <li>Listing type: {{formData.listing_type}}</li>
           <li>Product condition: {{formData.product_condition}}</li>
           <li>Brand: {{formData.product_brand}}</li>
@@ -172,6 +178,7 @@
 
       <div v-if="formData.listing_type === 'request'">
         <ul>
+          <li>Name: {{formData.poster_name}}</li>
           <li>Listing type: {{formData.listing_type}}</li>
           <li>Product condition: {{formData.product_condition}}</li>
           <li>Brand: {{formData.product_brand}}</li>
@@ -186,6 +193,8 @@
 
       <div v-if="formData.listing_type === 'review'">
         <ul>
+          <li>Name: {{formData.poster_name}}</li>
+          <li>Listing type: {{formData.listing_type}}</li>
           <li>Brand: {{formData.product_brand}}</li>
           <li>Name of product: {{formData.product_name}}</li>
           <li>Product image link: {{formData.product_image}}</li>
@@ -204,7 +213,8 @@
 import axios from 'axios';
 const BASE_API_URL = "https://nsy-skincare-api.herokuapp.com/";
 
-const original = {  'listing_type': 'sellOrGive',
+const original = {  'poster_name': '',
+                    'listing_type': 'sellOrGive',
                     'product_condition': '',
                     'product_brand': '',
                     'product_name': '',
@@ -244,6 +254,7 @@ export default {
       successMsg.style.display = "block";
 
       await axios.post(BASE_API_URL + 'skincare-products/add',{
+        'posterName': this.formData.poster_name,
         'listingType': this.formData.listing_type,
         'productCondition': this.formData.product_condition,
         'productBrand': this.formData.product_brand,
@@ -271,6 +282,7 @@ export default {
     },
     addRequest: async function(){
       await axios.post(BASE_API_URL + 'requested-products/add',{
+        'posterName': this.formData.poster_name,
         'productBrand': this.formData.product_brand,
         'productName': this.formData.product_name,
         'productImage': this.formData.product_image,
