@@ -7,6 +7,7 @@
       
       <div>
         <ul>
+          <li>Name: {{poster_name}}</li>
           <li>Brand: {{product_brand}}</li>
           <li>Name of product: {{product_name}}</li>
           <li>Product image link: {{product_image}}</li>
@@ -80,6 +81,7 @@ const BASE_API_URL = "https://nsy-skincare-api.herokuapp.com/";
 export default {
   created: async function(){
     let response = await axios.get(BASE_API_URL + 'requested-products/' + this.productId);
+    this.poster_name = response.data.posterName;
     this.product_brand = response.data.productBrand;
     this.product_name = response.data.productName;
     this.product_image = response.data.productImage;
@@ -93,6 +95,7 @@ export default {
   props: ['productId'],
   data: function(){
     return{
+      'poster_name': '',
       'product_brand': '',
       'product_name': '',
       'product_image': '',

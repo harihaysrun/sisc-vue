@@ -7,6 +7,11 @@
       <div id="success-message">Successfully edited product information!</div>
 
       <div>
+        <label class="details-tag">Name</label>
+        <input type="text" v-model="poster_name" />
+      </div>
+
+      <div>
         <label>Product condition</label>
         <input type="radio" value="New" v-model="product_condition" /> Brand New
         <input type="radio" value="Used" v-model="product_condition" /> Used
@@ -88,6 +93,7 @@ export default {
   created: async function(){
     console.log(this.productId)
     let response = await axios.get(BASE_API_URL + 'requested-products/' + this.productId);
+    this.poster_name = response.data.posterName;
     this.product_condition = response.data.productCondition;
     this.product_brand = response.data.productBrand;
     this.product_name = response.data.productName;
@@ -104,6 +110,7 @@ export default {
   props: ['productId'],
   data: function(){
     return{
+      'poster_name': '',
       'product_condition': '',
       'product_brand': '',
       'product_name': '',
@@ -122,6 +129,7 @@ export default {
       successMsg.style.display = "block";
 
       await axios.patch(BASE_API_URL + 'requested-products/' + this.productId, {
+        'posterName': this.formData.poster_name,
         'productCondition': this.product_condition,
         'productBrand': this.product_brand,
         'productName': this.product_name,
