@@ -36,7 +36,8 @@
               <option value="Chemical Exfoliant">Chemical Exfoliant</option>
               <option value="Physical Exfoliant">Physical Exfoliant</option>
               <option value="Eye Cream">Eye Cream</option>
-              <option value="Body">Body</option>
+              <option value="Body Cream">Body Cream</option>
+              <option value="Sunscreen">Sunscreen</option>
               <option value="Others">Others</option>
             </select>
 
