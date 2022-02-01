@@ -125,6 +125,7 @@
       <div v-if="formData.listing_type === 'sellOrGive'">
         <label>Suitable for skin type</label>
         <input type="checkbox" value="Dry" v-model="formData.skin_type" /> Dry
+        <input type="checkbox" value="Normal" v-model="formData.skin_type" /> Normal
         <input type="checkbox" value="Combination" v-model="formData.skin_type" /> Combination
         <input type="checkbox" value="Oily" v-model="formData.skin_type" /> Oily
       </div>
