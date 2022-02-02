@@ -84,4 +84,10 @@ export default {
   padding:35px 0;
 } */
 
+button{
+  margin-top:35px;
+  margin-right:auto;
+  margin-left:10%;
+}
+
 </style>

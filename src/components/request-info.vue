@@ -1,67 +1,94 @@
 <template>
 
-    <div>
-        
-      <h1>{{product_brand}} {{product_name}}</h1>
-      <small>{{productId}}</small>
+    <div class="inner-container">
       
-      <div>
-        <ul>
-          <li>Name: {{poster_name}}</li>
-          <li>Brand: {{product_brand}}</li>
-          <li>Name of product: {{product_name}}</li>
-          <li>Product image link: {{product_image}}</li>
-          <li v-if="product_quantity != 'Others'">Product quantity: {{product_quantity}}</li>
-          <li v-if="product_quantity === 'Others'">Product quantity (others): {{product_quantity_box}}</li>
-          <li>Size: {{product_size}}</li>
-          <li>Size in ml: {{product_size_ml}}</li>
-        </ul>
+      <div class="details-container">
+          
+        <div class="img-container">
+          <img v-bind:src="product_image" alt="">
+        </div>
+        
+        <div class="text-container">
+          {{poster_name}} is looking for
+          <h3>{{product_brand}}</h3>
+          <h1>{{product_name}}</h1>
+
+          <p v-if="product_quantity != 'Others'">
+            <span class="details-tag">Quantity:</span>
+            {{product_quantity}}
+          </p>
+          <p v-if="product_quantity === 'Others'">
+            <span class="details-tag">Quantity (others):</span>
+            {{product_quantity_box}}
+          </p>
+
+          <p>
+            <span class="details-tag">Size:</span>
+            {{product_size}}
+          </p>
+          <p>
+            <span class="details-tag">Size in ml:</span>
+            {{product_size_ml}}
+          </p>
+
+        </div>
       </div>
 
-      <button v-on:click="edit(productId)">Edit Product</button>
+      <button class="edit-btn" v-on:click="edit(productId)">Edit Product</button>
 
-      <div>
+      <div class="comments-container">
         <h1>Comments section</h1>
 
-      <div>
-
+        <div class="name-offer">
+          <div>
+            <label for="">Name</label>
+            <input type="text" v-model="comment_name"/>
+          </div>
         <div>
-          <label for="">Name</label>
-          <input type="text" v-model="comment_name"/>
+          <label for="">Offer</label>
+          <input type="text" v-model="comment_offer" placeholder="Free or amount in dollars"/>
+        </div>
         </div>
         <div>
-          <textarea v-model="comment_text" id="" cols="30" rows="10" placeholder="type comment here"></textarea>
+          <label for="">Comment</label>
+          <textarea v-model="comment_text" id="" cols="30" rows="10" placeholder="Type comment here"></textarea>
         </div>
 
         <button v-on:click="comment(productId)">Post Comment</button>
 
-      </div>
+        <p>
+          Name: {{comment_name}}
+          <br>
+          Offer: {{comment_offer}}
+          <br>
+          Comment: {{comment_text}}
+        </p>
 
-      <p>
-        Name: {{comment_name}}
-        <br>
-        Comment: {{comment_text}}
-      </p>
+      </div>
 
       <div>
         <!-- There are no comments -->
 
-        <ol reversed>
-          <li v-for="c in comments" v-bind:key="c._id">
-            <!-- <input value="commentName" v-model="c_name" disabled/> -->
-            <b class="c-name">{{c.commentName}}</b>
-            <br>
-            <span class="existingComment">
-              {{c.commentText}}
-            </span>
-            <button v-on:click="replyComment(c.commentName, c._id)">Reply</button>
-            <button v-on:click="deleteComment(c._id)">Delete</button>
-            <!-- <button v-on:click="edit(p._id)">Edit</button> -->
-            <!-- <a v-on:click="edit(p._id)">Edit</a> -->
-          </li>
-        </ol>
+          <div class="each-comment" v-for="c in comments" v-bind:key="c._id">
+            
+            <div class="offer">
+              <b class="c-name">{{c.commentName}}</b>
+              <span class="details-tag">offer:</span>
+              <span v-if="c.commentOffer != 'Free'">${{c.commentOffer}}</span>
+              <span v-else>{{c.commentOffer}}</span>
+            </div>
 
-      </div>
+            <div class="existingComment">
+              {{c.commentText}}
+            </div>
+
+            <div class="comment-buttons">
+              <button v-on:click="replyComment(c.commentName, c._id)">Reply</button>
+              <button v-on:click="deleteComment(c._id)">Delete</button>
+            </div>
+
+          </div>
+
 
       </div>
 
@@ -72,11 +99,6 @@
 <script>
 import axios from 'axios';
 const BASE_API_URL = "https://nsy-skincare-api.herokuapp.com/";
-
-// async function reloadComments(){
-//   let response = await axios.get(BASE_API_URL + 'requested-products/' + this.productId);
-//   this.comments = response.data.comments;
-// }
 
 export default {
   created: async function(){
@@ -106,6 +128,7 @@ export default {
       'id': '',
       'comment_name':'',
       'comment_text': '',
+      'comment_offer': '',
       'comments': []
     }
   },
@@ -119,6 +142,7 @@ export default {
       await axios.post(BASE_API_URL + 'requested-products/' + this.productId + '/comment/add', {
         'commentName': this.comment_name,
         'commentText': this.comment_text,
+        'commentOffer': this.comment_offer
       })
       
       let response = await axios.get(BASE_API_URL + 'requested-products/' + this.productId);
@@ -136,11 +160,7 @@ export default {
       for (let i=0; i< this.comments.length; i++){
         
         if(this.comments[i]._id === commentId){
-          // console.log(this.comments[i]._id)
-          // console.log(this.comments.indexOf(this.comments[i]));
-          // let indexOfCommentToDelete = this.comments.indexOf(this.comments[i]);
-          // this.comments.splice(indexOfCommentToDelete, 1);
-        
+
           await axios.post(BASE_API_URL + 'requested-products/' + this.productId + '/comment/delete', {
             'commentId': commentId
           })
@@ -157,5 +177,152 @@ export default {
 </script>
 
 <style scoped>
+
+h1, h2, h3, h4{
+  margin:0;
+  padding:0;
+}
+
+.inner-container{
+  padding:35px 0;
+  width:80%;
+  display:flex;
+  flex-direction: column;
+}
+
+.details-container{
+  display:flex;
+  flex-direction: column;
+}
+
+.text-container{
+  margin-top:50px;
+}
+
+.text-container p{
+  margin-bottom:25px;
+}
+
+.img-container img{
+  width:100%;
+  border-radius:25px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.details-tag{
+  text-transform: uppercase;
+  display:block;
+  font-size:12px;
+  letter-spacing: 1px;
+  color:mediumslateblue;
+}
+
+.edit-btn{
+  padding:15px 25px;
+}
+
+.comments-container{
+  margin-top:50px;
+  background-color: rgba(0,0,0,0.05);
+  padding:25px 35px;
+  border-radius: 15px;
+  margin-bottom:50px;
+}
+
+input[type="text"], textarea{
+  width:100%;
+  font-family: 'Manrope', sans-serif;
+  box-sizing: border-box;
+  padding:15px 20px;
+}
+
+.each-comment{
+  /* background-color:azure; */
+  display:flex;
+  flex-direction:column;
+  margin:20px 0;
+  padding-bottom:25px;
+  border-bottom: 1px solid rgb(236, 236, 236);
+}
+
+.each-comment div{
+  padding-top:10px;
+}
+
+.each-comment b{
+  color:mediumslateblue;
+}
+
+.offer{
+  display:flex;
+  flex-direction: column;
+}
+
+
+@media screen  and (min-width:768px){
+
+  .details-container{
+    flex-direction: row;
+  }
+
+  .img-container{
+    flex:1;
+    /* background-color:pink; */
+  }
+
+  .text-container{
+    /* background-color:palegoldenrod; */
+    margin-left:50px;
+    margin-top:0;
+    flex:2;
+  }
+
+  .edit-btn{
+    margin-left:auto;
+  }
+
+  .name-offer{
+    display:flex;
+    flex-direction:row;
+  }
+  
+  .name-offer div:nth-child(2){
+    margin-left: 25px;
+  }
+
+  input[type="text"]{
+    width:250px;
+  }
+
+  .each-comment{
+    flex-direction:row;
+    margin:35px 0;
+  }
+
+  .each-comment div{
+    padding-top:0px;
+  }
+
+  .each-comment div:first-child,.each-comment div:nth-child(3){
+    /* background-color:pink; */
+    flex:1;
+  }
+
+  .each-comment div:nth-child(2){
+    flex:6;
+  }
+
+  .each-comment div:nth-child(3){
+    display:flex;
+    justify-content: flex-end;
+    align-items: center;
+  }
+
+  .comment-buttons button{
+    height:50px;
+  }
+
+
+}
 
 </style>

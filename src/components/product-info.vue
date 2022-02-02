@@ -319,6 +319,10 @@ input[type="text"], textarea{
   color:mediumslateblue;
 }
 
+.edit-btn{
+  padding:15px 25px;
+}
+
 @media screen  and (min-width:768px){
 
   .details-container{
@@ -338,7 +342,6 @@ input[type="text"], textarea{
   }
 
   .edit-btn{
-    padding:15px 25px;
     margin-left:auto;
   }
 
