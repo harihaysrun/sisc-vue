@@ -63,7 +63,7 @@
           </div>
 
           <div class="details-tag">
-            <label>Quantity</label>
+            <label class="details-tag">Quantity</label>
             <select name="" id="" v-model="product_quantity">
               <option value="" disabled>select one</option>
               <option value="1">1</option>
@@ -105,10 +105,13 @@
 
           <div>
             <label class="details-tag">Suitable for skin type</label>
-            <input type="checkbox" value="Dry" v-model="skin_type" /> Dry
-            <input type="checkbox" value="Normal" v-model="skin_type" /> Normal
-            <input type="checkbox" value="Combination" v-model="skin_type" /> Combination
-            <input type="checkbox" value="Oily" v-model="skin_type" /> Oily
+            <input type="checkbox" value="Dry" v-model="skin_type" id="skin-dry"/> <label for="skin-dry">Dry</label>
+          &nbsp;&nbsp;
+          <input type="checkbox" value="Normal" v-model="skin_type" id="skin-normal"/> <label for="skin-normal">Normal</label>
+          &nbsp;&nbsp;
+          <input type="checkbox" value="Combination" v-model="skin_type" id="skin-combo"/> <label for="skin-combo">Combination</label>
+          &nbsp;&nbsp;
+          <input type="checkbox" value="Oily" v-model="skin_type" id="skin-oily"/> <label for="skin-oily">Oily</label>
           </div>
 
           <div>
@@ -118,16 +121,20 @@
 
           <div>
             <label class="details-tag">Is this product vegan?</label>
-            <input type="radio" value="Yes" v-model="product_vegan" /> Yes
-            <input type="radio" value="No" v-model="product_vegan" /> No
-            <input type="radio" value="N/A" v-model="product_vegan" /> N/A
+          <input type="radio" value="Yes" v-model="product_vegan" id="vegan-yes" /> <label for="vegan-yes">Yes</label>
+          &nbsp;&nbsp;
+          <input type="radio" value="No" v-model="product_vegan" id="vegan-no" /> <label for="vegan-no">No</label>
+          &nbsp;&nbsp;
+          <input type="radio" value="N/A" v-model="product_vegan" id="vegan-na" /> <label for="vegan-na">N/A</label>
           </div>
 
           <div>
             <label class="details-tag">Is this product/brand cruelty free?</label>
-            <input type="radio" value="Yes" v-model="product_cf" /> Yes
-            <input type="radio" value="No" v-model="product_cf" /> No
-            <input type="radio" value="N/A" v-model="product_cf" /> N/A
+          <input type="radio" value="Yes" v-model="product_cf" id="cf-yes"/> <label for="cf-yes">Yes</label>
+          &nbsp;&nbsp;
+          <input type="radio" value="No" v-model="product_cf" id="cf-no"/> <label for="cf-no">No</label>
+          &nbsp;&nbsp;
+          <input type="radio" value="N/A" v-model="product_cf" id="cf-na"/> <label for="cf-na">N/A</label> 
           </div>
 
           <button v-on:click="editProduct">Edit Product listing</button>
@@ -143,30 +150,6 @@
         </div>
 
       </div>
-        
-      
-      
-      <!-- <div>
-        <ul>
-          <li>Product condition: {{product_condition}}</li>
-          <li>Brand: {{product_brand}}</li>
-          <li>Name of product: {{product_name}}</li>
-          <li>Product image link: {{product_image}}</li>
-          <li>Product quantity: {{product_quantity}}</li>
-          <li>Product quantity (others): {{product_quantity_box}}</li>
-          <li>Size: {{product_size}}</li>
-          <li>Size in ml: {{product_size_ml}}</li>
-          <li>Product price: {{product_price}}</li>
-          <li>Product price in dollars: {{product_price_box}}</li>
-          <li>Description: {{product_description}}</li>
-          <li>Skin type: {{skin_type}}</li>
-          <li>Skin concerns: {{skin_concerns}}</li>
-          <li>Vegan?: {{product_vegan}}</li>
-          <li>Cruelty free?: {{product_cf}}</li>
-        </ul>
-      </div> -->
-
-    <!-- </div> -->
     
 </template>
 
@@ -278,75 +261,11 @@ export default {
 
 <style scoped>
 
-h1, h2, h3, h4{
-  margin:0;
-  padding:0;
-}
-
-.inner-container{
-  display:flex;
-  flex-direction: column;
-}
-
-.details-container{
-  display:flex;
-  flex-direction: column;
-}
-
-.text-container{
-  margin-top:50px;
-}
-
-.text-container p{
-  margin-bottom:25px;
-}
-
 .text-container div{
   margin-bottom:25px;
 }
 
-.img-container img{
-  width:100%;
-  border-radius:25px;
-  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-}
-
-.details-tag{
-  text-transform: uppercase;
-  display:block;
-  font-size:12px;
-  letter-spacing: 1px;
-  color:mediumslateblue;
-}
-
-
-input[type="text"], textarea, select{
-  -moz-appearance:none;
-  -webkit-appearance:none;
-  appearance:none;
-  width:100% !important;
-  font-family: 'Manrope', sans-serif;
-  box-sizing: border-box;
-  padding:15px 20px;
-  border:0;
-  background-color:rgb(240, 240, 240, 0.3);
-  border-bottom:1px solid lightgray;
-}
-
-input[type="text"].specify{
-  background-color:rgb(249, 248, 255);
-}
-
-select, input[type="text"].specify{
-  width:22% !important;
-  margin-right:15px;
-}
-
 @media screen  and (min-width:768px){
-
-  .details-container{
-    flex-direction: row;
-  }
 
   .img-container{
     flex:1;
@@ -354,22 +273,6 @@ select, input[type="text"].specify{
     /* background-color:pink; */
     position:sticky;
     top: 120px;
-  }
-
-  .text-container{
-    /* background-color:palegoldenrod; */
-    margin-left:50px;
-    margin-top:0;
-    flex:2;
-  }
-
-  .edit-btn{
-    padding:15px 25px;
-    margin-left:auto;
-  }
-
-  input[type="text"]{
-    width:250px;
   }
 
 }
