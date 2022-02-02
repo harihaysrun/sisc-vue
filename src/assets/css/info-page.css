@@ -59,6 +59,8 @@ h1, h2, h3, h4{
 
 .comment-input{
     margin-bottom:15px;
+    display:flex;
+    flex-direction: column;
 }
 
 .comment-input label{
@@ -88,6 +90,11 @@ h1, h2, h3, h4{
 
 .edit-btn{
   padding:15px 25px;
+}
+
+.offer{
+    display:flex;
+    flex-direction: column;
 }
 
 @media screen  and (min-width:768px){
@@ -145,5 +152,9 @@ h1, h2, h3, h4{
     height:50px;
   }
 
+  .name-offer{
+    display:flex;
+    flex-direction:row;
+  }
 
 }

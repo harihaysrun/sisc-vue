@@ -176,23 +176,12 @@ export default {
 
 <style scoped>
 
-
 input[type="text"], textarea{
     background-color:white;
 }
 
-.offer{
-  display:flex;
-  flex-direction: column;
-}
-
 @media screen  and (min-width:768px){
 
-
-  .name-offer{
-    display:flex;
-    flex-direction:row;
-  }
   
   .name-offer div:nth-child(2){
     margin-left: 25px;

@@ -38,12 +38,12 @@
 
 
         <div class="name-offer">
-          <div>
+          <div class="comment-input">
             <label for="">Name</label>
             <input type="text" v-model="comment_name"/>
           </div>
 
-          <div>
+          <div class="comment-input">
             <label for="">Age</label>
             <div class="age-range">
               <select class="age" name="" id="" v-model="my_age">
@@ -61,7 +61,7 @@
             </div>
           </div>
 
-          <div>
+          <div class="comment-input">
             <label for="">My rating</label>
             <select class="rating" name="" id="" v-model="my_rating">
               <option value="" disabled>select one</option>
@@ -76,19 +76,22 @@
 
         </div>
 
-        <div>
-          <label>My skin type:</label>
-          <input type="radio" value="Dry" v-model="my_skin_type" /> Dry
-          <input type="radio" value="Normal" v-model="my_skin_type" /> Normal
-          <input type="radio" value="Combination" v-model="my_skin_type" /> Combination
-          <input type="radio" value="Oily" v-model="my_skin_type" /> Oily
+        <div class="skin-types">
+          <span>My skin type:</span>
+          <input type="radio" value="Dry" v-model="my_skin_type" id="skin-dry"/> <label for="skin-dry">Dry</label>
+          &nbsp;&nbsp;
+          <input type="radio" value="Normal" v-model="my_skin_type" id="skin-normal"/> <label for="skin-normal">Normal</label>
+          &nbsp;&nbsp;
+          <input type="radio" value="Combination" v-model="my_skin_type" id="skin-combo"/> <label for="skin-combo">Combination</label>
+          &nbsp;&nbsp;
+          <input type="radio" value="Oily" v-model="my_skin_type" id="skin-oily"/> <label for="skin-oily">Oily</label>
         </div>
 
-        <div>
+        <div class="comment-input">
           <textarea v-model="comment_text" id="" cols="30" rows="10" placeholder="type comment here"></textarea>
         </div>
 
-        <div>
+        <div class="comment-input">
           <label for="">Will I repurchase this?</label>
           <select class="repurchase" name="" id="" v-model="repurchase">
             <option value="" disabled>select one</option>
@@ -223,20 +226,6 @@ export default {
       let response = await axios.get(BASE_API_URL + 'reviews/' + this.productId);
       this.comments = response.data.reviews.reverse();
 
-      // for (let i=0; i< this.comments.length; i++){
-        
-      //   if(this.comments[i]._id === commentId){
-        
-      //     await axios.post(BASE_API_URL + 'reviews/' + this.productId + '/comment/delete', {
-      //       'commentId': commentId
-      //     })
-          
-      //     let response = await axios.get(BASE_API_URL + 'reviews/' + this.productId);
-      //     this.comments = response.data.comments;
-
-      //   }
-      // }
-
     }
   }
 }
@@ -244,81 +233,8 @@ export default {
 
 <style scoped>
 
-h1, h2, h3, h4{
-  margin:0;
-  padding:0;
-}
-
-.details-container{
-  display:flex;
-  flex-direction: column;
-}
-
-.text-container{
-  margin-top:50px;
-}
-
-.text-container p{
-  margin-bottom:25px;
-}
-
-.img-container img{
-  width:100%;
-  border-radius:25px;
-  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-}
-
-.details-tag{
-  text-transform: uppercase;
-  display:block;
-  font-size:12px;
-  letter-spacing: 1px;
-  color:mediumslateblue;
-}
-
-.edit-btn{
-  padding:15px 25px;
-}
-
-.comments-container{
-  margin-top:50px;
-  background-color: rgba(0,0,0,0.05);
-  padding:25px 35px;
-  border-radius: 15px;
-  margin-bottom:50px;
-}
-
-/* .comments-container div{
-    margin-bottom:25px;
-} */
-
 input[type="text"], textarea, select{
-  width:100%;
-  font-family: 'Manrope', sans-serif;
-  box-sizing: border-box;
-  padding:15px 20px;
-}
-
-.each-comment{
-  /* background-color:azure; */
-  display:flex;
-  flex-direction:column;
-  margin:20px 0;
-  padding-bottom:25px;
-  border-bottom: 1px solid rgb(236, 236, 236);
-}
-
-.each-comment div{
-  padding-top:10px;
-}
-
-.each-comment b{
-  color:mediumslateblue;
-}
-
-.offer{
-  display:flex;
-  flex-direction: column;
+    background-color:white;
 }
 
 .repurchase-status{
@@ -345,81 +261,47 @@ input[type="text"], textarea, select{
   color:red;
 }
 
+.skin-types{
+    margin-bottom:15px;
+}
+
+.skin-types span{
+  display:block;
+}
 
 @media screen  and (min-width:768px){
-
-  .details-container{
-    flex-direction: row;
-  }
-
-  .img-container{
-    flex:1;
-    /* background-color:pink; */
-  }
-
-  .text-container{
-    /* background-color:palegoldenrod; */
-    margin-left:50px;
-    margin-top:0;
-    flex:5;
-  }
-
-  .edit-btn{
-    margin-left:auto;
-  }
 
   .name-offer{
     display:flex;
     flex-direction:row;
+    justify-content: flex-start;
   }
-  
+
   .name-offer div{
     margin-right: 25px;
   }
 
   input[type="text"], .rating, .repurchase{
-    width:250px;
+     width:250px !important;
   }
 
   .age-range{
-    width:100% !important;
+    /* width:100% !important; */
     display:flex;
     flex-direction: row;
   }
 
-  .myage-others{
-    margin-left: 25px;
-    margin-right: 0;
+  .age-range input, .age-range select{
+    width:150px !important;
   }
 
-  .each-comment{
-    flex-direction:row;
-    margin:35px 0;
-  }
-
-  .each-comment div{
-    padding-top:0px;
-  }
+  /* .myage-others{
+    width:150px !important;
+  } */
 
   .each-comment div:first-child,.each-comment div:nth-child(3){
-    /* background-color:pink; */
     flex:1.5;
   }
-
-  .each-comment div:nth-child(2){
-    flex:6;
-  }
-
-  .each-comment div:nth-child(3){
-    display:flex;
-    justify-content: flex-end;
-    align-items: center;
-  }
-
-  .comment-buttons button{
-    height:50px;
-  }
-
 
 }
 
