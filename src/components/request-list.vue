@@ -82,15 +82,6 @@ export default {
   margin-right:auto;
 }
 
-a:hover, li:hover{
-    background-color:rgb(247, 247, 247);
-    cursor:pointer;
-}
-
-li{
-    margin:10px 0 10px 0;
-}
-
 .container{
   padding:35px 0;
   /* width:50%; */
@@ -232,7 +223,6 @@ input[type="text"]{
     padding:10px;
   }
 
-
   .reply{
     display:block;
     opacity:0;
@@ -242,14 +232,6 @@ input[type="text"]{
     opacity:0.5;
   }
 
-}
-
-@media screen  and (min-width:1024px){
-
-  /* .container{
-    width:50%;
-  } */
-  
 }
 
 </style>

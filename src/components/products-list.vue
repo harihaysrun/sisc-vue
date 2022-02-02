@@ -2,7 +2,6 @@
 
     <div>
 
-      <!-- <h1>View All Skincare Products</h1> -->
       <h1>{{pageTitle}}</h1>
 
       <div class="inner-container">
@@ -217,75 +216,20 @@ export default {
 
 <style scoped>
 
-a:hover, li:hover{
-    background-color:rgb(247, 247, 247);
-    cursor:pointer;
-}
-
-li{
-    margin:10px 0 10px 0;
-}
-
 .search-bar{
   background-color:rgba(0,0,0,0.1);
   padding: 20px;
 }
 
-.inner-container{
-  display:flex;
-  flex-direction: column;
-}
-
-.search-results{
-  display:flex;
-  flex-direction: column;
-  /* background-color:mediumslateblue; */
-}
-
-.indiv-product{
-  box-sizing: border-box;
-  padding:0 0 20px 0;
-  width:100%;
-}
-
-.indiv-product a{
-  display:flex;
-  flex-direction:row;
-  align-items:center;
-  position:relative;
-  background-color: rgb(240, 240, 240, 0.5);
-  border-radius:15px;
-  overflow:hidden;
-  padding:20px;
-  z-index:0;
-}
-
 .indiv-product a::before{
-  content: '';
-  position:absolute;
-  top:0;
-  left:0;
-  width:20%;
-  height:100%;
-  /* height:20%; */
-  background-color: mediumslateblue;
-  z-index:-1;
-}
-
-.indiv-product a:hover{
-  background-color: rgb(240, 240, 240, 0.8);
-}
-
-.indiv-product a img{
-  width:120px;
-  height:120px;
-  border-radius:10px;
-  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-}
-
-h2, h3{
-  margin:0;
-  padding:0;
+    content: '';
+    position:absolute;
+    top:0;
+    left:0;
+    width:20%;
+    height:100%;
+    background-color: mediumslateblue;
+    z-index:-1;
 }
 
 h2{

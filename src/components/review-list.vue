@@ -81,15 +81,6 @@ export default {
 
 <style scoped>
 
-a:hover, li:hover{
-    background-color:rgb(247, 247, 247);
-    cursor:pointer;
-}
-
-li{
-    margin:10px 0 10px 0;
-}
-
 .container{
   padding:35px 0;
   /* width:50%; */
