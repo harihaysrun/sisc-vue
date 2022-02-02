@@ -1,14 +1,17 @@
 <template>
 
-    <div>
+    <div class="main-container">
 
-      <button v-if="tab === 'productInfo'" v-on:click="backToProducts">Back</button>
-      <button v-if="tab === 'editThisProduct'" v-on:click="backToProduct">Back</button>
-      
-      <RequestsList page-title="Requests" v-if="tab === 'viewAllProducts'" v-on:view-product="viewProduct"/>
-      <RequestInfo v-if="tab === 'productInfo'" v-on:edit-product="editProduct" v-bind:productId="productViewing"/>
-      <EditProduct v-if="tab === 'editThisProduct'" v-on:remove-product="removeProduct" v-bind:productId="productEditing"/>
+      <!-- <div class="container"> -->
 
+        <button v-if="tab === 'productInfo'" v-on:click="backToProducts">Back</button>
+        <button v-if="tab === 'editThisProduct'" v-on:click="backToProduct">Back</button>
+        
+        <RequestsList page-title="Requests" v-if="tab === 'viewAllProducts'" v-on:view-product="viewProduct"/>
+        <RequestInfo v-if="tab === 'productInfo'" v-on:edit-product="editProduct" v-bind:productId="productViewing"/>
+        <EditProduct v-if="tab === 'editThisProduct'" v-on:remove-product="removeProduct" v-bind:productId="productEditing"/>
+
+      <!-- </div> -->
     </div>
     
 </template>
@@ -76,5 +79,9 @@ export default {
 </script>
 
 <style scoped>
+
+/* .main-container{
+  padding:35px 0;
+} */
 
 </style>
