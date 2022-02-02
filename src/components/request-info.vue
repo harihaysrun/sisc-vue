@@ -31,6 +31,11 @@
             {{product_size_ml}}
           </p>
 
+          <p>
+            <span class="details-tag">Description: </span>
+            {{product_description}}
+          </p>
+
         </div>
       </div>
 
@@ -56,14 +61,6 @@
 
         <button v-on:click="comment(productId)">Post Comment</button>
 
-        <p>
-          Name: {{comment_name}}
-          <br>
-          Offer: {{comment_offer}}
-          <br>
-          Comment: {{comment_text}}
-        </p>
-
       </div>
 
       <div>
@@ -73,9 +70,11 @@
             
             <div class="offer">
               <b class="c-name">{{c.commentName}}</b>
-              <span class="details-tag">offer:</span>
-              <span v-if="c.commentOffer != 'Free'">${{c.commentOffer}}</span>
-              <span v-else>{{c.commentOffer}}</span>
+              <div v-if="c.commentOffer">
+                <span class="details-tag">offer:</span>
+                <span v-if="c.commentOffer != 'Free'">${{c.commentOffer}}</span>
+                <span v-else>{{c.commentOffer}}</span>
+              </div>
             </div>
 
             <div class="existingComment">
@@ -111,6 +110,7 @@ export default {
     this.product_quantity_box = response.data.productQuantityBox;
     this.product_size = response.data.productType;
     this.product_size_ml = response.data.productSize;
+    this.product_description = response.data.productDescription;
     this.comments = response.data.comments;
 
   },
@@ -125,6 +125,7 @@ export default {
       'product_quantity_box': '',
       'product_size': '',
       'product_size_ml': '',
+      'product_description': '',
       'id': '',
       'comment_name':'',
       'comment_text': '',

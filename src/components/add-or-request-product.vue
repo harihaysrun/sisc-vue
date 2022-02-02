@@ -117,7 +117,7 @@
         <input type="text" v-model="formData.product_price_box" placeholder="Put any value" v-if="formData.product_price === 'Specify'"/>
       </div>
 
-      <div v-if="formData.listing_type === 'sellOrGive'">
+      <div v-if="formData.listing_type != 'review'">
         <label>Product Description</label>
         <textarea name="" id="" cols="30" rows="10" v-model="formData.product_description"></textarea>
       </div>
@@ -290,7 +290,8 @@ export default {
         'productQuantity': this.formData.product_quantity,
         'productQuantityBox': this.formData.product_quantity_box,
         'productType': this.formData.product_size,
-        'productSize': this.formData.product_size_ml
+        'productSize': this.formData.product_size_ml,
+        'productDescription': this.formData.product_description
       });
 
       this.formData = JSON.parse(JSON.stringify(original));

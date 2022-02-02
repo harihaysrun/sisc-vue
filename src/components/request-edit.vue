@@ -6,18 +6,6 @@
 
       <div id="success-message">Successfully edited product information!</div>
 
-      <!-- <div>
-        <label class="details-tag">Name</label>
-        <input type="text" v-model="poster_name" />
-      </div> -->
-
-      <div>
-        <label>Product condition</label>
-        <input type="radio" value="New" v-model="product_condition" /> Brand New
-        <input type="radio" value="Used" v-model="product_condition" /> Used
-        <div class="reminder-message" v-if="product_condition === 'Used'">Please remember to sanitize any used products before handing them off to someone else!</div>
-      </div>
-
       <div>
         <label>Brand</label>
         <input type="text" v-model="product_brand" />
@@ -58,6 +46,11 @@
         </select>
 
         <input type="text" v-model="product_size_ml" />
+      </div>
+
+      <div>
+        <label>Product Description</label>
+        <textarea name="" id="" cols="30" rows="10" v-model="product_description"></textarea>
       </div>
 
       <button v-on:click="editProduct">Edit Product listing</button>
@@ -102,6 +95,7 @@ export default {
     this.product_quantity_box = response.data.productQuantityBox;
     this.product_size = response.data.productType;
     this.product_size_ml = response.data.productSize;
+    this.product_description = response.data.productDescription;
     this.comments = response.data.comments;
   
     console.log(response.data)
@@ -119,6 +113,7 @@ export default {
       'product_quantity_box': '',
       'product_size': '',
       'product_size_ml': '',
+      'product_description': '',
       'id': ''
     }
   },
@@ -137,7 +132,8 @@ export default {
         'productQuantity': this.product_quantity,
         'productQuantityBox': this.product_quantity_box,
         'productType': this.product_size,
-        'productSize': this.product_size_ml
+        'productSize': this.product_size_ml,
+        'productDescription': this.product_description
       });
 
     },
