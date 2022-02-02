@@ -42,6 +42,9 @@
 <script>
 
 import "@/assets/css/style.css";
+import "@/assets/css/form.css";
+import "@/assets/css/info-page.css";
+
 import Home from '@/components/home';
 // import SkincareProducts from '@/components/skincare-products'
 import SkincareProducts from '@/components/products-tab'

@@ -1,0 +1,149 @@
+h1, h2, h3, h4{
+    margin:0;
+    padding:0;
+}
+  
+.inner-container{
+    padding:35px 0;
+    display:flex;
+    flex-direction: column;
+}
+
+.details-container{
+    display:flex;
+    flex-direction: column;
+}
+
+.text-container{
+  margin-top:50px;
+}
+
+.text-container p{
+  margin-bottom:25px;
+}
+
+.img-container img{
+  width:100%;
+  border-radius:25px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.details-tag{
+  text-transform: uppercase;
+  display:block;
+  font-size:12px;
+  letter-spacing: 1px;
+  color:mediumslateblue;
+}
+
+.vegan, .cruelty-free{
+  padding:5px 15px;
+  background-color:rgb(218, 255, 218);
+  border-radius:15px;
+  margin-right:10px;
+  color:rgb(65, 153, 65);
+}
+
+.cruelty-free{
+  background-color:mistyrose;
+  color:palevioletred;
+}
+
+.comments-container{
+  margin-top:50px;
+  background-color: rgba(0,0,0,0.05);
+  padding:25px 35px;
+  border-radius: 15px;
+  margin-bottom:50px;
+}
+
+.comment-input{
+    margin-bottom:15px;
+}
+
+.comment-input label{
+    margin-bottom:10px;
+}
+
+.postcmt-btn{
+    width:100%;
+}
+
+.each-comment{
+  /* background-color:azure; */
+  display:flex;
+  flex-direction:column;
+  margin:20px 0;
+  padding-bottom:25px;
+  border-bottom: 1px solid rgb(236, 236, 236);
+}
+
+.each-comment div{
+  padding-top:10px;
+}
+
+.each-comment b{
+  color:mediumslateblue;
+}
+
+.edit-btn{
+  padding:15px 25px;
+}
+
+@media screen  and (min-width:768px){
+
+  .details-container{
+    flex-direction: row;
+  }
+
+  .img-container{
+    flex:1;
+    /* background-color:pink; */
+  }
+
+  .text-container{
+    /* background-color:palegoldenrod; */
+    margin-left:50px;
+    margin-top:0;
+    flex:2;
+  }
+
+  .postcmt-btn{
+      width:auto;
+  }
+
+  .edit-btn{
+    margin-left:auto;
+  }
+
+  .each-comment{
+    flex-direction:row;
+    margin:35px 0;
+  }
+
+  .each-comment div{
+    padding-top:0px;
+  }
+
+  .each-comment div:first-child,.each-comment div:nth-child(3){
+    /* background-color:pink; */
+    flex:1;
+  }
+
+  .each-comment div:nth-child(2){
+    flex:6;
+    padding-right:25px;
+  }
+
+  .each-comment div:nth-child(3){
+    display:flex;
+    justify-content: flex-end;
+    align-items: center;
+  }
+
+  .comment-buttons button{
+    height:50px;
+  }
+
+
+}

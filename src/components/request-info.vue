@@ -45,21 +45,21 @@
         <h1>Comments section</h1>
 
         <div class="name-offer">
-          <div>
+          <div class="comment-input">
             <label for="">Name</label>
             <input type="text" v-model="comment_name"/>
           </div>
-        <div>
-          <label for="">Offer</label>
-          <input type="text" v-model="comment_offer" placeholder="Free or amount in dollars"/>
+          <div class="comment-input">
+            <label for="">Offer</label>
+            <input type="text" v-model="comment_offer" placeholder="Free or amount in dollars"/>
+          </div>
         </div>
-        </div>
-        <div>
+        <div class="comment-input">
           <label for="">Comment</label>
           <textarea v-model="comment_text" id="" cols="30" rows="10" placeholder="Type comment here"></textarea>
         </div>
 
-        <button v-on:click="comment(productId)">Post Comment</button>
+        <button class="postcmt-btn" v-on:click="comment(productId)">Post Comment</button>
 
       </div>
 
@@ -148,6 +148,10 @@ export default {
       
       let response = await axios.get(BASE_API_URL + 'requested-products/' + this.productId);
       this.comments = response.data.comments;
+
+      this.comment_name = "";
+      this.comment_offer = "";
+      this.comment_text = "";
       
     },
     'replyComment': function(commentName, commentId){
@@ -158,19 +162,12 @@ export default {
     'deleteComment': async function(commentId){
       console.log(commentId);
 
-      for (let i=0; i< this.comments.length; i++){
-        
-        if(this.comments[i]._id === commentId){
-
-          await axios.post(BASE_API_URL + 'requested-products/' + this.productId + '/comment/delete', {
-            'commentId': commentId
-          })
-          
-          let response = await axios.get(BASE_API_URL + 'requested-products/' + this.productId);
-          this.comments = response.data.comments;
-
-        }
-      }
+      await axios.post(BASE_API_URL + 'requested-products/' + this.productId + '/comment/delete', {
+        'commentId': commentId
+      })
+      
+      let response = await axios.get(BASE_API_URL + 'requested-products/' + this.productId);
+      this.comments = response.data.comments;
 
     }
   }
@@ -179,79 +176,9 @@ export default {
 
 <style scoped>
 
-h1, h2, h3, h4{
-  margin:0;
-  padding:0;
-}
-
-.inner-container{
-  padding:35px 0;
-  /* width:80%; */
-  display:flex;
-  flex-direction: column;
-}
-
-.details-container{
-  display:flex;
-  flex-direction: column;
-}
-
-.text-container{
-  margin-top:50px;
-}
-
-.text-container p{
-  margin-bottom:25px;
-}
-
-.img-container img{
-  width:100%;
-  border-radius:25px;
-  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-}
-
-.details-tag{
-  text-transform: uppercase;
-  display:block;
-  font-size:12px;
-  letter-spacing: 1px;
-  color:mediumslateblue;
-}
-
-.edit-btn{
-  padding:15px 25px;
-}
-
-.comments-container{
-  margin-top:50px;
-  background-color: rgba(0,0,0,0.05);
-  padding:25px 35px;
-  border-radius: 15px;
-  margin-bottom:50px;
-}
 
 input[type="text"], textarea{
-  width:100%;
-  font-family: 'Manrope', sans-serif;
-  box-sizing: border-box;
-  padding:15px 20px;
-}
-
-.each-comment{
-  /* background-color:azure; */
-  display:flex;
-  flex-direction:column;
-  margin:20px 0;
-  padding-bottom:25px;
-  border-bottom: 1px solid rgb(236, 236, 236);
-}
-
-.each-comment div{
-  padding-top:10px;
-}
-
-.each-comment b{
-  color:mediumslateblue;
+    background-color:white;
 }
 
 .offer{
@@ -259,28 +186,8 @@ input[type="text"], textarea{
   flex-direction: column;
 }
 
-
 @media screen  and (min-width:768px){
 
-  .details-container{
-    flex-direction: row;
-  }
-
-  .img-container{
-    flex:1;
-    /* background-color:pink; */
-  }
-
-  .text-container{
-    /* background-color:palegoldenrod; */
-    margin-left:50px;
-    margin-top:0;
-    flex:2;
-  }
-
-  .edit-btn{
-    margin-left:auto;
-  }
 
   .name-offer{
     display:flex;
@@ -290,39 +197,6 @@ input[type="text"], textarea{
   .name-offer div:nth-child(2){
     margin-left: 25px;
   }
-
-  input[type="text"]{
-    width:250px;
-  }
-
-  .each-comment{
-    flex-direction:row;
-    margin:35px 0;
-  }
-
-  .each-comment div{
-    padding-top:0px;
-  }
-
-  .each-comment div:first-child,.each-comment div:nth-child(3){
-    /* background-color:pink; */
-    flex:1;
-  }
-
-  .each-comment div:nth-child(2){
-    flex:6;
-  }
-
-  .each-comment div:nth-child(3){
-    display:flex;
-    justify-content: flex-end;
-    align-items: center;
-  }
-
-  .comment-buttons button{
-    height:50px;
-  }
-
 
 }
 

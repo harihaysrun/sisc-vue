@@ -249,13 +249,6 @@ h1, h2, h3, h4{
   padding:0;
 }
 
-.inner-container{
-  padding:35px 0;
-  /* width:80%; */
-  display:flex;
-  flex-direction: column;
-}
-
 .details-container{
   display:flex;
   flex-direction: column;

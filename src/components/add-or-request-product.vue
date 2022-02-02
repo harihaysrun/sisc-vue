@@ -178,7 +178,6 @@
 </template>
 
 <script>
-import "@/assets/css/form.css";
 
 import axios from 'axios';
 const BASE_API_URL = "https://nsy-skincare-api.herokuapp.com/";
@@ -419,11 +418,6 @@ h1, h2, h3, h4{
     margin-left:50px;
     margin-top:0;
     flex:2;
-  }
-
-  .edit-btn{
-    padding:15px 25px;
-    margin-left:auto;
   }
 
 }
