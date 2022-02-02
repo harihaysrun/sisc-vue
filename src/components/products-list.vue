@@ -7,18 +7,21 @@
       <div class="inner-container">
 
         <div class="search-bar" v-bind:style="{'display': display}">
-          <h2 style="margin:0;">Search:</h2>
-
-          <input type="text" v-model="search" placeholder="Search by brand or product name">
+          <h2 style="margin:0;">Search</h2>
 
           <div>
-            <label>Product condition</label>
-            <input type="radio" value="New" v-model="product_condition" /> Brand New
-            <input type="radio" value="Used" v-model="product_condition" /> Used
+            <label class="details-tag">Product brand/name</label>
+            <input type="text" v-model="search" placeholder="Search by brand or product name">
           </div>
 
           <div>
-            <label>Product Category</label>
+            <label class="details-tag">Product condition</label>
+            <input type="radio" value="New" v-model="product_condition" id="condition-new"/><label for="condition-new">Brand New</label> 
+            <input type="radio" value="Used" v-model="product_condition" id="condition-used"/><label for="condition-used">Used</label>
+          </div>
+
+          <div>
+            <label class="details-tag">Product Category</label>
             <select name="" id="" v-model="product_category">
               <option value="" disabled>select one</option>
               <option value="First Cleanser">First Cleanser</option>
@@ -43,7 +46,7 @@
           </div>
 
           <div>
-            <label>Product Size</label>
+            <label class="details-tag">Product Size</label>
             <select name="" id="" v-model="product_size">
               <option value="" disabled>select one</option>
               <option value="Sample">Sample</option>
@@ -53,7 +56,7 @@
           </div>
 
           <div>
-            <label>Price</label>
+            <label class="details-tag">Price</label>
             <select name="" id="" v-model="product_price">
               <option value="" disabled>select one</option>
               <option value="0">Free</option>
@@ -65,38 +68,24 @@
           </div>
 
           <div>
-            <label>Skin type</label>
-            <input type="radio" value="Dry" v-model="skin_type" /> Dry
-            <input type="radio" value="Combination" v-model="skin_type" /> Combination
-            <input type="radio" value="Oily" v-model="skin_type" /> Oily
+            <label class="details-tag">Skin type</label>
+            <input type="radio" value="Dry" v-model="skin_type" id="skin-dry"/> <label for="skin-dry">Dry</label>
+            &nbsp;&nbsp;
+            <input type="radio" value="Combination" v-model="skin_type" id="skin-combo"/><label for="skin-combo">Combination</label>
+            &nbsp;&nbsp;
+            <input type="radio" value="Oily" v-model="skin_type" id="skin-oily"/> <label for="skin-oily">Oily</label>
           </div>
 
           <div>
             <!-- <label for="">Vegan?</label> -->
             <input type="checkbox" value="Yes" v-model="product_vegan" /> Vegan
-          </div>
-
-          <div>
+            <br>
             <input type="checkbox" value="Yes" v-model="product_cf" /> Cruelty free
           </div>
-            
 
-          <p>
-            <!-- {{search}} -->
-            {{product_condition}}
-            {{product_category}}
-            {{product_size}}
-            {{product_price}}
-            {{skin_type}}
-            {{product_vegan}}
-            {{product_cf}}
-            <br>
-          </p>
 
-          <a v-on:click="searchFilter">Search</a>
-          <br>
-
-          <a v-on:click="clearSearch">Reset Search Filters</a>
+          <button v-on:click="searchFilter">Search</button>
+          <button class="reset" v-on:click="clearSearch">Reset Search Filters</button>
         </div>
 
         <div class="search-results" v-bind:style="{'marginLeft': marginLeft}">
@@ -118,10 +107,6 @@
                 <br>
                 Suitable for: 
                 <span class="skin-type">{{p.skinType.join(',   ')}} SKIN</span>
-
-                <!-- <span class="skin-type" v-for="s in p.skinType.join(',')" v-bind:key="s._id">
-                  {{s}}
-                </span> -->
 
                 <span class="vegan" v-if="p.productVegan === 'Yes'"></span>
                 <span class="cf" v-if="p.productCrueltyFree === 'Yes'"></span>
@@ -216,9 +201,22 @@ export default {
 
 <style scoped>
 
+.inner-container{
+    padding:35px 0;
+}
+
+input[type="text"], select{
+  width:100% !important;
+  background-color:white;
+}
+
 .search-bar{
-  background-color:rgba(0,0,0,0.1);
-  padding: 20px;
+  background-color:rgba(216, 216, 216, 0.3);
+  padding: 20px 25px;
+}
+
+.search-bar div{
+  margin-bottom:25px;
 }
 
 .indiv-product a::before{
@@ -298,6 +296,17 @@ h2{
   width:100%;
 }
 
+button{
+  width:100%;
+  margin-bottom:15px;
+}
+
+.reset{
+  background-color:white;
+  border:1px solid black;
+  color:black;
+}
+
 @media screen  and (min-width:768px){
 
   .inner-container{
@@ -306,8 +315,6 @@ h2{
 
   .search-bar{
     width:300px;
-    background-color:rgba(0,0,0,0.1);
-    padding: 20px;
   }
 
   .search-results{
@@ -330,6 +337,11 @@ h2{
     padding-top:10%;
     z-index:2;
   }
+  
+  .indiv-product a::before{
+    width:100%;
+    height:8vw !important;
+  }
 
   .indiv-product a img{
     width:80%;
@@ -348,10 +360,6 @@ h2{
 
   .indiv-product{
     width:25%;
-  }
-  
-  .indiv-product a::before{
-    height:8vw;
   }
   
 

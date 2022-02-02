@@ -136,6 +136,7 @@ input[type="text"]{
 }
 
 .text-container{
+  margin-top:0;
   display:flex;
   flex-direction: column;
   margin-left:15px;

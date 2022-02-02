@@ -97,14 +97,13 @@ export default {
 <style scoped>
 
 .hero-banner{
-  width:100%;
-  height:calc(100vh - 62px);
+  padding:0;
+  height:calc(100vh - 62px) !important;
   /* background-color:pink; */
   background-image: url('https://images.pexels.com/photos/4202326/pexels-photo-4202326.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260');
   background-size: cover;
   background-position:bottom;
-  display:flex;
-  justify-content:center;
+  justify-content: flex-start;
 }
 
 .hero-text{
@@ -112,7 +111,7 @@ export default {
   /* background-color:pink; */
   text-align:center;
   box-sizing:border-box;
-  padding: 10vw 5% 0 5%;
+  margin: 250px 5% 0 5%;
 }
 
 .container{
@@ -131,7 +130,7 @@ export default {
 }
 .view-all-btn{
   /* margin: 50px 0; */
-  margin:50px auto;
+  margin:35px auto;
   color:white;
   background-color: rgb(0, 0, 175);
   padding:10px 20px;
@@ -143,16 +142,22 @@ export default {
   background-color:mistyrose;
 }
 
+
+@media screen  and (min-width:768px){
+
+  .hero-text{
+    max-width:550px;
+    margin: 0 5% 0 5%;
+    /* padding: 10vw 0 0 0; */
+  }
+
+}
+
 @media screen  and (min-width:1200px){
 
   .hero-banner{
     background-size: cover;
     background-position: 0 -70vw;
-  }
-
-  .hero-text{
-    max-width:550px;
-    padding: 10vw 0 0 0;
   }
 }
 

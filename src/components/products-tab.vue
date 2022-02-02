@@ -44,12 +44,6 @@ export default {
     backToProduct: function(){
       this.tab = "productInfo"
     },
-    // productInfo:function(){
-    //   this.tab = "productInfo"
-    // },
-    // editThisProduct:function(){
-    //   this.tab = "editThisProduct"
-    // },
     viewProduct:function(productId){
       this.tab = "productInfo";
       // console.log(this.tab)
