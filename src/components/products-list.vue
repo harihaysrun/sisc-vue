@@ -78,9 +78,9 @@
 
           <div>
             <!-- <label for="">Vegan?</label> -->
-            <input type="checkbox" value="Yes" v-model="product_vegan" /> Vegan
+            <input type="checkbox" value="Yes" v-model="product_vegan" if="vegan" /> <label for="vegan">Vegan</label>
             <br>
-            <input type="checkbox" value="Yes" v-model="product_cf" /> Cruelty free
+            <input type="checkbox" value="Yes" v-model="product_cf" if="cf" /> <label for="cf">Cruelty free</label>
           </div>
 
 
