@@ -42,7 +42,8 @@ export default {
   },
   data: function(){
     return{
-      'heroText': ''
+      'heroText': '',
+      'sizeIs': ''
     }
   },
   created: function(){
@@ -63,6 +64,10 @@ export default {
       this.heroText = "4"
     }, 8000)
 
+    if (window.innerWidth > 768){
+      this.sizeIs = "tab"
+    }
+    
   },
   methods:{
     changetoSkincareProductsPage: function(typeOfPage){

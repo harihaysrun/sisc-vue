@@ -272,6 +272,10 @@ li{
   z-index:-1;
 }
 
+.indiv-product a:hover{
+  background-color: rgb(240, 240, 240, 0.8);
+}
+
 .indiv-product a img{
   width:120px;
   height:120px;
@@ -393,10 +397,6 @@ h2{
     /* height:20%; */
     background-color: mediumslateblue;
     z-index:-1;
-  }
-  
-  .indiv-product a:hover{
-    background-color: brown;
   }
 
   .indiv-product a img{

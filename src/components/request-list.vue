@@ -52,7 +52,7 @@ export default {
   data: function(){
     return{
       'products': [],
-      'search': '',
+      'search': ''
     }
   },
   props: ['pageTitle', 'max', 'display', 'width'],
@@ -182,16 +182,20 @@ input[type="text"]{
   left:0;
   width:80px;
   height:100%;
-  background-color: lavender;
+  background-color: mediumslateblue;
   z-index:-1;
+}
+
+.indiv-product a:hover{
+  background-color: rgb(240, 240, 240, 0.8);
 }
 
 .indiv-product a img{
   width:120px !important;
-  height:120px;
+  height:120px !important;
   border-radius:10px;
   box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-  flex:1;
+  /* flex:1; */
 }
 
 .product-info{
