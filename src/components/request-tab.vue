@@ -2,16 +2,21 @@
 
     <div class="main-container">
 
-      <!-- <div class="container"> -->
+      <div class="container">
 
         <button v-if="tab === 'productInfo'" v-on:click="backToProducts">Back</button>
         <button v-if="tab === 'editThisProduct'" v-on:click="backToProduct">Back</button>
+
+      </div>
         
         <RequestsList page-title="Requests" v-if="tab === 'viewAllProducts'" v-on:view-product="viewProduct"/>
+      
+      <div class="container">
+        
         <RequestInfo v-if="tab === 'productInfo'" v-on:edit-product="editProduct" v-bind:productId="productViewing"/>
         <EditProduct v-if="tab === 'editThisProduct'" v-on:remove-product="removeProduct" v-bind:productId="productEditing"/>
 
-      <!-- </div> -->
+      </div>
     </div>
     
 </template>
@@ -86,8 +91,8 @@ export default {
 
 button{
   margin-top:35px;
-  margin-right:auto;
-  margin-left:10%;
+  /* margin-right:auto; */
+  /* margin-left:10%; */
 }
 
 </style>

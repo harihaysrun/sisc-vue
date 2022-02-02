@@ -1,16 +1,18 @@
 <template>
 
-    <div class="main-container">
+    <div class="inner-container">
+      
+      <h1 class="title-from-home" v-if="pageTitle === 'Recent Requests'">{{pageTitle}}</h1>
 
-      <div class="hero-banner">
+      <div class="hero-banner" v-bind:style="{'display': display}" >
         <h1>{{pageTitle}}</h1>
 
-        <div v-bind:style="{'display': display}" style="background-color:rgba(0,0,0,0.1); padding: 20px;">
+        <div style="background-color:rgba(0,0,0,0.1); padding: 20px;">
           <input type="text" v-model="search" placeholder="Search by brand or product name">
         </div>
       </div>
 
-      <div class="container">
+      <div class="search-results" v-bind:style="{'width': width}">
         
           <div class="indiv-product" v-for="p in filteredRequests.slice(0,max)" v-bind:key="p._id">
             
@@ -53,7 +55,7 @@ export default {
       'search': '',
     }
   },
-  props: ['pageTitle', 'max', 'display'],
+  props: ['pageTitle', 'max', 'display', 'width'],
   methods:{
     viewThisProduct: function(productId){
       this.tab = "productInfo";
@@ -76,6 +78,10 @@ export default {
 
 <style scoped>
 
+.title-from-home{
+  margin-right:auto;
+}
+
 a:hover, li:hover{
     background-color:rgb(247, 247, 247);
     cursor:pointer;
@@ -92,9 +98,12 @@ li{
 
 .inner-container{
   width:100%;
+  display:flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-h1{
+.hero-banner h1{
   /* margin-bottom:0; */
   color:white;
 }
@@ -138,6 +147,14 @@ input[type="text"]{
   border:0;
   background-color:white;
   border-bottom:1px solid lightgray;
+}
+
+.search-results{
+  width:90%;
+  margin:35px 0;
+  display:flex;
+  flex-direction: column;
+  /* background-color:mediumslateblue; */
 }
 
 .indiv-product{
@@ -190,6 +207,7 @@ input[type="text"]{
 }
 
 @media screen  and (min-width:768px){
+
   input[type="text"]{
     width:50vw;
   }
@@ -198,6 +216,18 @@ input[type="text"]{
     margin-left:25px;
     /* width:80%; */
   }
+
+  .search-results{
+    width:60%;
+    flex-flow: row wrap;
+  }
+
+  .indiv-product{
+    /* width:50%; */
+    box-sizing: border-box;
+    padding:10px;
+  }
+
 
   .reply{
     display:block;
@@ -212,9 +242,9 @@ input[type="text"]{
 
 @media screen  and (min-width:1024px){
 
-  .container{
+  /* .container{
     width:50%;
-  }
+  } */
   
 }
 

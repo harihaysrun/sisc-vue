@@ -20,7 +20,7 @@
         </div>
 
         <div class="second-container">
-          <RequestsList page-title="Recent Requests" max="4" display="none"/>
+          <RequestsList page-title="Recent Requests" max="4" display="none" width="100%"/>
           <a class="view-all-btn" v-on:click="changetoRequestsPage('requests')">View all</a>
         </div>
 

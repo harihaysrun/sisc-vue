@@ -186,7 +186,7 @@ h1, h2, h3, h4{
 
 .inner-container{
   padding:35px 0;
-  width:80%;
+  /* width:80%; */
   display:flex;
   flex-direction: column;
 }

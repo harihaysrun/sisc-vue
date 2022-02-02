@@ -1,6 +1,6 @@
 <template>
 
-    <div class="container">
+    <div class="inner-container">
 
       <div class="details-container">
 
@@ -225,7 +225,7 @@ select, input[type="text"].specify{
     flex-direction: row;
   }
 
-  .container{
+  .inner-container{
     margin-top:35px;
     padding-bottom:50px;
   }
