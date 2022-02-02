@@ -15,22 +15,22 @@
           <div id="success-message">Successfully edited product information!</div>
 
           <div>
-            <label class="details-tag">Brand</label>
+            <span class="details-tag">Brand</span>
             <input type="text" v-model="product_brand" />
           </div>
           
           <div>
-            <label class="details-tag">Product Name</label>
+            <span class="details-tag">Product Name</span>
             <input type="text" v-model="product_name" />
           </div>
           
           <div>
-            <label class="details-tag">Product Image</label>
+            <span class="details-tag">Product Image</span>
             <input type="text" v-model="product_image" />
           </div>
 
           <div>
-            <label class="details-tag">Quantity</label>
+            <span class="details-tag">Quantity</span>
             <select name="" id="" v-model="product_quantity">
               <option value="" disabled>select one</option>
               <option value="1">1</option>
@@ -42,7 +42,7 @@
           </div>
 
           <div>
-            <label class="details-tag">Product Size</label>
+            <span class="details-tag">Product Size</span>
             <select name="" id="" v-model="product_size">
               <option value="" disabled>select one</option>
               <option value="Sample">Sample</option>
@@ -54,7 +54,7 @@
           </div>
 
           <div>
-            <label class="details-tag">Product Description</label>
+            <span class="details-tag">Product Description</span>
             <textarea name="" id="" cols="30" rows="10" v-model="product_description"></textarea>
           </div>
 
@@ -153,104 +153,8 @@ export default {
 
 <style scoped>
 
-h1, h2, h3, h4{
-  margin:0;
-  padding:0;
-}
-
-.inner-container{
-  display:flex;
-  flex-direction: column;
-  justify-content: center;
-}
-
-.details-container{
-  /* background-color:pink; */
-  display:flex;
-  flex-direction: column;
-}
-
-.text-container{
-  margin-top:50px;
-}
-
-.text-container p{
-  margin-bottom:25px;
-}
-
 .text-container div{
   margin-bottom:25px;
-}
-
-.img-container img{
-  width:100%;
-  border-radius:25px;
-  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-}
-
-.details-tag{
-  text-transform: uppercase;
-  display:block;
-  font-size:12px;
-  letter-spacing: 1px;
-  color:mediumslateblue;
-}
-
-
-input[type="text"], textarea, select{
-  -moz-appearance:none;
-  -webkit-appearance:none;
-  appearance:none;
-  width:100% !important;
-  font-family: 'Manrope', sans-serif;
-  box-sizing: border-box;
-  padding:15px 20px;
-  border:0;
-  background-color:rgb(240, 240, 240, 0.3);
-  border-bottom:1px solid lightgray;
-}
-
-input[type="text"].specify{
-  background-color:rgb(249, 248, 255);
-}
-
-select, input[type="text"].specify{
-  width:22% !important;
-  margin-right:15px;
-}
-
-@media screen  and (min-width:768px){
-
-  .details-container{
-    flex-direction: row;
-  }
-
-  .inner-container{
-    margin-top:35px;
-    padding-bottom:50px;
-  }
-
-  .img-container{
-    flex:1;
-    /* background-color:pink; */
-  }
-
-  .text-container{
-    /* background-color:palegoldenrod; */
-    margin-left:50px;
-    margin-top:0;
-    flex:2;
-  }
-
-  .edit-btn{
-    padding:15px 25px;
-    margin-left:auto;
-  }
-
-  input[type="text"]{
-    width:250px;
-  }
-
 }
 
 </style>
