@@ -14,12 +14,6 @@
 
           <div id="success-message">Successfully edited product information!</div>
 
-          <!-- <div>
-            <label class="details-tag">Name</label>
-            <input type="text" v-model="poster_name" />
-          </div> -->
-
-
           <div>
             <label class="details-tag">Product condition</label>
             <input type="radio" value="New" v-model="product_condition" /> Brand New

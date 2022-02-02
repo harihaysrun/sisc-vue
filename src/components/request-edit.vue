@@ -1,77 +1,73 @@
 <template>
 
-    <div>
-        
-      <h1>Edit {{product_brand}} {{product_name}}</h1>
+    <div class="container">
 
-      <div id="success-message">Successfully edited product information!</div>
+      <div class="details-container">
 
-      <div>
-        <label>Brand</label>
-        <input type="text" v-model="product_brand" />
-      </div>
-      
-      <div>
-        <label>Product Name</label>
-        <input type="text" v-model="product_name" />
-      </div>
-      
-      <div>
-        <label>Product Image</label>
-        <input type="text" v-model="product_image" />
-        <div id="previewPic">
+        <div class="img-container">
           <img v-bind:src="product_image">
         </div>
-      </div>
 
-      <div>
-        <label>Quantity</label>
-        <select name="" id="" v-model="product_quantity">
-          <option value="" disabled>select one</option>
-          <option value="1">1</option>
-          <option value="2">2</option>
-          <option value="Others">Others</option>
-        </select>
+        <div class="text-container">
+        
+          <h1>Edit {{product_brand}} {{product_name}}</h1>
 
-        <input type="text" v-model="product_quantity_box" v-if="product_quantity === 'Others'" />
-      </div>
+          <div id="success-message">Successfully edited product information!</div>
 
-      <div>
-        <label>Product Size</label>
-        <select name="" id="" v-model="product_size">
-          <option value="" disabled>select one</option>
-          <option value="Sample">Sample</option>
-          <option value="Mini">Mini</option>
-          <option value="Full">Full</option>
-        </select>
+          <div>
+            <label class="details-tag">Brand</label>
+            <input type="text" v-model="product_brand" />
+          </div>
+          
+          <div>
+            <label class="details-tag">Product Name</label>
+            <input type="text" v-model="product_name" />
+          </div>
+          
+          <div>
+            <label class="details-tag">Product Image</label>
+            <input type="text" v-model="product_image" />
+          </div>
 
-        <input type="text" v-model="product_size_ml" />
-      </div>
+          <div>
+            <label class="details-tag">Quantity</label>
+            <select name="" id="" v-model="product_quantity">
+              <option value="" disabled>select one</option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="Others">Others</option>
+            </select>
 
-      <div>
-        <label>Product Description</label>
-        <textarea name="" id="" cols="30" rows="10" v-model="product_description"></textarea>
-      </div>
+            <input class="specify" type="text" v-model="product_quantity_box" v-if="product_quantity === 'Others'" />
+          </div>
 
-      <button v-on:click="editProduct">Edit Product listing</button>
-      <button v-on:click="removeProduct">Delete Product</button>
+          <div>
+            <label class="details-tag">Product Size</label>
+            <select name="" id="" v-model="product_size">
+              <option value="" disabled>select one</option>
+              <option value="Sample">Sample</option>
+              <option value="Mini">Mini</option>
+              <option value="Full">Full</option>
+            </select>
 
-      <div id="danger-message">
-        Are you sure you want to delete this product?
-        <button v-on:click="remove(productId)">Delete Product</button>
-      </div>
-      
-      <div>
-        <ul>
-          <li>Product condition: {{product_condition}}</li>
-          <li>Brand: {{product_brand}}</li>
-          <li>Name of product: {{product_name}}</li>
-          <li>Product image link: {{product_image}}</li>
-          <li>Product quantity: {{product_quantity}}</li>
-          <li>Product quantity (others): {{product_quantity_box}}</li>
-          <li>Size: {{product_size}}</li>
-          <li>Size in ml: {{product_size_ml}}</li>
-        </ul>
+            <input class="specify" type="text" v-model="product_size_ml" placeholder="Specify product in ml"/>
+          </div>
+
+          <div>
+            <label class="details-tag">Product Description</label>
+            <textarea name="" id="" cols="30" rows="10" v-model="product_description"></textarea>
+          </div>
+
+          <button v-on:click="editProduct">Edit Product listing</button>
+          <button v-on:click="removeProduct">Delete Product</button>
+
+          <div id="danger-message">
+            Are you sure you want to delete this product?
+            <button v-on:click="remove(productId)">Delete Product</button>
+          </div>
+
+        </div>
+
       </div>
 
     </div>
@@ -156,5 +152,105 @@ export default {
 </script>
 
 <style scoped>
+
+h1, h2, h3, h4{
+  margin:0;
+  padding:0;
+}
+
+.inner-container{
+  display:flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.details-container{
+  /* background-color:pink; */
+  display:flex;
+  flex-direction: column;
+}
+
+.text-container{
+  margin-top:50px;
+}
+
+.text-container p{
+  margin-bottom:25px;
+}
+
+.text-container div{
+  margin-bottom:25px;
+}
+
+.img-container img{
+  width:100%;
+  border-radius:25px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.details-tag{
+  text-transform: uppercase;
+  display:block;
+  font-size:12px;
+  letter-spacing: 1px;
+  color:mediumslateblue;
+}
+
+
+input[type="text"], textarea, select{
+  -moz-appearance:none;
+  -webkit-appearance:none;
+  appearance:none;
+  width:100% !important;
+  font-family: 'Manrope', sans-serif;
+  box-sizing: border-box;
+  padding:15px 20px;
+  border:0;
+  background-color:rgb(240, 240, 240, 0.3);
+  border-bottom:1px solid lightgray;
+}
+
+input[type="text"].specify{
+  background-color:rgb(249, 248, 255);
+}
+
+select, input[type="text"].specify{
+  width:22% !important;
+  margin-right:15px;
+}
+
+@media screen  and (min-width:768px){
+
+  .details-container{
+    flex-direction: row;
+  }
+
+  .container{
+    margin-top:35px;
+    padding-bottom:50px;
+  }
+
+  .img-container{
+    flex:1;
+    /* background-color:pink; */
+  }
+
+  .text-container{
+    /* background-color:palegoldenrod; */
+    margin-left:50px;
+    margin-top:0;
+    flex:2;
+  }
+
+  .edit-btn{
+    padding:15px 25px;
+    margin-left:auto;
+  }
+
+  input[type="text"]{
+    width:250px;
+  }
+
+}
 
 </style>
