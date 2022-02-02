@@ -1,6 +1,6 @@
 <template>
 
-    <div class="inner-container">
+    <!-- <div class="inner-container"> -->
 
       <div class="details-container">
 
@@ -166,7 +166,7 @@
         </ul>
       </div> -->
 
-    </div>
+    <!-- </div> -->
     
 </template>
 
@@ -350,7 +350,10 @@ select, input[type="text"].specify{
 
   .img-container{
     flex:1;
-    /* background-color:pink; */
+    height:25vw;
+    background-color:pink;
+    position:sticky;
+    top: 120px;
   }
 
   .text-container{
