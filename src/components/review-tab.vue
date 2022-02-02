@@ -84,4 +84,8 @@ export default {
 
 <style scoped>
 
+button{
+  margin-top:35px;
+}
+
 </style>

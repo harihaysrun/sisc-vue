@@ -1,59 +1,81 @@
 <template>
 
-    <div>
+    <div class="inner-container">
+
+      <div class="details-container">
+          
+        <div class="img-container">
+          <img v-bind:src="product_image" alt="">
+        </div>
+
+        <div class="text-container">
+          <h3>{{product_brand}}</h3>
+          <h1>{{product_name}}</h1>
+
+          <p>
+            <span class="details-tag">Category:</span>
+            {{product_category}}
+          </p>
+
+          <p>
+            <span class="details-tag">Vegan?</span>
+            {{product_vegan}}
+          </p>
+
+          <p>
+            <span class="details-tag">Cruelty free?</span>
+            {{product_vegan}}
+          </p>
+
+        </div>
         
-      <h1>{{product_brand}} {{product_name}}</h1>
-      <small>{{productId}}</small>
-      
-      <div>
-        <ul>
-          <li>Brand: {{product_brand}}</li>
-          <li>Name of product: {{product_name}}</li>
-          <li>Product image link: {{product_image}}</li>
-          <li>Category: {{product_category}}</li>
-          <li>Vegan?: {{product_vegan}}</li>
-          <li>Cruelty free?: {{product_cf}}</li>
-        </ul>
       </div>
 
       <!-- <button v-on:click="edit(productId)">Edit Product</button> -->
 
-      <div>
+      <div class="comments-container">
         <h1>Comments section</h1>
 
-      <div>
 
-        <div>
-          <label for="">Name</label>
-          <input type="text" v-model="comment_name"/>
-        </div>
-        <div>
-          <label for="">Age range</label>
-          <select name="" id="" v-model="my_age">
-            <option value="" disabled>select one</option>
-            <option value="15-20">15-20 Years Old</option>
-            <option value="21-25">21-25 Years Old</option>
-            <option value="26-30">26-30</option>
-            <option value="31-35">31-35</option>
-            <option value="36-40">36-40</option>
-            <option value="41-45">41-45</option>
-            <option value="Others">Others</option>
-          </select>
+        <div class="name-offer">
+          <div>
+            <label for="">Name</label>
+            <input type="text" v-model="comment_name"/>
+          </div>
 
-          <input type="text" v-model="my_age_others" placeholder="Age" v-if="my_rating === 'Others'"/>
+          <div>
+            <label for="">Age range</label>
+            <div class="age-range">
+              <select class="age" name="" id="" v-model="my_age">
+                <option value="" disabled>select one</option>
+                <option value="15-20">15-20 Years Old</option>
+                <option value="21-25">21-25 Years Old</option>
+                <option value="26-30">26-30</option>
+                <option value="31-35">31-35</option>
+                <option value="36-40">36-40</option>
+                <option value="41-45">41-45</option>
+                <option value="Others">Others</option>
+              </select>
+
+              <input class="myage-others" type="text" v-model="my_age_others" placeholder="Age" v-if="my_age === 'Others'"/>
+            </div>
+          </div>
+
+          <div>
+            <label for="">My rating</label>
+            <select class="rating" name="" id="" v-model="my_rating">
+              <option value="" disabled>select one</option>
+              <option value="☆☆☆☆☆">0 Stars</option>
+              <option value="★☆☆☆☆">1 Stars</option>
+              <option value="★★☆☆">2 Stars</option>
+              <option value="★★★☆☆">3 Stars</option>
+              <option value="★★★★☆">4 Stars</option>
+              <option value="★★★★★">5 Stars</option>
+            </select>
+          </div>
+
         </div>
-        <div>
-          <label for="">My rating</label>
-          <select name="" id="" v-model="my_rating">
-            <option value="" disabled>select one</option>
-            <option value="☆☆☆☆☆">0 Stars</option>
-            <option value="★☆☆☆☆">1 Stars</option>
-            <option value="★★☆☆">2 Stars</option>
-            <option value="★★★☆☆">3 Stars</option>
-            <option value="★★★★☆">4 Stars</option>
-            <option value="★★★★★">5 Stars</option>
-          </select>
-        </div>
+
         <div>
           <label>My skin type:</label>
           <input type="radio" value="Dry" v-model="my_skin_type" /> Dry
@@ -61,12 +83,14 @@
           <input type="radio" value="Combination" v-model="my_skin_type" /> Combination
           <input type="radio" value="Oily" v-model="my_skin_type" /> Oily
         </div>
+
         <div>
           <textarea v-model="comment_text" id="" cols="30" rows="10" placeholder="type comment here"></textarea>
         </div>
+
         <div>
           <label for="">Will I repurchase this?</label>
-          <select name="" id="" v-model="repurchase">
+          <select class="repurchase" name="" id="" v-model="repurchase">
             <option value="" disabled>select one</option>
             <option value="Will repurchase">Yes</option>
             <option value="Won't repurchase">No</option>
@@ -76,51 +100,31 @@
 
         <button v-on:click="comment(productId)">Post Comment</button>
 
-      </div>
 
-      <p>
-        Name: {{comment_name}}
-        <br>
-        Age: {{my_age}} {{my_age_others}}
-        <br>
-        Stars: {{my_rating}}
-        <br>
-        Skin Type: {{my_skin_type}}
-        <br>
-        Comment: {{comment_text}}
-        <br>
-        Stars: {{repurchase}}
-        <br>
-        Number of reviews: {{ratings}}
-      </p>
+      </div>
 
       <div>
         <!-- There are no comments -->
 
-        <ol>
-          <li v-for="c in comments" v-bind:key="c._id">
-            <b class="c-name">{{c.commentName}}</b> || {{c.age}} {{c.ageOthers}} years old
-            <div class="review-rating">
-              {{c.rating}}
-              <!-- <ol>
-                <li v-for="star in rating" v-bind:key="star._id">
-                    A
-                </li>
-              </ol> -->
-            </div>
-            <br>
-            {{c.skinType}}
-            <br>
-            {{c.repurchase}}
-            <br>
-            <span class="existingComment">
-              {{c.commentText}}
-            </span>
-            <!-- <button v-on:click="deleteComment(c._id)">Delete</button> -->
-          </li>
-        </ol>
+        <div class="each-comment" v-for="c in comments" v-bind:key="c._id">
 
-      </div>
+          <div class="offer">
+              <b>{{c.commentName}}</b>
+                <span class="details-tag">{{c.age}} {{c.ageOthers}} years old</span>
+                <span class="details-tag">{{c.skinType}} Skin</span>
+          </div>
+
+          <div class="existingComment">
+            {{c.rating}}
+            <p>{{c.commentText}}</p>
+            <span class="repurchase-status">{{c.repurchase}}</span>
+          </div>
+
+          <div class="comment-buttons">
+            <button v-on:click="deleteComment(c._id)">Delete</button>
+          </div>
+        </div>
+
 
       </div>
 
@@ -247,5 +251,178 @@ export default {
 </script>
 
 <style scoped>
+
+h1, h2, h3, h4{
+  margin:0;
+  padding:0;
+}
+
+.inner-container{
+  padding:35px 0;
+  /* width:80%; */
+  display:flex;
+  flex-direction: column;
+}
+
+.details-container{
+  display:flex;
+  flex-direction: column;
+}
+
+.text-container{
+  margin-top:50px;
+}
+
+.text-container p{
+  margin-bottom:25px;
+}
+
+.img-container img{
+  width:100%;
+  border-radius:25px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.details-tag{
+  text-transform: uppercase;
+  display:block;
+  font-size:12px;
+  letter-spacing: 1px;
+  color:mediumslateblue;
+}
+
+.edit-btn{
+  padding:15px 25px;
+}
+
+.comments-container{
+  margin-top:50px;
+  background-color: rgba(0,0,0,0.05);
+  padding:25px 35px;
+  border-radius: 15px;
+  margin-bottom:50px;
+}
+
+/* .comments-container div{
+    margin-bottom:25px;
+} */
+
+input[type="text"], textarea, select{
+  width:100%;
+  font-family: 'Manrope', sans-serif;
+  box-sizing: border-box;
+  padding:15px 20px;
+}
+
+.each-comment{
+  /* background-color:azure; */
+  display:flex;
+  flex-direction:column;
+  margin:20px 0;
+  padding-bottom:25px;
+  border-bottom: 1px solid rgb(236, 236, 236);
+}
+
+.each-comment div{
+  padding-top:10px;
+}
+
+.each-comment b{
+  color:mediumslateblue;
+}
+
+.offer{
+  display:flex;
+  flex-direction: column;
+}
+
+.repurchase-status{
+  background-color:#eeeeee;
+  color:gray;
+  text-transform: uppercase;
+  font-size:13px;
+  letter-spacing:1px;
+  padding: 5px 20px;
+  margin-top:25px;
+  border-radius:15px;
+}
+
+
+@media screen  and (min-width:768px){
+
+  .details-container{
+    flex-direction: row;
+  }
+
+  .img-container{
+    flex:1;
+    /* background-color:pink; */
+  }
+
+  .text-container{
+    /* background-color:palegoldenrod; */
+    margin-left:50px;
+    margin-top:0;
+    flex:5;
+  }
+
+  .edit-btn{
+    margin-left:auto;
+  }
+
+  .name-offer{
+    display:flex;
+    flex-direction:row;
+  }
+  
+  .name-offer div{
+    margin-right: 25px;
+  }
+
+  input[type="text"], .rating, .repurchase{
+    width:250px;
+  }
+
+  .age-range{
+    width:100% !important;
+    display:flex;
+    flex-direction: row;
+  }
+
+  .myage-others{
+    margin-left: 25px;
+    margin-right: 0;
+  }
+
+  .each-comment{
+    flex-direction:row;
+    margin:35px 0;
+  }
+
+  .each-comment div{
+    padding-top:0px;
+  }
+
+  .each-comment div:first-child,.each-comment div:nth-child(3){
+    /* background-color:pink; */
+    flex:1.5;
+  }
+
+  .each-comment div:nth-child(2){
+    flex:6;
+  }
+
+  .each-comment div:nth-child(3){
+    display:flex;
+    justify-content: flex-end;
+    align-items: center;
+  }
+
+  .comment-buttons button{
+    height:50px;
+  }
+
+
+}
 
 </style>
