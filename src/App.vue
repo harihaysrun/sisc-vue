@@ -33,21 +33,7 @@
       <AddProduct v-if="page === 'addProduct'" v-on:product-added="refreshAddPage"/>
 
       <footer>
-        Hi
-        <br>
-        ok
-        <br>
-        ok
-        <br>
-        ok
-        <br>
-        ok
-        <br>
-        ok
-        <br>
-        ok
-        <br>
-        ok
+        © Syahirah 2022
       </footer>
     
   </div>
@@ -204,6 +190,7 @@ footer{
   color:white;
   box-sizing: border-box;
   padding: 50px 10% 50px 10%;
+  text-align:center;
 }
 
 @media screen  and (min-width:768px){

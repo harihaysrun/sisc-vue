@@ -34,7 +34,7 @@
       <!-- <button v-on:click="edit(productId)">Edit Product</button> -->
 
       <div class="comments-container">
-        <h1>Comments section</h1>
+        <h1>Reviews</h1>
 
 
         <div class="name-offer">
