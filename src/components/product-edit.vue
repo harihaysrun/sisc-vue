@@ -15,9 +15,9 @@
           <div id="success-message">Successfully edited product information!</div>
 
           <div>
-            <label class="details-tag">Product condition</label>
-            <input type="radio" value="New" v-model="product_condition" /> Brand New
-            <input type="radio" value="Used" v-model="product_condition" /> Used
+            <span class="details-tag">Product condition</span>
+            <input type="radio" id="condition-new" value="New" v-model="product_condition"><label for="condition-new">Brand New</label>
+            <input type="radio" id="condition-used" value="Used" v-model="product_condition"><label for="condition-used">Used</label>
             <div class="reminder-message" v-if="product_condition === 'Used'">Please remember to sanitize any used products before handing them off to someone else!</div>
           </div>
 

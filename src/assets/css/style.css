@@ -136,15 +136,6 @@ textarea{
     display:none;
 }
 
-.reminder-message{
-    background-color:rgb(255, 228, 225, 0.2);
-    color:grey;
-    border:1px solid mistyrose;
-    padding:25px;
-    border-radius:15px;
-    /* display:none; */
-}
-
 #danger-message{
     background-color:rgb(255, 0, 0, 0.1);
     color:red;

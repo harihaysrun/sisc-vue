@@ -8,38 +8,45 @@
 
       <div class="text-container">
         
-        <h1>Add or Request skincare product</h1>
+        <div>
+          <h1>Add or Request skincare product</h1>
+        </div>
 
         <div id="success-message">Successfully added product!</div>
 
         <div>
-          <label class="details-tag">Name</label>
+          <span class="details-tag">I'm looking to...</span>
+          <input type="radio" value="sellOrGive" v-model="formData.listing_type" id="post-sell"/><label for="post-sell"> Sell or Give this product away</label>
+          <br>
+          <input type="radio" value="request" v-model="formData.listing_type" id="post-request"/><label for="post-request"> Request a product</label>
+          <br>
+          <input type="radio" value="review" v-model="formData.listing_type" id="post-review"/><label for="post-review"> Add new product to review board</label>
+        </div>
+
+        <div v-if="formData.listing_type != 'review'">
+          <span class="details-tag">Name</span>
           <input type="text" v-model="formData.poster_name" />
         </div>
 
-        <div>
-          <label class="details-tag">I'm looking to...</label>
-          <input type="radio" value="sellOrGive" v-model="formData.listing_type" /> Sell or Give this product away
-          <input type="radio" value="request" v-model="formData.listing_type" /> Request a product
-          <input type="radio" value="review" v-model="formData.listing_type" /> Add new product to review board
-        </div>
-
         <div v-if="formData.listing_type === 'sellOrGive'">
-          <label class="details-tag">Product condition</label>
-          <input type="radio" value="New" v-model="formData.product_condition" /> Brand New
-          <input type="radio" value="Used" v-model="formData.product_condition" /> Used
+          <span class="details-tag">Product condition</span>
+          <input type="radio" value="New" v-model="formData.product_condition" id="condition-new"/><label for="condition-new">Brand New</label>
+          &nbsp;&nbsp;
+          <input type="radio" value="Used" v-model="formData.product_condition" id="condition-used"/><label for="condition-used"> Used</label>
           <div class="reminder-message" v-if="formData.product_condition === 'Used'">Please remember to sanitize any used products before handing them off to someone else!</div>
         </div>
 
         <div>
-          <label class="details-tag">Brand</label>
+          <span class="details-tag">Brand</span>
           <input type="text" v-model="formData.product_brand" />
         </div>
         
         <div>
-          <label class="details-tag">Product Name</label>
-          <input type="text" v-model="formData.product_name"/>
-          <button v-if="formData.listing_type === 'review'" v-on:click="crosscheckWithReviews">Check if product exists</button>
+          <span class="details-tag">Product Name</span>
+          <div class="review-name">
+            <input type="text" v-model="formData.product_name"/>
+            <button v-if="formData.listing_type === 'review'" v-on:click="crosscheckWithReviews">Check if product exists</button>
+          </div>
           <div class="reminder-message" v-if="inReviewBoard === false">
             This product doesn't exist in the reviews board
             <button v-on:click="hideMsg">OK</button>
@@ -55,14 +62,14 @@
         </div>
         
         <div>
-          <label class="details-tag">Product Image Link</label>
+          <span class="details-tag">Product Image Link</span>
           <input type="text" v-model="formData.product_image" />
         </div>
 
         <div v-if="formData.listing_type != 'request'">
-          <label class="details-tag">Product Category</label>
+          <span class="details-tag">Product Category</span>
           <select name="" id="" v-model="formData.product_category">
-            <option value="" disabled>select one</option>
+            <option value="" disabled>Select One</option>
             <option value="First Cleanser">First Cleanser</option>
             <option value="Second Cleanser">Second Cleanser</option>
             <option value="Toner">Toner</option>
@@ -86,9 +93,9 @@
         </div>
 
         <div v-if="formData.listing_type != 'review'">
-          <label class="details-tag">Quantity</label>
+          <span class="details-tag">Quantity</span>
           <select name="" id="" v-model="formData.product_quantity">
-            <option value="" disabled>select one</option>
+            <option value="" disabled>Select One</option>
             <option value="1">1</option>
             <option value="2">2</option>
             <option value="Others">Others</option>
@@ -98,9 +105,9 @@
         </div>
 
         <div v-if="formData.listing_type != 'review'">
-          <label class="details-tag">Product Size</label>
+          <span class="details-tag">Product Size</span>
           <select name="" id="" v-model="formData.product_size">
-            <option value="" disabled>select one</option>
+            <option value="" disabled>Select One</option>
             <option value="Sample">Sample</option>
             <option value="Mini">Mini</option>
             <option value="Full">Full</option>
@@ -110,104 +117,59 @@
         </div>
 
         <div v-if="formData.listing_type === 'sellOrGive'">
-          <label class="details-tag">Price</label>
+          <span class="details-tag">Price</span>
           <select name="" id="" v-model="formData.product_price">
-            <option value="" disabled>select one</option>
+            <option value="" disabled>Select One</option>
             <option value="Free">Free</option>
             <option value="Specify">Specify</option>
           </select>
 
-          <input type="text" v-model="formData.product_price_box" placeholder="Put any value" v-if="formData.product_price === 'Specify'"/>
+          <input class="specify" type="text" v-model="formData.product_price_box" placeholder="Put any value" v-if="formData.product_price === 'Specify'"/>
         </div>
 
         <div v-if="formData.listing_type != 'review'">
-          <label class="details-tag">Product Description</label>
-          <textarea name="" id="" cols="30" rows="10" v-model="formData.product_description"></textarea>
+          <span class="details-tag">Product Description</span>
+          <textarea name="" id="" v-model="formData.product_description"></textarea>
         </div>
 
         <div v-if="formData.listing_type === 'sellOrGive'">
-          <label class="details-tag">Suitable for skin type</label>
-          <input type="checkbox" value="Dry" v-model="formData.skin_type" /> Dry
-          <input type="checkbox" value="Normal" v-model="formData.skin_type" /> Normal
-          <input type="checkbox" value="Combination" v-model="formData.skin_type" /> Combination
-          <input type="checkbox" value="Oily" v-model="formData.skin_type" /> Oily
+          <span class="details-tag">Suitable for skin type</span>
+          <input type="checkbox" value="Dry" v-model="formData.skin_type" id="skin-dry"/> <label for="skin-dry">Dry</label>
+          &nbsp;&nbsp;
+          <input type="checkbox" value="Normal" v-model="formData.skin_type" id="skin-normal"/> <label for="skin-normal">Normal</label>
+          &nbsp;&nbsp;
+          <input type="checkbox" value="Combination" v-model="formData.skin_type" id="skin-combo"/> <label for="skin-combo">Combination</label>
+          &nbsp;&nbsp;
+          <input type="checkbox" value="Oily" v-model="formData.skin_type" id="skin-oily"/> <label for="skin-oily">Oily</label>
         </div>
 
         <div v-if="formData.listing_type === 'sellOrGive'">
-          <label class="details-tag">Skin concerns:</label>
+          <span class="details-tag">Skin concerns:</span>
           <input type="text" v-model="formData.skin_concerns" placeholder="Separate words with commas. E.g redness, irritation, sensitive" />
         </div>
 
         <div v-if="formData.listing_type != 'request'">
-          <label class="details-tag">Is this product vegan?</label>
-          <input type="radio" value="Yes" v-model="formData.product_vegan" /> Yes
-          <input type="radio" value="No" v-model="formData.product_vegan" /> No
-          <input type="radio" value="N/A" v-model="formData.product_vegan" /> N/A
+          <span class="details-tag">Is this product vegan?</span>
+          <input type="radio" value="Yes" v-model="formData.product_vegan" id="vegan-yes" /> <label for="vegan-yes">Yes</label>
+          &nbsp;&nbsp;
+          <input type="radio" value="No" v-model="formData.product_vegan" id="vegan-no" /> <label for="vegan-no">No</label>
+          &nbsp;&nbsp;
+          <input type="radio" value="N/A" v-model="formData.product_vegan" id="vegan-na" /> <label for="vegan-na">N/A</label>
         </div>
 
         <div v-if="formData.listing_type != 'request'">
-          <label class="details-tag">Is this product/brand cruelty free?</label>
-          <input type="radio" value="Yes" v-model="formData.product_cf" /> Yes
-          <input type="radio" value="No" v-model="formData.product_cf" /> No
-          <input type="radio" value="N/A" v-model="formData.product_cf" /> N/A
+          <span class="details-tag">Is this product/brand cruelty free?</span>
+          <input type="radio" value="Yes" v-model="formData.product_cf" id="cf-yes"/> <label for="cf-yes">Yes</label>
+          &nbsp;&nbsp;
+          <input type="radio" value="No" v-model="formData.product_cf" id="cf-no"/> <label for="cf-no">No</label>
+          &nbsp;&nbsp;
+          <input type="radio" value="N/A" v-model="formData.product_cf" id="cf-na"/> <label for="cf-na">N/A</label> 
         </div>
 
         <button v-on:click="addListing" v-if="formData.listing_type === 'sellOrGive'">Add Product</button>
         <button v-on:click="addRequest" v-if="formData.listing_type === 'request'">Add Request</button>
         <button v-on:click="addProduct" v-if="formData.listing_type === 'review'">Add New Product</button>
         
-        <!-- <div v-if="formData.listing_type === 'sellOrGive'">
-          <ul>
-            <li>Name: {{formData.poster_name}}</li>
-            <li>Listing type: {{formData.listing_type}}</li>
-            <li>Product condition: {{formData.product_condition}}</li>
-            <li>Brand: {{formData.product_brand}}</li>
-            <li>Name of product: {{formData.product_name}}</li>
-            <li>Product image link: {{formData.product_image}}</li>
-            <li>Product category: {{formData.product_category}}</li>
-            <li>Please specify category: {{formData.product_category_others}}</li>
-            <li>Product quantity: {{formData.product_quantity}}</li>
-            <li>Product quantity (others): {{formData.product_quantity_box}}</li>
-            <li>Size: {{formData.product_size}}</li>
-            <li>Size in ml: {{formData.product_size_ml}}</li>
-            <li>Product price: {{formData.product_price}}</li>
-            <li>Product price in dollars: {{formData.product_price_box}}</li>
-            <li>Description: {{formData.product_description}}</li>
-            <li>Skin type: {{formData.skin_type}}</li>
-            <li>Skin concerns: {{formData.skin_concerns}}</li>
-            <li>Vegan?: {{formData.product_vegan}}</li>
-            <li>Cruelty free?: {{formData.product_cf}}</li>
-          </ul>
-        </div>
-
-        <div v-if="formData.listing_type === 'request'">
-          <ul>
-            <li>Name: {{formData.poster_name}}</li>
-            <li>Listing type: {{formData.listing_type}}</li>
-            <li>Product condition: {{formData.product_condition}}</li>
-            <li>Brand: {{formData.product_brand}}</li>
-            <li>Name of product: {{formData.product_name}}</li>
-            <li>Product image link: {{formData.product_image}}</li>
-            <li>Product quantity: {{formData.product_quantity}}</li>
-            <li>Product quantity (others): {{formData.product_quantity_box}}</li>
-            <li>Size: {{formData.product_size}}</li>
-            <li>Size in ml: {{formData.product_size_ml}}</li>
-          </ul>
-        </div>
-
-        <div v-if="formData.listing_type === 'review'">
-          <ul>
-            <li>Name: {{formData.poster_name}}</li>
-            <li>Listing type: {{formData.listing_type}}</li>
-            <li>Brand: {{formData.product_brand}}</li>
-            <li>Name of product: {{formData.product_name}}</li>
-            <li>Product image link: {{formData.product_image}}</li>
-            <li>Product category: {{formData.product_category}}</li>
-            <li>Please specify category: {{formData.product_category_others}}</li>
-            <li>Vegan?: {{formData.product_vegan}}</li>
-            <li>Cruelty free?: {{formData.product_cf}}</li>
-          </ul>
-        </div> -->
 
       </div>
 
@@ -216,6 +178,8 @@
 </template>
 
 <script>
+import "@/assets/css/form.css";
+
 import axios from 'axios';
 const BASE_API_URL = "https://nsy-skincare-api.herokuapp.com/";
 
@@ -240,6 +204,8 @@ const original = {  'poster_name': '',
                     'product_cf': ''
       }
 
+const checkFills = "Please make sure to fill in all boxes";
+
 export default {
   created:  async function(){
     let response = await axios.get(BASE_API_URL + 'reviews');
@@ -255,6 +221,26 @@ export default {
   },
   methods:{
     'addListing': async function(){
+
+      if (!this.formData.posterName ||
+          !this.formData.listing_type ||
+          !this.formData.product_condition ||
+          !this.formData.product_brand ||
+          !this.formData.product_name ||
+          !this.formData.product_image ||
+          !this.formData.product_category ||
+          !this.formData.product_category_others ||
+          !this.formData.product_quantity ||
+          !this.formData.product_size ||
+          !this.formData.product_price ||
+          !this.formData.product_description ||
+          !this.formData.skin_type ||
+          !this.formData.skin_concerns ||
+          !this.formData.product_vegan ||
+          !this.formData.product_cf) {
+            alert(checkFills)
+            return
+          }
 
       const successMsg = document.getElementById("success-message");
       successMsg.style.display = "block";
@@ -281,12 +267,22 @@ export default {
         'productCrueltyFree': this.formData.product_cf
       });
 
-      // this.$emit("product-added");
       this.formData = JSON.parse(JSON.stringify(original));
-      // this.formData = original;
 
     },
     addRequest: async function(){
+
+      if (!this.formData.posterName ||
+          !this.formData.product_brand ||
+          !this.formData.product_name ||
+          !this.formData.product_image ||
+          !this.formData.product_quantity ||
+          !this.formData.product_size ||
+          !this.formData.product_description) {
+            alert(checkFills)
+            return
+          }
+
       await axios.post(BASE_API_URL + 'requested-products/add',{
         'posterName': this.formData.poster_name,
         'productBrand': this.formData.product_brand,
@@ -302,6 +298,17 @@ export default {
       this.formData = JSON.parse(JSON.stringify(original));
     },
     addProduct: async function(){
+
+      if (!this.formData.product_brand ||
+          !this.formData.product_name ||
+          !this.formData.product_image ||
+          !this.formData.product_category ||
+          !this.formData.product_vegan ||
+          !this.formData.product_cf) {
+            alert(checkFills)
+            return
+          }
+          
       await axios.post(BASE_API_URL + 'reviews/add',{
         'productBrand': this.formData.product_brand,
         'productName': this.formData.product_name,
@@ -393,29 +400,6 @@ h1, h2, h3, h4{
   color:mediumslateblue;
 }
 
-
-input[type="text"], textarea, select{
-  -moz-appearance:none;
-  -webkit-appearance:none;
-  appearance:none;
-  width:100% !important;
-  font-family: 'Manrope', sans-serif;
-  box-sizing: border-box;
-  padding:15px 20px;
-  border:0;
-  background-color:rgb(240, 240, 240, 0.3);
-  border-bottom:1px solid lightgray;
-}
-
-input[type="text"].specify{
-  background-color:rgb(249, 248, 255);
-}
-
-select, input[type="text"].specify{
-  width:22% !important;
-  margin-right:15px;
-}
-
 @media screen  and (min-width:768px){
 
   .details-container{
@@ -440,10 +424,6 @@ select, input[type="text"].specify{
   .edit-btn{
     padding:15px 25px;
     margin-left:auto;
-  }
-
-  input[type="text"]{
-    width:250px;
   }
 
 }
