@@ -1,12 +1,21 @@
 <template>
 
-    <div>
+    <div class="main-container">
 
-      <button v-if="tab === 'productInfo'" v-on:click="backToProducts">Back</button>
-      <button v-if="tab === 'editThisProduct'" v-on:click="backToProduct">Back</button>
+      <div class="container">
+
+        <button v-if="tab === 'productInfo'" v-on:click="backToProducts">Back</button>
+        <button v-if="tab === 'editThisProduct'" v-on:click="backToProduct">Back</button>
       
-      <ReviewsList page-title="Reviews" v-if="tab === 'viewAllProducts'" v-on:view-product="viewProduct"/>
-      <ReviewInfo v-if="tab === 'productInfo'" v-on:edit-product="editProduct" v-bind:productId="productViewing"/>
+      </div>
+        
+        <ReviewsList v-if="tab === 'viewAllProducts'" v-on:view-product="viewProduct"/>
+
+      <div class="container">
+
+        <ReviewInfo v-if="tab === 'productInfo'" v-on:edit-product="editProduct" v-bind:productId="productViewing"/>
+      
+      </div>
 
     </div>
     
