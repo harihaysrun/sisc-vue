@@ -44,7 +44,7 @@
           </div>
 
           <div>
-            <label for="">Age range</label>
+            <label for="">Age</label>
             <div class="age-range">
               <select class="age" name="" id="" v-model="my_age">
                 <option value="" disabled>select one</option>
@@ -92,9 +92,9 @@
           <label for="">Will I repurchase this?</label>
           <select class="repurchase" name="" id="" v-model="repurchase">
             <option value="" disabled>select one</option>
-            <option value="Will repurchase">Yes</option>
-            <option value="Won't repurchase">No</option>
-            <option value="Maybe">Maybe</option>
+            <option value="Will Repurchase">Yes</option>
+            <option value="Won't Repurchase">No</option>
+            <option value="Might Repurchase">Maybe</option>
           </select>
         </div>
 
@@ -117,7 +117,9 @@
           <div class="existingComment">
             {{c.rating}}
             <p>{{c.commentText}}</p>
-            <span class="repurchase-status">{{c.repurchase}}</span>
+            <span class="repurchase-status green" v-if="c.repurchase === 'Will Repurchase'">Will Repurchase</span>
+            <span class="repurchase-status red" v-if="c.repurchase === `Won't Repurchase`">Won't Repurchase</span>
+            <span class="repurchase-status" v-if="c.repurchase === `Might Repurchase`">{{c.repurchase}}</span>
           </div>
 
           <div class="comment-buttons">
@@ -180,15 +182,6 @@ export default {
     'comment': async function(productId){
       console.log(productId);
 
-      // let response = await axios.get(BASE_API_URL + 'reviews/' + this.productId);
-      // this.comments = response.data.reviews;
-
-
-      // if(Array.isArray(this.comments)){
-      //   this.ratings = this.comments.length + 1;
-      //   console.log("number of reviews: " + this.ratings)
-      // }
-      
       if(!Array.isArray(this.comments)){
         this.comments = []
       }
@@ -207,45 +200,44 @@ export default {
         'noOfReviews': this.ratings,
       })
       
-      // reloadComments();
       let response = await axios.get(BASE_API_URL + 'reviews/' + this.productId);
       this.comments = response.data.reviews.reverse();
 
-      // console.log("number of reviews: " + this.comments.length);
-      // let noOfReviews = this.comments.length;
-      // console.log(noOfReviews)
+      this.comment_name = "";
+      this.my_age = "";
+      this.my_age_others = "";
+      this.my_rating = "";
+      this.my_skin_type = "";
+      this.comment_text = "";
+      this.repurchase = "";
+      this.ratings = "";
 
-      // await axios.post(BASE_API_URL + 'reviews/' + this.productId + '/comment/add', {
-      //   'noOfReviews': noOfReviews,
-      // })
-
-      // this.$emit('review-count', noOfReviews);
-
-      // let starRatings = document.querySelectorAll(".review-rating");
-      // console.log(starRatings.length)
-      // for (let i=0; i<starRatings.length; i++){
-      //   starRatings.innerHTML = "HELLO"
-      // }
-      
     },
-    // 'deleteComment': async function(commentId){
-    //   console.log(commentId);
+    'deleteComment': async function(commentId){
+      console.log(commentId);
 
-    //   for (let i=0; i< this.comments.length; i++){
-        
-    //     if(this.comments[i]._id === commentId){
-        
-    //       await axios.post(BASE_API_URL + 'requested-products/' + this.productId + '/comment/delete', {
-    //         'commentId': commentId
-    //       })
+      await axios.post(BASE_API_URL + 'reviews/' + this.productId + '/comment/delete', {
+            'commentId': commentId
+          })
           
-    //       let response = await axios.get(BASE_API_URL + 'requested-products/' + this.productId);
-    //       this.comments = response.data.comments;
+      let response = await axios.get(BASE_API_URL + 'reviews/' + this.productId);
+      this.comments = response.data.reviews.reverse();
 
-    //     }
-    //   }
+      // for (let i=0; i< this.comments.length; i++){
+        
+      //   if(this.comments[i]._id === commentId){
+        
+      //     await axios.post(BASE_API_URL + 'reviews/' + this.productId + '/comment/delete', {
+      //       'commentId': commentId
+      //     })
+          
+      //     let response = await axios.get(BASE_API_URL + 'reviews/' + this.productId);
+      //     this.comments = response.data.comments;
 
-    // }
+      //   }
+      // }
+
+    }
   }
 }
 </script>
@@ -345,6 +337,19 @@ input[type="text"], textarea, select{
   padding: 5px 20px;
   margin-top:25px;
   border-radius:15px;
+}
+
+.green, .red{
+  padding:5px 15px;
+  background-color:rgb(218, 255, 218);
+  border-radius:15px;
+  margin-right:10px;
+  color:rgb(65, 153, 65);
+}
+
+.red{
+  background-color:mistyrose;
+  color:red;
 }
 
 
