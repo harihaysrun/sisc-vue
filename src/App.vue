@@ -183,9 +183,11 @@ nav a:hover{
 .add-new-btn{
   /* margin:0 0 0 auto; */
   /* margin-left:auto; */
-  background-color: rgb(0, 0, 175);
+  /* background-color: rgb(0, 0, 175); */
+  /* border-radius:10px; */
   padding:10px 20px;
-  border-radius:10px;
+  background-color: black;
+  color:white;
 }
 
 footer{
