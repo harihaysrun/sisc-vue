@@ -351,7 +351,7 @@ select, input[type="text"].specify{
   .img-container{
     flex:1;
     height:25vw;
-    background-color:pink;
+    /* background-color:pink; */
     position:sticky;
     top: 120px;
   }
