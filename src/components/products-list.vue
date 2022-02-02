@@ -331,18 +331,6 @@ h2{
     z-index:2;
   }
 
-  .indiv-product a::before{
-    content: '';
-    position:absolute;
-    top:0;
-    left:0;
-    width:100%;
-    height:12vw;
-    /* height:20%; */
-    background-color: mediumslateblue;
-    z-index:-1;
-  }
-
   .indiv-product a img{
     width:80%;
     height:auto;

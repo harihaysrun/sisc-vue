@@ -88,14 +88,8 @@ export default {
 
 .inner-container{
   width:100%;
-  display:flex;
-  flex-direction: column;
   align-items: center;
 }
-
-/* .hero-banner h1{
-  color:white;
-} */
 
 h2, h3, h4{
   margin:0;
@@ -113,27 +107,11 @@ h3, h4{
 }
 
 .hero-banner{
-  background-color:black;
-  width:100%;
-  padding:100px 0;
   background-image: url('https://images.pexels.com/photos/6811708/pexels-photo-6811708.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260');
-  background-size: cover;
-  background-position:center;
-  display:flex;
-  flex-direction:column;
-  justify-content:center;
-  align-items: center;
 }
 
 input[type="text"]{
-  -moz-appearance:none;
-  -webkit-appearance:none;
-  appearance:none;
-  width:70vw;
-  font-family: 'Manrope', sans-serif;
-  box-sizing: border-box;
-  padding:15px 20px;
-  border:0;
+  width:70vw !important;
   background-color:white;
   border-bottom:1px solid lightgray;
 }
@@ -141,62 +119,26 @@ input[type="text"]{
 .search-results{
   width:90%;
   margin:35px 0;
-  display:flex;
-  flex-direction: column;
-  /* background-color:mediumslateblue; */
-}
-
-.indiv-product{
-  box-sizing: border-box;
-  padding:0 0 20px 0;
-  width:100%;
 }
 
 .indiv-product a{
-  display:flex;
-  flex-direction:row;
-  align-items:center;
-  position:relative;
-  background-color: rgb(240, 240, 240, 0.5);
-  border-radius:15px;
-  overflow:hidden;
   padding:20px 35px 20px 20px;
-  z-index:0;
 }
 
 .indiv-product a::before{
-  content: '';
-  position:absolute;
-  top:0;
-  left:0;
   width:80px;
   height:100%;
-  background-color: mediumslateblue;
-  z-index:-1;
-}
-
-.indiv-product a:hover{
-  background-color: rgb(240, 240, 240, 0.8);
 }
 
 .indiv-product a img{
   width:120px !important;
   height:120px !important;
-  border-radius:10px;
-  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-  /* flex:1; */
 }
 
 .text-container{
   display:flex;
   flex-direction: column;
   margin-left:15px;
-}
-
-.product-info{
-  /* background-color:pink; */
-  width:100%;
-  color:#acacac;
 }
 
 .review-count{
@@ -214,7 +156,7 @@ input[type="text"]{
 @media screen  and (min-width:768px){
 
   input[type="text"]{
-    width:50vw;
+    width:50vw !important;
   }
 
   .text-container{
@@ -223,18 +165,12 @@ input[type="text"]{
     margin-left:0;
   }
 
-  .product-info{
-    margin-left:25px;
-  }
-
   .search-results{
     width:60%;
     flex-flow: row wrap;
   }
 
   .indiv-product{
-    /* width:50%; */
-    box-sizing: border-box;
     padding:10px;
   }
 
