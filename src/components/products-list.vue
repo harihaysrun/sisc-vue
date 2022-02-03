@@ -72,7 +72,7 @@
             <input type="radio" value="Dry" v-model="skin_type" id="skin-dry"/> <label for="skin-dry">Dry</label>
             &nbsp;&nbsp;
             <input type="radio" value="Normal" v-model="skin_type" id="skin-normal"/> <label for="skin-normal">Normal</label>
-            &nbsp;&nbsp;
+            <br>
             <input type="radio" value="Combination" v-model="skin_type" id="skin-combo"/><label for="skin-combo">Combination</label>
             &nbsp;&nbsp;
             <input type="radio" value="Oily" v-model="skin_type" id="skin-oily"/> <label for="skin-oily">Oily</label>
@@ -229,6 +229,10 @@ input[type="text"], select{
   margin-bottom:25px;
 }
 
+.search-results{
+  margin-top:35px;
+}
+
 /* .indiv-product a::before{
     content: '';
     position:absolute;
@@ -303,7 +307,6 @@ h2{
 
 .product-info{
   /* background-color:pink; */
-  margin-left:15px;
   width:100%;
 }
 
@@ -348,11 +351,10 @@ button{
 
   .search-bar{
     width:300px;
-    /* padding-right:45px; */
-    /* border-right:1px solid rgba(216, 216, 216, 0.7); */
   }
 
   .search-results{
+    margin-top:0;
     width:100%;
     margin-left: 35px;
     flex-flow: row wrap;
@@ -360,8 +362,7 @@ button{
   }
 
   .indiv-product{
-    width:25%;
-    /* padding:10px; */
+    width:50%;
   }
 
   .indiv-product a{
@@ -381,19 +382,13 @@ button{
   }
 
   .product-info{
-    margin-left:0;
-    margin-top:15px;
-    margin-bottom:0px;
-    /* width:80%; */
-  }
-
-  .brand-name{
-    padding:0 10%;
+    margin:0;
+    margin-right:auto;
+    width:auto;
+    padding: 20px 25px;
   }
 
   .size-price {
-    width:100%;
-    padding:0 10%;
     margin-top:35px;
   }
 
@@ -411,14 +406,14 @@ button{
 
 }
 
-/* @media screen  and (min-width:1024px){
+@media screen  and (min-width:1300px){
 
   .indiv-product{
     width:25%;
   }
   
 
-} */
+}
 
 
 </style>
