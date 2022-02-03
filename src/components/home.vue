@@ -104,14 +104,18 @@ export default {
   background-size: cover;
   background-position:bottom;
   justify-content: flex-start;
+  display:flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .hero-text{
+  padding:0 10%;
   /* padding-top:10vw; */
   /* background-color:pink; */
   text-align:center;
   box-sizing:border-box;
-  margin: 250px 5% 0 5%;
+  /* margin: 250px 5% 0 5%; */
 }
 
 .container{
@@ -152,7 +156,8 @@ export default {
 
   .hero-text{
     max-width:550px;
-    margin: 0 5% 0 5%;
+    padding:0;
+    /* margin: 0 5% 0 5%; */
     /* padding: 10vw 0 0 0; */
   }
 

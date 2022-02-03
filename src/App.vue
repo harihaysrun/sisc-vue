@@ -254,10 +254,10 @@ footer{
     background-position: 0 -70vw;
   }
 
-  .hero-text{
+  /* .hero-text{
     max-width:550px;
     padding: 10vw 0 0 0;
-  }
+  } */
 }
 
 </style>
