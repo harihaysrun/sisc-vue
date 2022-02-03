@@ -15,7 +15,10 @@
         <div class="indiv-product" v-for="p in filteredRequests" v-bind:key="p._id">
 
           <a v-on:click="viewThisProduct(p._id)" style="display:flex; flex-direction:row; align-items:center">
-            <img style="width:150px" v-bind:src="p.productImage" />
+            
+            <div class="product-img">
+              <img v-bind:src="p.productImage" />
+            </div>      
 
             <div class="text-container">
 
@@ -122,17 +125,20 @@ input[type="text"]{
 }
 
 .indiv-product a{
-  padding:20px 35px 20px 20px;
+    align-items: stretch !important;
 }
 
-.indiv-product a::before{
-  width:80px;
+.product-img{
+  background-color: palegoldenrod;
+  width:100px;
+  border:1px solid black;
+  margin: -1px;
+  z-index:5;
+}
+
+.product-img img{
+  width:100%;
   height:100%;
-}
-
-.indiv-product a img{
-  width:120px !important;
-  height:120px !important;
 }
 
 .text-container{
@@ -140,6 +146,7 @@ input[type="text"]{
   display:flex;
   flex-direction: column;
   margin-left:15px;
+  justify-content: center;
 }
 
 .review-count{
@@ -164,6 +171,7 @@ input[type="text"]{
     width:100%;
     flex-direction: row;
     margin-left:0;
+    align-items: center;
   }
 
   .search-results{
@@ -175,11 +183,19 @@ input[type="text"]{
     padding:10px;
   }
 
+  .product-info{
+    padding:15px 25px;
+  }
+
   .review-count{
-    /* background-color:pink; */
+    height:100%;
+    background-color:white;
     margin-left:auto;
     flex-direction: column;
     text-align:center;
+    justify-content: center;
+    border-left:1px solid black;
+    padding:15px 25px;
   }
 
   .review-count h2{

@@ -279,6 +279,10 @@ input[type="text"], textarea, select{
 
 @media screen  and (min-width:768px){
 
+  .text-container{
+    flex:4;
+  }
+
   .name-offer{
     display:flex;
     flex-direction:row;

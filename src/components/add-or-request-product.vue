@@ -392,9 +392,11 @@ h1, h2, h3, h4{
 .img-container{
   width:80vw;
   height:80vw;
-  border-radius:25px;
-  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  /* border-radius:25px; */
+  /* box-shadow: 0 5px 15px rgba(0,0,0,0.1); */
   overflow:hidden;
+  border:1px solid black;
+  box-shadow: 5px 5px black;
 }
 
 .img-container img{
