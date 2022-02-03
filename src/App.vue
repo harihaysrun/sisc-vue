@@ -3,23 +3,23 @@
   <div class="main-container">
     
       <nav>
-        <button id="hamburger-menu" v-on:click="openMenu" v-if="openHM === false">🍔</button>
-        <button id="hamburger-menu" v-on:click="closeMenu" v-if="openHM === true">❎</button>
+        <a id="hamburger-menu" v-on:click="openMenu" v-if="openHM === false">☰</a>
+        <a id="hamburger-menu" v-on:click="closeMenu" v-if="openHM === true">×</a>
 
         <div class="container" v-if="openHM === true">
-          <a v-on:click="home" v-if="page === 'home'" style="background-color:black" id="home">Home</a>
+          <a v-on:click="home" v-if="page === 'home'" class="active" id="home">Home</a>
           <a v-on:click="home" v-else>Home</a>
 
-          <a v-on:click="skincareProducts" v-if="page === 'skincareProducts'" style="background-color:black">Skincare Products</a>
+          <a v-on:click="skincareProducts" v-if="page === 'skincareProducts'" class="active">Skincare Products</a>
           <a v-on:click="skincareProducts" v-else>Skincare Products</a>
 
-          <a v-on:click="requestProducts" v-if="page === 'requestProducts'" style="background-color:black">Requests</a>
+          <a v-on:click="requestProducts" v-if="page === 'requestProducts'" class="active">Requests</a>
           <a v-on:click="requestProducts" v-else>Requests</a>
 
-          <a v-on:click="reviewProducts" v-if="page === 'reviewProducts'" style="background-color:black">Review Board</a>
+          <a v-on:click="reviewProducts" v-if="page === 'reviewProducts'" class="active">Review Board</a>
           <a v-on:click="reviewProducts" v-else>Review Board</a>
 
-          <a v-on:click="addProduct" v-if="page === 'addProduct'" style="background-color:black" class="add-new-btn">Add New</a>
+          <a v-on:click="addProduct" v-if="page === 'addProduct'" class="add-new-btn add-new-active">Add New</a>
           <a v-on:click="addProduct" v-else class="add-new-btn">Add New</a>
         </div>
 
@@ -120,6 +120,7 @@ export default {
     },
     openMenu: function(){
       this.openHM = true;
+      document.getElementsByTagName("nav").style = "height: 100vh"
     },
     closeMenu:function(){
       this.openHM = false;
@@ -131,27 +132,13 @@ export default {
 
 <style>
 
-img{
-  pointer-events: none;
-}
-
-.container{
+/* .container{
   width:90%;
-}
-
-/* a{
-  color:black;
-}
-
-a:hover, li:hover{
-  background-color:transparent;
-  color:black;
-  cursor:default;
 } */
 
 nav .container{
   width:100%;
-  height:100vh !important;
+  height:calc(100vh - 75px) !important;
   /* background-color: lightcoral; */
   display:flex;
   flex-direction:column;
@@ -160,7 +147,13 @@ nav .container{
 }
 
 #hamburger-menu{
+  color:black;
+  background-color: transparent !important;
+  padding:0 !important;
+  font-size:35px;
+  text-align:center;
   display:block;
+  margin-left:auto;
 }
 
 nav{
@@ -169,26 +162,33 @@ nav{
 }
 
 nav a{
-    color:thistle;
-    text-decoration:none;
+  font-size: 20px;
+  color:black;
+  text-decoration:none;
 }
 
-nav a:hover{
-    /* max-width:500px; */
-    color:white;
-    background-color: mistyrose;
-    cursor:pointer;
+nav .container a{
+  margin: 15px 0;
+}
+
+.active {
+  color:mediumslateblue !important;
+  font-weight:700;
+}
+
+.add-new-active{
+  font-weight:700;
+  background-color: mediumslateblue !important;
+  color:white !important;
 }
 
 .add-new-btn{
-  /* margin:0 0 0 auto; */
-  /* margin-left:auto; */
-  /* background-color: rgb(0, 0, 175); */
-  /* border-radius:10px; */
-  padding:10px 20px;
-  background-color: black;
-  color:white;
+  padding:10px 30px;
+  background-color:white;
+  color:black;
+  border: 1px solid black;
 }
+
 
 footer{
   width:100%;
@@ -211,10 +211,36 @@ footer{
     display:flex;
     align-items:center;
     flex-direction:row;
+    justify-content: flex-start;
+  }
+
+  nav a{
+    font-size: 16px;
+    margin-right:20px;
+    cursor:pointer;
+  }
+
+  nav .container a{
+    margin:0;
+    margin-right:20px;
+  }
+
+  nav a:hover{
+    /* max-width:500px; */
+    background-color:white;
+    color: mediumslateblue;
+    cursor:pointer;
+    border-bottom:1px solid mediumslateblue;
+  }
+
+
+  .add-new-btn:hover{
+    border:1px solid mediumslateblue;
   }
 
   .add-new-btn{
-    margin:0 0 0 auto;
+    margin-right:0 !important;
+    margin-left:auto !important;
   }
 
   #hamburger-menu{
