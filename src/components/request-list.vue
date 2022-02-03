@@ -18,15 +18,21 @@
             
             <a v-on:click="viewThisProduct(p._id)" style="display:flex; flex-direction:row; align-items:center">
               
-              <img style="width:150px" v-bind:src="p.productImage" />
-
-              <div class="product-info">
-                {{p.posterName}} is looking for...
-                <h3>{{p.productBrand}}</h3>
-                <h2>{{p.productName}}</h2>
+              <div class="product-img">
+                <img v-bind:src="p.productImage" />
               </div>
 
-              <div class="reply">Reply →</div>
+              <div class="product-info">
+                <div class="looking-for">{{p.posterName}} is looking for...</div>
+                <div class="brand-name">
+                  <div>
+                    <h3>{{p.productBrand}}</h3>
+                    <h2>{{p.productName}}</h2>
+                  </div>
+                </div>
+              </div>
+
+              <!-- <div class="reply">Reply →</div> -->
 
             </a>
 
@@ -102,11 +108,11 @@ h2, h3{
 
 h2{
   font-size:22px;
-  color:gray;
+  color:black;
 }
 
 h3{
-  color:mediumslateblue;
+  color:lightgrey;
 }
 
 .hero-banner{
@@ -124,23 +130,48 @@ input[type="text"]{
   margin:35px 0;
 }
 
+.indiv-product a{
+    align-items:flex-start !important;
+}
+
 .indiv-product a::before{
   width:80px;
   height:100%;
 }
 
-.indiv-product a img{
-  width:120px !important;
-  height:120px !important;
+.product-img{
+  background-color: palegoldenrod;
+  height: 200px;
+  border-right:1px solid black;
 }
 
 .product-info{
-  margin-left:15px;
+  width:100%;
+  display:flex;
+  flex-direction: column;
+  justify-content: flex-start;
   flex:6;
 }
 
-.reply{
+/* .reply{
   display:none;
+} */
+
+.looking-for{
+  text-transform: uppercase;
+  /* width:auto; */
+  color:mediumslateblue;
+  padding: 10px 15px;
+  font-size:13px;
+  background-color:lavender;
+  /* border-left:1px solid black; */
+  border-bottom:1px solid black;
+  /* box-shadow: 3px 3px black; */
+}
+
+.brand-name{
+  /* background-color: lightgray; */
+  padding: 10px 15px;
 }
 
 @media screen  and (min-width:768px){
@@ -158,14 +189,19 @@ input[type="text"]{
     padding:10px;
   }
 
-  .reply{
-    display:block;
-    opacity:0;
+  .brand-name{
+    /* background-color: lightgray; */
+    padding: 25px 15px;
   }
 
-  .indiv-product a:hover .reply{
+  /* .reply{
+    display:block;
+    opacity:0;
+  } */
+
+  /* .indiv-product a:hover .reply{
     opacity:0.5;
-  }
+  } */
 
 }
 
