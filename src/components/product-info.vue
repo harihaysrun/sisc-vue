@@ -81,7 +81,10 @@
           
         </div>
 
-        <button class="edit-btn" v-on:click="edit(productId)">Edit Product</button>
+        <button class="edit-btn" v-on:click="edit(productId)">
+          <img src="@/assets/images/edit.png" alt="">
+          Edit Product
+        </button>
 
         <div>
 

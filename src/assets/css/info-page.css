@@ -88,10 +88,6 @@ h1, h2, h3, h4{
   color:mediumslateblue;
 }
 
-.edit-btn{
-  padding:15px 25px;
-}
-
 .offer{
     display:flex;
     flex-direction: column;
@@ -103,7 +99,7 @@ h1, h2, h3, h4{
   margin-top:15px;
 }
 
-.comment-buttons button, .back-btn{
+.comment-buttons button, .back-btn, .edit-btn{
   border:1px solid black;
   /* border:0 !important; */
   color:black;
@@ -120,6 +116,10 @@ h1, h2, h3, h4{
   width: 120px;
 }
 
+.edit-btn{
+  width:100%;
+}
+
 .comment-buttons button:hover{
   background-color:rgb(238, 238, 238);
 }
@@ -128,7 +128,7 @@ h1, h2, h3, h4{
   margin-right:15px;
 }
 
-.comment-buttons img, .back-btn img{
+.comment-buttons img, .back-btn img, .edit-btn img{
   width:15px;
   margin-right:15px;
 }
@@ -156,6 +156,7 @@ h1, h2, h3, h4{
   }
 
   .edit-btn{
+    width:150px;
     margin-left:auto;
   }
 
