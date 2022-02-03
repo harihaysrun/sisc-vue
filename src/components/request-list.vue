@@ -4,11 +4,11 @@
       
       <h1 class="title-from-home" v-if="pageTitle === 'Recent Requests'">{{pageTitle}}</h1>
 
-      <div class="hero-banner" v-bind:style="{'display': display}" >
+      <div class="hero-banner" v-bind:style="{'display': display}">
         <h1>{{pageTitle}}</h1>
       </div>
 
-      <div class="search-box" style="background-color:rgba(0,0,0,0.1); padding: 20px;">
+      <div class="search-box" v-bind:style="{'display': display}" >
         <input type="text" v-model="search" placeholder="Search by brand or product name">
       </div>
 

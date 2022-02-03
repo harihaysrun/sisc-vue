@@ -92,6 +92,7 @@ export default {
 
 button{
   margin-top:35px;
+  margin-bottom:35px;
 }
 
 </style>

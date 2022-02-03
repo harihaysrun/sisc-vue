@@ -12,8 +12,12 @@
           <img src="@/assets/images/back.png" alt="">
           Back
         </button>
+
+      </div>
         
         <ProductsList page-title="View All Skincare Products" v-if="tab === 'viewAllProducts'" v-on:view-product="viewProduct"/>
+
+      <div class="container">
         <ProductInfo v-if="tab === 'productInfo'" v-on:edit-product="editProduct" v-bind:productId="productViewing"/>
         <EditProduct v-if="tab === 'editThisProduct'" v-on:remove-product="removeProduct" v-bind:productId="productEditing" v-on:back-to="backToProducts"/>
 
@@ -79,11 +83,12 @@ export default {
 
 <style scoped>
 
-.main-container{
+/* .main-container{
   padding:35px 0;
-}
+} */
 
 button{
+  margin-top:35px;
   margin-bottom:35px;
 }
 

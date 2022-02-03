@@ -1,142 +1,150 @@
 <template>
 
-    <div>
-
-      <h1>{{pageTitle}}</h1>
-
       <div class="inner-container">
-
-        <div class="search-bar" v-bind:style="{'display': display}">
-          <h2 style="margin:0;">Search</h2>
-
-          <div>
-            <label class="details-tag">Product brand/name</label>
-            <input type="text" v-model="search" placeholder="Search by brand or product name">
-          </div>
-
-          <div>
-            <label class="details-tag">Product condition</label>
-            <input type="radio" value="New" v-model="product_condition" id="condition-new"/><label for="condition-new">Brand New</label> 
-            <input type="radio" value="Used" v-model="product_condition" id="condition-used"/><label for="condition-used">Used</label>
-          </div>
-
-          <div>
-            <label class="details-tag">Product Category</label>
-            <select name="" id="" v-model="product_category">
-              <option value="" disabled>Select One</option>
-              <option value="First Cleanser">First Cleanser</option>
-              <option value="Second Cleanser">Second Cleanser</option>
-              <option value="Toner">Toner</option>
-              <option value="Serum">Serum</option>
-              <option value="Essence">Essence</option>
-              <option value="Ampoule">Ampoule</option>
-              <option value="Treatment">Treatment</option>
-              <option value="Moisturiser">Moisturiser</option>
-              <option value="Treatment">Treatment</option>
-              <option value="Sheet Mask">Sheet Mask</option>
-              <option value="Clay Mask">Clay Mask</option>
-              <option value="Chemical Exfoliant">Chemical Exfoliant</option>
-              <option value="Physical Exfoliant">Physical Exfoliant</option>
-              <option value="Eye Cream">Eye Cream</option>
-              <option value="Body Cream">Body Cream</option>
-              <option value="Sunscreen">Sunscreen</option>
-              <option value="Others">Others</option>
-            </select>
-
-          </div>
-
-          <div>
-            <label class="details-tag">Product Size</label>
-            <select name="" id="" v-model="product_size">
-              <option value="" disabled>Select One</option>
-              <option value="Sample">Sample</option>
-              <option value="Mini">Mini</option>
-              <option value="Full">Full</option>
-            </select>
-          </div>
-
-          <div>
-            <label class="details-tag">Price</label>
-            <select name="" id="" v-model="product_price">
-              <option value="" disabled>Select One</option>
-              <option value="0">Free</option>
-              <option value="5">$5 or lesser</option>
-              <option value="10">$10 or lesser</option>
-              <option value="15">$15 or lesser</option>
-              <option value="20">$20 or lesser</option>
-            </select>
-          </div>
-
-          <div>
-            <label class="details-tag">Skin type</label>
-            <input type="radio" value="Dry" v-model="skin_type" id="skin-dry"/> <label for="skin-dry">Dry</label>
-            &nbsp;&nbsp;
-            <input type="radio" value="Normal" v-model="skin_type" id="skin-normal"/> <label for="skin-normal">Normal</label>
-            <br>
-            <input type="radio" value="Combination" v-model="skin_type" id="skin-combo"/><label for="skin-combo">Combination</label>
-            &nbsp;&nbsp;
-            <input type="radio" value="Oily" v-model="skin_type" id="skin-oily"/> <label for="skin-oily">Oily</label>
-          </div>
-
-          <div>
-            <!-- <label for="">Vegan?</label> -->
-            <input type="checkbox" value="Yes" v-model="product_vegan" id="vegan" /> <label for="vegan">Vegan</label>
-            <br>
-            <input type="checkbox" value="Yes" v-model="product_cf" id="cf" /> <label for="cf">Cruelty free</label>
-          </div>
-
-
-          <button v-on:click="searchFilter">Search</button>
-          <button class="reset" v-on:click="clearSearch">Reset Search Filters</button>
+      
+      <h1 class="title-from-home" v-if="pageTitle === 'Recently Added'">{{pageTitle}}</h1>
+        
+        <div class="hero-banner" v-bind:style="{'display': display}">
+          <h1>{{pageTitle}}</h1>
         </div>
 
-        <div class="search-results" v-bind:style="{'marginLeft': marginLeft}">
+        <div class="search" v-bind:style="{'width': width}">
 
-          <div class="indiv-product" v-for="p in products.slice(0,max)" v-bind:key="p._id">
+          <div class="search-bar" v-bind:style="{'display': display}">
+            <h2 style="margin:0;">Search</h2>
 
-            <a v-on:click="viewThisProduct(p._id)">
-              <img v-bind:src="p.productImage" />
-              <div class="product-info">
+            <div>
+              <label class="details-tag">Product brand/name</label>
+              <input type="text" v-model="search" placeholder="Search by brand or product name">
+            </div>
 
-                <div class="brand-name">
-                  <small>{{p.productBrand}}</small>
-                  <h2>{{p.productName}}</h2>
-                </div>
+            <div>
+              <label class="details-tag">Product condition</label>
+              <input type="radio" value="New" v-model="product_condition" id="condition-new"/><label for="condition-new">Brand New</label> 
+              <input type="radio" value="Used" v-model="product_condition" id="condition-used"/><label for="condition-used">Used</label>
+            </div>
 
-                <!-- Category:
-                <span v-if="p.productCategory === 'Others'">{{p.productCategoryOthers}}</span>
-                <span v-else>{{p.productCategory}}</span>
-                
-                <br>
-                Suitable for: 
-                <span class="skin-type">{{p.skinType.join(',   ')}} SKIN</span> -->
+            <div>
+              <label class="details-tag">Product Category</label>
+              <select name="" id="" v-model="product_category">
+                <option value="" disabled>Select One</option>
+                <option value="First Cleanser">First Cleanser</option>
+                <option value="Second Cleanser">Second Cleanser</option>
+                <option value="Toner">Toner</option>
+                <option value="Serum">Serum</option>
+                <option value="Essence">Essence</option>
+                <option value="Ampoule">Ampoule</option>
+                <option value="Treatment">Treatment</option>
+                <option value="Moisturiser">Moisturiser</option>
+                <option value="Treatment">Treatment</option>
+                <option value="Sheet Mask">Sheet Mask</option>
+                <option value="Clay Mask">Clay Mask</option>
+                <option value="Chemical Exfoliant">Chemical Exfoliant</option>
+                <option value="Physical Exfoliant">Physical Exfoliant</option>
+                <option value="Eye Cream">Eye Cream</option>
+                <option value="Body Cream">Body Cream</option>
+                <option value="Sunscreen">Sunscreen</option>
+                <option value="Others">Others</option>
+              </select>
+
+            </div>
+
+            <div>
+              <label class="details-tag">Product Size</label>
+              <select name="" id="" v-model="product_size">
+                <option value="" disabled>Select One</option>
+                <option value="Sample">Sample</option>
+                <option value="Mini">Mini</option>
+                <option value="Full">Full</option>
+              </select>
+            </div>
+
+            <div>
+              <label class="details-tag">Price</label>
+              <select name="" id="" v-model="product_price">
+                <option value="" disabled>Select One</option>
+                <option value="0">Free</option>
+                <option value="5">$5 or lesser</option>
+                <option value="10">$10 or lesser</option>
+                <option value="15">$15 or lesser</option>
+                <option value="20">$20 or lesser</option>
+              </select>
+            </div>
+
+            <div>
+              <label class="details-tag">Skin type</label>
+              <input type="radio" value="Dry" v-model="skin_type" id="skin-dry"/> <label for="skin-dry">Dry</label>
+              &nbsp;&nbsp;
+              <input type="radio" value="Normal" v-model="skin_type" id="skin-normal"/> <label for="skin-normal">Normal</label>
+              <br>
+              <input type="radio" value="Combination" v-model="skin_type" id="skin-combo"/><label for="skin-combo">Combination</label>
+              &nbsp;&nbsp;
+              <input type="radio" value="Oily" v-model="skin_type" id="skin-oily"/> <label for="skin-oily">Oily</label>
+            </div>
+
+            <div>
+              <!-- <label for="">Vegan?</label> -->
+              <input type="checkbox" value="Yes" v-model="product_vegan" id="vegan" /> <label for="vegan">Vegan</label>
+              <br>
+              <input type="checkbox" value="Yes" v-model="product_cf" id="cf" /> <label for="cf">Cruelty free</label>
+            </div>
 
 
-                <div class="size-price">
-                  
-                  {{p.productType}} size
-                  <h3>
-                    <span v-if="p.productPrice === 'Specify'">${{p.productPriceDollars}}</span>
-                    <span v-else>{{p.productPrice}}</span>
-                  </h3>
-
-                </div>
-
-              </div>
-
-              <span class="condition" v-if="p.productCondition === 'New'">Brand New</span>
-              <span class="condition used" v-if="p.productCondition === 'Used'">{{p.productCondition}}</span>
-
-              <span class="vegan" v-if="p.productVegan === 'Yes'"></span>
-              <span class="cf" v-if="p.productCrueltyFree === 'Yes'"></span>
-
-            </a>
+            <button v-on:click="searchFilter">Search</button>
+            <button class="reset" v-on:click="clearSearch">Reset Search Filters</button>
           </div>
+
+          <div class="search-results" v-bind:style="{'marginLeft': marginLeft}">
+
+            <div class="indiv-product" v-for="p in products.slice(0,max)" v-bind:key="p._id">
+
+              <a v-on:click="viewThisProduct(p._id)">
+
+                <div class="product-img">
+                  <img v-bind:src="p.productImage" />
+                </div>
+
+                <div class="product-info">
+
+                  <div class="brand-name">
+                    <small>{{p.productBrand}}</small>
+                    <h2>{{p.productName}}</h2>
+                  </div>
+
+                  <!-- Category:
+                  <span v-if="p.productCategory === 'Others'">{{p.productCategoryOthers}}</span>
+                  <span v-else>{{p.productCategory}}</span>
+                  
+                  <br>
+                  Suitable for: 
+                  <span class="skin-type">{{p.skinType.join(',   ')}} SKIN</span> -->
+
+
+                  <div class="size-price">
+                    
+                    {{p.productType}} size
+                    <h3>
+                      <span v-if="p.productPrice === 'Specify'">${{p.productPriceDollars}}</span>
+                      <span v-else>{{p.productPrice}}</span>
+                    </h3>
+
+                  </div>
+
+                </div>
+
+                <span class="condition" v-if="p.productCondition === 'New'">Brand New</span>
+                <span class="condition used" v-if="p.productCondition === 'Used'">{{p.productCondition}}</span>
+
+                <span class="vegan" v-if="p.productVegan === 'Yes'"></span>
+                <span class="cf" v-if="p.productCrueltyFree === 'Yes'"></span>
+
+              </a>
+            </div>
+          </div>
+            
         </div>
       
       </div>
-
-    </div>
     
 </template>
 
@@ -164,7 +172,7 @@ export default {
       'product_cf': [],
     }
   },
-  props: ['pageTitle', 'max', 'display', 'marginLeft'],
+  props: ['pageTitle', 'max', 'display', 'marginLeft', 'width'],
   methods:{
     viewThisProduct: function(productId){
       this.tab = "productInfo";
@@ -209,13 +217,29 @@ export default {
 
 <style scoped>
 
+.title-from-home{
+  margin-right:auto;
+}
+
+.hero-banner{
+  background-image: url('https://images.unsplash.com/photo-1608068811588-3a67006b7489?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1471&q=80');
+}
+
 .inner-container{
-    padding:35px 0;
+  width:100%;
+  align-items: center;
 }
 
 input[type="text"], select{
   width:100% !important;
   background-color:white;
+}
+
+.search{
+  width:80%;
+  display:flex;
+  flex-direction: column;
+  margin:35px 0;
 }
 
 .search-bar{
@@ -243,6 +267,23 @@ input[type="text"], select{
     background-color: mediumslateblue;
     z-index:-1;
 } */
+
+
+.indiv-product a{
+    align-items: stretch !important;
+}
+
+.product-img{
+  background-color: palegoldenrod;
+  width:219px;
+  border:1px solid black;
+  margin: -1px;
+}
+
+.product-img img{
+  width:100%;
+  height:100%;
+}
 
 h2{
   font-size:22px;
@@ -308,6 +349,7 @@ h2{
 .product-info{
   /* background-color:pink; */
   width:100%;
+  padding: 10px 15px;
 }
 
 button{
@@ -341,11 +383,19 @@ button{
     height:100%;
   }
 
+  .product-img{
+    width:100%;
+  }
+
 }
 
 @media screen  and (min-width:1024px){
-
+/* 
   .inner-container{
+    flex-direction: row;
+  } */
+
+  .search{
     flex-direction: row;
   }
 
@@ -372,14 +422,14 @@ button{
     align-items: center;
     padding:0;
     z-index:2;
+    align-items: stretch !important;
   }
 
-  .indiv-product a img{
-    /* width:80%; */
+  /* .indiv-product a img{
     width:100%;
     height:auto;
     border-bottom:1px solid black;
-  }
+  } */
 
   .product-info{
     margin:0;

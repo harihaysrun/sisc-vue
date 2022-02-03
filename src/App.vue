@@ -175,6 +175,7 @@ nav .container a{
 .active {
   color:mediumslateblue !important;
   font-weight:700;
+  border-bottom:1px solid mediumslateblue;
 }
 
 .add-new-active{
@@ -203,7 +204,7 @@ footer{
 @media screen  and (min-width:768px){
 
   .container{
-    width:80%;
+    width:70%;
   }
 
   nav .container{

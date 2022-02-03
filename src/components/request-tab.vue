@@ -97,6 +97,7 @@ export default {
 
 button{
   margin-top:35px;
+  margin-bottom:35px;
   /* margin-right:auto; */
   /* margin-left:10%; */
 }

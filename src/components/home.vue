@@ -15,7 +15,7 @@
       <div class="container">
 
         <div class="second-container">
-          <ProductsList page-title="Recently Added" max="4" display="none" margin-left="0"/>
+          <ProductsList page-title="Recently Added" max="4" display="none" margin-left="0"  width="100%"/>
           <button class="view-all-btn" v-on:click="changetoSkincareProductsPage('sellGive')">View all</button>
         </div>
 

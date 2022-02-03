@@ -54,7 +54,7 @@
           </div>
           <div class="comment-input">
             <label for="">Offer</label>
-            <input type="text" v-model="comment_offer" placeholder="Free or amount in dollars"/>
+            <input type="text" v-model="comment_offer" placeholder="Free or amount in SGD"/>
           </div>
         </div>
         <div class="comment-input">

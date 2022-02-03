@@ -6,7 +6,7 @@
     align-items: center;
     justify-content: center;
     box-sizing: border-box;
-    padding:0 10%;
+    padding:20px;
 }
 
 .search-box input{
