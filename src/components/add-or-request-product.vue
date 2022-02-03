@@ -12,7 +12,7 @@
           <h1>Add or Request skincare product</h1>
         </div>
 
-        <div id="success-message">Successfully added product!</div>
+        <div id="success-message" v-if="editSuccess === 'Yes'">Successfully added product!</div>
 
         <div>
           <span class="details-tag">I'm looking to...</span>
@@ -49,15 +49,15 @@
           </div>
           <div class="reminder-message" v-if="inReviewBoard === false">
             This product doesn't exist in the reviews board
-            <button v-on:click="hideMsg">OK</button>
+            <button class="message-btn" v-on:click="hideMsg">OK</button>
           </div>
           <div class="reminder-message" v-if="inReviewBoard === true">
             <b>{{reviewProductName}}</b> exists in the reviews board. Head on to the reviews page to contribute your opinion!
-            <button v-on:click="hideMsg">OK</button>
+            <button class="message-btn" v-on:click="hideMsg">OK</button>
           </div>
           <div class="reminder-message" v-if="inReviewBoard === 'noInput'">
             Please add a product before checking
-            <button v-on:click="hideMsg">OK</button>
+            <button class="message-btn" v-on:click="hideMsg">OK</button>
           </div>
         </div>
         
@@ -215,34 +215,34 @@ export default {
     return {
       'formData': JSON.parse(JSON.stringify(original)),
       'inReviewBoard': '',
-      'reviewProductName': ''
+      'reviewProductName': '',
+      'editSuccess': ''
     }
   },
   methods:{
     'addListing': async function(){
 
-      if (!this.formData.posterName ||
-          !this.formData.listing_type ||
-          !this.formData.product_condition ||
-          !this.formData.product_brand ||
-          !this.formData.product_name ||
-          !this.formData.product_image ||
-          !this.formData.product_category ||
-          !this.formData.product_category_others ||
-          !this.formData.product_quantity ||
-          !this.formData.product_size ||
-          !this.formData.product_price ||
-          !this.formData.product_description ||
-          !this.formData.skin_type ||
-          !this.formData.skin_concerns ||
-          !this.formData.product_vegan ||
-          !this.formData.product_cf) {
-            alert(checkFills)
-            return
-          }
+      // if (!this.formData.posterName ||
+      //     !this.formData.listing_type ||
+      //     !this.formData.product_condition ||
+      //     !this.formData.product_brand ||
+      //     !this.formData.product_name ||
+      //     !this.formData.product_image ||
+      //     !this.formData.product_category ||
+      //     !this.formData.product_quantity ||
+      //     !this.formData.product_size ||
+      //     !this.formData.product_price ||
+      //     !this.formData.product_description ||
+      //     !this.formData.skin_type ||
+      //     !this.formData.skin_concerns ||
+      //     !this.formData.product_vegan ||
+      //     !this.formData.product_cf) {
+      //       alert(checkFills)
+      //       return
+      //     }
 
-      const successMsg = document.getElementById("success-message");
-      successMsg.style.display = "block";
+      // const successMsg = document.getElementById("success-message");
+      // successMsg.style.display = "block";
 
       await axios.post(BASE_API_URL + 'skincare-products/add',{
         'posterName': this.formData.poster_name,
@@ -267,6 +267,9 @@ export default {
       });
 
       this.formData = JSON.parse(JSON.stringify(original));
+
+      this.editSuccess = "Yes";
+      window.scrollTo(0, 0);
 
     },
     addRequest: async function(){

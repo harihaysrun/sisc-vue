@@ -12,7 +12,7 @@
 
           <h1>Edit {{product_brand}} {{product_name}}</h1>
 
-          <div id="success-message">Successfully edited product information!</div>
+          <div id="success-message" v-if="editSuccess === 'Yes'">Successfully edited product information!</div>
 
           <div>
             <span class="details-tag">Product condition</span>
@@ -137,14 +137,18 @@
           <input type="radio" value="N/A" v-model="product_cf" id="cf-na"/> <label for="cf-na">N/A</label> 
           </div>
 
-          <button v-on:click="editProduct">Edit Product listing</button>
-          <button v-on:click="removeProduct">Delete Product</button>
-          <button v-on:click="markAsSold">Mark As Sold</button>
+          <hr>
+
+          <div class="edit-buttons">
+            <button v-on:click="editProduct">Done</button>
+            <button class="delete-product-btn" v-on:click="removeProduct">Delete Product</button>
+            <!-- <button v-on:click="markAsSold">Mark As Sold</button> -->
+          </div>
 
 
-          <div id="danger-message">
+          <div id="danger-message" v-if="deleteMsg === 'Yes'">
             Are you sure you want to delete this product?
-            <button v-on:click="remove(productId)">Delete Product</button>
+            <button class="message-btn" v-on:click="remove(productId)">Delete Product</button>
           </div>
 
         </div>
@@ -206,14 +210,16 @@ export default {
       'product_vegan': '',
       'product_cf': '',
       'id': '',
-      'sold': ''
+      'sold': '',
+      'editSuccess': '',
+      'deleteMsg': ''
     }
   },
   methods:{
     'editProduct': async function(){
 
-      const successMsg = document.getElementById("success-message");
-      successMsg.style.display = "block";
+      // const successMsg = document.getElementById("success-message");
+      // successMsg.style.display = "block";
 
       await axios.patch(BASE_API_URL + 'skincare-products/' + this.productId, {
         // 'posterName': this.formData.poster_name,
@@ -236,10 +242,17 @@ export default {
         'productCrueltyFree': this.product_cf
       });
 
+      this.editSuccess = "Yes";
+      window.scrollTo(0, 0);
+
+
     },
     'removeProduct': function(){
-      const dangerMsg = document.getElementById("danger-message");
-      dangerMsg.style.display = "block";
+      // const dangerMsg = document.getElementById("danger-message");
+      // dangerMsg.style.display = "block";
+
+      this.deleteMsg = "Yes";
+
     },
     'remove': async function(productId){
       console.log("remove this product");
@@ -247,6 +260,10 @@ export default {
       await axios.post(BASE_API_URL + 'skincare-products/' + this.productId + '/delete',{
         '_id': productId
       });
+
+      window.scrollTo(0, 0);
+      this.$emit('back-to');
+      
     },
     markAsSold: async function(){
       this.sold = "Yes"
