@@ -23,6 +23,7 @@ input[type="text"], textarea, select{
     padding:15px 20px;
     border:0;
     background-color:rgb(240, 240, 240, 0.3);
+    /* background-color: white; */
     border:1px solid transparent;
     border-bottom:1px solid lightgray;
 }
@@ -104,9 +105,10 @@ button{
     border:1px solid black;
 }
 
-button:hover{
+button:hover, .reset:hover{
     cursor: pointer;
-    background-color:mediumslateblue;
+    color:white !important;
+    background-color:mediumslateblue !important;
 }
 
 hr{
