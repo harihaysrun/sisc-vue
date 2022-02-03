@@ -274,7 +274,7 @@ export default {
     },
     addRequest: async function(){
 
-      if (!this.formData.posterName ||
+      if (!this.formData.poster_name ||
           !this.formData.product_brand ||
           !this.formData.product_name ||
           !this.formData.product_image ||
@@ -298,6 +298,10 @@ export default {
       });
 
       this.formData = JSON.parse(JSON.stringify(original));
+
+      this.editSuccess = "Yes";
+      window.scrollTo(0, 0);
+
     },
     addProduct: async function(){
 
@@ -322,6 +326,9 @@ export default {
       });
 
       this.formData = JSON.parse(JSON.stringify(original));
+
+      this.editSuccess = "Yes";
+      window.scrollTo(0, 0);
     },
     crosscheckWithReviews: async function(){
 

@@ -12,7 +12,7 @@
         
           <h1>Edit {{product_brand}} {{product_name}}</h1>
 
-          <div id="success-message">Successfully edited product information!</div>
+          <div id="success-message" v-if="editSuccess === 'Yes'">Successfully edited product information!</div>
 
           <div>
             <span class="details-tag">Brand</span>
@@ -58,12 +58,16 @@
             <textarea name="" id="" cols="30" rows="10" v-model="product_description"></textarea>
           </div>
 
-          <button v-on:click="editProduct">Edit Product listing</button>
-          <button v-on:click="removeProduct">Delete Product</button>
+          <hr>
 
-          <div id="danger-message">
+          <div class="edit-buttons">
+            <button v-on:click="editProduct">Done</button>
+            <button class="delete-product-btn" v-on:click="removeProduct">Delete Product</button>
+          </div>
+
+          <div id="danger-message" v-if="deleteMsg === 'Yes'">
             Are you sure you want to delete this product?
-            <button v-on:click="remove(productId)">Delete Product</button>
+            <button class="message-btn" v-on:click="remove(productId)">Delete Product</button>
           </div>
 
         </div>
@@ -110,14 +114,13 @@ export default {
       'product_size': '',
       'product_size_ml': '',
       'product_description': '',
-      'id': ''
+      'id': '',
+      'editSuccess': '',
+      'deleteMsg': ''
     }
   },
   methods:{
     'editProduct': async function(){
-
-      const successMsg = document.getElementById("success-message");
-      successMsg.style.display = "block";
 
       await axios.patch(BASE_API_URL + 'requested-products/' + this.productId, {
         // 'posterName': this.formData.poster_name,
@@ -132,10 +135,14 @@ export default {
         'productDescription': this.product_description
       });
 
+      this.editSuccess = "Yes";
+      window.scrollTo(0, 0);
+
     },
     'removeProduct': function(){
-      const dangerMsg = document.getElementById("danger-message");
-      dangerMsg.style.display = "block";
+
+      this.deleteMsg = "Yes";
+
     },
     'remove': async function(productId){
       
@@ -144,6 +151,9 @@ export default {
       await axios.post(BASE_API_URL + 'requested-products/' + this.productId + '/delete',{
         '_id': productId
       });
+
+      window.scrollTo(0, 0);
+      this.$emit('back-to');
 
 
     }

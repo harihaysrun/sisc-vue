@@ -248,8 +248,6 @@ export default {
 
     },
     'removeProduct': function(){
-      // const dangerMsg = document.getElementById("danger-message");
-      // dangerMsg.style.display = "block";
 
       this.deleteMsg = "Yes";
 
