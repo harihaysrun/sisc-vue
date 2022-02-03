@@ -222,24 +222,24 @@ export default {
   methods:{
     'addListing': async function(){
 
-      // if (!this.formData.posterName ||
-      //     !this.formData.listing_type ||
-      //     !this.formData.product_condition ||
-      //     !this.formData.product_brand ||
-      //     !this.formData.product_name ||
-      //     !this.formData.product_image ||
-      //     !this.formData.product_category ||
-      //     !this.formData.product_quantity ||
-      //     !this.formData.product_size ||
-      //     !this.formData.product_price ||
-      //     !this.formData.product_description ||
-      //     !this.formData.skin_type ||
-      //     !this.formData.skin_concerns ||
-      //     !this.formData.product_vegan ||
-      //     !this.formData.product_cf) {
-      //       alert(checkFills)
-      //       return
-      //     }
+      if (!this.formData.poster_name ||
+          !this.formData.listing_type ||
+          !this.formData.product_condition ||
+          !this.formData.product_brand ||
+          !this.formData.product_name ||
+          !this.formData.product_image ||
+          !this.formData.product_category ||
+          !this.formData.product_quantity ||
+          !this.formData.product_size ||
+          !this.formData.product_price ||
+          !this.formData.product_description ||
+          !this.formData.skin_type ||
+          !this.formData.skin_concerns ||
+          !this.formData.product_vegan ||
+          !this.formData.product_cf) {
+            alert(checkFills)
+            return
+          }
 
       // const successMsg = document.getElementById("success-message");
       // successMsg.style.display = "block";

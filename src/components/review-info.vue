@@ -191,9 +191,10 @@ export default {
       if(!Array.isArray(this.comments)){
         this.comments = []
       }
-      console.log(this.comments.length)
+      // console.log(this.comments.length)
 
       this.ratings = this.comments.length + 1;
+      console.log(this.ratings)
 
       await axios.post(BASE_API_URL + 'reviews/' + this.productId + '/comment/add', {
         'commentName': this.comment_name,
@@ -222,8 +223,12 @@ export default {
     'deleteComment': async function(commentId){
       console.log(commentId);
 
+      this.ratings = this.comments.length - 1;
+      console.log(this.ratings)
+
       await axios.post(BASE_API_URL + 'reviews/' + this.productId + '/comment/delete', {
-            'commentId': commentId
+            'commentId': commentId,
+            'noOfReviews': this.ratings,
           })
           
       let response = await axios.get(BASE_API_URL + 'reviews/' + this.productId);
