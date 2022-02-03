@@ -4,10 +4,10 @@
         
       <div class="hero-banner">
         <h1>Reviews</h1>
+      </div>
 
-        <div style="background-color:rgba(0,0,0,0.1); padding: 20px;">
-          <input type="text" v-model="search" placeholder="Search by brand or product name">
-        </div>
+      <div class="search-box" style="background-color:rgba(0,0,0,0.1); padding: 20px;">
+        <input type="text" v-model="search" placeholder="Search by brand or product name">
       </div>
 
       <div class="search-results">
@@ -113,12 +113,6 @@ h3, h4{
   background-image: url('https://images.pexels.com/photos/6811708/pexels-photo-6811708.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260');
 }
 
-input[type="text"]{
-  width:70vw !important;
-  background-color:white;
-  border-bottom:1px solid lightgray;
-}
-
 .search-results{
   width:90%;
   margin:35px 0;
@@ -162,10 +156,6 @@ input[type="text"]{
 }
 
 @media screen  and (min-width:768px){
-
-  input[type="text"]{
-    width:50vw !important;
-  }
 
   .text-container{
     width:100%;

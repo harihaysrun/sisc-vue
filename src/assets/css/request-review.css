@@ -1,0 +1,28 @@
+.search-box{
+    width:100%;
+    background-color:white !important;
+    border-bottom:1px solid black;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    padding:0 10%;
+}
+
+.search-box input{
+    padding-left: 35px;
+    background-image:url('../images/search.png');
+    background-repeat:no-repeat;
+    background-size:15px;
+    background-position:center;
+    background-position-x: 0px;
+    width:100%;
+    background-color:white;
+    border:0;
+}
+
+@media screen  and (min-width:768px){
+    .search-box input{
+      width:60% !important;
+    }
+}

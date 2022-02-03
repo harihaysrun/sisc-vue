@@ -45,6 +45,7 @@ import "@/assets/css/style.css";
 import "@/assets/css/list.css";
 import "@/assets/css/info-page.css";
 import "@/assets/css/form.css";
+import "@/assets/css/request-review.css";
 
 import Home from '@/components/home';
 // import SkincareProducts from '@/components/skincare-products'

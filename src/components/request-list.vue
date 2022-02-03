@@ -6,10 +6,10 @@
 
       <div class="hero-banner" v-bind:style="{'display': display}" >
         <h1>{{pageTitle}}</h1>
+      </div>
 
-        <div style="background-color:rgba(0,0,0,0.1); padding: 20px;">
-          <input type="text" v-model="search" placeholder="Search by brand or product name">
-        </div>
+      <div class="search-box" style="background-color:rgba(0,0,0,0.1); padding: 20px;">
+        <input type="text" v-model="search" placeholder="Search by brand or product name">
       </div>
 
       <div class="search-results" v-bind:style="{'width': width}">
@@ -120,12 +120,6 @@ h3{
   background-image: url('https://images.pexels.com/photos/6724305/pexels-photo-6724305.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260');
 }
 
-input[type="text"]{
-  width:70vw !important;
-  background-color:white;
-  border-bottom:1px solid lightgray;
-}
-
 .search-results{
   width:90%;
   margin:35px 0;
@@ -176,10 +170,6 @@ input[type="text"]{
 
   h2{
     font-size:22px;
-  }
-
-  input[type="text"]{
-    width:50vw !important;
   }
 
   .search-results{
