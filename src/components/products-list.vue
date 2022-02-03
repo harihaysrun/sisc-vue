@@ -71,6 +71,8 @@
             <label class="details-tag">Skin type</label>
             <input type="radio" value="Dry" v-model="skin_type" id="skin-dry"/> <label for="skin-dry">Dry</label>
             &nbsp;&nbsp;
+            <input type="radio" value="Normal" v-model="skin_type" id="skin-normal"/> <label for="skin-normal">Normal</label>
+            &nbsp;&nbsp;
             <input type="radio" value="Combination" v-model="skin_type" id="skin-combo"/><label for="skin-combo">Combination</label>
             &nbsp;&nbsp;
             <input type="radio" value="Oily" v-model="skin_type" id="skin-oily"/> <label for="skin-oily">Oily</label>
@@ -95,23 +97,22 @@
             <a v-on:click="viewThisProduct(p._id)">
               <img v-bind:src="p.productImage" />
               <div class="product-info">
-                {{p.productBrand}}
-                <h2>{{p.productName}}</h2>
-                <span class="condition" v-if="p.productCondition === 'New'">{{p.productCondition}}</span>
-                <span class="condition used" v-if="p.productCondition === 'Used'">{{p.productCondition}}</span>
 
-                Category:
+                <div class="brand-name">
+                  <small>{{p.productBrand}}</small>
+                  <h2>{{p.productName}}</h2>
+                </div>
+
+                <!-- Category:
                 <span v-if="p.productCategory === 'Others'">{{p.productCategoryOthers}}</span>
                 <span v-else>{{p.productCategory}}</span>
                 
                 <br>
                 Suitable for: 
-                <span class="skin-type">{{p.skinType.join(',   ')}} SKIN</span>
+                <span class="skin-type">{{p.skinType.join(',   ')}} SKIN</span> -->
 
-                <span class="vegan" v-if="p.productVegan === 'Yes'"></span>
-                <span class="cf" v-if="p.productCrueltyFree === 'Yes'"></span>
 
-                <div>
+                <div class="size-price">
                   
                   {{p.productType}} size
                   <h3>
@@ -122,6 +123,13 @@
                 </div>
 
               </div>
+
+              <span class="condition" v-if="p.productCondition === 'New'">Brand New</span>
+              <span class="condition used" v-if="p.productCondition === 'Used'">{{p.productCondition}}</span>
+
+              <span class="vegan" v-if="p.productVegan === 'Yes'"></span>
+              <span class="cf" v-if="p.productCrueltyFree === 'Yes'"></span>
+
             </a>
           </div>
         </div>
@@ -238,16 +246,17 @@ h2{
 
 .condition, .vegan, .cf{
   position:absolute;
-  top:10px;
-  left:10px;
+  top:-1px;
+  left:-1px;
   background-color:honeydew;
   padding:10px 25px;
-  border-radius:25px;
+  /* border-radius:25px; */
   font-size:12px;
   text-transform: uppercase;
   color:green;
   font-weight:700;
-  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  /* box-shadow: 0 5px 15px rgba(0,0,0,0.1); */
+  border:1px solid black;
   /* z-index:5; */
 }
 
@@ -257,38 +266,38 @@ h2{
 }
 
 .vegan{
+  left:5px;
   background-color:white;
-  top:55px;
-  width:35px;
-  height:35px;
+  top:80px;
+  width:25px;
+  height:25px;
   padding:0;
   background-image:url('https://www.pngitem.com/pimgs/m/160-1609305_vegan-logo-png-vegan-or-vegetarian-symbol-transparent.png');
   background-size:35px;
   background-position:center;
   background-repeat:no-repeat;
+  border-radius:25px;
 }
 
 .cf{
-  top:100px;
-  width:35px;
-  height:35px;
+  left:5px;
+  top:45px;
+  width:25px;
+  height:25px;
   padding:0;
   background-image:url('https://www.kindpng.com/picc/m/424-4243754_cruelty-free-logo-png-animal-cruelty-free-transparent.png');
   background-size:20px;
   background-position:center;
   background-repeat:no-repeat;
+  border-radius:25px;
 }
 
 .skin-type{
   list-style-type: none;
   color:mediumslateblue;
-  /* background-color:lightgray; */
-  /* padding:10px 25px; */
-  /* border-radius:25px; */
   font-size:13px;
   font-weight:700;
   text-transform: uppercase;
-  /* letter-spacing:-1px; */
 
 }
 
@@ -309,7 +318,29 @@ button{
   color:black;
 }
 
+.size-price{
+  color:mediumslateblue;
+}
+
 @media screen  and (min-width:768px){
+
+  .search-results{
+    width:100%;
+    flex-flow: row wrap;
+    justify-content: space-between;
+  }
+
+  .indiv-product{
+    width:48%;
+  }
+
+  .indiv-product a{
+    height:100%;
+  }
+
+}
+
+@media screen  and (min-width:1024px){
 
   .inner-container{
     flex-direction: row;
@@ -325,27 +356,22 @@ button{
     width:100%;
     margin-left: 35px;
     flex-flow: row wrap;
+    justify-content: flex-start;
   }
 
   .indiv-product{
-    width:50%;
-    padding:10px;
+    width:25%;
+    /* padding:10px; */
   }
 
   .indiv-product a{
-    height:470px;
-    /* padding:0 20px 20px 20px; */
+    margin:10px;
+    height:100%;
     flex-direction: column;
     align-items: center;
     padding:0;
-    /* padding-top:10%; */
     z-index:2;
   }
-  
-  /* .indiv-product a::before{
-    width:100%;
-    height:8vw !important;
-  } */
 
   .indiv-product a img{
     /* width:80%; */
@@ -357,19 +383,42 @@ button{
   .product-info{
     margin-left:0;
     margin-top:15px;
-    width:80%;
+    margin-bottom:0px;
+    /* width:80%; */
+  }
+
+  .brand-name{
+    padding:0 10%;
+  }
+
+  .size-price {
+    width:100%;
+    padding:0 10%;
+    margin-top:35px;
+  }
+
+  .vegan{
+    top:90px;
+    width:35px;
+    height:35px;
+  }
+
+  .cf{
+    top:45px;
+    width:35px;
+    height:35px;
   }
 
 }
 
-@media screen  and (min-width:1024px){
+/* @media screen  and (min-width:1024px){
 
   .indiv-product{
     width:25%;
   }
   
 
-}
+} */
 
 
 </style>
