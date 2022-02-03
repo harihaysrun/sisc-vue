@@ -23,7 +23,7 @@
           <div>
             <label class="details-tag">Product Category</label>
             <select name="" id="" v-model="product_category">
-              <option value="" disabled>select one</option>
+              <option value="" disabled>Select One</option>
               <option value="First Cleanser">First Cleanser</option>
               <option value="Second Cleanser">Second Cleanser</option>
               <option value="Toner">Toner</option>
@@ -48,7 +48,7 @@
           <div>
             <label class="details-tag">Product Size</label>
             <select name="" id="" v-model="product_size">
-              <option value="" disabled>select one</option>
+              <option value="" disabled>Select One</option>
               <option value="Sample">Sample</option>
               <option value="Mini">Mini</option>
               <option value="Full">Full</option>
@@ -58,7 +58,7 @@
           <div>
             <label class="details-tag">Price</label>
             <select name="" id="" v-model="product_price">
-              <option value="" disabled>select one</option>
+              <option value="" disabled>Select One</option>
               <option value="0">Free</option>
               <option value="5">$5 or lesser</option>
               <option value="10">$10 or lesser</option>

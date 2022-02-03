@@ -32,7 +32,7 @@
           <div>
             <span class="details-tag">Quantity</span>
             <select name="" id="" v-model="product_quantity">
-              <option value="" disabled>select one</option>
+              <option value="" disabled>Select One</option>
               <option value="1">1</option>
               <option value="2">2</option>
               <option value="Others">Others</option>
@@ -44,7 +44,7 @@
           <div>
             <span class="details-tag">Product Size</span>
             <select name="" id="" v-model="product_size">
-              <option value="" disabled>select one</option>
+              <option value="" disabled>Select One</option>
               <option value="Sample">Sample</option>
               <option value="Mini">Mini</option>
               <option value="Full">Full</option>

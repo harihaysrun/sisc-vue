@@ -47,7 +47,7 @@
             <label for="">Age</label>
             <div class="age-range">
               <select class="age" name="" id="" v-model="my_age">
-                <option value="" disabled>select one</option>
+                <option value="" disabled>Select One</option>
                 <option value="15-20">15-20 Years Old</option>
                 <option value="21-25">21-25 Years Old</option>
                 <option value="26-30">26-30</option>
@@ -64,7 +64,7 @@
           <div class="comment-input">
             <label for="">My rating</label>
             <select class="rating" name="" id="" v-model="my_rating">
-              <option value="" disabled>select one</option>
+              <option value="" disabled>Select One</option>
               <option value="☆☆☆☆☆">0 Stars</option>
               <option value="★☆☆☆☆">1 Stars</option>
               <option value="★★☆☆">2 Stars</option>
@@ -94,7 +94,7 @@
         <div class="comment-input">
           <label for="">Will I repurchase this?</label>
           <select class="repurchase" name="" id="" v-model="repurchase">
-            <option value="" disabled>select one</option>
+            <option value="" disabled>Select One</option>
             <option value="Will Repurchase">Yes</option>
             <option value="Won't Repurchase">No</option>
             <option value="Might Repurchase">Maybe</option>
