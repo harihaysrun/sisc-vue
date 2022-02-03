@@ -373,6 +373,8 @@ button{
     width:100%;
     flex-flow: row wrap;
     justify-content: space-between;
+    /* background-color:pink; */
+    height:50%;
   }
 
   .indiv-product{
@@ -417,12 +419,13 @@ button{
 
   .indiv-product a{
     margin:10px;
-    height:100%;
+    /* height:100%; */
     flex-direction: column;
     align-items: center;
     padding:0;
     z-index:2;
-    align-items: stretch !important;
+    /* height:500px; */
+    /* align-items: stretch !important; */
   }
 
   /* .indiv-product a img{
