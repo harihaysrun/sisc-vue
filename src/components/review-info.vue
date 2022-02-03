@@ -126,7 +126,10 @@
           </div>
 
           <div class="comment-buttons">
-            <button v-on:click="deleteComment(c._id)">Delete</button>
+            <button class="delete-btn" v-on:click="deleteComment(c._id)">
+              <img src="@/assets/images/delete.png" alt="">
+              Delete
+            </button>
           </div>
         </div>
 

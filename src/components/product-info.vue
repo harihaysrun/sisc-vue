@@ -115,8 +115,14 @@
               </div>
 
               <div class="comment-buttons">
-                <button v-on:click="replyComment(c.commentName)">Reply</button>
-                <button v-on:click="deleteComment(c._id)">Delete</button>
+                <button v-on:click="replyComment(c.commentName)">
+                  <img src="@/assets/images/reply.png" alt="">
+                  Reply
+                </button>
+                <button class="delete-btn" v-on:click="deleteComment(c._id)">
+                  <img src="@/assets/images/delete.png" alt="">
+                  Delete
+                </button>
               </div>
 
             </div>

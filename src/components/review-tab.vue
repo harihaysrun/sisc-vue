@@ -4,8 +4,14 @@
 
       <div class="container">
 
-        <button v-if="tab === 'productInfo'" v-on:click="backToProducts">Back</button>
-        <button v-if="tab === 'editThisProduct'" v-on:click="backToProduct">Back</button>
+        <button class="back-btn" v-if="tab === 'productInfo'" v-on:click="backToProducts">
+          <img src="@/assets/images/back.png" alt="">
+          Back
+        </button>
+        <button class="back-btn" v-if="tab === 'editThisProduct'" v-on:click="backToProduct">
+          <img src="@/assets/images/back.png" alt="">
+          Back
+        </button>
       
       </div>
         

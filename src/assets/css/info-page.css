@@ -97,6 +97,42 @@ h1, h2, h3, h4{
     flex-direction: column;
 }
 
+.comment-buttons{
+  display:flex;
+  flex-direction: row;
+  margin-top:15px;
+}
+
+.comment-buttons button, .back-btn{
+  border:1px solid black;
+  /* border:0 !important; */
+  color:black;
+  background-color:white;
+  padding:15px 15px;
+  display:flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  width:50%;
+}
+
+.back-btn{
+  width: 120px;
+}
+
+.comment-buttons button:hover{
+  background-color:rgb(238, 238, 238);
+}
+
+.comment-buttons button:first-child{
+  margin-right:15px;
+}
+
+.comment-buttons img, .back-btn img{
+  width:15px;
+  margin-right:15px;
+}
+
 @media screen  and (min-width:768px){
 
   .details-container{
@@ -148,8 +184,29 @@ h1, h2, h3, h4{
     align-items: center;
   }
 
+  .comment-buttons{
+    margin-top:0;
+  }
+
   .comment-buttons button{
-    height:50px;
+    border: 0 !important;
+    padding:15px 20px;
+    flex-direction: column;
+    border-radius:15px;
+  }
+  
+  .comment-buttons img{
+    width:20px;
+    margin-right:0;
+    margin-bottom:5px;
+  }
+
+  .comment-buttons button:hover{
+    background-color:rgb(238, 238, 238);
+  }
+
+  .comment-buttons .delete-btn:hover{
+    background-color:rgb(255, 240, 240);
   }
 
   .name-offer{

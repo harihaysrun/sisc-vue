@@ -30,6 +30,11 @@ input[type="text"], textarea, select{
 input[type="text"].specify{
     background-color:rgb(249, 248, 255);
     margin-top:15px;
+    color:mediumslateblue !important;
+}
+
+input[type="text"].specify::placeholder{
+    color:rgb(123, 104, 238, 0.7) !important;
 }
 
 input[type="radio"], label, input[type="checkbox"]{
