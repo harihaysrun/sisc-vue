@@ -215,7 +215,7 @@ input[type="text"], textarea{
     background-color:white;
 }
 
-@media screen  and (min-width:768px){
+@media screen  and (min-width:1024px){
 
 
   .text-container{
@@ -227,5 +227,6 @@ input[type="text"], textarea{
   }
 
 }
+
 
 </style>
