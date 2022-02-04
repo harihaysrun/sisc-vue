@@ -9,12 +9,14 @@
             <div class="user">
               <div class="user-icon">
                 
-                <svg viewBox="0 0 50 50">
+                <!-- <svg viewBox="0 0 50 50">
                 <g>
                   <path class="st0" d="M9.28,41.45c0-8.68,7.04-15.72,15.72-15.72h0c8.68,0,15.72,7.04,15.72,15.72H9.28z"/>
                   <circle class="st0" cx="25" cy="17.14" r="8.59"/>
                 </g>
-                </svg>
+                </svg> -->
+
+                <img src="@/assets/images/user.png" alt="">
 
               </div>
               <div class="user-text">Sold by {{poster_name}}</div>

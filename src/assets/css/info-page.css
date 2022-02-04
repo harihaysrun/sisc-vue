@@ -224,6 +224,10 @@ button:hover .st0, button:hover .st1{
   justify-content: center;
 }
 
+.user-icon img{
+  width:25px;
+}
+
 .user-text{
   padding-left:20px;
 }
