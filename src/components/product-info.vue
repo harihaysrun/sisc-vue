@@ -139,7 +139,7 @@
               </div>
 
               <div class="comment-buttons">
-                <button v-on:click="replyComment(c.commentName)">
+                <button class="reply-btn" v-on:click="replyComment(c.commentName)">
                   <img src="@/assets/images/reply.png" alt="">
                   Reply
                 </button>

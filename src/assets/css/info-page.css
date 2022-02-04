@@ -178,7 +178,7 @@ button:hover .st0, button:hover .st1{
   stroke-width:2;
 }
 
-.comment-buttons button:first-child:hover{
+.reply-btn:hover{
   background-color:rgb(238, 238, 238) !important;
   color:black !important;
 }
@@ -193,7 +193,7 @@ button:hover .st0, button:hover .st1{
   stroke:red !important;
 }
 
-.comment-buttons button:first-child{
+.reply-btn{
   margin-right:15px;
 }
 

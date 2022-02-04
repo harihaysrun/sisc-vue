@@ -106,14 +106,27 @@
             </div>
 
             <div class="comment-buttons">
-              <button v-on:click="replyComment(c.commentName, c._id)">
+              <button class="reply-btn" v-on:click="replyComment(c.commentName, c._id)">
                 <img src="@/assets/images/reply.png" alt="">
                 Reply
               </button>
               <button class="delete-btn" v-on:click="deleteComment(c._id)">
-                <img src="@/assets/images/delete.png" alt="">
-                Delete
-              </button>
+                  <svg viewBox="0 0 35.83 41.57">
+                    <g>
+                      <path class="st0" d="M28.31,39.27H7.51c-1.5,0-2.72-1.22-2.72-2.72v-25h26.23v25C31.03,38.06,29.81,39.27,28.31,39.27z"/>
+                      <path class="st0" d="M31.75,11.56H4.08c-1.09,0-1.97-0.88-1.97-1.97v-1.5c0-1.09,0.88-1.97,1.97-1.97h27.66
+                        c1.09,0,1.97,0.88,1.97,1.97v1.5C33.71,10.68,32.83,11.56,31.75,11.56z"/>
+                      <path class="st0" d="M23.18,6.13H12.65V5.01c0-1.5,1.22-2.72,2.72-2.72h5.1c1.5,0,2.72,1.22,2.72,2.72V6.13z"/>
+                      <g>
+                        <line class="st1" x1="11.55" y1="15.43" x2="11.55" y2="35.41"/>
+                        <line class="st1" x1="17.91" y1="15.43" x2="17.91" y2="35.41"/>
+                        <line class="st1" x1="24.27" y1="15.43" x2="24.27" y2="35.41"/>
+                      </g>
+                    </g>
+                  </svg>
+                  <!-- <img src="@/assets/images/delete.png" alt=""> -->
+                  Delete
+                </button>
             </div>
 
           </div>
