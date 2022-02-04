@@ -67,7 +67,7 @@ nav{
     justify-content: center;
     align-items: center;
     box-sizing: border-box;
-    padding:15px 0;
+    padding:15px 20px;
     position:sticky;
     top:0;
     /* height:75px; */
