@@ -12,7 +12,7 @@
         <input type="text" v-model="search" placeholder="Search by brand or product name">
       </div>
 
-      <div class="search-results" v-bind:style="{'width': width}">
+      <div class="search-results container" v-bind:style="{'width': width}">
         
           <div class="indiv-product" v-for="p in filteredRequests.slice(0,max)" v-bind:key="p._id">
             
@@ -89,7 +89,7 @@ export default {
 }
 
 .container{
-  padding:35px 0;
+  /* padding:35px 0; */
   /* width:50%; */
 }
 
@@ -121,8 +121,10 @@ h3{
 }
 
 .search-results{
-  width:90%;
+  /* width:90%; */
   margin:35px 0;
+  /* margin-top:35px; */
+  /* margin-bottom:35px; */
 }
 
 .indiv-product a{

@@ -1,9 +1,10 @@
 <template>
 
-    <div class="details-container">
+    <div class="details-container container">
 
       <div class="img-container">
-        <img v-bind:src="formData.product_image">
+        <img v-if="!formData.product_image" src="https://www.charitycomms.org.uk/wp-content/uploads/2019/02/placeholder-image-square.jpg"/>
+        <img v-else id="product-img" v-bind:src="formData.product_image">
       </div>
 
       <div class="text-container">
@@ -210,6 +211,8 @@ export default {
     let response = await axios.get(BASE_API_URL + 'reviews');
     let reviewBoard = response.data;
     this.reviewProductName = reviewBoard.productName;
+
+    // document.getElementById("product-img").src = "https://www.hifubeauty.com/wp-content/uploads/2021/02/placeholder-square-1.jpg";
   },
   data: function(){
     return {
@@ -372,7 +375,7 @@ h1, h2, h3, h4{
 
 .details-container{
   margin:50px 0;
-  width: 80%;
+  /* width: 80%; */
   display:flex;
   flex-direction: column;
 }
@@ -390,13 +393,14 @@ h1, h2, h3, h4{
 }
 
 .img-container{
-  width:80vw;
-  height:80vw;
+  width:100%;
+  /* width:88vw; */
+  /* height:88vw; */
   /* border-radius:25px; */
   /* box-shadow: 0 5px 15px rgba(0,0,0,0.1); */
-  overflow:hidden;
-  border:1px solid black;
-  box-shadow: 5px 5px black;
+  /* overflow:hidden; */
+  /* border:1px solid black; */
+  /* box-shadow: 5px 5px black; */
 }
 
 .img-container img{

@@ -10,7 +10,7 @@
         <input type="text" v-model="search" placeholder="Search by brand or product name">
       </div>
 
-      <div class="search-results">
+      <div class="search-results container">
 
         <div class="indiv-product" v-for="p in filteredRequests" v-bind:key="p._id">
 
@@ -85,7 +85,7 @@ export default {
 <style scoped>
 
 .container{
-  padding:35px 0;
+  /* padding:35px 0; */
   /* width:50%; */
 }
 
@@ -114,8 +114,9 @@ h3, h4{
 }
 
 .search-results{
-  width:90%;
   margin:35px 0;
+  /* margin:0 20px; */
+  /* margin: 35px 20px; */
 }
 
 .indiv-product a{
@@ -136,10 +137,12 @@ h3, h4{
 }
 
 .text-container{
+  width:100%;
   margin-top:0;
   display:flex;
   flex-direction: column;
-  margin-left:15px;
+  /* margin-left:15px; */
+  padding: 15px;
   justify-content: center;
 }
 
@@ -162,6 +165,7 @@ h3, h4{
     flex-direction: row;
     margin-left:0;
     align-items: center;
+    padding:0;
   }
 
   .search-results{
@@ -191,6 +195,10 @@ h3, h4{
   .review-count h2{
     font-size:22px;
     margin-right:0;
+  }
+
+  .product-img{
+    width:150px;
   }
 
 }

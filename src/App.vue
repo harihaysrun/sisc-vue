@@ -203,13 +203,9 @@ footer{
 
 @media screen  and (min-width:768px){
 
-  .container{
-    width:70%;
-  }
-
   nav .container{
     height:auto !important;
-    width:80%;
+    width:70%;
     display:flex;
     align-items:center;
     flex-direction:row;

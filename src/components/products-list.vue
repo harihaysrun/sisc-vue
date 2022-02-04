@@ -8,7 +8,7 @@
           <h1>{{pageTitle}}</h1>
         </div>
 
-        <div class="search" v-bind:style="{'width': width}">
+        <div class="search container" v-bind:style="{'width': width}">
 
           <div class="search-bar" v-bind:style="{'display': display}">
             <h2 style="margin:0;">Search</h2>
@@ -236,10 +236,12 @@ input[type="text"], select{
 }
 
 .search{
-  width:80%;
+  /* width:80%; */
   display:flex;
   flex-direction: column;
-  margin:35px 0;
+  /* margin:35px 0; */
+  margin-top:35px;
+  margin-bottom:35px;
 }
 
 .search-bar{
