@@ -94,7 +94,13 @@
         </div>
 
         <button class="edit-btn" v-on:click="edit(productId)">
-          <img src="@/assets/images/edit.png" alt="">
+          <svg viewBox="0 0 50 50">
+            <g>
+              <path class="st0" d="M37.67,10.4L37.67,10.4c1.69,1.69,1.69,4.44,0,6.13L18.94,35.26c-0.44,0.44-1.01,0.74-1.63,0.86l-4.54,0.86
+                c-1,0.19-1.88-0.69-1.69-1.69l0.86-4.54c0.12-0.62,0.42-1.18,0.86-1.63L31.53,10.4C33.23,8.71,35.97,8.71,37.67,10.4z"/>
+              <line class="st1" x1="10.54" y1="40.87" x2="39.46" y2="40.87"/>
+            </g>
+          </svg>
           Edit Product
         </button>
 
@@ -135,7 +141,20 @@
                   Reply
                 </button>
                 <button class="delete-btn" v-on:click="deleteComment(c._id)">
-                  <img src="@/assets/images/delete.png" alt="">
+                  <svg viewBox="0 0 35.83 41.57">
+                    <g>
+                      <path class="st0" d="M28.31,39.27H7.51c-1.5,0-2.72-1.22-2.72-2.72v-25h26.23v25C31.03,38.06,29.81,39.27,28.31,39.27z"/>
+                      <path class="st0" d="M31.75,11.56H4.08c-1.09,0-1.97-0.88-1.97-1.97v-1.5c0-1.09,0.88-1.97,1.97-1.97h27.66
+                        c1.09,0,1.97,0.88,1.97,1.97v1.5C33.71,10.68,32.83,11.56,31.75,11.56z"/>
+                      <path class="st0" d="M23.18,6.13H12.65V5.01c0-1.5,1.22-2.72,2.72-2.72h5.1c1.5,0,2.72,1.22,2.72,2.72V6.13z"/>
+                      <g>
+                        <line class="st1" x1="11.55" y1="15.43" x2="11.55" y2="35.41"/>
+                        <line class="st1" x1="17.91" y1="15.43" x2="17.91" y2="35.41"/>
+                        <line class="st1" x1="24.27" y1="15.43" x2="24.27" y2="35.41"/>
+                      </g>
+                    </g>
+                  </svg>
+                  <!-- <img src="@/assets/images/delete.png" alt=""> -->
                   Delete
                 </button>
               </div>
