@@ -35,8 +35,8 @@ textarea{
 }
 
 input[type="text"].specify{
-    background-color:rgb(249, 248, 255);
-    margin-top:15px;
+    background-color:rgb(249, 248, 255) !important;
+    margin-top:15px !important;
     color:mediumslateblue !important;
 }
 

@@ -40,7 +40,7 @@
         <div class="name-offer">
           <div class="comment-input">
             <label for="">Name</label>
-            <input type="text" v-model="comment_name"/>
+            <input class="name" type="text" v-model="comment_name"/>
           </div>
 
           <div class="comment-input">
@@ -57,7 +57,7 @@
                 <option value="Others">Others</option>
               </select>
 
-              <input class="myage-others" type="text" v-model="my_age_others" placeholder="Age" v-if="my_age === 'Others'"/>
+              <input class="specify" type="text" v-model="my_age_others" placeholder="Age" v-if="my_age === 'Others'"/>
             </div>
           </div>
 
@@ -283,42 +283,68 @@ input[type="text"], textarea, select{
   display:block;
 }
 
+.delete-btn{
+  width:100%;
+}
+
 @media screen  and (min-width:768px){
 
   .text-container{
     flex:4;
   }
 
-  .name-offer{
+  input[type="text"].specify{
+    margin:0 !important;
+  }
+
+  .each-comment div:first-child,.each-comment div:nth-child(3){
+    flex:1.5;
+  }
+
+}
+
+@media screen  and (min-width:1024px){
+
+.name-offer{
     display:flex;
     flex-direction:row;
     justify-content: flex-start;
   }
 
-  .name-offer div{
+  .name-offer .comment-input{
     margin-right: 25px;
   }
 
-  input[type="text"], .rating, .repurchase{
-     width:250px !important;
+  .name, .rating, .repurchase{
+     width:150px !important;
   }
 
   .age-range{
-    /* width:100% !important; */
     display:flex;
     flex-direction: row;
+    /* background-color:pink; */
   }
 
-  .age-range input, .age-range select{
+  .age{
     width:150px !important;
+    margin-right:0 !important;
   }
 
-  /* .myage-others{
+  input[type="text"].specify{
     width:150px !important;
-  } */
+    margin-left:15px !important;
+  }
 
-  .each-comment div:first-child,.each-comment div:nth-child(3){
-    flex:1.5;
+  .delete-btn{
+    width:auto;
+  }
+
+}
+
+@media screen  and (min-width:1440px){
+
+  .name, .age, input[type="text"].specify, .rating, .repurchase{
+     width:200px !important;
   }
 
 }
