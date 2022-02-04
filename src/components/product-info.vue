@@ -6,7 +6,10 @@
 
           <div class="img-container">
             <img v-bind:src="product_image" alt="">
-            Sold by {{poster_name}}
+            <div class="sold-by">
+              <div class="sold-by-img"><img src="@/assets/images/user.png" alt=""></div>
+              <div class="sold-by-text">Sold by {{poster_name}}</div>
+            </div>
             <p v-if="is_product_sold === 'Yes'">Product is SOLD. Post a request for a new one!</p>
           </div>
 
@@ -245,6 +248,37 @@ export default {
 
 input[type="text"], textarea{
     background-color:white;
+}
+
+.sold-by{
+  margin-top:15px;
+  border:1px solid black;
+  color:black;
+  display:flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.sold-by-img{
+  border:0;
+  width:50px;
+  height:50px;
+  background-color:lightgray;
+  border-right:1px solid black;
+  box-shadow: 0 0;
+  display:flex;
+  align-items:center;
+  justify-content: center;
+}
+
+.sold-by-img img{
+  width:20px;
+  border:0;
+  box-shadow: 0 0;
+}
+
+.sold-by-text{
+  padding-left:20px;
 }
 
 @media screen  and (min-width:768px){
