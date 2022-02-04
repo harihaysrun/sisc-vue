@@ -26,6 +26,8 @@ input[type="text"], textarea, select{
     /* background-color: white; */
     border:1px solid transparent;
     border-bottom:1px solid lightgray;
+    border-radius:0 !important;
+    color: black !important;
 }
 
 textarea{
