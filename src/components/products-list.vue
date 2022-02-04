@@ -246,7 +246,7 @@ input[type="text"], select{
 
 .search-bar{
   background-color:rgba(216, 216, 216, 0.2);
-  padding: 25px 35px;
+  padding: 20px;
   /* padding-right:45px; */
   /* border-right:1px solid rgba(216, 216, 216, 0.7); */
 }
@@ -405,6 +405,7 @@ button{
 
   .search-bar{
     width:300px;
+    padding: 25px;
   }
 
   .search-results{
