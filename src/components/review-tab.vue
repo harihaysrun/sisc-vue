@@ -5,11 +5,23 @@
       <div class="container">
 
         <button class="back-btn" v-if="tab === 'productInfo'" v-on:click="backToProducts">
-          <img src="@/assets/images/back.png" alt="">
+          <svg viewBox="0 0 43.75 15.99">
+            <g>
+              <polyline class="st0" points="8.07,14.68 1.39,7.99 8.07,1.31 	"/>
+              <line class="st0" x1="1.39" y1="7.99" x2="42.37" y2="7.99"/>
+            </g>
+          </svg>
+          <!-- <img src="@/assets/images/back.png" alt=""> -->
           Back
         </button>
         <button class="back-btn" v-if="tab === 'editThisProduct'" v-on:click="backToProduct">
-          <img src="@/assets/images/back.png" alt="">
+          <svg viewBox="0 0 43.75 15.99">
+            <g>
+              <polyline class="st0" points="8.07,14.68 1.39,7.99 8.07,1.31 	"/>
+              <line class="st0" x1="1.39" y1="7.99" x2="42.37" y2="7.99"/>
+            </g>
+          </svg>
+          <!-- <img src="@/assets/images/back.png" alt=""> -->
           Back
         </button>
       
