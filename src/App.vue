@@ -3,12 +3,20 @@
   <div class="main-container">
     
       <nav>
-        <a id="hamburger-menu" v-on:click="openMenu" v-if="openHM === false">☰</a>
-        <a id="hamburger-menu" v-on:click="closeMenu" v-if="openHM === true">×</a>
 
+        <div class="logo-hm">
+          <a class="logo-img" v-on:click="home" v-if="mobileView === 'Yes'">
+            <img src="@/assets/images/logo2.png" alt="">
+          </a>
+
+          <a id="hamburger-menu" v-on:click="openMenu" v-if="openHM === false">☰</a>
+          <a id="hamburger-menu" v-on:click="closeMenu" v-if="openHM === true">×</a>
+        </div>
+        
         <div class="container" v-if="openHM === true">
-          <a v-on:click="home" v-if="page === 'home'" class="active" id="home">Home</a>
-          <a v-on:click="home" v-else>Home</a>
+          <a class="logo-img" v-on:click="home" v-if="page === 'home' || mobileView === 'No'" id="home">
+            <img src="@/assets/images/logo2.png" alt="">
+          </a>
 
           <a v-on:click="skincareProducts" v-if="page === 'skincareProducts'" class="active">Skincare Products</a>
           <a v-on:click="skincareProducts" v-else>Skincare Products</a>
@@ -34,6 +42,7 @@
 
       <footer>
         <div class="footer-logo">
+          <img src="@/assets/images/logo2-white.png" alt="">
           Sharing is (Skin)caring
         </div>
         <div class="footer-icons">
@@ -70,6 +79,7 @@ export default {
   },
   data: function(){
     return{
+      'mobileView': '',
       'page': 'home',
       'pageType': '',
       'openHM': false
@@ -79,15 +89,19 @@ export default {
 
     if (window.innerWidth >= 768){
       this.openHM = true;
+      this.mobileView = "No";
     } else{
       this.openHM = false;
+      this.mobileView = "Yes";
     }
     
     window.addEventListener('resize', () => {
       if (window.innerWidth >= 768){
         this.openHM = true
+        this.mobileView = "No";
       } else{
       this.openHM = false;
+        this.mobileView = "Yes";
     }
     })
   },
@@ -153,13 +167,20 @@ nav .container{
 }
 
 #hamburger-menu{
+  width:25px;
+  height:25px;
   color:black;
-  background-color: transparent !important;
+  background-color: white !important;
   padding:0 !important;
-  font-size:35px;
+  font-size:30px;
+  line-height:25px;
   text-align:center;
   display:block;
   margin-left:auto;
+}
+
+#hamburger-menu:hover{
+  opacity:0.3;
 }
 
 nav{
@@ -172,6 +193,26 @@ nav a{
   color:black;
   text-decoration:none;
 }
+
+nav img{
+  width:70px;
+}
+
+.logo-hm{
+  /* background-color:pink; */
+  width:100%;
+  display:flex;
+  align-items: center;
+}
+
+.logo-img:hover{
+  border:0;
+  opacity:0.3;
+}
+
+/* .mobile-logo{
+  background-color:pink;
+} */
 
 nav .container a{
   margin: 15px 0;
@@ -204,11 +245,13 @@ footer{
   /* box-shadow: 5px 5px mediumslateblue; */
   /* transform: translate(-5px, -5px); */
   background-color: black;
-  color:#addfad;
+  /* color:#addfad; */
+  color:white;
   box-sizing: border-box;
   padding: 50px 10% 50px 10%;
   display:flex;
   flex-direction:column;
+  font-size:13px;
   text-transform: uppercase;
   letter-spacing:1px;
 }
@@ -221,12 +264,20 @@ footer{
   /* background-color: pink; */
   /* color:black; */
   margin-bottom:25px;
+  display:flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-.footer-icons{
+.footer-logo img{
+  width:100px;
+  margin-bottom:15px;
+}
+
+/* .footer-icons{ */
   /* background-color: mistyrose; */
   /* color:black; */
-}
+/* } */
 
 @media screen  and (min-width:768px){
 
@@ -258,6 +309,9 @@ footer{
     border-bottom:1px solid mediumslateblue;
   }
 
+  .logo-img img{
+    margin-right: 15px;
+  }
 
   .add-new-btn:hover{
     border:1px solid mediumslateblue;
@@ -295,6 +349,7 @@ footer{
   .footer-logo{
     flex:1;
     margin-bottom:0;
+    align-items: flex-start;
   }
 
   .footer-icons{
