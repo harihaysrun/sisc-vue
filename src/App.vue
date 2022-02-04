@@ -72,14 +72,14 @@ export default {
   },
   created: function(){
 
-    if (window.innerWidth > 768){
+    if (window.innerWidth >= 768){
       this.openHM = true;
     } else{
       this.openHM = false;
     }
     
     window.addEventListener('resize', () => {
-      if (window.innerWidth > 768){
+      if (window.innerWidth >= 768){
         this.openHM = true
       } else{
       this.openHM = false;
@@ -205,7 +205,7 @@ footer{
 
   nav .container{
     height:auto !important;
-    width:70%;
+    width:80%;
     display:flex;
     align-items:center;
     flex-direction:row;
@@ -254,6 +254,13 @@ footer{
     max-width:550px;
     padding: 10vw 0 0 0;
   } */
+}
+
+@media screen  and (min-width:1024px){
+
+  nav .container{
+    width:70%;
+  }
 }
 
 </style>
