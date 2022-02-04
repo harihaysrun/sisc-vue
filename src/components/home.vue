@@ -15,8 +15,10 @@
       <div class="container">
 
         <div class="second-container">
-          <ProductsList page-title="Recently Added" max="4" display="none" margin-left="0"  width="100%"/>
+          <ProductsList page-title="Recently Added" max="4" display="none" margin-left="0"  width="100%" v-on:view-product="skincareProductsPage"/>
           <button class="view-all-btn" v-on:click="changetoSkincareProductsPage('sellGive')">View all</button>
+
+          <!-- <button class="view-all-btn" v-on:click="skincareProductsPage">View all</button> -->
         </div>
 
         <div class="second-container">
@@ -46,7 +48,7 @@ export default {
   data: function(){
     return{
       'heroText': '',
-      'sizeIs': ''
+      'sizeIs': '',
     }
   },
   created: function(){
@@ -73,6 +75,11 @@ export default {
     
   },
   methods:{
+    skincareProductsPage:function(productId){
+      // console.log("productId: " + productId)
+      console.log(productId)
+      this.$emit("change-to", productId)
+    },
     changetoSkincareProductsPage: function(typeOfPage){
       // this.pageType = "sellGive"
       console.log("click to view all")

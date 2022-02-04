@@ -50,15 +50,23 @@ export default {
   mounted: function(){
     document.title = "Product Marketplace"
   },
+  props:['viewThisProduct'],
   data: function(){
     return{
       'pageType': 'sellGive',
       'products': [],
+      // 'tab': '',
       'tab': 'viewAllProducts',
+      'thisProduct': this.viewThisProduct,
+      // 'changeTo': this.changeToTab
       // 'productEditing': productEditing
     }
   },
   methods:{
+    // changeToTab: function(){
+    //   this.tab = "productInfo";
+    //   // this.productViewing = productId;
+    // },
     backToProducts: function(){
       console.log("viewing all products now")
       this.tab = "viewAllProducts"
@@ -70,9 +78,19 @@ export default {
     },
     viewProduct:function(productId){
       this.tab = "productInfo";
+      // this.tab = changeTo;
+      // console.log('changeTo: ' + this.changeTo)
+      // this.changeTo = "productInfo";
       // console.log(this.tab)
       this.productViewing = productId;
-      console.log(this.productViewing)
+      // this.thisProduct = productId
+
+      // if (this.thisProduct === productId){
+      //   console.log("hello from home!")
+      // }
+      // console.log(this.productViewing)
+      // console.log("thisProduct: " + this.thisProduct)
+      // console.log("changeTo: " + this.changeTo)
     },
     editProduct: function(productId){
       this.tab = "editThisProduct";

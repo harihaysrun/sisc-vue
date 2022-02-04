@@ -5,7 +5,7 @@
       <nav>
 
         <div class="logo-hm">
-          <a class="logo-img" v-on:click="home" v-if="mobileView === 'Yes'">
+          <a class="logo-img" v-on:click="home">
             <img src="@/assets/images/logo2.png" alt="">
           </a>
 
@@ -14,7 +14,7 @@
         </div>
         
         <div class="container" v-if="openHM === true">
-          <a class="logo-img" v-on:click="home" v-if="page === 'home' || mobileView === 'No'" id="home">
+          <a class="logo-img" v-on:click="home" id="home">
             <img src="@/assets/images/logo2.png" alt="">
           </a>
 
@@ -33,7 +33,7 @@
 
       </nav>
 
-      <Home v-if="page === 'home'" v-on:view-all="skincareProducts" v-on:view-requests="requestedProducts"/>
+      <Home v-if="page === 'home'" v-on:view-all="skincareProducts" v-on:view-requests="requestedProducts" v-on:change-to="changetoSkincareProductsPage"/>
       <!-- <SkincareProducts v-if="page === 'skincareProducts'" ≈products-tab="sellGive" request-tab="requests" v-bind:typeOfPage="pageViewing"/> -->
       <SkincareProducts v-if="page === 'skincareProducts'"/>
       <RequestProducts v-if="page === 'requestProducts'" />
@@ -82,7 +82,7 @@ export default {
   },
   data: function(){
     return{
-      'mobileView': '',
+      // 'mobileView': '',
       'page': 'home',
       'pageType': '',
       'openHM': false
@@ -92,16 +92,16 @@ export default {
 
     if (window.innerWidth >= 768){
       this.openHM = true;
-      this.mobileView = "No";
+      // this.mobileView = "";
     } else{
       this.openHM = false;
-      this.mobileView = "Yes";
+      // this.mobileView = "Yes";
     }
     
     window.addEventListener('resize', () => {
       if (window.innerWidth >= 768){
         this.openHM = true
-        this.mobileView = "No";
+        this.mobileView = "";
       } else{
       this.openHM = false;
         this.mobileView = "Yes";
@@ -109,6 +109,15 @@ export default {
     })
   },
   methods:{
+    changetoSkincareProductsPage: function(productId){
+      console.log("productId: " + productId);
+      this.page = "skincareProducts";
+      // this.tabName = "productInfo";
+      // this.viewThisProduct = productId;
+      // this.changeToTab = "productInfo";
+      // console.log('changeToTab: ' + this.changeToTab)
+      // console.log("this is: " + this.page + " & " + this.changeToTab + " & " + this.viewThisProduct)
+    },
     home: function(){
       this.page = "home"
     },
@@ -161,12 +170,20 @@ export default {
 
 nav .container{
   width:100%;
-  height:calc(100vh - 75px) !important;
+  height:calc(100vh - 65px) !important;
   /* background-color: lightcoral; */
   display:flex;
   flex-direction:column;
   align-items:center;
   justify-content: center;
+}
+
+.logo-hm .logo-img{
+  display:block;
+}
+
+.container .logo-img{
+  display:none;
 }
 
 #hamburger-menu{
@@ -310,6 +327,14 @@ footer{
     color: mediumslateblue;
     cursor:pointer;
     border-bottom:1px solid mediumslateblue;
+  }
+
+  .logo-hm .logo-img{
+    display:none;
+  }
+
+  .container .logo-img{
+    display:block;
   }
 
   .logo-img img{

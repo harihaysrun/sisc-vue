@@ -175,6 +175,9 @@ export default {
   props: ['pageTitle', 'max', 'display', 'marginLeft', 'width'],
   methods:{
     viewThisProduct: function(productId){
+      // this.page = "skincareProducts";
+      // let skincareProductsPage = this.page;
+      // console.log(this.page)
       this.tab = "productInfo";
       console.log(productId)
       this.$emit('view-product', productId);
