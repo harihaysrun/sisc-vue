@@ -6,16 +6,25 @@
 
           <div class="img-container">
             <img v-bind:src="product_image" alt="">
-            <div class="sold-by">
-              <div class="sold-by-img"><img src="@/assets/images/user.png" alt=""></div>
-              <div class="sold-by-text">Sold by {{poster_name}}</div>
+            <div class="user">
+              <div class="user-icon">
+                
+                <svg viewBox="0 0 50 50">
+                <g>
+                  <path class="st0" d="M9.28,41.45c0-8.68,7.04-15.72,15.72-15.72h0c8.68,0,15.72,7.04,15.72,15.72H9.28z"/>
+                  <circle class="st0" cx="25" cy="17.14" r="8.59"/>
+                </g>
+                </svg>
+
+              </div>
+              <div class="user-text">Sold by {{poster_name}}</div>
             </div>
             <!-- <p v-if="is_product_sold === 'Yes'">Product is SOLD. Post a request for a new one!</p> -->
           </div>
 
           <div class="text-container">
         
-            <h4>{{product_brand}}</h4>
+            <h3>{{product_brand}}</h3>
             <h1>{{product_name}}</h1>
 
             <p>
@@ -242,43 +251,16 @@ export default {
 
 <style scoped>
 
+h3{
+  color:mediumslateblue !important;
+}
+
 .inner-container{
   padding:0;
 }
 
 input[type="text"], textarea{
     background-color:white;
-}
-
-.sold-by{
-  margin-top:15px;
-  border:1px solid black;
-  color:black;
-  display:flex;
-  flex-direction: row;
-  align-items: center;
-}
-
-.sold-by-img{
-  border:0;
-  width:50px;
-  height:50px;
-  background-color:lightgray;
-  border-right:1px solid black;
-  box-shadow: 0 0;
-  display:flex;
-  align-items:center;
-  justify-content: center;
-}
-
-.sold-by-img img{
-  width:20px;
-  border:0;
-  box-shadow: 0 0;
-}
-
-.sold-by-text{
-  padding-left:20px;
 }
 
 @media screen  and (min-width:768px){

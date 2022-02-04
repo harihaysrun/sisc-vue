@@ -393,7 +393,7 @@ button{
 
 }
 
-@media screen  and (min-width:1024px){
+@media screen and (min-width:1024px){
 /* 
   .inner-container{
     flex-direction: row;
@@ -462,7 +462,7 @@ button{
 
 }
 
-@media screen  and (min-width:1300px){
+@media screen  and (min-width:1440px){
 
   .indiv-product{
     width:25%;

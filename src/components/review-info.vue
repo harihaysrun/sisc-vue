@@ -241,6 +241,10 @@ export default {
 
 <style scoped>
 
+h3{
+  color:mediumslateblue;
+}
+
 input[type="text"], textarea, select{
     background-color:white;
 }

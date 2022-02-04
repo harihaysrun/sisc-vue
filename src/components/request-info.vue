@@ -6,10 +6,22 @@
           
         <div class="img-container">
           <img v-bind:src="product_image" alt="">
+            <div class="user">
+              <div class="user-icon">
+
+                <svg viewBox="0 0 50 50">
+                <g>
+                  <path class="st0" d="M9.28,41.45c0-8.68,7.04-15.72,15.72-15.72h0c8.68,0,15.72,7.04,15.72,15.72H9.28z"/>
+                  <circle class="st0" cx="25" cy="17.14" r="8.59"/>
+                </g>
+                </svg>
+
+              </div>
+              <div class="user-text">Requested by {{poster_name}}</div>
+            </div>
         </div>
         
         <div class="text-container">
-          {{poster_name}} is looking for
           <h3>{{product_brand}}</h3>
           <h1>{{product_name}}</h1>
 
@@ -185,12 +197,20 @@ export default {
 
 <style scoped>
 
+h3{
+  color:mediumslateblue;
+}
+
 input[type="text"], textarea{
     background-color:white;
 }
 
 @media screen  and (min-width:768px){
 
+
+  .text-container{
+    flex:3;
+  }
   
   .name-offer div:nth-child(2){
     margin-left: 25px;

@@ -26,14 +26,19 @@
       </nav>
 
       <Home v-if="page === 'home'" v-on:view-all="skincareProducts" v-on:view-requests="requestedProducts"/>
-      <!-- <SkincareProducts v-if="page === 'skincareProducts'" products-tab="sellGive" request-tab="requests" v-bind:typeOfPage="pageViewing"/> -->
+      <!-- <SkincareProducts v-if="page === 'skincareProducts'" ≈products-tab="sellGive" request-tab="requests" v-bind:typeOfPage="pageViewing"/> -->
       <SkincareProducts v-if="page === 'skincareProducts'"/>
       <RequestProducts v-if="page === 'requestProducts'" />
       <ReviewBoard v-if="page === 'reviewProducts'"/>
       <AddProduct v-if="page === 'addProduct'" v-on:product-added="refreshAddPage"/>
 
       <footer>
-        © Syahirah 2022
+        <div class="footer-logo">
+          Sharing is (Skin)caring
+        </div>
+        <div class="footer-icons">
+          © Syahirah 2022
+        </div>
       </footer>
     
   </div>
@@ -191,14 +196,36 @@ nav .container a{
   border: 1px solid black;
 }
 
-
 footer{
   width:100%;
+  /* border-bottom:10px solid mediumslateblue; */
+  /* border-right:10px solid mediumslateblue; */
+
+  /* box-shadow: 5px 5px mediumslateblue; */
+  /* transform: translate(-5px, -5px); */
   background-color: black;
-  color:white;
+  color:#addfad;
   box-sizing: border-box;
   padding: 50px 10% 50px 10%;
+  display:flex;
+  flex-direction:column;
+  text-transform: uppercase;
+  letter-spacing:1px;
+}
+
+.footer-logo, .footer-icons{
   text-align:center;
+}
+
+.footer-logo{
+  /* background-color: pink; */
+  /* color:black; */
+  margin-bottom:25px;
+}
+
+.footer-icons{
+  /* background-color: mistyrose; */
+  /* color:black; */
 }
 
 @media screen  and (min-width:768px){
@@ -254,6 +281,28 @@ footer{
     max-width:550px;
     padding: 10vw 0 0 0;
   } */
+
+  footer{
+    flex-direction:row;
+  }
+
+  .footer-logo, .footer-icons{
+    display:flex;
+    align-items: center;
+    text-align:left;
+  }
+
+  .footer-logo{
+    flex:1;
+    margin-bottom:0;
+  }
+
+  .footer-icons{
+    flex:1;
+    justify-content: flex-end;
+  }
+
+
 }
 
 @media screen  and (min-width:1024px){

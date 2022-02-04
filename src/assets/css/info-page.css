@@ -142,6 +142,41 @@ h1, h2, h3, h4{
   margin-right:15px;
 }
 
+
+
+.user{
+  margin-top:15px;
+  border:1px solid black;
+  color:black;
+  display:flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.user-icon{
+  border:0;
+  width:30px;
+  height:30px;
+  padding:15px;
+  background-color:black;
+  border-right:1px solid black;
+  box-shadow: 0 0;
+  display:flex;
+  align-items:center;
+  justify-content: center;
+}
+
+.user-text{
+  padding-left:20px;
+}
+
+.st0{
+  fill:transparent;
+  stroke:white;
+  stroke-miterlimit:10;
+  stroke-width:2;
+}
+
 @media screen  and (min-width:1024px){
 
   .details-container{
