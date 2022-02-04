@@ -3,7 +3,7 @@
     <div class="details-container container">
 
       <div class="img-container">
-        <img v-if="!formData.product_image" src="https://www.charitycomms.org.uk/wp-content/uploads/2019/02/placeholder-image-square.jpg"/>
+        <img v-if="!formData.product_image" src="@/assets/images/placeholder.jpg"/>
         <img v-else id="product-img" v-bind:src="formData.product_image">
       </div>
 
