@@ -139,6 +139,8 @@ export default {
     this.product_size_ml = response.data.productSize;
     this.product_description = response.data.productDescription;
     this.comments = response.data.comments;
+    
+    document.title = this.product_brand + ' ' + this.product_name;
 
   },
   props: ['productId'],

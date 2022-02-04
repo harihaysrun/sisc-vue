@@ -47,6 +47,9 @@ export default {
   components: {
     RequestsList, RequestInfo, EditProduct
   },
+  mounted: function(){
+    document.title = "Requests"
+  },
   data: function(){
     return{
       // 'pageType': 'sellGive',
@@ -60,6 +63,7 @@ export default {
       console.log("viewing all products now")
       this.tab = "viewAllProducts"
       console.log(this.tab)
+    document.title = "Requests"
     },
     backToProduct: function(){
       this.tab = "productInfo"

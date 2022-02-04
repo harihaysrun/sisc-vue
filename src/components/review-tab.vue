@@ -36,6 +36,9 @@ export default {
   components: {
     ReviewsList, ReviewInfo
   },
+  mounted: function(){
+    document.title = "Reviews"
+  },
   data: function(){
     return{
       // 'pageType': 'sellGive',
@@ -49,6 +52,7 @@ export default {
       console.log("viewing all products now")
       this.tab = "viewAllProducts"
       console.log(this.tab)
+      document.title = "Reviews"
     },
     backToProduct: function(){
       this.tab = "productInfo"

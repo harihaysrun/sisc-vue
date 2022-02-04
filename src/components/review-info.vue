@@ -156,6 +156,8 @@ export default {
     if (Array.isArray(response.data.reviews)){
       this.comments = response.data.reviews.reverse();
     }
+    
+    document.title = this.product_brand + ' ' + this.product_name;
 
   },
   props: ['productId'],

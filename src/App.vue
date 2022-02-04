@@ -24,8 +24,8 @@
           <a v-on:click="requestProducts" v-if="page === 'requestProducts'" class="active">Requests</a>
           <a v-on:click="requestProducts" v-else>Requests</a>
 
-          <a v-on:click="reviewProducts" v-if="page === 'reviewProducts'" class="active">Review Board</a>
-          <a v-on:click="reviewProducts" v-else>Review Board</a>
+          <a v-on:click="reviewProducts" v-if="page === 'reviewProducts'" class="active">Reviews</a>
+          <a v-on:click="reviewProducts" v-else>Reviews</a>
 
           <a v-on:click="addProduct" v-if="page === 'addProduct'" class="add-new-btn add-new-active">Add New</a>
           <a v-on:click="addProduct" v-else class="add-new-btn">Add New</a>
@@ -76,6 +76,9 @@ export default {
     ReviewBoard,
     RequestProducts,
     AddProduct
+  },
+  mounted: function(){
+    document.title = "Sharing is (Skin)Caring"
   },
   data: function(){
     return{
@@ -248,7 +251,7 @@ footer{
   /* color:#addfad; */
   color:white;
   box-sizing: border-box;
-  padding: 50px 10% 50px 10%;
+  padding: 50px 20px 50px 20px;
   display:flex;
   flex-direction:column;
   font-size:13px;
@@ -338,6 +341,8 @@ footer{
 
   footer{
     flex-direction:row;
+    padding-left: 10%;
+    padding-right: 10%;
   }
 
   .footer-logo, .footer-icons{
@@ -365,6 +370,13 @@ footer{
   nav .container{
     width:70%;
   }
+
+  footer{
+    flex-direction:row;
+    padding-left: 15%;
+    padding-right: 15%;
+  }
+
 }
 
 </style>

@@ -214,6 +214,9 @@ export default {
 
     // document.getElementById("product-img").src = "https://www.hifubeauty.com/wp-content/uploads/2021/02/placeholder-square-1.jpg";
   },
+  mounted: function(){
+    document.title = "Add New"
+  },
   data: function(){
     return {
       'formData': JSON.parse(JSON.stringify(original)),

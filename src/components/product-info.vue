@@ -202,7 +202,8 @@ export default {
     this.id = response.data_id;
     this.comments = response.data.comments;
     // this.is_product_sold = response.data.markAsSold;
-
+    
+    document.title = this.product_brand + ' ' + this.product_name;
   },
   props: ['productId'],
   data: function(){

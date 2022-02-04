@@ -40,6 +40,9 @@ export default {
   components: {
     ProductsList, RequestsList
   },
+  mounted: function(){
+    document.title = "Sharing is (Skin)Caring"
+  },
   data: function(){
     return{
       'heroText': '',
