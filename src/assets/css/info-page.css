@@ -122,8 +122,15 @@ h1, h2, h3, h4{
   width:100%;
 }
 
+
 .comment-buttons button:hover{
-  background-color:rgb(238, 238, 238);
+  background-color:rgb(238, 238, 238) !important;
+  color:black !important;
+}
+
+.comment-buttons .delete-btn:hover{
+  background-color:rgb(255, 240, 240) !important;
+  color:black !important;
 }
 
 .comment-buttons button:first-child{
@@ -135,7 +142,7 @@ h1, h2, h3, h4{
   margin-right:15px;
 }
 
-@media screen  and (min-width:768px){
+@media screen  and (min-width:1024px){
 
   .details-container{
     flex-direction: row;
@@ -195,21 +202,13 @@ h1, h2, h3, h4{
     border: 0 !important;
     padding:15px 20px;
     flex-direction: column;
-    border-radius:15px;
+    /* border-radius:15px; */
   }
   
   .comment-buttons img{
     width:20px;
     margin-right:0;
     margin-bottom:5px;
-  }
-
-  .comment-buttons button:hover{
-    background-color:rgb(238, 238, 238);
-  }
-
-  .comment-buttons .delete-btn:hover{
-    background-color:rgb(255, 240, 240);
   }
 
   .name-offer{
