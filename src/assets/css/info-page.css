@@ -275,6 +275,10 @@ button:hover .st0, button:hover .st1{
     padding-top:0px;
   }
 
+  .each-comment div:first-child{
+    padding-right:35px;
+  }
+
   .each-comment div:first-child,.each-comment div:nth-child(3){
     /* background-color:pink; */
     flex:1;
