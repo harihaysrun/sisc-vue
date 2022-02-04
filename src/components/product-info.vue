@@ -10,7 +10,7 @@
               <div class="sold-by-img"><img src="@/assets/images/user.png" alt=""></div>
               <div class="sold-by-text">Sold by {{poster_name}}</div>
             </div>
-            <p v-if="is_product_sold === 'Yes'">Product is SOLD. Post a request for a new one!</p>
+            <!-- <p v-if="is_product_sold === 'Yes'">Product is SOLD. Post a request for a new one!</p> -->
           </div>
 
           <div class="text-container">
@@ -173,7 +173,7 @@ export default {
     this.product_cf = response.data.productCrueltyFree;
     this.id = response.data_id;
     this.comments = response.data.comments;
-    this.is_product_sold = response.data.markAsSold;
+    // this.is_product_sold = response.data.markAsSold;
 
   },
   props: ['productId'],
@@ -202,7 +202,7 @@ export default {
       'comment_name':'',
       'comment_text': '',
       'comments': [],
-      'is_product_sold': ''
+      // 'is_product_sold': ''
     }
   },
   methods:{

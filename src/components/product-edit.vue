@@ -263,13 +263,13 @@ export default {
       this.$emit('back-to');
       
     },
-    markAsSold: async function(){
-      this.sold = "Yes"
-      console.log(this.sold)
-      await axios.post(BASE_API_URL + 'skincare-products/' + this.productId + '/sold', {
-        'markAsSold': this.sold,
-      });
-    }
+    // markAsSold: async function(){
+    //   this.sold = "Yes"
+    //   console.log(this.sold)
+    //   await axios.post(BASE_API_URL + 'skincare-products/' + this.productId + '/sold', {
+    //     'markAsSold': this.sold,
+    //   });
+    // }
   },
 }
 </script>
