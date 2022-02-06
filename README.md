@@ -1,24 +1,19 @@
-# skincare
+# SI(S)C.sg
+Skincare is (Skin)Caring
 
-## Project setup
-```
-yarn install
-```
+## About SI(S)C
 
-### Compiles and hot-reloads for development
-```
-yarn serve
-```
+## UI/UX
 
-### Compiles and minifies for production
-```
-yarn build
-```
+## Features
 
-### Lints and fixes files
-```
-yarn lint
-```
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+## Use Cases
+
+
+## Technologies Used
+
+
+## Test cases
+
+## Credits
