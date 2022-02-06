@@ -68,7 +68,7 @@ It's not too sharp or playful, and works great as both headers and body text. Ve
 | Description | Expected Result |
 | ----------- | --------------- |
 | Click on "Add New" button | Page changes to show a form |
-| Select what you want to do <br> - sell/give product away - request product - add product to reviews board | The appropriate input boxes will show or hide depending on user's choice  |
+| Select what you want to do <br> - sell/give product away <br> - request product <br> - add product to reviews board | The appropriate input boxes will show or hide depending on user's choice  |
 | Once done, click on "Add Product" | If user didn't fill in all the boxes, an alert will pop up to warn them to do so |
 | After filling everything up, click on "Add Product" | When they’ve successfully submitted the form, a green message will appear at the top so they'll know that the product has been added  |
 
