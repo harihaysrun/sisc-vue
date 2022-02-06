@@ -24,17 +24,17 @@ Inspired by Carousell’s selling & ‘looking for’ system, I personally would
 
 **Inspiration:** I find myself going back to look at [Glossier](https://www.glossier.com/) and [Good Molecules](https://www.goodmolecules.com/)’ websites quite frequently. More often than not, I do so just out of pure liking for the UI and not to actually browse the actual catalogs. The harmony of the colours, and layouts and modern UI are pleasing to look at.
 
-#### Wireframes
+### Wireframes
 [Here](https://www.figma.com/file/th9IcPkY20TucZrka24hoT/Skincare-UI?node-id=0%3A1) are the wireframes for the website. Colours used here are not finalised.
 
-#### Colours
+### Colours
 The colours used in the wireframes are mainly shades of grey and pink, but I decided to change it up a bit because pink adds a touch of femininity to the branding, which is not what I'm going for.
 
 **SI(S)C uses:**
 - Gender-neutral colours (black, white, and mediumslateblue as the accent colour) because skincare is for everyone, regardless of genders!
 - The retro line design to give it an element of fun
 
-#### Font
+### Font
 Font used: [Manrope](https://fonts.google.com/specimen/Manrope?preview.text_type=custom&preview.text=A)
 
 It's not too sharp or playful, and works great as both headers and body text. Very modern-looking.
