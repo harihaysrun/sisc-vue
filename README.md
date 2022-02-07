@@ -1,5 +1,5 @@
 # SI(S)C.sg
-![SI(S)C](/src/assets/images/readme.jpg)
+![SI(S)C](/src/assets/images/readme2.jpg)
 
 For some, skincare is a chore. But for some others, skincare is a hobby… a pretty expensive one. With that, comes the piles of free samples that more often than not, end up unused. This results in a huge collection of (unused) products at the back of our cabinets, and what better way is there than to spread the love and pass it on to someone else who wants it?
 
@@ -33,7 +33,7 @@ Inspired by Carousell’s selling & ‘looking for’ system, I personally prefe
 The colours used in the wireframes are mainly shades of grey and pink, but I decided to change it up because pink adds a touch of femininity to the branding, which is not what I'm going for.
 
 **SI(S)C uses:**
-- Gender-neutral colours (black, white, and mediumslateblue as the accent colour) because skincare is for everyone, regardless of genders!
+- Neutral colours (black, white, and mediumslateblue as the accent colour) because skincare is for everyone, regardless of genders!
 - The retro line design to give it an element of fun
 
 ### Font
