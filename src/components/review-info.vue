@@ -199,6 +199,16 @@ export default {
     'comment': async function(){
       // console.log(productId);
 
+      if (!this.comment_name ||
+          !this.my_age ||
+          !this.my_rating ||
+          !this.my_skin_type ||
+          !this.comment_text ||
+          !this.repurchase){
+        alert("You are required to fill in all fields");
+        return
+      }
+
       if(!Array.isArray(this.comments)){
         this.comments = []
       }
