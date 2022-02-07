@@ -34,11 +34,10 @@
       </nav>
 
       <Home v-if="page === 'home'" v-on:change-to="skincareProducts" v-on:change-to-request="requestProducts"/>
-      <!-- <SkincareProducts v-if="page === 'skincareProducts'" ≈products-tab="sellGive" request-tab="requests" v-bind:typeOfPage="pageViewing"/> -->
       <SkincareProducts v-if="page === 'skincareProducts'"/>
       <RequestProducts v-if="page === 'requestProducts'" />
       <ReviewBoard v-if="page === 'reviewProducts'"/>
-      <AddProduct v-if="page === 'addProduct'" v-on:product-added="refreshAddPage"/>
+      <AddProduct v-if="page === 'addProduct'"/>
 
       <footer>
         <div class="footer-logo">
@@ -62,10 +61,9 @@ import "@/assets/css/form.css";
 import "@/assets/css/request-review.css";
 
 import Home from '@/components/home';
-// import SkincareProducts from '@/components/skincare-products'
 import SkincareProducts from '@/components/products-tab'
-import ReviewBoard from '@/components/review-tab'
 import RequestProducts from '@/components/request-tab'
+import ReviewBoard from '@/components/review-tab'
 import AddProduct from '@/components/add-or-request-product'
 
 export default {
@@ -73,8 +71,8 @@ export default {
   components: {
     Home,
     SkincareProducts,
-    ReviewBoard,
     RequestProducts,
+    ReviewBoard,
     AddProduct
   },
   mounted: function(){
@@ -82,7 +80,6 @@ export default {
   },
   data: function(){
     return{
-      // 'mobileView': '',
       'page': 'home',
       'pageType': '',
       'openHM': false
@@ -92,10 +89,8 @@ export default {
 
     if (window.innerWidth >= 768){
       this.openHM = true;
-      // this.mobileView = "";
     } else{
       this.openHM = false;
-      // this.mobileView = "Yes";
     }
     
     window.addEventListener('resize', () => {
@@ -109,23 +104,12 @@ export default {
     })
   },
   methods:{
-    // changetoSkincareProductsPage: function(productId){
-    //   console.log("productId: " + productId);
-    //   this.page = "skincareProducts";
-    // },
-    // changetoRequestsPage: function(){
-    //   this.page = "requestProducts";
-    // },
     home: function(){
       this.page = "home"
     },
     skincareProducts: function(typeOfPage){
-      // console.log("viewing all skincare products now")
       this.page = "skincareProducts";
       this.pageViewing = typeOfPage
-      // console.log(this.page, this.pageType)
-      console.log('pageViewing: ' + this.pageViewing)
-      // location.hash = "skincare-products"
       window.scrollTo(0, 0);
     },
     requestProducts: function(){
@@ -137,18 +121,6 @@ export default {
     },
     addProduct: function(){
       this.page = "addProduct"
-    },
-    refreshAddPage: function(){
-      this.page = "home"
-    },
-    requestedProducts: function(typeOfPage){
-      // console.log("viewing all requested products")
-      this.page = "requestProducts";
-      // this.pageType = typeOfPage;
-      this.pageViewing = typeOfPage
-      // console.log(this.page, this.pageType)
-      console.log('pageViewing: ' + this.pageViewing)
-      // location.hash = "skincare-products"
     },
     openMenu: function(){
       this.openHM = true;
@@ -163,10 +135,6 @@ export default {
 
 
 <style>
-
-/* .container{
-  width:90%;
-} */
 
 nav .container{
   width:100%;
@@ -219,7 +187,6 @@ nav img{
 }
 
 .logo-hm{
-  /* background-color:pink; */
   width:100%;
   display:flex;
   align-items: center;
@@ -229,10 +196,6 @@ nav img{
   border:0;
   opacity:0.3;
 }
-
-/* .mobile-logo{
-  background-color:pink;
-} */
 
 nav .container a{
   margin: 15px 0;
@@ -259,13 +222,7 @@ nav .container a{
 
 footer{
   width:100%;
-  /* border-bottom:10px solid mediumslateblue; */
-  /* border-right:10px solid mediumslateblue; */
-
-  /* box-shadow: 5px 5px mediumslateblue; */
-  /* transform: translate(-5px, -5px); */
   background-color: black;
-  /* color:#addfad; */
   color:white;
   box-sizing: border-box;
   padding: 50px 20px 50px 20px;
@@ -281,8 +238,6 @@ footer{
 }
 
 .footer-logo{
-  /* background-color: pink; */
-  /* color:black; */
   margin-bottom:25px;
   display:flex;
   flex-direction: column;
@@ -293,11 +248,6 @@ footer{
   width:100px;
   margin-bottom:15px;
 }
-
-/* .footer-icons{ */
-  /* background-color: mistyrose; */
-  /* color:black; */
-/* } */
 
 @media screen  and (min-width:768px){
 
@@ -322,7 +272,6 @@ footer{
   }
 
   nav a:hover{
-    /* max-width:500px; */
     background-color:white;
     color: mediumslateblue;
     cursor:pointer;
@@ -358,12 +307,7 @@ footer{
     background-size: cover;
     background-position: 0 -70vw;
   }
-
-  /* .hero-text{
-    max-width:550px;
-    padding: 10vw 0 0 0;
-  } */
-
+  
   footer{
     flex-direction:row;
     padding-left: 10%;
