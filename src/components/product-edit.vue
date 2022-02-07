@@ -1,8 +1,6 @@
 <template>
 
-    <!-- <div class="inner-container"> -->
-
-      <div class="details-container">
+      <div class="details-container container">
 
         <div class="img-container">
           <img v-bind:src="product_image">
@@ -142,7 +140,6 @@
           <div class="edit-buttons">
             <button v-on:click="editProduct">Done</button>
             <button class="delete-product-btn" v-on:click="removeProduct">Delete Product</button>
-            <!-- <button v-on:click="markAsSold">Mark As Sold</button> -->
           </div>
 
 
@@ -165,7 +162,6 @@ export default {
   created: async function(){
     console.log(this.productId)
     let response = await axios.get(BASE_API_URL + 'skincare-products/' + this.productId);
-    // this.poster_name = response.data.posterName;
     this.product_condition = response.data.productCondition;
     this.product_brand = response.data.productBrand;
     this.product_name = response.data.productName;
@@ -183,15 +179,12 @@ export default {
     this.skin_concerns = response.data.skinConcerns.join();
     this.product_vegan = response.data.productVegan;
     this.product_cf = response.data.productCrueltyFree;
-    // this.id = response.data_id;
-
     console.log(response.data)
 
   },
   props: ['productId'],
   data: function(){
     return{
-      // 'poster_name': '',
       'product_condition': '',
       'product_brand': '',
       'product_name': '',
@@ -218,11 +211,7 @@ export default {
   methods:{
     'editProduct': async function(){
 
-      // const successMsg = document.getElementById("success-message");
-      // successMsg.style.display = "block";
-
       await axios.patch(BASE_API_URL + 'skincare-products/' + this.productId, {
-        // 'posterName': this.formData.poster_name,
         'productCondition': this.product_condition,
         'productBrand': this.product_brand,
         'productName': this.product_name,
@@ -253,7 +242,6 @@ export default {
 
     },
     'remove': async function(productId){
-      console.log("remove this product");
 
       await axios.post(BASE_API_URL + 'skincare-products/' + this.productId + '/delete',{
         '_id': productId
@@ -262,15 +250,8 @@ export default {
       window.scrollTo(0, 0);
       this.$emit('back-to');
       
-    },
-    // markAsSold: async function(){
-    //   this.sold = "Yes"
-    //   console.log(this.sold)
-    //   await axios.post(BASE_API_URL + 'skincare-products/' + this.productId + '/sold', {
-    //     'markAsSold': this.sold,
-    //   });
-    // }
-  },
+    }
+  }
 }
 </script>
 

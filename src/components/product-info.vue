@@ -1,27 +1,19 @@
 <template>
       
-      <div class="inner-container">
+      <div class="container">
       
         <div class="details-container">
 
           <div class="img-container">
             <img v-bind:src="product_image" alt="">
+
             <div class="user">
               <div class="user-icon">
-                
-                <!-- <svg viewBox="0 0 50 50">
-                <g>
-                  <path class="st0" d="M9.28,41.45c0-8.68,7.04-15.72,15.72-15.72h0c8.68,0,15.72,7.04,15.72,15.72H9.28z"/>
-                  <circle class="st0" cx="25" cy="17.14" r="8.59"/>
-                </g>
-                </svg> -->
-
                 <img src="@/assets/images/user.png" alt="">
-
               </div>
               <div class="user-text">Sold by {{poster_name}}</div>
             </div>
-            <!-- <p v-if="is_product_sold === 'Yes'">Product is SOLD. Post a request for a new one!</p> -->
+
           </div>
 
           <div class="text-container">
@@ -35,7 +27,7 @@
             </p>
 
             <p v-if="product_category != 'Others'">
-              <span class="details-tag">Product category: </span>
+              <span class="details-tag">Category: </span>
               {{product_category}}
             </p>
             <p v-if="product_category === 'Others'">
@@ -44,11 +36,11 @@
             </p>
 
             <p v-if="product_quantity != 'Others'">
-              <span class="details-tag">Product quantity: </span>
+              <span class="details-tag">Quantity: </span>
               {{product_quantity}}
             </p>
             <p v-if="product_quantity === 'Others'">
-              <span class="details-tag">Product quantity (others): </span>
+              <span class="details-tag">Quantity (others): </span>
               {{product_quantity_box}}
             </p>
 
@@ -69,16 +61,10 @@
             <p>
                 <span class="details-tag">Recommended skin type:</span>
                 {{skin_type.join(', ')}}
-                <!-- <span style="padding:5px 10px; background-color:pink;border-radius:15px;margin-right:10px" v-for="type in skin_type" v-bind:key="type._id">
-                  {{type}}
-                </span> -->
             </p>
             <p>
                 <span class="details-tag">Skin concerns:</span>
                 {{skin_concerns.join(', ')}}
-                <!-- <span style="padding:5px 10px; background-color:lavender;border-radius:15px;margin-right:10px" v-for="concern in skin_concerns" v-bind:key="concern._id">
-                  {{concern}}
-                </span> -->
             </p>
 
             <p>

@@ -13,6 +13,7 @@
           </svg>
           Back
         </button>
+
         <button class="back-btn" v-if="tab === 'editThisProduct'" v-on:click="backToProduct">
           <svg viewBox="0 0 43.75 15.99">
             <g>
@@ -26,12 +27,9 @@
       </div>
         
         <ProductsList page-title="View All Skincare Products" v-if="tab === 'viewAllProducts'" v-on:view-product="viewProduct"/>
-
-      <div class="container">
         <ProductInfo v-if="tab === 'productInfo'" v-on:edit-product="editProduct" v-bind:productId="productViewing"/>
         <EditProduct v-if="tab === 'editThisProduct'" v-on:remove-product="removeProduct" v-bind:productId="productEditing" v-on:back-to="backToProducts"/>
 
-      </div>
 
     </div>
     
