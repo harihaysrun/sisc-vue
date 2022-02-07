@@ -8,7 +8,7 @@
           <h1>{{pageTitle}}</h1>
         </div>
 
-        <div class="search container" v-bind:style="{'width': width}">
+        <div class="search container" v-bind:style="{'width': width, 'marginBottom': marginBottom}">
 
           <div class="search-bar" v-bind:style="{'display': display}">
             <h2 style="margin:0;">Search</h2>
@@ -94,7 +94,7 @@
             <button class="reset" v-on:click="clearSearch">Reset Search Filters</button>
           </div>
 
-          <div class="search-results" v-bind:style="{'marginLeft': marginLeft}">
+          <div class="search-results" v-bind:style="{'marginLeft': marginLeft, 'marginTop': marginTop}">
 
             <div class="indiv-product" v-for="p in products.slice(0,max)" v-bind:key="p._id">
 
@@ -172,7 +172,7 @@ export default {
       'product_cf': [],
     }
   },
-  props: ['pageTitle', 'max', 'display', 'marginLeft', 'width'],
+  props: ['pageTitle', 'max', 'display', 'marginLeft', 'width', 'marginTop', 'marginBottom'],
   methods:{
     viewThisProduct: function(productId){
       // this.page = "skincareProducts";

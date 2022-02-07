@@ -167,9 +167,14 @@
           <input type="radio" value="N/A" v-model="formData.product_cf" id="cf-na"/> <label for="cf-na">N/A</label> 
         </div>
 
-        <button v-on:click="addListing" v-if="formData.listing_type === 'sellOrGive'">Add Product</button>
-        <button v-on:click="addRequest" v-if="formData.listing_type === 'request'">Add Request</button>
-        <button v-on:click="addProduct" v-if="formData.listing_type === 'review'">Add New Product</button>
+        <hr>
+
+        <div class="submit-btns">
+          <button v-on:click="addListing" v-if="formData.listing_type === 'sellOrGive'">Add Product</button>
+          <button v-on:click="addRequest" v-if="formData.listing_type === 'request'">Add Request</button>
+          <button v-on:click="addProduct" v-if="formData.listing_type === 'review'">Add New Product</button>
+        </div>
+
         
 
       </div>
@@ -418,6 +423,14 @@ h1, h2, h3, h4{
   color:mediumslateblue;
 }
 
+.submit-btns{
+  margin-top:35px;
+}
+
+.submit-btns button{
+  width:100%;
+}
+
 @media screen  and (min-width:768px){
 
   .details-container{
@@ -432,11 +445,36 @@ h1, h2, h3, h4{
     top: 120px;
   }
 
+  select, input[type="text"].specify{
+    width:100% !important;
+  }
+
   .text-container{
     /* background-color:palegoldenrod; */
     margin-left:50px;
     margin-top:0;
     flex:2;
+  }
+
+}
+
+
+@media screen  and (min-width:1024px){
+
+  select, input[type="text"].specify{
+    /* width:calc(50% - 15px) !important; */
+    width: 200px !important;
+    margin-top:0;
+    margin-right:15px;
+  }
+
+  .submit-btns{
+    float:right;
+    margin:0;
+  }
+
+  .submit-btns button{
+    width:auto;
   }
 
 }

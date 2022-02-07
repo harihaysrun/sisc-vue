@@ -12,7 +12,7 @@
         <input type="text" v-model="search" placeholder="Search by brand or product name">
       </div>
 
-      <div class="search-results container" v-bind:style="{'width': width}">
+      <div class="search-results container" v-bind:style="{'width': width, 'marginBottom': marginBottom}">
         
           <div class="indiv-product" v-for="p in filteredRequests.slice(0,max)" v-bind:key="p._id">
             
@@ -61,7 +61,7 @@ export default {
       'search': ''
     }
   },
-  props: ['pageTitle', 'max', 'display', 'width'],
+  props: ['pageTitle', 'max', 'display', 'width', 'marginBottom'],
   methods:{
     viewThisProduct: function(productId){
       this.tab = "productInfo";

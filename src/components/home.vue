@@ -15,14 +15,14 @@
       <div class="container">
 
         <div class="second-container">
-          <ProductsList page-title="Recently Added" max="4" display="none" margin-left="0"  width="100%" v-on:view-product="skincareProductsPage"/>
+          <ProductsList page-title="Recently Added" max="4" display="none" margin-left="0" margin-top="0" margin-bottom="20px" width="100%" v-on:view-product="skincareProductsPage"/>
           <button class="view-all-btn" v-on:click="changetoSkincareProductsPage('sellGive')">View all</button>
 
           <!-- <button class="view-all-btn" v-on:click="skincareProductsPage">View all</button> -->
         </div>
 
         <div class="second-container">
-          <RequestsList page-title="Recent Requests" max="4" display="none" width="100%"/>
+          <RequestsList page-title="Recent Requests" max="4" display="none" margin-bottom="20px" width="100%"/>
           <button class="view-all-btn" v-on:click="changetoRequestsPage('requests')">View all</button>
         </div>
 
@@ -129,7 +129,8 @@ export default {
 }
 
 .container{
-  padding-top:25px;
+  padding:25px 0 50px 0;
+  /* padding-bottom:25px; */
   /* display:flex;
   flex-direction:column; */
   /* align-items:center; */
@@ -144,22 +145,10 @@ export default {
 }
 
 .view-all-btn{
-  width:150px;
+  width:100%;
   margin:auto;
 }
 
-/* .view-all-btn{
-  margin:35px auto;
-  color:white;
-  background-color: rgb(0, 0, 175);
-  padding:10px 20px;
-  border-radius:10px;
-}
-
-.view-all-btn:hover{
-  cursor:pointer;
-  background-color:mistyrose;
-} */
 
 
 @media screen  and (min-width:768px){
@@ -169,6 +158,11 @@ export default {
     padding:0;
     /* margin: 0 5% 0 5%; */
     /* padding: 10vw 0 0 0; */
+  }
+
+  .view-all-btn{
+    width:150px;
+    margin:auto;
   }
 
 }

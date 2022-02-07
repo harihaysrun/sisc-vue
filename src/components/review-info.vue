@@ -101,7 +101,7 @@
           </select>
         </div>
 
-        <button v-on:click="comment(productId)">Post Comment</button>
+        <button class="review-btn" v-on:click="comment(productId)">Post Review</button>
 
 
       </div>
@@ -301,6 +301,10 @@ input[type="text"], textarea, select{
   width:100%;
 }
 
+.review-btn{
+  width:100%;
+}
+
 @media screen  and (min-width:768px){
 
   .text-container{
@@ -351,6 +355,11 @@ input[type="text"], textarea, select{
 
   .delete-btn{
     width:auto;
+  }
+
+  .review-btn{
+    width:auto;
+    padding:20px 35px;
   }
 
 }
