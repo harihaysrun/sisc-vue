@@ -69,7 +69,7 @@ export default {
     },
     backToProducts: function(){
       this.tab = "viewAllProducts"
-      console.log(this.tab)
+      // console.log(this.tab)
       document.title = "Requests"
     },
     backToProduct: function(){

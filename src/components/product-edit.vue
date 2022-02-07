@@ -30,12 +30,12 @@
           </div>
           
           <div>
-            <label class="details-tag">Product Image</label>
+            <label class="details-tag">Image</label>
             <input type="text" v-model="product_image" />
           </div>
 
           <div>
-            <label class="details-tag">Product Category</label>
+            <label class="details-tag">Category</label>
             <select name="" id="" v-model="product_category">
               <option value="" disabled>Select One</option>
               <option value="First Cleanser">First Cleanser</option>
@@ -73,7 +73,7 @@
           </div>
 
           <div>
-            <label class="details-tag">Product Size</label>
+            <label class="details-tag">Size</label>
             <select name="" id="" v-model="product_size">
               <option value="" disabled>Select One</option>
               <option value="Sample">Sample</option>
@@ -97,12 +97,12 @@
           </div>
 
           <div>
-            <label class="details-tag">Product Description</label>
+            <label class="details-tag">Description</label>
             <textarea name="" id="" cols="30" rows="10" v-model="product_description"></textarea>
           </div>
 
           <div>
-            <label class="details-tag">Suitable for skin type</label>
+            <label class="details-tag">Suitable skin type</label>
             <input type="checkbox" value="Dry" v-model="skin_type" id="skin-dry"/> <label for="skin-dry">Dry</label>
           &nbsp;&nbsp;
           <input type="checkbox" value="Normal" v-model="skin_type" id="skin-normal"/> <label for="skin-normal">Normal</label>

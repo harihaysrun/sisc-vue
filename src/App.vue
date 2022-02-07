@@ -336,7 +336,7 @@ footer{
 @media screen  and (min-width:1024px){
 
   nav .container{
-    width:70%;
+    width:75%;
   }
 
   footer{
