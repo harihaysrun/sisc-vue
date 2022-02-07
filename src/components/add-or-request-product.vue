@@ -216,8 +216,6 @@ export default {
     let response = await axios.get(BASE_API_URL + 'reviews');
     let reviewBoard = response.data;
     this.reviewProductName = reviewBoard.productName;
-
-    // document.getElementById("product-img").src = "https://www.hifubeauty.com/wp-content/uploads/2021/02/placeholder-square-1.jpg";
   },
   mounted: function(){
     document.title = "Add New"
@@ -250,10 +248,7 @@ export default {
           !this.formData.product_cf) {
             alert(checkFills)
             return
-          }
-
-      // const successMsg = document.getElementById("success-message");
-      // successMsg.style.display = "block";
+      }
 
       await axios.post(BASE_API_URL + 'skincare-products/add',{
         'posterName': this.formData.poster_name,
@@ -345,26 +340,22 @@ export default {
 
       let response = await axios.get(BASE_API_URL + 'reviews');
       let reviewBoard = response.data;
-      // console.log(reviewBoard.length)
-
-      // console.log(this.formData.product_name.length)
-
+      
       if (this.formData.product_name.length === 0){
         this.inReviewBoard = "noInput";
         return
       }
 
       for (let i=0; i<reviewBoard.length; i++){
-        // console.log(reviewBoard[i].productName)
+
         if (reviewBoard[i].productName.toLowerCase().includes(this.formData.product_name.toLowerCase())){
-          console.log(reviewBoard[i].productName + "exists in the reviews board")
-          this.inReviewBoard = true
+          this.inReviewBoard = true;
           this.reviewProductName = reviewBoard[i].productName;
           break
         } else {
-          console.log("this product doesn't exist")
-          this.inReviewBoard = false
+          this.inReviewBoard = false;
         }
+
       }
     },
     hideMsg: function(){
@@ -402,13 +393,6 @@ h1, h2, h3, h4{
 
 .img-container{
   width:100%;
-  /* width:88vw; */
-  /* height:88vw; */
-  /* border-radius:25px; */
-  /* box-shadow: 0 5px 15px rgba(0,0,0,0.1); */
-  /* overflow:hidden; */
-  /* border:1px solid black; */
-  /* box-shadow: 5px 5px black; */
 }
 
 .img-container img{
@@ -462,7 +446,6 @@ h1, h2, h3, h4{
 @media screen  and (min-width:1024px){
 
   select, input[type="text"].specify{
-    /* width:calc(50% - 15px) !important; */
     width: 200px !important;
     margin-top:0;
     margin-right:15px;
