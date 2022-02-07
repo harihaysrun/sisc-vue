@@ -33,7 +33,7 @@
 
       </nav>
 
-      <Home v-if="page === 'home'" v-on:view-all="skincareProducts" v-on:view-requests="requestedProducts" v-on:change-to="changetoSkincareProductsPage" v-on:change-to-request="changetoRequestsPage"/>
+      <Home v-if="page === 'home'" v-on:change-to="skincareProducts" v-on:change-to-request="requestProducts"/>
       <!-- <SkincareProducts v-if="page === 'skincareProducts'" ≈products-tab="sellGive" request-tab="requests" v-bind:typeOfPage="pageViewing"/> -->
       <SkincareProducts v-if="page === 'skincareProducts'"/>
       <RequestProducts v-if="page === 'requestProducts'" />
@@ -109,18 +109,13 @@ export default {
     })
   },
   methods:{
-    changetoSkincareProductsPage: function(productId){
-      console.log("productId: " + productId);
-      this.page = "skincareProducts";
-      // this.tabName = "productInfo";
-      // this.viewThisProduct = productId;
-      // this.changeToTab = "productInfo";
-      // console.log('changeToTab: ' + this.changeToTab)
-      // console.log("this is: " + this.page + " & " + this.changeToTab + " & " + this.viewThisProduct)
-    },
-    changetoRequestsPage: function(){
-      this.page = "requestProducts";
-    },
+    // changetoSkincareProductsPage: function(productId){
+    //   console.log("productId: " + productId);
+    //   this.page = "skincareProducts";
+    // },
+    // changetoRequestsPage: function(){
+    //   this.page = "requestProducts";
+    // },
     home: function(){
       this.page = "home"
     },
@@ -131,12 +126,14 @@ export default {
       // console.log(this.page, this.pageType)
       console.log('pageViewing: ' + this.pageViewing)
       // location.hash = "skincare-products"
-    },
-    reviewProducts: function(){
-      this.page = "reviewProducts"
+      window.scrollTo(0, 0);
     },
     requestProducts: function(){
       this.page = "requestProducts"
+      window.scrollTo(0, 0);
+    },
+    reviewProducts: function(){
+      this.page = "reviewProducts"
     },
     addProduct: function(){
       this.page = "addProduct"
