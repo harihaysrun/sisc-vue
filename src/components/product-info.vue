@@ -117,7 +117,8 @@
             <div class="each-comment" v-for="c in comments" v-bind:key="c._id">
 
               <div>
-                <b class="c-name" v-if="c.commentName.toLowerCase() === poster_name.toLowerCase() || poster_name.toLowerCase().includes(c.commentName.toLowerCase())">[OP] {{c.commentName}}</b>
+                <b class="c-name" v-if="!c.commentName">{{c.commentName}}</b>
+                <b class="c-name" v-else-if="c.commentName.toLowerCase() === poster_name.toLowerCase() || poster_name.toLowerCase().includes(c.commentName.toLowerCase())">[OP] {{c.commentName}}</b>
                 <b class="c-name" v-else>{{c.commentName}}</b>
               </div>
 
