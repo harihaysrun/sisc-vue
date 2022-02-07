@@ -5,15 +5,18 @@ For some, skincare is a chore. But for some others, skincare is a hobby… a pre
 
 SI(S)C, an abbreviation of Sharing is (Skin)Caring, aims to be a local skincare community inspired by subreddits like AsianBeauty, SkincareAddiction, SkincareExchange (and more), where users can safely sell, give away unwanted samples, request and even provide reviews.
 
-Visit SI(S)C [here]()!
+Visit SI(S)C [here](https://agitated-visvesvaraya-94d773.netlify.app/)!
+
 
 **You may ask, Why SI(S)C even though platforms like Carousell exists?**
 
-Inspired by Carousell’s selling & ‘looking for’ system, I personally prefer to engage with people who have the same interest as me (and who I know is genuine). Plus, I won’t have to filter through a lot of different categories to reach the skincare section.
+SI(S)C is actually inspired by Carousell’s selling & ‘looking for’ system, minus all the troublesome filtering you'll have to go through to reach a certain section. It's a site dedicated to purely skincare! (Plus it's always nice to know that you're dealing with people who share the same interest as you).
+
 
 **As the site owner, I want to:**
 - build a safe community for local skincare enthusiasts
-- allow users to interact, sell, request and provide reviews(which will be especially helpful since we're all living in the same country and experiencing the same weather!)
+- allow users to interact, sell, request and provide reviews(which will be especially helpful since we're all living in the same country and experiencing the same weather! Having a same factor helps people to determine whether a product might or might work for them)
+
 
 **As the end user, I want to:**
 - be a part of a local skincare community
@@ -21,25 +24,30 @@ Inspired by Carousell’s selling & ‘looking for’ system, I personally prefe
 - request for products
 - contribute reviews on products I've tried before
 
+
 ## UI/UX
 ![Flow](/src/assets/images/flow.jpg)
+As shown in this flow, 'Recently Added' and 'Recent Requests' are the ProductInfo and RequestInfo components.
 
-**Inspiration:** I find myself going back to look at [Glossier](https://www.glossier.com/) and [Good Molecules](https://www.goodmolecules.com/)’ websites quite frequently. More often than not, I do so just out of pure liking for the UI and not to actually browse the actual catalogs. The harmony of the colours, layouts and modern UI are pleasing to look at.
+Logic-wise, only Reviews is intentionally missing the edit and delete function because it's not a personal listing – everyone shares their opinion on it, so no one has the 'right' to remove it. (Also imagine having hundreds of useful reviews on it only to have someone remove it by accident...!)
+
+
+### Visual Inspiration
+I find myself visiting [Glossier](https://www.glossier.com/) and [Good Molecules](https://www.goodmolecules.com/)’ websites quite often. I do so just out of pure liking for the UI and not to actually browse the actual catalogs. The modern look, simple colour palette and layouts were part of my visual moodboard.
+
 
 ### Wireframes
 [Here](https://www.figma.com/file/th9IcPkY20TucZrka24hoT/Skincare-UI?node-id=0%3A1) are the wireframes for the website. Colours used here are not finalised.
 
 ### Colours
-The colours used in the wireframes are mainly shades of grey and pink, but I decided to change it up because pink adds a touch of femininity to the branding, which is not what I'm going for.
+Looking at the wireframes, pink was my initial choice of accent colour, but I decided to change it up because it adds a touch of femininity to the branding, which is not what I'm going for.
 
 **SI(S)C uses:**
 - Neutral colours (black, white, and mediumslateblue as the accent colour) because skincare is for everyone, regardless of genders!
 - The retro line design to give it an element of fun
 
 ### Font
-Font used: [Manrope](https://fonts.google.com/specimen/Manrope?preview.text_type=custom&preview.text=A)
-
-It's not too sharp or playful, and works great as both headers and body text. Very modern-looking.
+[Manrope](https://fonts.google.com/specimen/Manrope?preview.text_type=custom&preview.text=A) works great as both headers and body text. Also very modern-looking.
 
 
 ## Features
@@ -113,6 +121,7 @@ It's not too sharp or playful, and works great as both headers and body text. Ve
 
 
 ## This project has been tested on:
+
 
 
 ## Credits
