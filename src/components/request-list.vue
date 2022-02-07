@@ -175,7 +175,7 @@ h3{
   }
 
   .search-results{
-    width:60%;
+    width:80%;
     flex-flow: row wrap;
   }
 
@@ -191,6 +191,14 @@ h3{
   .product-img{
     width:150px;
     height:150px;
+  }
+
+}
+
+@media screen and (min-width:1024px){
+
+  .search-results{
+    width:60%;
   }
 
 }

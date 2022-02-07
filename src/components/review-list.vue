@@ -158,7 +158,7 @@ h3, h4{
   margin-right:5px;
 }
 
-@media screen  and (min-width:768px){
+@media screen and (min-width:768px){
 
   .text-container{
     width:100%;
@@ -169,7 +169,7 @@ h3, h4{
   }
 
   .search-results{
-    width:60%;
+    width:80%;
     flex-flow: row wrap;
   }
 
@@ -199,6 +199,14 @@ h3, h4{
 
   .product-img{
     width:150px;
+  }
+
+}
+
+@media screen and (min-width:1024px){
+
+  .search-results{
+    width:60%;
   }
 
 }
