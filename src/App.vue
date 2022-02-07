@@ -33,7 +33,7 @@
 
       </nav>
 
-      <Home v-if="page === 'home'" v-on:view-all="skincareProducts" v-on:view-requests="requestedProducts" v-on:change-to="changetoSkincareProductsPage"/>
+      <Home v-if="page === 'home'" v-on:view-all="skincareProducts" v-on:view-requests="requestedProducts" v-on:change-to="changetoSkincareProductsPage" v-on:change-to-request="changetoRequestsPage"/>
       <!-- <SkincareProducts v-if="page === 'skincareProducts'" ≈products-tab="sellGive" request-tab="requests" v-bind:typeOfPage="pageViewing"/> -->
       <SkincareProducts v-if="page === 'skincareProducts'"/>
       <RequestProducts v-if="page === 'requestProducts'" />
@@ -117,6 +117,9 @@ export default {
       // this.changeToTab = "productInfo";
       // console.log('changeToTab: ' + this.changeToTab)
       // console.log("this is: " + this.page + " & " + this.changeToTab + " & " + this.viewThisProduct)
+    },
+    changetoRequestsPage: function(){
+      this.page = "requestProducts";
     },
     home: function(){
       this.page = "home"

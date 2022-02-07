@@ -18,11 +18,10 @@
           <ProductsList page-title="Recently Added" max="4" display="none" margin-left="0" margin-top="0" margin-bottom="20px" width="100%" v-on:view-product="skincareProductsPage"/>
           <button class="view-all-btn" v-on:click="changetoSkincareProductsPage('sellGive')">View all</button>
 
-          <!-- <button class="view-all-btn" v-on:click="skincareProductsPage">View all</button> -->
         </div>
 
         <div class="second-container">
-          <RequestsList page-title="Recent Requests" max="4" display="none" margin-bottom="20px" width="100%"/>
+          <RequestsList page-title="Recent Requests" max="4" display="none" margin-bottom="20px" width="100%" v-on:view-product="requestsPage"/>
           <button class="view-all-btn" v-on:click="changetoRequestsPage('requests')">View all</button>
         </div>
 
@@ -79,6 +78,11 @@ export default {
       // console.log("productId: " + productId)
       console.log(productId)
       this.$emit("change-to", productId)
+    },
+    requestsPage:function(productId){
+      // console.log("productId: " + productId)
+      console.log(productId)
+      this.$emit("change-to-request")
     },
     changetoSkincareProductsPage: function(typeOfPage){
       // this.pageType = "sellGive"
