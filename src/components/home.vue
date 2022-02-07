@@ -52,21 +52,32 @@ export default {
   },
   created: function(){
 
+    let heroTextNo = 0;
+
     setInterval(() => {
-      this.heroText = "1"
+      heroTextNo++;
+      this.heroText = JSON.stringify(heroTextNo);
+      console.log(heroTextNo)
+      if (heroTextNo === 4){
+        heroTextNo = 0;
+      }
     }, 2000)
 
-    setInterval(() => {
-      this.heroText = "2"
-    }, 4000)
+    // setInterval(() => {
+    //   this.heroText = "1"
+    // }, 2000)
 
-    setInterval(() => {
-      this.heroText = "3"
-    }, 6000)
+    // setInterval(() => {
+    //   this.heroText = "2"
+    // }, 4000)
 
-    setInterval(() => {
-      this.heroText = "4"
-    }, 8000)
+    // setInterval(() => {
+    //   this.heroText = "3"
+    // }, 6000)
+
+    // setInterval(() => {
+    //   this.heroText = "4"
+    // }, 8000)
 
     if (window.innerWidth > 768){
       this.sizeIs = "tab"
