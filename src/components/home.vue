@@ -124,12 +124,16 @@ export default {
 }
 
 .hero-text{
-  padding:30vw 10% 0 10%;
-  /* padding-top:10vw; */
-  /* background-color:pink; */
+  /* padding:30vw 10% 0 10%; */
+  width:100%;
+  margin-top:35px;
+  padding:35px;
+  padding-top:30vw;
   text-align:center;
   box-sizing:border-box;
-  /* margin: 250px 5% 0 5%; */
+  /* background-color:white; */
+  /* border:2px solid black; */
+  /* box-shadow: 5px 5px black; */
 }
 
 .container{
@@ -163,9 +167,10 @@ export default {
   }
 
   .hero-text{
+    margin-top:10vh;
     max-width:550px;
-    padding:0;
-    padding-top:20vh;
+    /* padding:0; */
+    padding-top:10vh;
   }
 
   .view-all-btn{
