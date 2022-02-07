@@ -159,7 +159,7 @@ export default {
   created: async function(){
     let response = await axios.get(BASE_API_URL + 'skincare-products');
     this.products = response.data.reverse();
-    console.log(this.products)
+    // console.log(this.products)
   },
   data: function(){
     return{

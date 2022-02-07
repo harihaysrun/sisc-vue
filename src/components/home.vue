@@ -59,7 +59,7 @@ export default {
     setInterval(() => {
       heroTextNo++;
       this.heroText = JSON.stringify(heroTextNo);
-      console.log(heroTextNo)
+      // console.log(heroTextNo)
       if (heroTextNo === 4){
         heroTextNo = 0;
       }

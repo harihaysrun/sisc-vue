@@ -96,7 +96,7 @@
           </select>
         </div>
 
-        <button class="review-btn" v-on:click="comment(productId)">Post Review</button>
+        <button class="review-btn" v-on:click="comment">Post Review</button>
 
 
       </div>
@@ -194,17 +194,17 @@ export default {
   methods:{
     'edit': function(productId){
       this.$emit('edit-product', productId)
-      console.log(productId)
+      // console.log(productId)
     },
-    'comment': async function(productId){
-      console.log(productId);
+    'comment': async function(){
+      // console.log(productId);
 
       if(!Array.isArray(this.comments)){
         this.comments = []
       }
 
       this.ratings = this.comments.length + 1;
-      console.log(this.ratings)
+      // console.log(this.ratings)
 
       await axios.post(BASE_API_URL + 'reviews/' + this.productId + '/comment/add', {
         'commentName': this.comment_name,
@@ -231,10 +231,10 @@ export default {
 
     },
     'deleteComment': async function(commentId){
-      console.log(commentId);
+      // console.log(commentId);
 
       this.ratings = this.comments.length - 1;
-      console.log(this.ratings)
+      // console.log(this.ratings)
 
       await axios.post(BASE_API_URL + 'reviews/' + this.productId + '/comment/delete', {
             'commentId': commentId,

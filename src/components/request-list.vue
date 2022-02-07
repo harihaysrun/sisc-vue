@@ -51,7 +51,7 @@ export default {
   created: async function(){
     let response = await axios.get(BASE_API_URL + 'requested-products');
     this.products = response.data.reverse();
-    console.log(this.products)
+    // console.log(this.products)
   },
   data: function(){
     return{
@@ -69,7 +69,7 @@ export default {
   },
   computed:{
     filteredRequests: function(){
-      console.log('filteredproducts')
+      // console.log('filteredproducts')
       let filtered = this.products.filter((p) =>
         p.productBrand.toLowerCase().includes(this.search.toLowerCase())||
         p.productName.toLowerCase().includes(this.search.toLowerCase())

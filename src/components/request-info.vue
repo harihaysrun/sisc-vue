@@ -75,7 +75,7 @@
           <textarea v-model="comment_text" id="" cols="30" rows="10" placeholder="Type comment here"></textarea>
         </div>
 
-        <button class="postcmt-btn" v-on:click="comment(productId)">Post Comment</button>
+        <button class="postcmt-btn" v-on:click="comment">Post Comment</button>
 
       </div>
 
@@ -100,7 +100,7 @@
             </div>
 
             <div class="comment-buttons">
-              <button class="reply-btn" v-on:click="replyComment(c.commentName, c._id)">
+              <button class="reply-btn" v-on:click="replyComment(c.commentName)">
                 <img src="@/assets/images/reply.png" alt="">
                 Reply
               </button>
@@ -174,11 +174,11 @@ export default {
   },
   methods:{
     'edit': function(productId){
-      this.$emit('edit-product', productId)
-      console.log(productId)
+      this.$emit('edit-product', productId);
+      // console.log(productId)
     },
-    'comment': async function(productId){
-      console.log(productId);
+    'comment': async function(){
+      // console.log(this.productId, this.product_name);
       await axios.post(BASE_API_URL + 'requested-products/' + this.productId + '/comment/add', {
         'commentName': this.comment_name,
         'commentText': this.comment_text,
@@ -193,13 +193,12 @@ export default {
       this.comment_text = "";
       
     },
-    'replyComment': function(commentName, commentId){
-      console.log(commentName)
-      console.log(commentId);
+    'replyComment': function(commentName){
+      // console.log(commentName)
       this.comment_text = "@" + commentName;
     },
     'deleteComment': async function(commentId){
-      console.log(commentId);
+      // console.log(commentId);
 
       await axios.post(BASE_API_URL + 'requested-products/' + this.productId + '/comment/delete', {
         'commentId': commentId
