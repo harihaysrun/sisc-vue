@@ -18,13 +18,8 @@
           </p>
 
           <p>
-            <span class="details-tag">Vegan?</span>
-            {{product_vegan}}
-          </p>
-
-          <p>
-            <span class="details-tag">Cruelty free?</span>
-            {{product_vegan}}
+            <span v-if="product_vegan === 'Yes'" class="vegan">Vegan Product</span>
+            <span v-if="product_cf === 'Yes'" class="cruelty-free">Cruelty Free brand</span>
           </p>
 
         </div>
