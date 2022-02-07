@@ -5,6 +5,8 @@ For some, skincare is a chore. But for some others, skincare is a hobby… a pre
 
 SI(S)C, an abbreviation of Sharing is (Skin)Caring, aims to be a local skincare community inspired by subreddits like AsianBeauty, SkincareAddiction, SkincareExchange and etc., where users can safely sell, give away unwanted samples, request and even provide reviews.
 
+Visit SI(S)C [here]()!
+
 **You may ask, Why SI(S)C even though platforms like Carousell exists?**
 
 Inspired by Carousell’s selling & ‘looking for’ system, I personally would feel safer knowing that the person I’m purchasing from has the same interest as me and is genuine. Plus, I won’t have to filter through a lot of different categories to reach the skincare section.
@@ -20,7 +22,7 @@ Inspired by Carousell’s selling & ‘looking for’ system, I personally would
 - contribute reviews on products I've tried before
 
 ## UI/UX
-(flow/sitemap here)
+![Flow](/src/assets/images/flow.jpg)
 
 **Inspiration:** I find myself going back to look at [Glossier](https://www.glossier.com/) and [Good Molecules](https://www.goodmolecules.com/)’ websites quite frequently. More often than not, I do so just out of pure liking for the UI and not to actually browse the actual catalogs. The harmony of the colours, and layouts and modern UI are pleasing to look at.
 
@@ -107,6 +109,11 @@ It's not too sharp or playful, and works great as both headers and body text. Ve
 5. Heroku – used to host the Express API
 6. Netlify – host the Vue application so that there's a live link for people to visit
 7. Photoshop/Illustrator to create some of the icons
+
+
+
+## This project has been tested on:
+
 
 ## Credits
 1. [Flaticon](https://www.flaticon.com/)
