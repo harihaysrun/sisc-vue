@@ -32,8 +32,6 @@
                 </div>
               </div>
 
-              <!-- <div class="reply">Reply →</div> -->
-
             </a>
 
           </div>
@@ -65,7 +63,7 @@ export default {
   methods:{
     viewThisProduct: function(productId){
       this.tab = "productInfo";
-      console.log(productId)
+      // console.log(productId)
       this.$emit('view-product', productId);
     }
   },
@@ -86,11 +84,6 @@ export default {
 
 .title-from-home{
   margin-right:auto;
-}
-
-.container{
-  /* padding:35px 0; */
-  /* width:50%; */
 }
 
 .inner-container{
@@ -121,14 +114,10 @@ h3{
 }
 
 .search-results{
-  /* width:90%; */
   margin:35px 0;
-  /* margin-top:35px; */
-  /* margin-bottom:35px; */
 }
 
 .indiv-product a{
-  /* align-items:flex-start !important; */
     align-items: stretch !important;
 }
 
@@ -158,13 +147,10 @@ h3{
   padding: 10px 15px;
   font-size:13px;
   background-color:lavender;
-  /* border-left:1px solid black; */
   border-bottom:1px solid black;
-  /* box-shadow: 3px 3px black; */
 }
 
 .brand-name{
-  /* background-color: lightgray; */
   padding: 10px 15px;
 }
 
@@ -184,7 +170,6 @@ h3{
   }
 
   .brand-name{
-    /* background-color: lightgray; */
     padding: 25px 15px;
   }
 

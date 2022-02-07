@@ -27,12 +27,13 @@
         
         <RequestsList page-title="Requests" v-if="tab === 'viewAllProducts'" v-on:view-product="viewProduct"/>
       
-      <div class="container">
+      <!-- <div class="container"> -->
         
         <RequestInfo v-if="tab === 'productInfo'" v-on:edit-product="editProduct" v-bind:productId="productViewing"/>
         <EditProduct v-if="tab === 'editThisProduct'" v-on:remove-product="removeProduct" v-bind:productId="productEditing" v-on:back-to="backToProducts"/>
 
-      </div>
+      <!-- </div> -->
+
     </div>
     
 </template>
@@ -52,68 +53,42 @@ export default {
   },
   data: function(){
     return{
-      // 'pageType': 'sellGive',
-      // 'products': [],
-      'tab': 'viewAllProducts',
-      // 'productEditing': productEditing
+      'tab': 'viewAllProducts'
     }
   },
   methods:{
+    viewProduct:function(productId){
+      this.tab = "productInfo";
+      this.productViewing = productId;
+      // console.log(this.productViewing)
+    },
+    editProduct: function(productId){
+      this.tab = "editThisProduct";
+      this.productEditing = productId;
+      // console.log(this.productEditing)
+    },
+    removeProduct: function(productId){
+      this.tab = "viewAllProducts";
+      this.productToRemove = productId;
+      // console.log(this.productToRemove)
+    },
     backToProducts: function(){
-      console.log("viewing all products now")
       this.tab = "viewAllProducts"
       console.log(this.tab)
-    document.title = "Requests"
+      document.title = "Requests"
     },
     backToProduct: function(){
       this.tab = "productInfo"
     },
-    // productInfo:function(){
-    //   this.tab = "productInfo"
-    // },
-    // editThisProduct:function(){
-    //   this.tab = "editThisProduct"
-    // },
-    viewProduct:function(productId){
-      this.tab = "productInfo";
-      // console.log(this.tab)
-      this.productViewing = productId;
-      console.log(this.productViewing)
-    },
-    editProduct: function(productId){
-      this.tab = "editThisProduct";
-      // console.log(this.tab)
-      this.productEditing = productId;
-      console.log(this.productEditing)
-      // console.log("EditThisProduct")
-    },
-    removeProduct: function(productId){
-      this.tab = "viewAllProducts";
-      // console.log(this.tab)
-      this.productToRemove = productId;
-      console.log(this.productToRemove)
-    },
-    viewProducts: function(){
-      this.pageType = "sellGive"
-    },
-    viewRequests: function(){
-      this.pageType = "requests"
-    }
   }
 }
 </script>
 
 <style scoped>
 
-/* .main-container{
-  padding:35px 0;
-} */
-
 button{
   margin-top:35px;
   margin-bottom:35px;
-  /* margin-right:auto; */
-  /* margin-left:10%; */
 }
 
 </style>

@@ -1,8 +1,6 @@
 <template>
 
-    <div class="inner-container">
-
-      <div class="details-container">
+      <div class="details-container container">
 
         <div class="img-container">
           <img v-bind:src="product_image">
@@ -73,8 +71,6 @@
         </div>
 
       </div>
-
-    </div>
     
 </template>
 
@@ -84,9 +80,8 @@ const BASE_API_URL = "https://nsy-skincare-api.herokuapp.com/";
 
 export default {
   created: async function(){
-    console.log(this.productId)
+    // console.log(this.productId)
     let response = await axios.get(BASE_API_URL + 'requested-products/' + this.productId);
-    // this.poster_name = response.data.posterName;
     this.product_condition = response.data.productCondition;
     this.product_brand = response.data.productBrand;
     this.product_name = response.data.productName;
@@ -97,14 +92,11 @@ export default {
     this.product_size_ml = response.data.productSize;
     this.product_description = response.data.productDescription;
     this.comments = response.data.comments;
-  
-    console.log(response.data)
 
   },
   props: ['productId'],
   data: function(){
     return{
-      // 'poster_name': '',
       'product_condition': '',
       'product_brand': '',
       'product_name': '',
@@ -123,7 +115,6 @@ export default {
     'editProduct': async function(){
 
       await axios.patch(BASE_API_URL + 'requested-products/' + this.productId, {
-        // 'posterName': this.formData.poster_name,
         'productCondition': this.product_condition,
         'productBrand': this.product_brand,
         'productName': this.product_name,
@@ -140,13 +131,9 @@ export default {
 
     },
     'removeProduct': function(){
-
       this.deleteMsg = "Yes";
-
     },
     'remove': async function(productId){
-      
-      console.log("remove this product");
 
       await axios.post(BASE_API_URL + 'requested-products/' + this.productId + '/delete',{
         '_id': productId

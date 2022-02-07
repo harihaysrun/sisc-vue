@@ -1,6 +1,6 @@
 <template>
 
-      <div class="inner-container">
+    <div class="inner-container">
       
       <h1 class="title-from-home" v-if="pageTitle === 'Recently Added'">{{pageTitle}}</h1>
         

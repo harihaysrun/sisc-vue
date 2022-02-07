@@ -111,7 +111,8 @@
           </div>
 
           <div>
-            <!-- There are no comments -->
+
+            <p class="no-comments" v-if="!Array.isArray(comments) || comments.length === 0">There are no comments</p>
 
             <div class="each-comment" v-for="c in comments" v-bind:key="c._id">
 

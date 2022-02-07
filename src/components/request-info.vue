@@ -1,26 +1,19 @@
 <template>
 
-    <div class="inner-container">
+    <div class="container">
       
       <div class="details-container">
           
         <div class="img-container">
           <img v-bind:src="product_image" alt="">
+
             <div class="user">
               <div class="user-icon">
-
-                <!-- <svg viewBox="0 0 50 50">
-                <g>
-                  <path class="st0" d="M9.28,41.45c0-8.68,7.04-15.72,15.72-15.72h0c8.68,0,15.72,7.04,15.72,15.72H9.28z"/>
-                  <circle class="st0" cx="25" cy="17.14" r="8.59"/>
-                </g>
-                </svg> -->
-
                 <img src="@/assets/images/user.png" alt="">
-
               </div>
               <div class="user-text">Requested by {{poster_name}}</div>
             </div>
+            
         </div>
         
         <div class="text-container">
@@ -87,7 +80,8 @@
       </div>
 
       <div>
-        <!-- There are no comments -->
+
+        <p class="no-comments" v-if="!Array.isArray(comments) || comments.length === 0">There are no comments</p>
 
           <div class="each-comment" v-for="c in comments" v-bind:key="c._id">
             

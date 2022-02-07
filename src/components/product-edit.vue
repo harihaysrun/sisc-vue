@@ -160,7 +160,7 @@ const BASE_API_URL = "https://nsy-skincare-api.herokuapp.com/";
 
 export default {
   created: async function(){
-    console.log(this.productId)
+    // console.log(this.productId)
     let response = await axios.get(BASE_API_URL + 'skincare-products/' + this.productId);
     this.product_condition = response.data.productCondition;
     this.product_brand = response.data.productBrand;
@@ -179,7 +179,6 @@ export default {
     this.skin_concerns = response.data.skinConcerns.join();
     this.product_vegan = response.data.productVegan;
     this.product_cf = response.data.productCrueltyFree;
-    console.log(response.data)
 
   },
   props: ['productId'],
