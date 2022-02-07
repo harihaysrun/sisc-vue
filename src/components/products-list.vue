@@ -135,8 +135,10 @@
                 <span class="condition" v-if="p.productCondition === 'New'">Brand New</span>
                 <span class="condition used" v-if="p.productCondition === 'Used'">{{p.productCondition}}</span>
 
-                <span class="vegan" v-if="p.productVegan === 'Yes'"></span>
-                <span class="cf" v-if="p.productCrueltyFree === 'Yes'"></span>
+                <div class="vegan-cf">
+                  <div class="vegan" v-if="p.productVegan === 'Yes'"></div>
+                  <div class="cf" v-if="p.productCrueltyFree === 'Yes'"></div>
+                </div>
 
               </a>
             </div>
@@ -298,7 +300,7 @@ h2{
   font-size:22px;
 }
 
-.condition, .vegan, .cf{
+.condition{
   position:absolute;
   top:-1px;
   left:-1px;
@@ -319,31 +321,33 @@ h2{
   color:red;
 }
 
-.vegan{
+.vegan-cf{
+  position:absolute;
   left:5px;
+  top:45px;
+}
+
+.vegan, .cf{
+  border:1px solid black;
   background-color:white;
-  top:80px;
   width:25px;
   height:25px;
   padding:0;
-  background-image:url('https://www.pngitem.com/pimgs/m/160-1609305_vegan-logo-png-vegan-or-vegetarian-symbol-transparent.png');
-  background-size:35px;
   background-position:center;
   background-repeat:no-repeat;
   border-radius:25px;
+  margin-right:0 !important;
+  margin-bottom:5px;
+}
+
+.vegan{
+  background-image:url('https://www.pngitem.com/pimgs/m/160-1609305_vegan-logo-png-vegan-or-vegetarian-symbol-transparent.png');
+  background-size:35px;
 }
 
 .cf{
-  left:5px;
-  top:45px;
-  width:25px;
-  height:25px;
-  padding:0;
   background-image:url('https://www.kindpng.com/picc/m/424-4243754_cruelty-free-logo-png-animal-cruelty-free-transparent.png');
   background-size:20px;
-  background-position:center;
-  background-repeat:no-repeat;
-  border-radius:25px;
 }
 
 .skin-type{
@@ -455,16 +459,10 @@ button{
     margin-top:35px;
   }
 
-  .vegan{
-    top:90px;
+  .vegan, .cf{
     width:35px;
     height:35px;
-  }
-
-  .cf{
-    top:45px;
-    width:35px;
-    height:35px;
+    margin-bottom:5px;
   }
 
 }
