@@ -48,12 +48,12 @@ export default {
   },
   data: function(){
     return{
-      'heroText': '',
-      'sizeIs': '',
+      'heroText': ''
     }
   },
   created: function(){
 
+    // alternating hero text
     let heroTextNo = 0;
 
     setInterval(() => {
@@ -63,60 +63,17 @@ export default {
       if (heroTextNo === 4){
         heroTextNo = 0;
       }
-    }, 2000)
+    }, 2000);
 
-    // setInterval(() => {
-    //   this.heroText = "1"
-    // }, 2000)
-
-    // setInterval(() => {
-    //   this.heroText = "2"
-    // }, 4000)
-
-    // setInterval(() => {
-    //   this.heroText = "3"
-    // }, 6000)
-
-    // setInterval(() => {
-    //   this.heroText = "4"
-    // }, 8000)
-
-    if (window.innerWidth > 768){
-      this.sizeIs = "tab"
-    }
-    
   },
   methods:{
     skincareProductsPage:function(productId){
-      // console.log("productId: " + productId)
-      console.log(productId)
       this.$emit("change-to", productId)
     },
     requestsPage:function(productId){
-      // console.log("productId: " + productId)
-      console.log(productId)
-      this.$emit("change-to-request")
-    },
-    // changetoSkincareProductsPage: function(typeOfPage){
-    //   // this.pageType = "sellGive"
-    //   console.log("click to view all")
-    //   // productsTab = "sellGive"
-    //   console.log('typeOfPage: ' + typeOfPage)
-    //   this.$emit("view-all", typeOfPage);
-    // },
-    // changetoRequestsPage: function(typeOfPage){
-    //   // let pageType = "requests";
-    //   console.log("click to view requests")
-    //   console.log('typeOfPage: ' + typeOfPage)
-    //   this.$emit("view-requests", typeOfPage);
-    //   // console.log("click to view requests " + pageType)
-    // },
-    // viewProduct:function(productId){
-    //   this.tab = "productInfo";
-    //   // console.log(this.tab)
-    //   this.productViewing = productId;
-    //   console.log(this.productViewing)
-    // }
+      this.$emit("change-to-request", productId)
+    }
+
   }
 }
 </script>
@@ -137,32 +94,22 @@ export default {
 }
 
 .hero-text{
-  /* padding:30vw 10% 0 10%; */
   width:100%;
   margin-top:35px;
   padding:35px;
   padding-top:30vw;
   text-align:center;
   box-sizing:border-box;
-  /* background-color:white; */
-  /* border:2px solid black; */
-  /* box-shadow: 5px 5px black; */
 }
 
 .container{
   padding:25px 0 50px 0;
-  /* padding-bottom:25px; */
-  /* display:flex;
-  flex-direction:column; */
-  /* align-items:center; */
-  /* background-color:pink; */
 }
 
 .second-container{
   padding:25px 0;
   display:flex;
   flex-direction: column;
- 
 }
 
 .view-all-btn{
