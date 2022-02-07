@@ -1,15 +1,15 @@
 # SI(S)C.sg
-(image here)
+![SI(S)C](/src/assets/images/readme.jpg)
 
-For some, skincare is a chore. But for some others, skincare is a hobby… a pretty expensive one. With that, comes the piles of free samples that more often than not, end up unused. This results in a huge inventory of (unused) products at the back of our cabinets, and what better way is there than to spread the love and pass it on to someone else who wants it?
+For some, skincare is a chore. But for some others, skincare is a hobby… a pretty expensive one. With that, comes the piles of free samples that more often than not, end up unused. This results in a huge collection of (unused) products at the back of our cabinets, and what better way is there than to spread the love and pass it on to someone else who wants it?
 
-SI(S)C, an abbreviation of Sharing is (Skin)Caring, aims to be a local skincare community inspired by subreddits like AsianBeauty, SkincareAddiction, SkincareExchange and etc., where users can safely sell, give away unwanted samples, request and even provide reviews.
+SI(S)C, an abbreviation of Sharing is (Skin)Caring, aims to be a local skincare community inspired by subreddits like AsianBeauty, SkincareAddiction, SkincareExchange (and more), where users can safely sell, give away unwanted samples, request and even provide reviews.
 
 Visit SI(S)C [here]()!
 
 **You may ask, Why SI(S)C even though platforms like Carousell exists?**
 
-Inspired by Carousell’s selling & ‘looking for’ system, I personally would feel safer knowing that the person I’m purchasing from has the same interest as me and is genuine. Plus, I won’t have to filter through a lot of different categories to reach the skincare section.
+Inspired by Carousell’s selling & ‘looking for’ system, I personally prefer to engage with people who have the same interest as me (and who I know is genuine). Plus, I won’t have to filter through a lot of different categories to reach the skincare section.
 
 **As the site owner, I want to:**
 - build a safe community for local skincare enthusiasts
@@ -24,13 +24,13 @@ Inspired by Carousell’s selling & ‘looking for’ system, I personally would
 ## UI/UX
 ![Flow](/src/assets/images/flow.jpg)
 
-**Inspiration:** I find myself going back to look at [Glossier](https://www.glossier.com/) and [Good Molecules](https://www.goodmolecules.com/)’ websites quite frequently. More often than not, I do so just out of pure liking for the UI and not to actually browse the actual catalogs. The harmony of the colours, and layouts and modern UI are pleasing to look at.
+**Inspiration:** I find myself going back to look at [Glossier](https://www.glossier.com/) and [Good Molecules](https://www.goodmolecules.com/)’ websites quite frequently. More often than not, I do so just out of pure liking for the UI and not to actually browse the actual catalogs. The harmony of the colours, layouts and modern UI are pleasing to look at.
 
 ### Wireframes
 [Here](https://www.figma.com/file/th9IcPkY20TucZrka24hoT/Skincare-UI?node-id=0%3A1) are the wireframes for the website. Colours used here are not finalised.
 
 ### Colours
-The colours used in the wireframes are mainly shades of grey and pink, but I decided to change it up a bit because pink adds a touch of femininity to the branding, which is not what I'm going for.
+The colours used in the wireframes are mainly shades of grey and pink, but I decided to change it up because pink adds a touch of femininity to the branding, which is not what I'm going for.
 
 **SI(S)C uses:**
 - Gender-neutral colours (black, white, and mediumslateblue as the accent colour) because skincare is for everyone, regardless of genders!
@@ -61,8 +61,8 @@ It's not too sharp or playful, and works great as both headers and body text. Ve
 ### Use cases:
 1. Add new product
 2. Search products
-3. Add comment
-4. Create, Read, Update and Delete listings and comments
+3. Add comment or review
+4. Update and Delete listings and comments
 
 ### Test Cases
 
@@ -79,7 +79,7 @@ It's not too sharp or playful, and works great as both headers and body text. Ve
 | ----------- | --------------- |
 | Click on "Add New" button | Page changes to show a form |
 | Select 'add product to reviews board' | The appropriate input boxes will show or hide depending on user's choice  |
-| Check if product already exists by clicking the button | If product exists in the mongo collection, the appropriate message will appear accordingly(If products exists, it will say it already exists, etc.) to avoid overlap of products) |
+| Check if product already exists by clicking the button | If product exists in the mongo collection, the appropriate message will appear accordingly(If products exists, it will say it already exists, etc. to avoid overlap of products) |
 | Once done, click on "Add Product" | If user didn't fill in all the boxes, an alert will pop up to warn them to do so |
 | After filling everything up, click on "Add Product" | When they’ve successfully submitted the form, a green message will appear at the top so they'll know that the product has been added  |
 
