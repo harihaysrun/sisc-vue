@@ -114,17 +114,17 @@ export default {
   padding:0;
   height:calc(100vh - 62px) !important;
   /* background-color:pink; */
-  background-image: url('https://images.pexels.com/photos/4202326/pexels-photo-4202326.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260');
+  background-image: url('https://images.pexels.com/photos/4202328/pexels-photo-4202328.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260');
   background-size: cover;
   background-position:bottom;
-  justify-content: flex-start;
   display:flex;
   align-items: center;
-  justify-content: center;
+  /* justify-content: center; */
+  justify-content: flex-start;
 }
 
 .hero-text{
-  padding:0 10%;
+  padding:30vw 10% 0 10%;
   /* padding-top:10vw; */
   /* background-color:pink; */
   text-align:center;
@@ -156,12 +156,16 @@ export default {
 
 
 @media screen  and (min-width:768px){
+  
+  .hero-banner{
+    background-image: url('../assets/images/desktop.jpg');
+    background-position:bottom !important;
+  }
 
   .hero-text{
     max-width:550px;
     padding:0;
-    /* margin: 0 5% 0 5%; */
-    /* padding: 10vw 0 0 0; */
+    padding-top:20vh;
   }
 
   .view-all-btn{
