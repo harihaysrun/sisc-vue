@@ -180,6 +180,12 @@ export default {
     },
     'comment': async function(){
       // console.log(this.productId, this.product_name);
+
+      if (!this.comment_name || !this.comment_text){
+        alert("Make sure to fill in both name and comment fields");
+        return
+      }
+
       await axios.post(BASE_API_URL + 'requested-products/' + this.productId + '/comment/add', {
         'commentName': this.comment_name,
         'commentText': this.comment_text,

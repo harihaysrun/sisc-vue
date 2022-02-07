@@ -220,8 +220,7 @@ export default {
       'id': '',
       'comment_name':'',
       'comment_text': '',
-      'comments': [],
-      // 'is_product_sold': ''
+      'comments': []
     }
   },
   methods:{
@@ -229,6 +228,12 @@ export default {
       this.$emit('edit-product', productId)
     },
     'comment': async function(productId){
+
+      if (!this.comment_name || !this.comment_text){
+        alert("Make sure to fill in both name and comment fields");
+        return
+      }
+
       await axios.post(BASE_API_URL + 'skincare-products/' + this.productId + '/comment/add', {
         'commentName': this.comment_name,
         'commentText': this.comment_text,
