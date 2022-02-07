@@ -11,9 +11,9 @@
               <line class="st0" x1="1.39" y1="7.99" x2="42.37" y2="7.99"/>
             </g>
           </svg>
-          <!-- <img src="@/assets/images/back.png" alt=""> -->
           Back
         </button>
+
         <button class="back-btn" v-if="tab === 'editThisProduct'" v-on:click="backToProduct">
           <svg viewBox="0 0 43.75 15.99">
             <g>
@@ -21,19 +21,14 @@
               <line class="st0" x1="1.39" y1="7.99" x2="42.37" y2="7.99"/>
             </g>
           </svg>
-          <!-- <img src="@/assets/images/back.png" alt=""> -->
           Back
         </button>
       
       </div>
         
-        <ReviewsList v-if="tab === 'viewAllProducts'" v-on:view-product="viewProduct"/>
+      <ReviewsList v-if="tab === 'viewAllProducts'" v-on:view-product="viewProduct"/>
+      <ReviewInfo v-if="tab === 'productInfo'" v-on:edit-product="editProduct" v-bind:productId="productViewing"/>
 
-      <div class="container">
-
-        <ReviewInfo v-if="tab === 'productInfo'" v-on:edit-product="editProduct" v-bind:productId="productViewing"/>
-      
-      </div>
 
     </div>
     
@@ -53,52 +48,26 @@ export default {
   },
   data: function(){
     return{
-      // 'pageType': 'sellGive',
-      // 'products': [],
-      'tab': 'viewAllProducts',
-      // 'productEditing': productEditing
+      'tab': 'viewAllProducts'
     }
   },
   methods:{
     backToProducts: function(){
-      console.log("viewing all products now")
-      this.tab = "viewAllProducts"
-      console.log(this.tab)
-      document.title = "Reviews"
+      this.tab = "viewAllProducts";
+      document.title = "Reviews";
     },
     backToProduct: function(){
       this.tab = "productInfo"
     },
-    // productInfo:function(){
-    //   this.tab = "productInfo"
-    // },
-    // editThisProduct:function(){
-    //   this.tab = "editThisProduct"
-    // },
     viewProduct:function(productId){
       this.tab = "productInfo";
-      // console.log(this.tab)
       this.productViewing = productId;
-      console.log(this.productViewing)
+      // console.log(this.productViewing)
     },
     editProduct: function(productId){
       this.tab = "editThisProduct";
-      // console.log(this.tab)
       this.productEditing = productId;
-      console.log(this.productEditing)
-      // console.log("EditThisProduct")
-    },
-    removeProduct: function(productId){
-      this.tab = "viewAllProducts";
-      // console.log(this.tab)
-      this.productToRemove = productId;
-      console.log(this.productToRemove)
-    },
-    viewProducts: function(){
-      this.pageType = "sellGive"
-    },
-    viewRequests: function(){
-      this.pageType = "requests"
+      // console.log(this.productEditing)
     }
   }
 }

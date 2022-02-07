@@ -177,17 +177,10 @@ export default {
   props: ['pageTitle', 'max', 'display', 'marginLeft', 'width', 'marginTop', 'marginBottom'],
   methods:{
     viewThisProduct: function(productId){
-      // this.page = "skincareProducts";
-      // let skincareProductsPage = this.page;
-      // console.log(this.page)
       this.tab = "productInfo";
-      console.log(productId)
       this.$emit('view-product', productId);
     },
     searchFilter: async function(){
-
-        console.log(this.product_vegan.toString())
-        console.log(this.product_cf.toString())
       
         let response = await axios.post(BASE_API_URL + 'search', {
           'search': this.search,
@@ -199,9 +192,9 @@ export default {
           'productVegan': this.product_vegan.toString(),
           'productCrueltyFree': this.product_cf.toString()
         });
-        let search = response.data;
+        // let search = response.data;
         this.products = response.data.reverse();
-        console.log(search);
+        // console.log(search);
 
     },
     clearSearch: async function(){
@@ -245,10 +238,8 @@ input[type="text"], select{
 }
 
 .search{
-  /* width:80%; */
   display:flex;
   flex-direction: column;
-  /* margin:35px 0; */
   margin-top:35px;
   margin-bottom:35px;
 }
@@ -256,8 +247,6 @@ input[type="text"], select{
 .search-bar{
   background-color:rgba(216, 216, 216, 0.2);
   padding: 20px;
-  /* padding-right:45px; */
-  /* border-right:1px solid rgba(216, 216, 216, 0.7); */
 }
 
 .search-bar div{
@@ -267,18 +256,6 @@ input[type="text"], select{
 .search-results{
   margin-top:35px;
 }
-
-/* .indiv-product a::before{
-    content: '';
-    position:absolute;
-    top:0;
-    left:0;
-    width:20%;
-    height:100%;
-    background-color: mediumslateblue;
-    z-index:-1;
-} */
-
 
 .indiv-product a{
     align-items: stretch !important;
@@ -313,7 +290,6 @@ h2{
   font-weight:700;
   /* box-shadow: 0 5px 15px rgba(0,0,0,0.1); */
   border:1px solid black;
-  /* z-index:5; */
 }
 
 .used{
@@ -405,10 +381,6 @@ button{
 }
 
 @media screen and (min-width:1024px){
-/* 
-  .inner-container{
-    flex-direction: row;
-  } */
 
   .search{
     flex-direction: row;
@@ -438,15 +410,7 @@ button{
     align-items: center;
     padding:0;
     z-index:2;
-    /* height:500px; */
-    /* align-items: stretch !important; */
   }
-
-  /* .indiv-product a img{
-    width:100%;
-    height:auto;
-    border-bottom:1px solid black;
-  } */
 
   .product-info{
     margin:0;

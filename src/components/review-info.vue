@@ -1,6 +1,6 @@
 <template>
 
-    <div class="inner-container">
+    <div class="container">
 
       <div class="details-container">
           
@@ -102,7 +102,8 @@
       </div>
 
       <div>
-        <!-- There are no comments -->
+
+        <p class="no-comments" v-if="!Array.isArray(comments) || comments.length === 0">There are no comments</p>
 
         <div class="each-comment" v-for="c in comments" v-bind:key="c._id">
 
@@ -136,7 +137,6 @@
                       </g>
                     </g>
                   </svg>
-              <!-- <img src="@/assets/images/delete.png" alt=""> -->
               Delete
             </button>
           </div>
@@ -202,7 +202,6 @@ export default {
       if(!Array.isArray(this.comments)){
         this.comments = []
       }
-      // console.log(this.comments.length)
 
       this.ratings = this.comments.length + 1;
       console.log(this.ratings)

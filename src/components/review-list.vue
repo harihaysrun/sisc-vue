@@ -54,7 +54,7 @@ export default {
   created: async function(){
     let response = await axios.get(BASE_API_URL + 'reviews');
     this.products = response.data.reverse();
-    console.log(this.products.length)
+    // console.log(this.products.length)
   },
   data: function(){
     return{
@@ -65,13 +65,11 @@ export default {
   methods:{
     viewThisProduct: function(productId){
       this.tab = "productInfo";
-      console.log(productId)
       this.$emit('view-product', productId);
     }
   },
   computed:{
     filteredRequests: function(){
-      console.log('filteredproducts')
       let filtered = this.products.filter((p) =>
         p.productBrand.toLowerCase().includes(this.search.toLowerCase())||
         p.productName.toLowerCase().includes(this.search.toLowerCase())

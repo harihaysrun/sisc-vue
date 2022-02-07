@@ -26,10 +26,9 @@
 
       </div>
         
-        <ProductsList page-title="View All Skincare Products" v-if="tab === 'viewAllProducts'" v-on:view-product="viewProduct"/>
-        <ProductInfo v-if="tab === 'productInfo'" v-on:edit-product="editProduct" v-bind:productId="productViewing"/>
-        <EditProduct v-if="tab === 'editThisProduct'" v-on:remove-product="removeProduct" v-bind:productId="productEditing" v-on:back-to="backToProducts"/>
-
+      <ProductsList page-title="View All Skincare Products" v-if="tab === 'viewAllProducts'" v-on:view-product="viewProduct"/>
+      <ProductInfo v-if="tab === 'productInfo'" v-on:edit-product="editProduct" v-bind:productId="productViewing"/>
+      <EditProduct v-if="tab === 'editThisProduct'" v-on:remove-product="removeProduct" v-bind:productId="productEditing" v-on:back-to="backToProducts"/>
 
     </div>
     
@@ -48,27 +47,16 @@ export default {
   mounted: function(){
     document.title = "Product Marketplace"
   },
-  props:['viewThisProduct'],
   data: function(){
     return{
       'pageType': 'sellGive',
       'products': [],
-      // 'tab': '',
-      'tab': 'viewAllProducts',
-      'thisProduct': this.viewThisProduct,
-      // 'changeTo': this.changeToTab
-      // 'productEditing': productEditing
+      'tab': 'viewAllProducts'
     }
   },
   methods:{
-    // changeToTab: function(){
-    //   this.tab = "productInfo";
-    //   // this.productViewing = productId;
-    // },
     backToProducts: function(){
-      console.log("viewing all products now")
       this.tab = "viewAllProducts"
-      console.log(this.tab)
       document.title = "Product Marketplace"
     },
     backToProduct: function(){
@@ -76,46 +64,23 @@ export default {
     },
     viewProduct:function(productId){
       this.tab = "productInfo";
-      // this.tab = changeTo;
-      // console.log('changeTo: ' + this.changeTo)
-      // this.changeTo = "productInfo";
-      // console.log(this.tab)
       this.productViewing = productId;
-      // this.thisProduct = productId
-
-      // if (this.thisProduct === productId){
-      //   console.log("hello from home!")
-      // }
-      // console.log(this.productViewing)
-      // console.log("thisProduct: " + this.thisProduct)
-      // console.log("changeTo: " + this.changeTo)
     },
     editProduct: function(productId){
       this.tab = "editThisProduct";
       this.productEditing = productId;
-      console.log(this.productEditing)
+      // console.log(this.productEditing)
     },
     removeProduct: function(productId){
       this.tab = "viewAllProducts";
-      // console.log(this.tab)
       this.productToRemove = productId;
-      console.log(this.productToRemove)
-    },
-    viewProducts: function(){
-      this.pageType = "sellGive"
-    },
-    viewRequests: function(){
-      this.pageType = "requests"
+      // console.log(this.productToRemove)
     }
   }
 }
 </script>
 
 <style scoped>
-
-/* .main-container{
-  padding:35px 0;
-} */
 
 button{
   margin-top:35px;

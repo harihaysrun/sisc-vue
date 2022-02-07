@@ -81,7 +81,6 @@ export default {
   data: function(){
     return{
       'page': 'home',
-      'pageType': '',
       'openHM': false
     }
   },
@@ -307,7 +306,7 @@ footer{
     background-size: cover;
     background-position: 0 -70vw;
   }
-  
+
   footer{
     flex-direction:row;
     padding-left: 10%;

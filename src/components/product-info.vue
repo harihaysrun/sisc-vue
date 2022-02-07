@@ -144,7 +144,6 @@
                       </g>
                     </g>
                   </svg>
-                  <!-- <img src="@/assets/images/delete.png" alt=""> -->
                   Delete
                 </button>
               </div>
@@ -227,10 +226,8 @@ export default {
   methods:{
     'edit': function(productId){
       this.$emit('edit-product', productId)
-      // console.log(listing_type)
     },
     'comment': async function(productId){
-      console.log(productId);
       await axios.post(BASE_API_URL + 'skincare-products/' + this.productId + '/comment/add', {
         'commentName': this.comment_name,
         'commentText': this.comment_text,
@@ -241,11 +238,9 @@ export default {
 
     },
     'replyComment': function(commentName){
-      console.log(commentName)
       this.comment_text = "@" + commentName;
     },
     'deleteComment': async function(commentId){
-      console.log(commentId);
         
       await axios.post(BASE_API_URL + 'skincare-products/' + this.productId + '/comment/delete', {
         'commentId': commentId
