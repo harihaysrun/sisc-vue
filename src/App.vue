@@ -127,7 +127,6 @@ export default {
     },
     openMenu: function(){
       this.openHM = true;
-      document.getElementsByTagName("nav").style = "height: 100vh"
     },
     closeMenu:function(){
       this.openHM = false;
@@ -141,7 +140,7 @@ export default {
 
 nav .container{
   width:100%;
-  height:calc(100vh - 65px) !important;
+  height:calc(100vh - 61px) !important;
   /* background-color: lightcoral; */
   display:flex;
   flex-direction:column;
