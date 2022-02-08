@@ -154,4 +154,16 @@ export default {
   margin-bottom:25px;
 }
 
+@media screen and (min-width:1024px){
+
+  .img-container{
+    flex:1;
+    height:25vw;
+    /* background-color:pink; */
+    position:sticky;
+    top: 120px;
+  }
+
+}
+
 </style>
