@@ -68,14 +68,6 @@ Looking at the wireframes, pink was my initial choice of accent colour, but I de
 2. Implement a more interactive star rating system as shown in this [codepen](https://codepen.io/Kradek/pen/VpezNR)
 
 
-## Use cases:
-1. Add new product
-2. Search products
-3. Add comment or review
-4. Update and Delete listings and comments
-
-
-
 ## Technologies Used
 1. Figma – used to create wireframes 
 2. Photoshop & Illustrator to create some of the icons
@@ -86,7 +78,11 @@ Looking at the wireframes, pink was my initial choice of accent colour, but I de
 7. Netlify – host the Vue application to generate a live link for people to visit
 
 
-## Test Cases:
+## Use & Test cases:
+1. Add new product
+2. Search products
+3. Add comment or review
+4. Update and Delete listings and comments
 
 ### Adding A New Product (to sell or give away) or Request
 | Description | Expected Result |
