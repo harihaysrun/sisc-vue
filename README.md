@@ -30,7 +30,7 @@ Visit SI(S)C [here](https://agitated-visvesvaraya-94d773.netlify.app/)!
 
 ## UI/UX
 ![Flow](/src/assets/images/flow.jpg)
-'Recently Added' and 'Recent Requests' are derived from the ProductInfo and RequestInfo components.
+'Recently Added' and 'Recent Requests' are derived from the ProductsList and RequestList components.
 
 Logic-wise, only Reviews is intentionally missing the edit and delete function because it's not a personal listing – everyone shares their opinion on it, so no one has the 'right' to remove it. (Also imagine having hundreds of useful reviews on it only to have someone remove it by accident...!)
 
