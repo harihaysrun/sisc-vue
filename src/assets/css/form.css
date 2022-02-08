@@ -130,7 +130,7 @@ hr{
 }
 
 .delete-product-btn:hover{
-    background-color:rgb(185, 28, 28);
+    background-color:rgb(185, 28, 28) !important;
     color:white;
 }
 
@@ -198,10 +198,15 @@ hr{
         flex:1;
     }
 
+
+}
+
+
+@media screen and (min-width:1280px){
+
     .edit-buttons{
-        width:50%;
+        width:60%;
         margin-left:auto;
     }
-
 
 }
