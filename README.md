@@ -56,7 +56,7 @@ Looking at the wireframes, pink was my initial choice of accent colour, but I de
 ## Features
 
 ### Major Features & Algorithms Used
-1. Post/edit/delete listings & comments (CRUD), using API connected to a MongoDB database (view the API for this project [here](https://github.com/harihaysrun/skincare-api))
+1. Post/edit/delete listings & comments (CRUD), using API connected to a MongoDB database (view the API for this project [here](https://github.com/harihaysrun/sisc-api))
 2. Server-side search for products page (MongoDB)
 3. Client-side search on request & reviews page (using filter function)
 
