@@ -7,11 +7,17 @@
           <div class="img-container">
             <img v-bind:src="product_image" alt="">
 
+            <div class="date-posted">
+              Posted on {{date_posted}}
+            </div>
+
             <div class="user">
               <div class="user-icon">
                 <img src="@/assets/images/user.png" alt="">
               </div>
-              <div class="user-text">Sold by {{poster_name}}</div>
+              <div class="user-text">
+                Sold by <b>{{poster_name}}</b>
+              </div>
             </div>
 
           </div>
@@ -171,6 +177,7 @@ const BASE_API_URL = "https://nsy-skincare-api.herokuapp.com/";
 export default {
   created: async function(){
     let response = await axios.get(BASE_API_URL + 'skincare-products/' + this.productId);
+    this.date_posted = response.data.datePosted;
     this.poster_name = response.data.posterName;
     this.product_condition = response.data.productCondition;
     this.product_brand = response.data.productBrand;
@@ -198,6 +205,7 @@ export default {
   props: ['productId'],
   data: function(){
     return{
+      'date_posted':'',
       'poster_name': '',
       'listing_type': '',
       'product_condition': '',

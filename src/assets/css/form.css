@@ -13,7 +13,7 @@ select {
     
 }
 
-input[type="text"], textarea, select{
+input[type="text"], textarea, select, input[type="date"]{
     -moz-appearance:none;
     -webkit-appearance:none;
     appearance:none;
@@ -177,15 +177,11 @@ hr{
 
 }
 
-@media screen  and (min-width:1024px){
+@media screen and (min-width:1024px){
 
     input[type="text"]{
       width:250px;
     }
-
-    /* input[type=radio]{
-        margin: 15px 10px;
-    } */
   
     select, input[type="text"].specify{
         /* width:25% !important; */

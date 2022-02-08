@@ -10,6 +10,9 @@
 
           <h1>Edit {{product_brand}} {{product_name}}</h1>
 
+          <input type="date" name="" id="" v-model="date_posted">
+          {{date_posted}}
+
           <div id="success-message" v-if="editSuccess === 'Yes'">Successfully edited product information!</div>
 
           <div>
@@ -184,6 +187,7 @@ export default {
   props: ['productId'],
   data: function(){
     return{
+      'date_posted': '',
       'product_condition': '',
       'product_brand': '',
       'product_name': '',
@@ -211,6 +215,7 @@ export default {
     'editProduct': async function(){
 
       await axios.patch(BASE_API_URL + 'skincare-products/' + this.productId, {
+        'datePosted': this.date_posted,
         'productCondition': this.product_condition,
         'productBrand': this.product_brand,
         'productName': this.product_name,

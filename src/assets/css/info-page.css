@@ -202,21 +202,32 @@ button:hover .st0, button:hover .st1{
   margin-right:15px;
 }
 
-.user{
+.date-posted{
+  /* background-color:rgb(231, 231, 231); */
+  background-color:black;
+  border:1px solid black;
+  color:white;
   margin-top:15px;
+  padding:10px;
+  text-align:center;
+}
+
+.user{
+  /* margin-top:15px; */
   border:1px solid black;
   color:black;
   display:flex;
   flex-direction: row;
-  align-items: center;
+  /* align-items: center; */
+  align-items: stretch !important;
 }
 
 .user-icon{
   border:0;
-  width:30px;
-  height:30px;
+  /* width:15px; */
+  /* height:15px; */
   padding:15px;
-  background-color:black;
+  background-color:mediumslateblue;
   border-right:1px solid black;
   box-shadow: 0 0;
   display:flex;
@@ -225,11 +236,13 @@ button:hover .st0, button:hover .st1{
 }
 
 .user-icon img{
-  width:25px;
+  width:15px;
+  border:0 !important;
+  box-shadow: none !important;
 }
 
 .user-text{
-  padding:0 15px;
+  padding:15px;
 }
 
 .user .st0{

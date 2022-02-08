@@ -25,6 +25,12 @@
         </div>
 
         <div v-if="formData.listing_type != 'review'">
+          <span class="details-tag">Date</span>
+          <input type="date" name="" id="" v-model="formData.date_posted">
+          {{formData.date_posted}}
+        </div>
+
+        <div v-if="formData.listing_type != 'review'">
           <span class="details-tag">Name</span>
           <input type="text" v-model="formData.poster_name" />
         </div>
@@ -34,7 +40,7 @@
           <input type="radio" value="New" v-model="formData.product_condition" id="condition-new"/><label for="condition-new">Brand New</label>
           &nbsp;&nbsp;
           <input type="radio" value="Used" v-model="formData.product_condition" id="condition-used"/><label for="condition-used"> Used</label>
-          <div class="reminder-message" v-if="formData.product_condition === 'Used'">Please remember to sanitize any used products before handing them off to someone else!</div>
+          <div class="reminder-message" v-if="formData.product_condition === 'Used'">Please remember to sanitise any used products before handing them off to someone else!</div>
         </div>
 
         <div>
@@ -188,7 +194,8 @@
 import axios from 'axios';
 const BASE_API_URL = "https://nsy-skincare-api.herokuapp.com/";
 
-const original = {  'poster_name': '',
+const original = {  'date_posted': '',
+                    'poster_name': '',
                     'listing_type': 'sellOrGive',
                     'product_condition': '',
                     'product_brand': '',
@@ -231,7 +238,8 @@ export default {
   methods:{
     'addListing': async function(){
 
-      if (!this.formData.poster_name ||
+      if (!this.formData.date_posted ||
+          !this.formData.poster_name ||
           !this.formData.listing_type ||
           !this.formData.product_condition ||
           !this.formData.product_brand ||
@@ -251,6 +259,7 @@ export default {
       }
 
       await axios.post(BASE_API_URL + 'skincare-products/add',{
+        'datePosted': this.formData.date_posted,
         'posterName': this.formData.poster_name,
         'listingType': this.formData.listing_type,
         'productCondition': this.formData.product_condition,
@@ -280,7 +289,8 @@ export default {
     },
     addRequest: async function(){
 
-      if (!this.formData.poster_name ||
+      if (!this.formData.date_posted ||
+          !this.formData.poster_name ||
           !this.formData.product_brand ||
           !this.formData.product_name ||
           !this.formData.product_image ||
@@ -292,6 +302,7 @@ export default {
           }
 
       await axios.post(BASE_API_URL + 'requested-products/add',{
+        'datePosted': this.formData.date_posted,
         'posterName': this.formData.poster_name,
         'productBrand': this.formData.product_brand,
         'productName': this.formData.product_name,
