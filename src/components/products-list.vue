@@ -14,8 +14,8 @@
             <h2 style="margin:0;">Search</h2>
 
             <div>
-              <label class="details-tag">Product brand/name</label>
-              <input type="text" v-model="search" placeholder="Search by brand or product name">
+              <label class="details-tag">Product brand or name</label>
+              <input type="text" v-model="search" placeholder="Brand or product name">
             </div>
 
             <div>
@@ -168,7 +168,7 @@ export default {
   data: function(){
     return{
       'products': [],
-      'search': 'Search by brand or name',
+      'search': 'Brand or product name',
       'product_condition': '',
       'product_category': '',
       'product_size': '',
@@ -203,7 +203,7 @@ export default {
     },
     clearSearch: async function(){
       let response = await axios.get(BASE_API_URL + 'skincare-products');
-      this.search = "Search by brand or name";
+      this.search = "Brand or product name";
       this.product_condition = "";
       this.product_category = "";
       this.product_size = "";

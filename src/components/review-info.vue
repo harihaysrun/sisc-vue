@@ -34,12 +34,12 @@
 
         <div class="name-offer">
           <div class="comment-input">
-            <label for="">Name</label>
+            <label for="">Name*</label>
             <input class="name" type="text" v-model="comment_name"/>
           </div>
 
           <div class="comment-input">
-            <label for="">Age</label>
+            <label for="">Age*</label>
             <div class="age-range">
               <select class="age" name="" id="" v-model="my_age">
                 <option value="" disabled>Select One</option>
@@ -57,7 +57,7 @@
           </div>
 
           <div class="comment-input">
-            <label for="">My rating</label>
+            <label for="">My rating*</label>
             <select class="rating" name="" id="" v-model="my_rating">
               <option value="" disabled>Select One</option>
               <option value="☆☆☆☆☆">0 Stars</option>
@@ -72,7 +72,7 @@
         </div>
 
         <div class="skin-types">
-          <span>My skin type:</span>
+          <span>My skin type:*</span>
           <input type="radio" value="Dry" v-model="my_skin_type" id="skin-dry"/> <label for="skin-dry">Dry</label>
           &nbsp;&nbsp;
           <input type="radio" value="Normal" v-model="my_skin_type" id="skin-normal"/> <label for="skin-normal">Normal</label>
@@ -83,11 +83,12 @@
         </div>
 
         <div class="comment-input">
-          <textarea v-model="comment_text" id="" cols="30" rows="10" placeholder="type comment here"></textarea>
+          <label>Comment*</label>
+          <textarea v-model="comment_text" id="" cols="30" rows="10" placeholder="Type comment here"></textarea>
         </div>
 
         <div class="comment-input">
-          <label for="">Will I repurchase this?</label>
+          <label for="">Will I repurchase this?*</label>
           <select class="repurchase" name="" id="" v-model="repurchase">
             <option value="" disabled>Select One</option>
             <option value="Will Repurchase">Yes</option>

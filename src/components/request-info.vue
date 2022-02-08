@@ -68,7 +68,7 @@
 
         <div class="name-offer">
           <div class="comment-input">
-            <label for="">Name</label>
+            <label for="">Name*</label>
             <input type="text" v-model="comment_name"/>
           </div>
           <div class="comment-input">
@@ -77,7 +77,7 @@
           </div>
         </div>
         <div class="comment-input">
-          <label for="">Comment</label>
+          <label for="">Comment*</label>
           <textarea v-model="comment_text" id="" cols="30" rows="10" placeholder="Type comment here"></textarea>
         </div>
 

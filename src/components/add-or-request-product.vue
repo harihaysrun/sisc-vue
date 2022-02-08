@@ -25,18 +25,18 @@
         </div>
 
         <div v-if="formData.listing_type != 'review'">
-          <span class="details-tag">Date</span>
+          <span class="details-tag">Date*</span>
           <input type="date" name="" id="" v-model="formData.date_posted">
           {{formData.date_posted}}
         </div>
 
         <div v-if="formData.listing_type != 'review'">
-          <span class="details-tag">Name</span>
+          <span class="details-tag">Name*</span>
           <input type="text" v-model="formData.poster_name" />
         </div>
 
         <div v-if="formData.listing_type === 'sellOrGive'">
-          <span class="details-tag">Product condition</span>
+          <span class="details-tag">Condition*</span>
           <input type="radio" value="New" v-model="formData.product_condition" id="condition-new"/><label for="condition-new">Brand New</label>
           &nbsp;&nbsp;
           <input type="radio" value="Used" v-model="formData.product_condition" id="condition-used"/><label for="condition-used"> Used</label>
@@ -44,12 +44,12 @@
         </div>
 
         <div>
-          <span class="details-tag">Brand</span>
+          <span class="details-tag">Brand*</span>
           <input type="text" v-model="formData.product_brand" />
         </div>
         
         <div>
-          <span class="details-tag">Product Name</span>
+          <span class="details-tag">Product Name*</span>
           <div class="review-name">
             <input type="text" v-model="formData.product_name"/>
             <button v-if="formData.listing_type === 'review'" v-on:click="crosscheckWithReviews">Check if product exists</button>
@@ -69,12 +69,12 @@
         </div>
         
         <div>
-          <span class="details-tag">Product Image Link</span>
+          <span class="details-tag">Product Image Link*</span>
           <input type="text" v-model="formData.product_image" />
         </div>
 
         <div v-if="formData.listing_type != 'request'">
-          <span class="details-tag">Product Category</span>
+          <span class="details-tag">Category*</span>
           <select name="" id="" v-model="formData.product_category">
             <option value="" disabled>Select One</option>
             <option value="First Cleanser">First Cleanser</option>
@@ -100,7 +100,7 @@
         </div>
 
         <div v-if="formData.listing_type != 'review'">
-          <span class="details-tag">Quantity</span>
+          <span class="details-tag">Quantity*</span>
           <select name="" id="" v-model="formData.product_quantity">
             <option value="" disabled>Select One</option>
             <option value="1">1</option>
@@ -112,7 +112,7 @@
         </div>
 
         <div v-if="formData.listing_type != 'review'">
-          <span class="details-tag">Product Size</span>
+          <span class="details-tag">Size*</span>
           <select name="" id="" v-model="formData.product_size">
             <option value="" disabled>Select One</option>
             <option value="Sample">Sample</option>
@@ -124,7 +124,7 @@
         </div>
 
         <div v-if="formData.listing_type === 'sellOrGive'">
-          <span class="details-tag">Price</span>
+          <span class="details-tag">Price*</span>
           <select name="" id="" v-model="formData.product_price">
             <option value="" disabled>Select One</option>
             <option value="Free">Free</option>
@@ -135,12 +135,12 @@
         </div>
 
         <div v-if="formData.listing_type != 'review'">
-          <span class="details-tag">Product Description</span>
+          <span class="details-tag">Description*</span>
           <textarea name="" id="" v-model="formData.product_description"></textarea>
         </div>
 
         <div v-if="formData.listing_type === 'sellOrGive'">
-          <span class="details-tag">Suitable for skin type</span>
+          <span class="details-tag">Skin Type Suitability*</span>
           <input type="checkbox" value="Dry" v-model="formData.skin_type" id="skin-dry"/> <label for="skin-dry">Dry</label>
           &nbsp;&nbsp;
           <input type="checkbox" value="Normal" v-model="formData.skin_type" id="skin-normal"/> <label for="skin-normal">Normal</label>
@@ -151,12 +151,12 @@
         </div>
 
         <div v-if="formData.listing_type === 'sellOrGive'">
-          <span class="details-tag">Skin concerns:</span>
+          <span class="details-tag">Skin concerns*</span>
           <input type="text" v-model="formData.skin_concerns" placeholder="Separate words with commas. E.g redness, irritation, sensitive" />
         </div>
 
         <div v-if="formData.listing_type != 'request'">
-          <span class="details-tag">Is this product vegan?</span>
+          <span class="details-tag">Is this product vegan?*</span>
           <input type="radio" value="Yes" v-model="formData.product_vegan" id="vegan-yes" /> <label for="vegan-yes">Yes</label>
           &nbsp;&nbsp;
           <input type="radio" value="No" v-model="formData.product_vegan" id="vegan-no" /> <label for="vegan-no">No</label>
@@ -165,7 +165,7 @@
         </div>
 
         <div v-if="formData.listing_type != 'request'">
-          <span class="details-tag">Is this product/brand cruelty free?</span>
+          <span class="details-tag">Is this brand cruelty free?*</span>
           <input type="radio" value="Yes" v-model="formData.product_cf" id="cf-yes"/> <label for="cf-yes">Yes</label>
           &nbsp;&nbsp;
           <input type="radio" value="No" v-model="formData.product_cf" id="cf-no"/> <label for="cf-no">No</label>

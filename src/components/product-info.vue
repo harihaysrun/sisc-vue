@@ -104,12 +104,12 @@
             <h1>Comments section</h1>
 
             <div class="comment-input">
-              <label for="">Name</label>
+              <label for="">Name*</label>
               <input type="text" v-model="comment_name"/>
             </div>
             <div class="comment-input">
-              <label for="">Comment</label>
-              <textarea v-model="comment_text" id="" placeholder="type comment here"></textarea>
+              <label for="">Comment*</label>
+              <textarea v-model="comment_text" id="" placeholder="Type comment here"></textarea>
             </div>
 
             <button class="postcmt-btn" v-on:click="comment(productId)">Post Comment</button>
