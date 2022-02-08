@@ -35,7 +35,7 @@
         <div class="name-offer">
           <div class="comment-input">
             <label for="">Name*</label>
-            <input class="name" type="text" v-model="comment_name"/>
+            <input class="name" type="text" v-model="comment_name" placeholder="Name"/>
           </div>
 
           <div class="comment-input">

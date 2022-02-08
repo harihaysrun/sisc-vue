@@ -105,7 +105,7 @@
 
             <div class="comment-input">
               <label for="">Name*</label>
-              <input type="text" v-model="comment_name"/>
+              <input type="text" v-model="comment_name" placeholder="Name"/>
             </div>
             <div class="comment-input">
               <label for="">Comment*</label>
@@ -249,6 +249,9 @@ export default {
 
       let response = await axios.get(BASE_API_URL + 'skincare-products/' + this.productId);
       this.comments = response.data.comments;
+
+      this.comment_name = "";
+      this.comment_text = "";
 
     },
     'replyComment': function(commentName){
