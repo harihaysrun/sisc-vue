@@ -188,7 +188,7 @@ export default {
       'my_skin_type':'',
       'rating': '',
       'repurchase': '',
-      'ratings': ''
+      'reviews': ''
     }
   },
   methods:{
@@ -213,8 +213,7 @@ export default {
         this.comments = []
       }
 
-      this.ratings = this.comments.length + 1;
-      // console.log(this.ratings)
+      this.reviews = this.comments.length + 1;
 
       await axios.post(BASE_API_URL + 'reviews/' + this.productId + '/comment/add', {
         'commentName': this.comment_name,
@@ -224,7 +223,7 @@ export default {
         'skinType': this.my_skin_type,
         'commentText': this.comment_text,
         'repurchase': this.repurchase,
-        'noOfReviews': this.ratings,
+        'noOfReviews': this.reviews,
       })
       
       let response = await axios.get(BASE_API_URL + 'reviews/' + this.productId);
@@ -237,18 +236,17 @@ export default {
       this.my_skin_type = "";
       this.comment_text = "";
       this.repurchase = "";
-      this.ratings = "";
+      this.reviews = "";
 
     },
     'deleteComment': async function(commentId){
       // console.log(commentId);
 
-      this.ratings = this.comments.length - 1;
-      // console.log(this.ratings)
+      this.reviews = this.comments.length - 1;
 
       await axios.post(BASE_API_URL + 'reviews/' + this.productId + '/comment/delete', {
             'commentId': commentId,
-            'noOfReviews': this.ratings,
+            'noOfReviews': this.reviews,
           })
           
       let response = await axios.get(BASE_API_URL + 'reviews/' + this.productId);
