@@ -97,8 +97,8 @@
               <b class="c-name" v-else>{{c.commentName}}</b>
               <div v-if="c.commentOffer">
                 <span class="details-tag">offer:</span>
-                <span v-if="c.commentOffer != 'Free'">${{c.commentOffer}}</span>
-                <span v-else>{{c.commentOffer}}</span>
+                <span v-if="c.commentOffer.toLowerCase() != 'free'">${{c.commentOffer}}</span>
+                <span v-else>Free</span>
               </div>
             </div>
 
