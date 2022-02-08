@@ -10,16 +10,13 @@
 
           <h1>Edit {{product_brand}} {{product_name}}</h1>
 
-          <input type="date" name="" id="" v-model="date_posted">
-          {{date_posted}}
-
           <div id="success-message" v-if="editSuccess === 'Yes'">Successfully edited product information!</div>
 
           <div>
             <span class="details-tag">Product condition</span>
             <input type="radio" id="condition-new" value="New" v-model="product_condition"><label for="condition-new">Brand New</label>
             <input type="radio" id="condition-used" value="Used" v-model="product_condition"><label for="condition-used">Used</label>
-            <div class="reminder-message" v-if="product_condition === 'Used'">Please remember to sanitize any used products before handing them off to someone else!</div>
+            <div class="reminder-message" v-if="product_condition === 'Used'">Please remember to sanitise any used products before handing them off to someone else!</div>
           </div>
 
           <div>
@@ -187,7 +184,6 @@ export default {
   props: ['productId'],
   data: function(){
     return{
-      'date_posted': '',
       'product_condition': '',
       'product_brand': '',
       'product_name': '',
@@ -215,7 +211,6 @@ export default {
     'editProduct': async function(){
 
       await axios.patch(BASE_API_URL + 'skincare-products/' + this.productId, {
-        'datePosted': this.date_posted,
         'productCondition': this.product_condition,
         'productBrand': this.product_brand,
         'productName': this.product_name,
