@@ -80,9 +80,9 @@ Looking at the wireframes, pink was my initial choice of accent colour, but I de
 
 ## Use & Test cases:
 1. Add new product
-2. Search products
+2. Update and Delete listings and comments
 3. Add comment or review
-4. Update and Delete listings and comments
+4. Search products
 
 ### Adding A New Product (to sell or give away) or Request
 | Description | Expected Result |
@@ -116,6 +116,16 @@ Looking at the wireframes, pink was my initial choice of accent colour, but I de
 | To leave a reply, click on 'reply' | The name of the person the user is replying to will appear in the comments input box with an '@' |
 | Click on 'post comment' | If the name of the person who's commenting/replying matches the name of the poster, an [OP] tag will appear in front of their names |
 | To remove a comment, click 'delete' | Comments section will update immediately upon deleting  |
+
+### Search for products
+| Description | Expected Result |
+| ----------- | --------------- |
+| **Products page:** <br> For products page, select the filters. User doesn't have to use all filters |  |
+| Click on search | Related products will appear |
+| Click on 'Reset Search Filters' to reset | Previously selected fields will be removed |
+| **Request & Review pages:** <br> Type in the brand or product name | Results will automatically be filtered and shown |
+| Delete everything in the search field to "reset" results | All products will be shown again |
+
 
 
 ## Test products
