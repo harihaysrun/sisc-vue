@@ -1,16 +1,14 @@
 # SI(S)C.sg
 ![SI(S)C](/src/assets/images/readme.jpg)
 
-For some, skincare is a chore. But for some others, skincare is a hobby… a pretty expensive one. With that, comes the piles of free samples that more often than not, end up unused. This results in a huge collection of (unused) products at the back of our cabinets, and what better way is there than to spread the love and pass it on to someone else who wants it?
+For some, skincare is a chore. But for some others, skincare is a hobby… a pretty expensive one. With that, comes the piles of free samples that more often than not, end up unused. What better way is there than to spread the love and pass it on to someone else who wants it?
 
 SI(S)C, an abbreviation of Sharing is (Skin)Caring, aims to be a local skincare community inspired by subreddits like AsianBeauty, SkincareAddiction, SkincareExchange (and more), where users can safely sell, give away unwanted samples, request and even provide reviews.
-
-Visit SI(S)C [here](https://agitated-visvesvaraya-94d773.netlify.app/)!
 
 
 **You may ask, Why SI(S)C even though platforms like Carousell exists?**
 
-SI(S)C is actually inspired by Carousell’s selling & ‘looking for’ system, minus all the troublesome filtering you'll have to go through to reach a certain section. It's a site dedicated to purely skincare! (Plus it's always nice to know that you're dealing with people who share the same interest as you).
+SI(S)C is actually inspired by Carousell’s selling & ‘looking for’ system, minus all the troublesome filtering you'll have to go through to reach a certain section. It's a site purely dedicated to skincare! (Plus it's always nice to know that you're dealing with people who share the same interest as you).
 
 
 **As the site owner, I want to:**
@@ -25,9 +23,14 @@ SI(S)C is actually inspired by Carousell’s selling & ‘looking for’ system,
 - contribute reviews on products I've tried before
 
 
+
+Visit SI(S)C [here](https://agitated-visvesvaraya-94d773.netlify.app/)!
+
+
+
 ## UI/UX
 ![Flow](/src/assets/images/flow.jpg)
-As shown in this flow, 'Recently Added' and 'Recent Requests' are the ProductInfo and RequestInfo components.
+'Recently Added' and 'Recent Requests' are derived from the ProductInfo and RequestInfo components.
 
 Logic-wise, only Reviews is intentionally missing the edit and delete function because it's not a personal listing – everyone shares their opinion on it, so no one has the 'right' to remove it. (Also imagine having hundreds of useful reviews on it only to have someone remove it by accident...!)
 
@@ -44,7 +47,7 @@ Looking at the wireframes, pink was my initial choice of accent colour, but I de
 
 **SI(S)C uses:**
 - Neutral colours (black, white, and mediumslateblue as the accent colour) because skincare is for everyone, regardless of genders!
-- The retro line design to give it an element of fun
+- The black line design to give it an element of fun
 
 ### Font
 [Manrope](https://fonts.google.com/specimen/Manrope?preview.text_type=custom&preview.text=A) works great as both headers and body text. Also very modern-looking.
@@ -53,15 +56,16 @@ Looking at the wireframes, pink was my initial choice of accent colour, but I de
 ## Features
 
 ### Major Features & Algorithms Used
-1. Post/edit/delete listings & comments (CRUD), using Express API connected to MongoDB
-2. Use server-side search for products page (MongoDB)
-3. Use client-side search on request & reviews page (using filter function)
+1. Post/edit/delete listings & comments (CRUD), using Express API connected to a MongoDB database (view the API for this project [here](https://github.com/harihaysrun/skincare-api))
+2. Server-side search for products page (MongoDB)
+3. Client-side search on request & reviews page (using filter function)
 
-### Limitations, Bugs, Features pending implementing
-1. Tried to make the individual products accesible from the home page (using props) but so far I only managed to make it switch to the Products page
-2. Other features I have in mind:
-    - Use ‘chat’ instead of comment to make interactions more personal
-    - Use a more intuitive star rating system as shown in this [codepen](https://codepen.io/Kradek/pen/VpezNR)
+### Limitations & Bugs,
+1. I tried to make the individual products accessible from the home page (using props) but so far I've only managed to make it switch to the Products page
+
+### Features pending implementing
+1. Use ‘chat’ instead of comment to make interactions more personal
+2. Implement a more interactive star rating system as shown in this [codepen](https://codepen.io/Kradek/pen/VpezNR)
 
 
 ## Use & Test Cases
@@ -72,24 +76,36 @@ Looking at the wireframes, pink was my initial choice of accent colour, but I de
 3. Add comment or review
 4. Update and Delete listings and comments
 
-### Test Cases
 
-#### Adding A New Product (to sell or give away)
+
+## Technologies Used
+1. Figma – used to create wireframes 
+2. Photoshop & Illustrator to create some of the icons
+3. Express – set up the API connected to the Mongo database
+4. VueJS – front end framework used to make the single page web app
+5. Axios – used to call the API endpoint
+6. Heroku – used to host the Express API
+7. Netlify – host the Vue application to generate a live link for people to visit
+
+
+### Test Cases:
+
+#### Adding A New Product (to sell or give away) or Request
 | Description | Expected Result |
 | ----------- | --------------- |
 | Click on "Add New" button | Page changes to show a form |
-| Select what you want to do <br> - sell/give product away <br> - request product <br> - add product to reviews board | The appropriate input boxes will show or hide depending on user's choice  |
-| Once done, click on "Add Product" | If user didn't fill in all the boxes, an alert will pop up to warn them to do so |
-| After filling everything up, click on "Add Product" | When they’ve successfully submitted the form, a green message will appear at the top so they'll know that the product has been added  |
+| Select what you want to do <br> - sell/give product away <br> - request product| The appropriate input boxes will show or hide depending on user's choice  |
+| Click on "Add Product" or "Add Request" | If user did not fill in all the boxes, an alert will pop up to warn them to do so |
+| After filling everything up, click on "Add Product" or "Add Request" | When they’ve successfully submitted the form, a green message will appear at the top so they'll know that the product has been added  |
 
 #### Adding a new product to the reviews board
 | Description | Expected Result |
 | ----------- | --------------- |
 | Click on "Add New" button | Page changes to show a form |
 | Select 'add product to reviews board' | The appropriate input boxes will show or hide depending on user's choice  |
-| Check if product already exists by clicking the button | If product exists in the mongo collection, the appropriate message will appear accordingly(If products exists, it will say it already exists, etc. to avoid overlap of products) |
-| Once done, click on "Add Product" | If user didn't fill in all the boxes, an alert will pop up to warn them to do so |
-| After filling everything up, click on "Add Product" | When they’ve successfully submitted the form, a green message will appear at the top so they'll know that the product has been added  |
+| Check if product already exists by clicking the "Check if product exists" button | If product exists in the mongo collection, the appropriate message will appear accordingly(If products exists, it will say it already exists, etc. to avoid overlap of products) |
+| Click on "Add New Product" | If user did not fill in all the boxes, an alert will pop up to warn them to do so |
+| After filling everything up, click on "Add New Product" | When they’ve successfully submitted the form, a green message will appear at the top so they'll know that the product has been added  |
 
 #### Edit or delete product
 | Description | Expected Result |
@@ -102,26 +118,20 @@ Looking at the wireframes, pink was my initial choice of accent colour, but I de
 #### Leave a comment or review
 | Description | Expected Result |
 | ----------- | --------------- |
-| In the comments section, fill in the appropriate fields | Comments section will update immediately upon posting |
-| To leave a reply, click on 'reply' | Name of person user is replying to will appear in the comments input box |
-| Click on 'post comment' | If the name of the person commenting/replying matches the name of the poster, an [OP] tag will appear in front of their names |
+| In the comments section, fill in the appropriate fields | If the required fields are empty, an alert will prompt them to fill them up. Otherwise the omments section will update immediately upon posting.  |
+| To leave a reply, click on 'reply' | The name of the person the user is replying to will appear in the comments input box with an '@' |
+| Click on 'post comment' | If the name of the person who's commenting/replying matches the name of the poster, an [OP] tag will appear in front of their names |
 | To remove a comment, click 'delete' | Comments section will update immediately upon deleting  |
 
 
 
-## Technologies Used
-1. Figma – used to create wireframes 
-3. Express – set up the API connected to the Mongo database
-2. VueJS – front end framewwork used to make the single page web app
-4. Axios – used to call the API endpoint
-5. Heroku – used to host the Express API
-6. Netlify – host the Vue application so that there's a live link for people to visit
-7. Photoshop/Illustrator to create some of the icons
-
-
-
 ## This project has been tested on:
-
+| MacOS | Windows 10 | Other devices |
+| ----- | ---------- | ------------- |
+| Google Chrome | Google Chrome | iPhone 12 Mini (iOS 15) |
+| Safari | | Samsung Galaxy A22 ||
+| Microsoft Edge | | 11" iPad Pro 2018 |
+| Mozilla Firefox | | |
 
 
 ## Credits
