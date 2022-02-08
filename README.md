@@ -1,5 +1,5 @@
 # SI(S)C.sg
-![SI(S)C](/src/assets/images/readme2.jpg)
+![SI(S)C](/src/assets/images/readme.jpg)
 
 For some, skincare is a chore. But for some others, skincare is a hobby… a pretty expensive one. With that, comes the piles of free samples that more often than not, end up unused. This results in a huge collection of (unused) products at the back of our cabinets, and what better way is there than to spread the love and pass it on to someone else who wants it?
 
@@ -40,7 +40,7 @@ I find myself visiting [Glossier](https://www.glossier.com/) and [Good Molecules
 [Here](https://www.figma.com/file/th9IcPkY20TucZrka24hoT/Skincare-UI?node-id=0%3A1) are the wireframes for the website. Colours used here are not finalised.
 
 ### Colours
-Looking at the wireframes, pink was my initial choice of accent colour, but I decided to change it up because it adds a touch of femininity to the branding, which is not what I'm going for.
+Looking at the wireframes, pink was my initial choice of accent colour, but I decided to change it up because it added a touch of femininity to the branding, which is not what I'm going for.
 
 **SI(S)C uses:**
 - Neutral colours (black, white, and mediumslateblue as the accent colour) because skincare is for everyone, regardless of genders!
