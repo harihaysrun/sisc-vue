@@ -112,7 +112,7 @@ Looking at the wireframes, pink was my initial choice of accent colour, but I de
 ### Leave a comment or review
 | Description | Expected Result |
 | ----------- | --------------- |
-| In the comments section, fill in the appropriate fields | If the required fields are empty, an alert will prompt them to fill them up. Otherwise the omments section will update immediately upon posting.  |
+| In the comments section, fill in the appropriate fields | If the required fields are empty, an alert will prompt them to fill them up. Otherwise the comments section will update immediately upon posting.  |
 | To leave a reply, click on 'reply' | The name of the person the user is replying to will appear in the comments input box with an '@' |
 | Click on 'post comment' | If the name of the person who's commenting/replying matches the name of the poster, an [OP] tag will appear in front of their names |
 | To remove a comment, click 'delete' | Comments section will update immediately upon deleting  |
@@ -120,16 +120,16 @@ Looking at the wireframes, pink was my initial choice of accent colour, but I de
 ### Search for products
 | Description | Expected Result |
 | ----------- | --------------- |
-| **Products page:** <br> For products page, select the filters. User doesn't have to use all filters |  |
+| **Products page:** <br> For products page, select the filters. User doesn't have to use all filters | User has to click on search to see the results |
 | Click on search | Related products will appear |
-| Click on 'Reset Search Filters' to reset | Previously selected fields will be removed |
+| Click on 'Reset Search Filters' to reset | Previously selected fields will be removed and all products will be shown again |
 | **Request & Review pages:** <br> Type in the brand or product name | Results will automatically be filtered and shown |
 | Delete everything in the search field to "reset" results | All products will be shown again |
 
 
 
 ## Test products
-Here are some products you can add to the site!
+Here are some products you can use to add to the site!
 
 | Brand | Product Name | Image Link | Category |
 | ----- | ------------ | ---------- | -------- |
