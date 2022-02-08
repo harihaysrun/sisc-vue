@@ -198,7 +198,7 @@ export default {
         });
         // let search = response.data;
         this.products = response.data.reverse();
-        console.log(response.data);
+        // console.log(response.data);
 
     },
     clearSearch: async function(){
