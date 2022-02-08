@@ -95,6 +95,10 @@
           </div>
 
           <div class="search-results" v-bind:style="{'marginLeft': marginLeft, 'marginTop': marginTop}">
+            
+            <div class="no-of-products">
+              <h2>{{products.length}} Products</h2>
+            </div>
 
             <div class="indiv-product" v-for="p in products.slice(0,max)" v-bind:key="p._id">
 

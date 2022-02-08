@@ -12,6 +12,10 @@
 
       <div class="search-results container">
 
+        <div class="no-of-products">
+          <h2>{{filteredRequests.length}} Products</h2>
+        </div>
+
         <div class="indiv-product" v-for="p in filteredRequests" v-bind:key="p._id">
 
           <a v-on:click="viewThisProduct(p._id)" style="display:flex; flex-direction:row; align-items:center">

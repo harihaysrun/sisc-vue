@@ -14,27 +14,31 @@
 
       <div class="search-results container" v-bind:style="{'width': width, 'marginBottom': marginBottom}">
         
-          <div class="indiv-product" v-for="p in filteredRequests.slice(0,max)" v-bind:key="p._id">
-            
-            <a v-on:click="viewThisProduct(p._id)" style="display:flex; flex-direction:row; align-items:center">
-              
-              <div class="product-img">
-                <img v-bind:src="p.productImage" />
-              </div>
+        <div class="no-of-products">
+          <h2>{{filteredRequests.length}} Products</h2>
+        </div>
 
-              <div class="product-info">
-                <div class="looking-for">{{p.posterName}} is looking for...</div>
-                <div class="brand-name">
-                  <div>
-                    <h3>{{p.productBrand}}</h3>
-                    <h2>{{p.productName}}</h2>
-                  </div>
+        <div class="indiv-product" v-for="p in filteredRequests.slice(0,max)" v-bind:key="p._id">
+          
+          <a v-on:click="viewThisProduct(p._id)" style="display:flex; flex-direction:row; align-items:center">
+            
+            <div class="product-img">
+              <img v-bind:src="p.productImage" />
+            </div>
+
+            <div class="product-info">
+              <div class="looking-for">{{p.posterName}} is looking for...</div>
+              <div class="brand-name">
+                <div>
+                  <h3>{{p.productBrand}}</h3>
+                  <h2>{{p.productName}}</h2>
                 </div>
               </div>
+            </div>
 
-            </a>
+          </a>
 
-          </div>
+        </div>
 
       </div>
 
