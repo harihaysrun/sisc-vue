@@ -56,7 +56,7 @@ Looking at the wireframes, pink was my initial choice of accent colour, but I de
 ## Features
 
 ### Major Features & Algorithms Used
-1. Post/edit/delete listings & comments (CRUD), using Express API connected to a MongoDB database (view the API for this project [here](https://github.com/harihaysrun/skincare-api))
+1. Post/edit/delete listings & comments (CRUD), using API connected to a MongoDB database (view the API for this project [here](https://github.com/harihaysrun/skincare-api))
 2. Server-side search for products page (MongoDB)
 3. Client-side search on request & reviews page (using filter function)
 
@@ -84,7 +84,7 @@ Looking at the wireframes, pink was my initial choice of accent colour, but I de
 3. Express – set up the API connected to the Mongo database
 4. VueJS – front end framework used to make the single page web app
 5. Axios – used to call the API endpoint
-6. Heroku – used to host the Express API
+6. Heroku – used to host the API
 7. Netlify – host the Vue application to generate a live link for people to visit
 
 
@@ -154,3 +154,6 @@ Here are some products you can add to the site!
 ## Credits
 1. [Flaticon](https://www.flaticon.com/)
 2. [Pexels](https://www.pexels.com/) and [Unsplash](https://unsplash.com/) for the photos
+3. [Vue documentation](https://v2.vuejs.org/v2/guide/)
+4. [MongoDB documentation](https://docs.mongodb.com/)
+5. [Stack Overflow](https://stackoverflow.com/)
