@@ -9,8 +9,12 @@
             <img src="@/assets/images/logo2.png" alt="">
           </a>
 
-          <a id="hamburger-menu" v-on:click="openMenu" v-if="openHM === false">☰</a>
-          <a id="hamburger-menu" v-on:click="closeMenu" v-if="openHM === true">×</a>
+          <a id="hamburger-menu" v-on:click="openMenu" v-if="openHM === false">
+            <img src="@/assets/images/menu.png" alt="">
+          </a>
+          <a id="hamburger-menu" v-on:click="closeMenu" v-if="openHM === true">
+            <img src="@/assets/images/close.png" alt="">
+          </a>
         </div>
         
         <div class="container" v-if="openHM === true">
@@ -146,7 +150,7 @@ nav .container{
 }
 
 .logo-hm .logo-img{
-  display:block;
+  display:flex;
 }
 
 .container .logo-img{
@@ -164,6 +168,11 @@ nav .container{
   text-align:center;
   display:block;
   margin-left:auto;
+}
+
+#hamburger-menu img{
+  width:80%;
+  /* transform: scaleX(-1); */
 }
 
 #hamburger-menu:hover{
