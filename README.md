@@ -13,7 +13,7 @@ SI(S)C is actually inspired by Carousell’s selling & ‘looking for’ system,
 
 **As the site owner, I want to:**
 - build a safe community for local skincare enthusiasts
-- allow users to interact, sell, request and provide reviews(which will be especially helpful since we're all living in the same country and experiencing the same weather! Having a same factor helps people to determine whether a product might or might work for them)
+- allow users to interact, sell, request and provide reviews(which will be especially helpful since we're all living in the same country and experiencing the same weather! Having a similar factor can help people determine whether a product might or might not work for them)
 
 
 **As the end user, I want to:**
@@ -60,7 +60,7 @@ Looking at the wireframes, pink was my initial choice of accent colour, but I de
 2. Server-side search for products page (MongoDB)
 3. Client-side search on request & reviews page (using filter function)
 
-### Limitations & Bugs,
+### Limitations & Bugs
 1. I tried to make the individual products accessible from the home page (using props) but so far I've only managed to make it switch to the Products page
 
 ### Features pending implementing
@@ -68,9 +68,7 @@ Looking at the wireframes, pink was my initial choice of accent colour, but I de
 2. Implement a more interactive star rating system as shown in this [codepen](https://codepen.io/Kradek/pen/VpezNR)
 
 
-## Use & Test Cases
-
-### Use cases:
+## Use cases:
 1. Add new product
 2. Search products
 3. Add comment or review
@@ -88,9 +86,9 @@ Looking at the wireframes, pink was my initial choice of accent colour, but I de
 7. Netlify – host the Vue application to generate a live link for people to visit
 
 
-### Test Cases:
+## Test Cases:
 
-#### Adding A New Product (to sell or give away) or Request
+### Adding A New Product (to sell or give away) or Request
 | Description | Expected Result |
 | ----------- | --------------- |
 | Click on "Add New" button | Page changes to show a form |
@@ -98,7 +96,7 @@ Looking at the wireframes, pink was my initial choice of accent colour, but I de
 | Click on "Add Product" or "Add Request" | If user did not fill in all the boxes, an alert will pop up to warn them to do so |
 | After filling everything up, click on "Add Product" or "Add Request" | When they’ve successfully submitted the form, a green message will appear at the top so they'll know that the product has been added  |
 
-#### Adding a new product to the reviews board
+### Adding a new product to the reviews board
 | Description | Expected Result |
 | ----------- | --------------- |
 | Click on "Add New" button | Page changes to show a form |
@@ -107,7 +105,7 @@ Looking at the wireframes, pink was my initial choice of accent colour, but I de
 | Click on "Add New Product" | If user did not fill in all the boxes, an alert will pop up to warn them to do so |
 | After filling everything up, click on "Add New Product" | When they’ve successfully submitted the form, a green message will appear at the top so they'll know that the product has been added  |
 
-#### Edit or delete product
+### Edit or delete product
 | Description | Expected Result |
 | ----------- | --------------- |
 | Click on product to be edited | See product information & comments section |
@@ -115,7 +113,7 @@ Looking at the wireframes, pink was my initial choice of accent colour, but I de
 | Once done editing, click on "Done" | A green message will appear at the top so they'll know that the product info has been edited |
 | If user wants to delete product (e.g product has been sold or found), click on 'Delete product' | Upon deleting, they will be redirected to the respective general listings tab |
 
-#### Leave a comment or review
+### Leave a comment or review
 | Description | Expected Result |
 | ----------- | --------------- |
 | In the comments section, fill in the appropriate fields | If the required fields are empty, an alert will prompt them to fill them up. Otherwise the omments section will update immediately upon posting.  |
