@@ -27,7 +27,6 @@
         <div v-if="formData.listing_type != 'review'">
           <span class="details-tag">Date*</span>
           <input type="date" name="" id="" v-model="formData.date_posted">
-          {{formData.date_posted}}
         </div>
 
         <div v-if="formData.listing_type != 'review'">
