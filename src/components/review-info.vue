@@ -110,7 +110,8 @@
 
           <div class="offer">
               <b>{{c.commentName}}</b>
-                <span class="details-tag">{{c.age}} {{c.ageOthers}} years old</span>
+                <span class="details-tag" v-if="c.age === 'Others'">{{c.ageOthers}} years old</span>
+                <span class="details-tag" v-else>{{c.age}} years old</span>
                 <span class="details-tag">{{c.skinType}} Skin</span>
           </div>
 
