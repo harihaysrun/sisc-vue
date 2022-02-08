@@ -124,7 +124,7 @@ Looking at the wireframes, pink was my initial choice of accent colour, but I de
 | To remove a comment, click 'delete' | Comments section will update immediately upon deleting  |
 
 
-### Test products
+## Test products
 Here are some products you can add to the site!
 
 | Brand | Product Name | Image Link | Category |
