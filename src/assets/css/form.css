@@ -181,15 +181,9 @@ hr{
 }
 
 @media screen and (min-width:1024px){
-
-    input[type="text"]{
-      width:250px;
-    }
   
     select, input[type="text"].specify{
-        /* width:25% !important; */
-        margin-top:0;
-        margin-right:15px;
+        width:200px !important;
     }
 
     .review-name input{

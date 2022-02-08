@@ -260,7 +260,7 @@ export default {
   margin-bottom:25px;
 }
 
-@media screen  and (min-width:768px){
+@media screen and (min-width:1024px){
 
   .img-container{
     flex:1;

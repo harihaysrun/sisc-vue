@@ -425,7 +425,7 @@ h1, h2, h3, h4{
   width:100%;
 }
 
-@media screen  and (min-width:768px){
+@media screen and (min-width:1024px){
 
   .details-container{
     flex-direction: row;
@@ -450,14 +450,9 @@ h1, h2, h3, h4{
     flex:2;
   }
 
-}
-
-
-@media screen  and (min-width:1024px){
-
   select, input[type="text"].specify{
     width: 200px !important;
-    margin-top:0;
+    margin-top:0 !important;
     margin-right:15px;
   }
 
