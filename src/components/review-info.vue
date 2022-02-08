@@ -60,7 +60,7 @@
             <label for="">My rating*</label>
             <select class="rating" name="" id="" v-model="my_rating">
               <option value="" disabled>Select One</option>
-              <option value="☆☆☆☆☆">0 Star</option>
+              <option value="☆☆☆☆☆">0 Stars</option>
               <option value="★☆☆☆☆">1 Star</option>
               <option value="★★☆☆">2 Stars</option>
               <option value="★★★☆☆">3 Stars</option>
