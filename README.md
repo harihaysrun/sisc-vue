@@ -124,6 +124,23 @@ Looking at the wireframes, pink was my initial choice of accent colour, but I de
 | To remove a comment, click 'delete' | Comments section will update immediately upon deleting  |
 
 
+#### Test products
+Here are some products you can add to the site!
+
+| Brand | Product Name | Image Link | Category |
+| ----- | ------------ | ---------- | -------- |
+| Aestura | Atobarrier 365 Cream | [Link](https://cf.shopee.sg/file/0ec2bba0a81c5bab64b93d7703b5d634) | Moisturiser |
+| Aestura | Atobarrier 365 Hydro Essence | [Link](https://image.globaloliveyoungshop.com/mig/prdtImg/c2aebbc46c205de05b24236fb3317b6a.jpg?RS=500x500&AR=0) | Essence |
+| Kiehl's | Ultra Facial Cream | [Link](https://www.sephora.com/productimages/product/p421996-av-06-zoom.jpg?imwidth=315) | Moisturiser |
+| Kiehl's | Ultra Facial Cleanser | [Link](https://static3.sabinacdn.com/11613-thickbox_default/ultra-facial-cleanser.jpg) | Second Cleanser |
+| Innisfree | Green Tea Seed Serum | [Link](https://www.sephora.com/productimages/sku/s2500122-main-zoom.jpg?imwidth=315) | Serum |
+| Innisfree | Jeju Orchid Enriched Cream | [Link](https://s3.images-iherb.com/inf/inf86154/l/8.jpg) | Moisturiser |
+| B.LAB | Matcha Hydrating Cleanser | [Link](https://d1flfk77wl2xk4.cloudfront.net/Assets/12/565/XXL_p0142756512.jpg) | Second Cleanser |
+| Purito | Foam Green Cleansing Oil | [Link](https://m.puritoen.com/web/product/big/202109/021441d385a43153093f00a96a400d66.jpg) | First Cleanser |
+| Dr.Jart+ | Cicapair Cream | [Link](https://www.watsons.com.sg/medias/Cicapair-Cream-50ml-70674.jpg?context=bWFzdGVyfGZyb250L3pvb218NDM2OTR8aW1hZ2UvanBlZ3xmcm9udC96b29tL2g5Yi9oZjMvODg1ODQxOTU2MDQ3OC5qcGd8NWRiYWM4NzBkOGE2MmY4MjZmYWFmY2FkODM2OGNjZGM3MDkxY2E3M2QwYzM0Y2FjMTZjNmQ1MGJmZTIxYzg3NA) | Moisturiser |
+| Paula's Choice | Skin Perfecting 2% BHA | [Link](https://static.thcdn.com/images/large/original//productimg/1600/1600/11174178-1044909106371632.jpg) | Chemical Exfoliant |
+
+
 
 ## This project has been tested on:
 | MacOS | Windows 10 | Other devices |
