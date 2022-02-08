@@ -198,7 +198,7 @@ export default {
         });
         // let search = response.data;
         this.products = response.data.reverse();
-        // console.log(search);
+        console.log(response.data);
 
     },
     clearSearch: async function(){
@@ -342,7 +342,11 @@ h2{
 .product-info{
   /* background-color:pink; */
   width:100%;
+  height:100%;
+  box-sizing: border-box;
   padding: 10px 15px;
+  display:flex;
+  flex-direction: column;
 }
 
 button{
@@ -357,6 +361,7 @@ button{
 }
 
 .size-price{
+  margin-top:auto !important;
   color:mediumslateblue;
 }
 
