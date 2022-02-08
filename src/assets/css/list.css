@@ -40,7 +40,7 @@ li{
 .no-of-products{
   text-align:left;
   width:100%;
-  margin: 0 10px 15px 10px;
+  margin-bottom:15px;
 }
 
 .no-of-products h2{
@@ -74,4 +74,16 @@ li{
 
 h2, h3{
   color:black;
+}
+
+
+
+@media screen  and (min-width:1024px){
+
+  .no-of-products{
+    text-align:left;
+    width:100%;
+    margin: 0 10px 15px 10px;
+  }
+
 }
