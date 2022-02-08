@@ -96,7 +96,7 @@
 
           <div class="search-results" v-bind:style="{'marginLeft': marginLeft, 'marginTop': marginTop}">
             
-            <div class="no-of-products">
+            <div class="no-of-products" v-bind:style="{'display': display}">
               <h2>{{products.length}} Products</h2>
             </div>
 

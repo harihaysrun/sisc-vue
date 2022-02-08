@@ -14,7 +14,7 @@
 
       <div class="search-results container" v-bind:style="{'width': width, 'marginBottom': marginBottom}">
         
-        <div class="no-of-products">
+        <div class="no-of-products" v-bind:style="{'display': display}">
           <h2>{{filteredRequests.length}} Products</h2>
         </div>
 
