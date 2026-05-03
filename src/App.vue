@@ -49,7 +49,9 @@
           Sharing is (Skin)caring
         </div>
         <div class="footer-icons">
-          © Syahirah 2022
+          © <a href="https://github.com/harihaysrun">@HARIHAYSRUN</a> 2022-2026
+          <br>
+          Built for <b>educational purposes</b> only.
         </div>
       </footer>
     
@@ -333,10 +335,10 @@ footer{
     align-items: flex-start;
   }
 
-  .footer-icons{
+  /* .footer-icons{
     flex:1;
     justify-content: flex-end;
-  }
+  } */
 
 
 }
