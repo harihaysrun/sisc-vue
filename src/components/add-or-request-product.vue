@@ -191,7 +191,6 @@
 <script>
 
 import axios from 'axios';
-const BASE_API_URL = "https://nsy-skincare-api.herokuapp.com/";
 
 const original = {  'date_posted': '',
                     'poster_name': '',
@@ -219,7 +218,7 @@ const checkFills = "Please make sure to fill in all boxes";
 
 export default {
   created:  async function(){
-    let response = await axios.get(BASE_API_URL + 'reviews');
+    let response = await axios.get(this.$BASE_API_URL + 'reviews');
     let reviewBoard = response.data;
     this.reviewProductName = reviewBoard.productName;
   },
@@ -257,7 +256,7 @@ export default {
             return
       }
 
-      await axios.post(BASE_API_URL + 'skincare-products/add',{
+      await axios.post(this.$BASE_API_URL + 'skincare-products/add',{
         'datePosted': this.formData.date_posted,
         'posterName': this.formData.poster_name,
         'listingType': this.formData.listing_type,
@@ -300,7 +299,7 @@ export default {
             return
           }
 
-      await axios.post(BASE_API_URL + 'requested-products/add',{
+      await axios.post(this.$BASE_API_URL + 'requested-products/add',{
         'datePosted': this.formData.date_posted,
         'posterName': this.formData.poster_name,
         'productBrand': this.formData.product_brand,
@@ -331,7 +330,7 @@ export default {
             return
           }
           
-      await axios.post(BASE_API_URL + 'reviews/add',{
+      await axios.post(this.$BASE_API_URL + 'reviews/add',{
         'productBrand': this.formData.product_brand,
         'productName': this.formData.product_name,
         'productImage': this.formData.product_image,
@@ -348,7 +347,7 @@ export default {
     },
     crosscheckWithReviews: async function(){
 
-      let response = await axios.get(BASE_API_URL + 'reviews');
+      let response = await axios.get(this.$BASE_API_URL + 'reviews');
       let reviewBoard = response.data;
       
       if (this.formData.product_name.length === 0){

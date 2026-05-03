@@ -49,11 +49,10 @@
 <script>
 
 import axios from 'axios';
-const BASE_API_URL = "https://nsy-skincare-api.herokuapp.com/";
 
 export default {
   created: async function(){
-    let response = await axios.get(BASE_API_URL + 'requested-products');
+    let response = await axios.get(this.$BASE_API_URL + 'requested-products');
     this.products = response.data.reverse();
     // console.log(this.products)
   },

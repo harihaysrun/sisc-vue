@@ -157,11 +157,10 @@
 <script>
 
 import axios from 'axios';
-const BASE_API_URL = "https://nsy-skincare-api.herokuapp.com/";
 
 export default {
   created: async function(){
-    let response = await axios.get(BASE_API_URL + 'skincare-products');
+    let response = await axios.get(this.$BASE_API_URL + 'skincare-products');
     this.products = response.data.reverse();
     // console.log(this.products)
   },
@@ -186,7 +185,7 @@ export default {
     },
     searchFilter: async function(){
       
-        let response = await axios.post(BASE_API_URL + 'search', {
+        let response = await axios.post(this.$BASE_API_URL + 'search', {
           'search': this.search,
           'productCondition': this.product_condition,
           'productCategory': this.product_category,
@@ -202,7 +201,7 @@ export default {
 
     },
     clearSearch: async function(){
-      let response = await axios.get(BASE_API_URL + 'skincare-products');
+      let response = await axios.get(this.$BASE_API_URL + 'skincare-products');
       this.search = "Brand or product name";
       this.product_condition = "";
       this.product_category = "";

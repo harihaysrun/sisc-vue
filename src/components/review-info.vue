@@ -153,11 +153,10 @@
 
 <script>
 import axios from 'axios';
-const BASE_API_URL = "https://nsy-skincare-api.herokuapp.com/";
 
 export default {
   created: async function(){
-    let response = await axios.get(BASE_API_URL + 'reviews/' + this.productId);
+    let response = await axios.get(this.$BASE_API_URL + 'reviews/' + this.productId);
     this.product_brand = response.data.productBrand;
     this.product_name = response.data.productName;
     this.product_image = response.data.productImage;
@@ -217,7 +216,7 @@ export default {
 
       this.reviews = this.comments.length + 1;
 
-      await axios.post(BASE_API_URL + 'reviews/' + this.productId + '/comment/add', {
+      await axios.post(this.$BASE_API_URL + 'reviews/' + this.productId + '/comment/add', {
         'commentName': this.comment_name,
         'age': this.my_age,
         'ageOthers': this.my_age_others,
@@ -228,7 +227,7 @@ export default {
         'noOfReviews': this.reviews,
       })
       
-      let response = await axios.get(BASE_API_URL + 'reviews/' + this.productId);
+      let response = await axios.get(this.$BASE_API_URL + 'reviews/' + this.productId);
       this.comments = response.data.reviews.reverse();
 
       this.comment_name = "";
@@ -246,12 +245,12 @@ export default {
 
       this.reviews = this.comments.length - 1;
 
-      await axios.post(BASE_API_URL + 'reviews/' + this.productId + '/comment/delete', {
+      await axios.post(this.$BASE_API_URL + 'reviews/' + this.productId + '/comment/delete', {
             'commentId': commentId,
             'noOfReviews': this.reviews,
           })
           
-      let response = await axios.get(BASE_API_URL + 'reviews/' + this.productId);
+      let response = await axios.get(this.$BASE_API_URL + 'reviews/' + this.productId);
       this.comments = response.data.reviews.reverse();
 
     }

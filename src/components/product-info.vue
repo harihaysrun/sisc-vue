@@ -172,11 +172,10 @@
 
 <script>
 import axios from 'axios';
-const BASE_API_URL = "https://nsy-skincare-api.herokuapp.com/";
 
 export default {
   created: async function(){
-    let response = await axios.get(BASE_API_URL + 'skincare-products/' + this.productId);
+    let response = await axios.get(this.$BASE_API_URL + 'skincare-products/' + this.productId);
     this.date_posted = response.data.datePosted;
     this.poster_name = response.data.posterName;
     this.product_condition = response.data.productCondition;
@@ -242,12 +241,12 @@ export default {
         return
       }
 
-      await axios.post(BASE_API_URL + 'skincare-products/' + this.productId + '/comment/add', {
+      await axios.post(this.$BASE_API_URL + 'skincare-products/' + this.productId + '/comment/add', {
         'commentName': this.comment_name,
         'commentText': this.comment_text,
       })
 
-      let response = await axios.get(BASE_API_URL + 'skincare-products/' + this.productId);
+      let response = await axios.get(this.$BASE_API_URL + 'skincare-products/' + this.productId);
       this.comments = response.data.comments;
 
       this.comment_name = "";
@@ -259,11 +258,11 @@ export default {
     },
     'deleteComment': async function(commentId){
         
-      await axios.post(BASE_API_URL + 'skincare-products/' + this.productId + '/comment/delete', {
+      await axios.post(this.$BASE_API_URL + 'skincare-products/' + this.productId + '/comment/delete', {
         'commentId': commentId
       });
 
-      let response = await axios.get(BASE_API_URL + 'skincare-products/' + this.productId);
+      let response = await axios.get(this.$BASE_API_URL + 'skincare-products/' + this.productId);
       this.comments = response.data.comments;
 
     }

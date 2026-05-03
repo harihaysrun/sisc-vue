@@ -156,12 +156,11 @@
 
 <script>
 import axios from 'axios';
-const BASE_API_URL = "https://nsy-skincare-api.herokuapp.com/";
 
 export default {
   created: async function(){
     // console.log(this.productId)
-    let response = await axios.get(BASE_API_URL + 'skincare-products/' + this.productId);
+    let response = await axios.get(this.$BASE_API_URL + 'skincare-products/' + this.productId);
     this.product_condition = response.data.productCondition;
     this.product_brand = response.data.productBrand;
     this.product_name = response.data.productName;
@@ -210,7 +209,7 @@ export default {
   methods:{
     'editProduct': async function(){
 
-      await axios.patch(BASE_API_URL + 'skincare-products/' + this.productId, {
+      await axios.patch(this.$BASE_API_URL + 'skincare-products/' + this.productId, {
         'productCondition': this.product_condition,
         'productBrand': this.product_brand,
         'productName': this.product_name,
@@ -242,7 +241,7 @@ export default {
     },
     'remove': async function(productId){
 
-      await axios.post(BASE_API_URL + 'skincare-products/' + this.productId + '/delete',{
+      await axios.post(this.$BASE_API_URL + 'skincare-products/' + this.productId + '/delete',{
         '_id': productId
       });
 
