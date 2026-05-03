@@ -24,7 +24,7 @@ SI(S)C is actually inspired by Carousell’s selling & ‘looking for’ system,
 
 
 
-Visit SI(S)C [here](https://agitated-visvesvaraya-94d773.netlify.app/)!
+Visit SI(S)C [here](https://nsy22-sisc.netlify.app/)!
 
 
 
