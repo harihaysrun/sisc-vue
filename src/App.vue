@@ -49,9 +49,12 @@
           Sharing is (Skin)caring
         </div>
         <div class="footer-icons">
+          <div>
           © <a href="https://github.com/harihaysrun">@HARIHAYSRUN</a> 2022-2026
-          <br>
-          Built for <b>educational purposes</b> only.
+          </div>
+          <div>
+            Built for <b>educational purposes</b> only.            
+          </div>
         </div>
       </footer>
     
@@ -343,7 +346,11 @@ footer a{
   .footer-icons{
     /* flex:1;
     justify-content: flex-end; */
-    text-align:left;
+    /* text-align:right; */
+    display: flex;
+    flex-direction: column;
+    text-align: right;
+    justify-content: center;
   }
 
 
