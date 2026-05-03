@@ -246,6 +246,10 @@ footer{
   text-align:center;
 }
 
+footer a{
+  color:#7E68F4;
+}
+
 .footer-logo{
   margin-bottom:25px;
   display:flex;
@@ -323,7 +327,8 @@ footer{
     padding-right: 10%;
   }
 
-  .footer-logo, .footer-icons{
+  .footer-logo{
+  /* .footer-icons{ */
     display:flex;
     align-items: center;
     text-align:left;
@@ -335,10 +340,11 @@ footer{
     align-items: flex-start;
   }
 
-  /* .footer-icons{
-    flex:1;
-    justify-content: flex-end;
-  } */
+  .footer-icons{
+    /* flex:1;
+    justify-content: flex-end; */
+    text-align:left;
+  }
 
 
 }
